@@ -7,6 +7,7 @@ class Login extends CI_Controller {
         parent::__construct();
         $this->load->model("Login_model");
         $this->load->model("Menu_model"); // <- NECESARIO
+        $this->load->model("Tipo_categoria_model");
         $this->load->library('session');
     }
 
@@ -71,6 +72,7 @@ class Login extends CI_Controller {
 
     public function dashboard() {
         $data["menu"] = $this->menuData();
+        $data["tipos_categoria"] = $this->Tipo_categoria_model->obtener_tipos_activos();
 
         // Si no está logeado, lo mandamos al login
         if (!$this->session->userdata("logeado")) {

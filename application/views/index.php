@@ -1,88 +1,268 @@
 <!-- Banner de borde a borde -->
 <style>
  /* ======================================= */
-/* BANNER FULL ANCHO RESPONSIVO           */
+/* BANNER CARRUSEL CON BOOTSTRAP Y JQUERY */
 /* ======================================= */
 
-.carousel-banner {
+.section-banner {
     position: relative;
     width: 100%;
     overflow: hidden;
-    height: 700px;
 }
 
-/* CARRIL horizontal para poder arrastrar */
-.slides-wrapper {
-    display: flex;
+.banner-carousel-wrapper {
+    position: relative;
+    overflow: hidden;
+    height: 100vh;
+    min-height: 600px;
+}
+
+.banner-carousel-track {
+    position: relative;
     width: 100%;
     height: 100%;
-    transition: transform 0.3s ease;
 }
 
-/* Slides visibles siempre para permitir arrastre */
-.carousel-banner .slide {
-    min-width: 100%;
-    height: 700px;
+.banner-slide {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 600px;
     background-size: cover;
     background-position: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+    &.active {
+        display: flex;
+        opacity: 1;
+        justify-content: center;
+        align-items: center;
+    }
 }
 
-/* Flechas */
-.carousel-banner .prev, 
-.carousel-banner .next {
+/* Overlay oscuro sobre la imagen */
+.banner-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+/* Contenido del banner */
+.banner-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+    padding: 0 20px;
+
+    & h1 {
+        font-size: 48px;
+        font-weight: bold;
+        margin-bottom: 30px;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+    }
+}
+
+.banner-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 30px;
+
+    & .btn-banner {
+        padding: 15px 40px;
+        font-size: 16px;
+        font-weight: 600;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+
+        &.btn-primary-banner {
+            background: #00963f;
+            color: white;
+
+            &:hover {
+                background: #007a33;
+                transform: translateY(-2px);
+                box-shadow: 0 4px 15px rgba(0, 150, 63, 0.4);
+            }
+        }
+
+        &.btn-secondary-banner {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+
+            &:hover {
+                background: white;
+                color: #00963f;
+                transform: translateY(-2px);
+                box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+            }
+        }
+    }
+}
+
+/* Botones de navegación (flechas) */
+.banner-carousel-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(0,0,0,0.4);
+    width: 50px;
+    height: 50px;
+    background: rgba(0, 0, 0, 0.6);
     border: none;
     color: white;
-    font-size: 30px;
-    padding: 10px 15px;
+    font-size: 24px;
     cursor: pointer;
+    z-index: 100;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border-radius: 50%;
-    z-index: 10;
-    transition: 0.3s;
+    opacity: 1;
+    pointer-events: auto;
+
+    &:hover {
+        background: rgba(0, 0, 0, 0.9);
+        transform: translateY(-50%) scale(1.1);
+    }
+
+    &.banner-carousel-prev {
+        left: 30px;
+    }
+
+    &.banner-carousel-next {
+        right: 30px;
+    }
 }
 
-.carousel-banner .prev:hover, .carousel-banner .next:hover {
-    background: rgba(0,0,0,0.7);
-}
-
-.carousel-banner .prev { left: 20px; }
-.carousel-banner .next { right: 20px; }
-
-/* Puntitos */
-.carousel-banner .dots {
+/* Indicadores (puntos) del banner */
+.banner-carousel-dots {
     position: absolute;
-    bottom: 25px;
+    bottom: 30px;
     left: 50%;
     transform: translateX(-50%);
     display: flex;
+    justify-content: center;
     gap: 12px;
     z-index: 20;
-}
 
-.carousel-banner .dots .dot {
-    width: 15px;
-    height: 15px;
-    background: rgba(255,255,255,0.5);
-    border-radius: 50%;
-    cursor: pointer;
-    transition: 0.3s;
-}
+    & .dot-banner {
+        width: 15px;
+        height: 15px;
+        background: rgba(255, 255, 255, 0.6);
+        border-radius: 50%;
+        cursor: pointer;
+        transition: all 0.3s ease;
 
-.carousel-banner .dots .dot.active {
-    background: white;
-    transform: scale(1.2);
+        &:hover {
+            background: rgba(255, 255, 255, 0.9);
+            transform: scale(1.15);
+        }
+
+        &.active {
+            background: white;
+            transform: scale(1.3);
+        }
+    }
 }
 
 /* Ocultar en móviles */
 @media (max-width: 992px) {
-    .carousel-banner {
+    .section-banner {
         display: none !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .banner-carousel-wrapper {
+        height: 100vh;
+        min-height: 500px;
+    }
+
+    .banner-slide {
+        height: 100vh;
+        min-height: 500px;
+    }
+
+    .banner-content h1 {
+        font-size: 32px;
+    }
+
+    .banner-buttons .btn-banner {
+        padding: 12px 30px;
+        font-size: 14px;
+    }
+
+    .banner-carousel-btn {
+        width: 40px;
+        height: 40px;
+        font-size: 20px;
+
+        &.banner-carousel-prev {
+            left: 15px;
+        }
+
+        &.banner-carousel-next {
+            right: 15px;
+        }
+    }
+}
+
+@media (max-width: 576px) {
+    .banner-carousel-wrapper {
+        height: 100vh;
+        min-height: 400px;
+    }
+
+    .banner-slide {
+        height: 100vh;
+        min-height: 400px;
+    }
+
+    .banner-content h1 {
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    .banner-buttons {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .banner-buttons .btn-banner {
+        padding: 10px 25px;
+        font-size: 13px;
+    }
+
+    .banner-carousel-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 18px;
+
+        &.banner-carousel-prev {
+            left: 10px;
+        }
+
+        &.banner-carousel-next {
+            right: 10px;
+        }
+    }
+
+    .banner-carousel-dots .dot-banner {
+        width: 12px;
+        height: 12px;
     }
 }
 
@@ -134,297 +314,889 @@
     }
 }
 
-/* ======================================= */
-/* SECCIÓN PRODUCTOS (Responsivo)         */
-/* ======================================= */
 
-.section-productos {
-    text-align: center;
-    padding: 10px 3px;
-    background: #ffffff;
-}
 
-.section-productos h2 {
-    font-size: 52px;
-    font-weight: 900;
-    margin-bottom: 10px;
-    color: #1a1a1a;
-}
-
-.section-productos p {
-    font-size: 20px;
-    color: #666;
-    margin-bottom: 40px;
-}
-
-/* Tablet */
-@media (max-width: 992px) {
-    .section-productos h2 {
-        font-size: 42px;
-    }
-    .section-productos p {
-        font-size: 18px;
-    }
-}
-
-/* Celular */
-@media (max-width: 600px) {
-    .section-productos {
-        padding: 40px 15px;
-    }
-    .section-productos h2 {
-        font-size: 32px;
-    }
-    .section-productos p {
-        font-size: 16px;
-    }
-}
-
-/* ======================================= */
-/* GALERÍA RESPONSIVA                     */
-/* ======================================= */
-
-.galeria-productos {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
-    max-width: 1200px;
-    margin: auto;
-}
-
-/* Tablet = 2 columnas */
-@media (max-width: 900px) {
-    .galeria-productos {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-/* Celular = 1 columna */
-@media (max-width: 600px) {
-    .galeria-productos {
-        grid-template-columns: repeat(1, 1fr);
-    }
-}
-
-.galeria-item {
-    background: #f5f5f5;
-    border-radius: 15px;
-    overflow: hidden;
-    box-shadow: 0px 4px 15px rgba(0,0,0,0.1);
-    transition: transform .2s;
-}
-
-.galeria-item:hover {
-    transform: translateY(-6px);
-}
-
-.galeria-item img {
-    width: 100%;
-    height: 230px;
-    object-fit: cover;
-}
-
-/* Celular: imágenes más altas */
-@media (max-width: 600px) {
-    .galeria-item img {
-        height: 180px;
-    }
-}
 
 </style>
 
 
-<div class="carousel-banner">
-
-    <div class="slides-wrapper">
-
-        <div class="slide" style="background-image: url('<?= base_url("images/banner/banner.jpg") ?>');">
-        </div>
-
-        <div class="slide" style="background-image: url('<?= base_url("images/banner/banner2.jpg") ?>');">
-        </div>
-
-        <div class="slide" style="background-image: url('<?= base_url("images/banner/banner3.jpg") ?>');">
-        </div>
-
-        <div class="slide" style="background-image: url('<?= base_url("images/banner/banner4.jpg") ?>');">
-        </div>
-
-        <div class="slide" style="background-image: url('<?= base_url("images/banner/banner5.jpg") ?>');">
-        </div>
-
-        <div class="slide" style="background-image: url('<?= base_url("images/banner/banner6.jpg") ?>');">
-        </div>
-
-    </div>
-
-    <button class="prev">&#10094;</button>
-    <button class="next">&#10095;</button>
-
-    <div class="dots"></div>
-</div>
-
-
-
-<section style="text-align:center; padding:10px 5px; background-color:#f8f8f8;">
-<br><br>
-<h2 style="font-size:48px; font-weight:900; margin-bottom:20px;">
-    HERRAMIENTAS DE CONFIANZA PARA LA INDUSTRIA
-</h2>
-<p style="font-size:20px; font-weight:400; color:#555;">
-    Distribuimos y vendemos productos de alta calidad, importados de los mejores fabricantes del sector metalmecánico.
-</p>
-<p style="font-size:20px; font-weight:400; color:#555;">
-    Contáctanos para asesoría, pedidos y soluciones a medida para tu negocio.
-</p>
-
-
-    <div class="carousel-wrapper">
-<div class="carousel">
-    <?php 
-    for($i=1; $i<=10; $i++): 
-    ?>
-        <div class="carousel-item">
-            <img src="<?= base_url("images/marcas/marca$i.png") ?>" alt="Marca <?= $i ?>">
-        </div>
-    <?php endfor; ?>
-
-    <!-- Duplicado para generar efecto infinito -->
-    <?php 
-    for($i=1; $i<=13; $i++): 
-    ?>
-        <div class="carousel-item">
-            <img src="<?= base_url("images/marcas/marca$i.png") ?>" alt="Marca <?= $i ?>">
-        </div>
-    <?php endfor; ?>
-</div>
-
-    </div>
-</section>
-
-<section class="section-productos">
-<h2>NUESTRA GAMA DE PRODUCTOS</h2>
-<p>Ofrecemos venta, importación y distribución de herramientas de alta calidad para el sector metalmecánico.</p>
-
-
-    <div class="galeria-productos">
-
-        <?php 
-        $imagenes = [
-            "Ferreteria1.jpg",
-            "Ferreteria2.jpg",
-            "Ferreteria3.jpg",
-            "Ferreteria4.jpg",
-            "Ferreteria5.jpg"
-        ];
-
-        $slugs = [
-            "torno",
-            "cepillos",
-            "taladro",
-            "fresa",
-            "brocas"
-        ];
-
-        foreach ($imagenes as $index => $img): 
-        ?>
-            <a href="<?= base_url('productos/categoria/' . $slugs[$index]) ?>" class="galeria-item">
-                <img src="<?= base_url('images/categorias/' . $img) ?>" alt="Producto <?= $index + 1 ?>">
-            </a>
-        <?php endforeach; ?>
-
-    </div>
-</section>
-
-<section style="padding:50px 0; background:#f2f2f2; text-align:center;">
-    <h2 style="font-size:40px; font-weight:800; margin-bottom:20px;">
-        Nuestra Ubicación
-    </h2>
-    <p style="font-size:18px; margin-bottom:30px;">
-        Av. Argentina 469, Lima 15082 – Perú
-    </p>
-
-    <div style="width:100%; max-width:1200px; margin:auto;">
-        <iframe 
-            width="100%" 
-            height="450" 
-            style="border:0; border-radius:10px;"
-            loading="lazy" 
-            allowfullscreen
-            referrerpolicy="no-referrer-when-downgrade"
-            src="https://www.google.com/maps?q=Av.+Argentina+469,+Lima+15082&output=embed">
-        </iframe>
-    </div>
-</section>
-
-<section style="padding:60px 20px; background:white; text-align:center;">
-    
-    <h2 style="font-size:48px; font-weight:900; margin-bottom:15px;">
-        ¿Cómo podemos ayudarte?
-    </h2>
-
-    <p style="font-size:20px; color:#555; margin-bottom:40px;">
-        Estamos listos para atenderle, póngase en contacto con nosotros.
-    </p>
-
-    <form id="form-contacto" style="max-width:800px; margin:auto; text-align:left;">
-
-        <div style="display:flex; gap:40px; margin-bottom:30px;">
-            <div style="flex:1;">
-                <label style="font-weight:600; margin-bottom:6px; display:block;">Apellidos:</label>
-                <input type="text" name="apellidos" required
-                style="width:100%; padding:14px; border-radius:8px; border:1px solid #ccc;">
+<section class="section-banner">
+    <div class="banner-carousel-wrapper">
+        <div class="banner-carousel-track">
+            <!-- Slide 1 -->
+            <div class="banner-slide active" data-slide="0" style="background-image: url('<?= base_url("images/banner/banner.jpg") ?>');">
+                <div class="banner-overlay"></div>
+                <div class="banner-content">
+                    <h1>Bienvenidos a Importaciones Codiza</h1>
+                    <div class="banner-buttons">
+                        <a href="<?= base_url('productos') ?>" class="btn-banner btn-primary-banner">Ver Productos</a>
+                        <a href="<?= base_url('contacto') ?>" class="btn-banner btn-secondary-banner">Contáctanos</a>
+                    </div>
+                </div>
             </div>
 
-            <div style="flex:1;">
-                <label style="font-weight:600; margin-bottom:6px; display:block;">Nombres:</label>
-                <input type="text" name="nombres" required
-                style="width:100%; padding:14px; border-radius:8px; border:1px solid #ccc;">
+            <!-- Slide 2 -->
+            <div class="banner-slide" data-slide="1" style="background-image: url('<?= base_url("images/banner/banner2.jpg") ?>');">
+                <div class="banner-overlay"></div>
+                <div class="banner-content">
+                    <h1>Bienvenidos a Importaciones Codiza</h1>
+                    <div class="banner-buttons">
+                        <a href="<?= base_url('productos') ?>" class="btn-banner btn-primary-banner">Ver Productos</a>
+                        <a href="<?= base_url('contacto') ?>" class="btn-banner btn-secondary-banner">Contáctanos</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="banner-slide" data-slide="2" style="background-image: url('<?= base_url("images/banner/banner3.jpg") ?>');">
+                <div class="banner-overlay"></div>
+                <div class="banner-content">
+                    <h1>Bienvenidos a Importaciones Codiza</h1>
+                    <div class="banner-buttons">
+                        <a href="<?= base_url('productos') ?>" class="btn-banner btn-primary-banner">Ver Productos</a>
+                        <a href="<?= base_url('contacto') ?>" class="btn-banner btn-secondary-banner">Contáctanos</a>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div style="display:flex; gap:40px; margin-bottom:30px;">
-            <div style="flex:1;">
-                <label style="font-weight:600; margin-bottom:6px; display:block;">Correo electrónico:</label>
-                <input type="email" name="correo" required
-                style="width:100%; padding:14px; border-radius:8px; border:1px solid #ccc;">
-            </div>
+        <!-- Botones de navegación -->
+        <button class="banner-carousel-btn banner-carousel-prev" type="button">
+            <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="banner-carousel-btn banner-carousel-next" type="button">
+            <i class="fas fa-chevron-right"></i>
+        </button>
 
-            <div style="flex:1;">
-                <label style="font-weight:600; margin-bottom:6px; display:block;">Celular:</label>
-                <input type="text" name="celular" required
-                style="width:100%; padding:14px; border-radius:8px; border:1px solid #ccc;">
-            </div>
+        <!-- Indicadores (puntos) -->
+        <div class="banner-carousel-dots">
+            <span class="dot-banner active" data-slide="0"></span>
+            <span class="dot-banner" data-slide="1"></span>
+            <span class="dot-banner" data-slide="2"></span>
         </div>
-
-        <div style="margin-bottom:20px;">
-            <label style="font-weight:600;">Mensaje:</label>
-            <textarea name="mensaje" rows="5" required
-            style="width:100%; padding:12px; border-radius:8px; border:1px solid #ccc; resize:none;"></textarea>
-        </div>
-
-        <div style="text-align:center;">
-            <button type="submit"
-            style="
-                background:#e63946;
-                color:white;
-                padding:14px 40px;
-                border:none;
-                border-radius:50px;
-                font-size:18px;
-                font-weight:700;
-                cursor:pointer;
-                transition:0.3s;
-            "
-            onmouseover="this.style.background='#c92e3a'"
-            onmouseout="this.style.background='#e63946'">
-                Enviar mensaje
-            </button>
-        </div>
-
-    </form>
-
+    </div>
 </section>
+
+<section class="section-categorias">
+    <div class="container-fluid">
+        <h4>NUESTROS PRODUCTOS</h4>
+        <hr style="margin: 10px 0 20px 0; padding: 0;">
+        
+        <!-- Carrusel personalizado con jQuery -->
+        <div id="categoriasCarousel" class="servicios-carousel-wrapper">
+            <div class="servicios-carousel-track">
+                <div class="categorias-grid">
+                    <?php foreach ($categorias as $index => $categoria): ?>
+                        <div class="categoria-item <?= $index < 4 ? 'active' : '' ?>" data-index="<?= $index ?>">
+                            <div class="servicio-card">
+                                <div class="servicio-imagen-wrapper">
+                                    <div class="servicio-imagen">
+                                        <?php if (!empty($categoria->imagen)): ?>
+                                            <img src="<?= base_url($categoria->imagen) ?>" 
+                                                 alt="<?= htmlspecialchars($categoria->nombre) ?>">
+                                        <?php else: ?>
+                                            <img src="<?= base_url('images/categorias/Ferreteria1.jpg') ?>" 
+                                                 alt="<?= htmlspecialchars($categoria->nombre) ?>">
+                                        <?php endif; ?>
+                                        <div class="servicio-overlay"></div>
+                                    </div>
+                                    <div class="servicio-nombre">
+                                        <h4><?= htmlspecialchars($categoria->nombre) ?></h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+
+            <!-- Controles anterior/siguiente -->
+            <?php if (count($categorias) > 4): ?>
+                <button class="carousel-btn carousel-prev-categorias" type="button">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-btn carousel-next-categorias" type="button">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            <?php endif; ?>
+        </div>
+
+        <!-- Indicadores -->
+        <div id="categoriasIndicators" class="carousel-dots"></div>
+    </div>
+</section>
+
+<section class="section-servicios">
+    <div class="container-fluid">
+        <h4>NUESTROS SERVICIOS</h4>
+        <hr style="margin: 10px 0 20px 0; padding: 0;">
+        
+        <!-- Carrusel personalizado con jQuery -->
+        <div id="serviciosCarousel" class="servicios-carousel-wrapper">
+            <div class="servicios-carousel-track">
+                <div class="servicios-grid">
+                    <?php foreach ($servicios as $index => $servicio): ?>
+                        <div class="servicio-item <?= $index < 4 ? 'active' : '' ?>" data-index="<?= $index ?>">
+                            <div class="servicio-card">
+                                <div class="servicio-imagen-wrapper">
+                                    <div class="servicio-imagen">
+                                        <?php if (!empty($servicio->imagen)): ?>
+                                            <img src="<?= base_url($servicio->imagen) ?>" 
+                                                 alt="<?= htmlspecialchars($servicio->nombre) ?>">
+                                        <?php else: ?>
+                                            <img src="<?= base_url('images/categorias/Ferreteria1.jpg') ?>" 
+                                                 alt="<?= htmlspecialchars($servicio->nombre) ?>">
+                                        <?php endif; ?>
+                                        <div class="servicio-overlay"></div>
+                                    </div>
+                                    <div class="servicio-nombre">
+                                        <h4><?= htmlspecialchars($servicio->nombre) ?></h4>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+
+            <!-- Controles anterior/siguiente -->
+            <?php if (count($servicios) > 4): ?>
+                <button class="carousel-btn carousel-prev" type="button">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="carousel-btn carousel-next" type="button">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            <?php endif; ?>
+        </div>
+
+        <!-- Indicadores -->
+        <div id="serviciosIndicators" class="carousel-dots"></div>
+    </div>
+</section>
+
+<section class="section-asesoria">
+    <div class="asesoria-parallax-container">
+        <div class="asesoria-parallax-bg" style="background-image: url('<?= base_url("images/banner/banner.jpg") ?>');"></div>
+        <div class="asesoria-content">
+            <h2>Asesoría Técnica, Ventas y Proyectos</h2>
+            <p>En IMPORTACIONES COTIZA, convertimos sus necesidades en soluciones eficientes y oportunas. Diseñamos, fabricamos e instalamos fajas de alto rendimiento para diversas industrias, optimizando procesos, reduciendo costos operativos y mejorando la productividad.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Incluir CSS del carrusel de clientes -->
+<?php $this->load->view('partials/clientes_carousel_css'); ?>
+
+<!-- Incluir componente de clientes -->
+<?php $this->load->view('partials/clientes_carousel', ['clientes' => $clientes]); ?>
+
+<style>
+/* ======================================= */
+/* SECCIÓN DE SERVICIOS                   */
+/* ======================================= */
+
+.section-servicios {
+    padding: 60px 100px;
+    background: #f8f9fa;
+
+    & h4 {
+        text-align: left;
+        font-weight: bold;
+        color: #00963f;
+        margin-bottom: 0;
+    }
+
+    & hr {
+        width: 30px;
+        height: 4px;
+        background-color: #00963f;
+        border: none;
+        margin-bottom: 40px;
+        margin-left: 0;
+    }
+}
+
+/* ======================================= */
+/* SECCIÓN DE CATEGORÍAS                  */
+/* ======================================= */
+
+.section-categorias {
+    padding: 60px 100px;
+    background: #ffffff;
+
+    & h4 {
+        text-align: left;
+        font-weight: bold;
+        color: #00963f;
+        margin-bottom: 0;
+    }
+
+    & hr {
+        width: 30px;
+        height: 4px;
+        background-color: #00963f;
+        border: none;
+        margin-bottom: 40px;
+        margin-left: 0;
+    }
+}
+
+/* Wrapper del carrusel */
+.servicios-carousel-wrapper {
+    position: relative;
+    overflow: visible;
+    padding: 0 50px;
+    max-width: 100%;
+
+    &:hover .carousel-btn {
+        opacity: 1;
+        pointer-events: auto;
+    }
+}
+
+/* Track del carrusel */
+.servicios-carousel-track {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* Grid de servicios y categorías */
+.servicios-grid,
+.categorias-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    transition: transform 0.5s ease-in-out;
+}
+
+/* Items individuales */
+.servicio-item,
+.categoria-item {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+
+    &.active {
+        display: block;
+        opacity: 1;
+    }
+}
+
+/* Tarjeta de servicio */
+.servicio-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+    cursor: pointer;
+
+    &:hover {
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+
+        & .servicio-imagen img {
+            transform: scale(1.15);
+            opacity: 0.7;
+        }
+
+        & .servicio-overlay {
+            background: rgba(0, 0, 0, 0.3);
+        }
+    }
+}
+
+/* Wrapper de imagen */
+.servicio-imagen-wrapper {
+    position: relative;
+    width: 100%;
+    height: 280px;
+}
+
+/* Contenedor de imagen */
+.servicio-imagen {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: #f0f0f0;
+    position: relative;
+
+    & img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+        transition: transform 0.5s ease, opacity 0.5s ease;
+    }
+}
+
+/* Overlay oscuro sobre la imagen */
+.servicio-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0);
+    transition: background 0.5s ease;
+    pointer-events: none;
+}
+
+/* Nombre del servicio */
+.servicio-nombre {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 15px;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.4), transparent);
+    text-align: center;
+    z-index: 2;
+
+    & h4 {
+        font-size: 15px;
+        font-weight: 600;
+        color: white;
+        margin: 0;
+        line-height: 1.4;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    }
+}
+
+/* Controles del carrusel (flechas) */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: auto;
+    height: auto;
+    background: transparent;
+    border: none;
+    color: #333;
+    font-size: 40px;
+    cursor: pointer;
+    z-index: 100;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    line-height: 1;
+
+    &:hover {
+        color: #00963f;
+        transform: translateY(-50%) scale(1.3);
+    }
+
+    &.carousel-prev,
+    &.carousel-prev-categorias {
+        left: 0;
+    }
+
+    &.carousel-next,
+    &.carousel-next-categorias {
+        right: 0;
+    }
+}
+
+/* Indicadores (puntos) */
+.carousel-dots {
+    text-align: center;
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+
+    & .dot,
+    & .dot-categorias {
+        width: 12px;
+        height: 12px;
+        background: rgba(255, 255, 255, 0.9);
+        border: 2px solid #333;
+        border-radius: 50%;
+        display: inline-block;
+        cursor: pointer;
+        transition: all 0.3s ease;
+
+        &:hover {
+            background: #666;
+            border-color: #000;
+            transform: scale(1.15);
+        }
+
+        &.active {
+            background: #000;
+            border-color: #000;
+            transform: scale(1.2);
+        }
+    }
+}
+
+/* ======================================= */
+/* RESPONSIVE                              */
+/* ======================================= */
+
+@media (max-width: 991px) {
+    .section-servicios,
+    .section-categorias {
+        padding: 60px 40px;
+    }
+
+    .servicios-carousel-wrapper {
+        padding: 0 45px;
+    }
+
+    /* Mostrar 2 columnas en tablet */
+    .servicios-grid,
+    .categorias-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .servicio-imagen-wrapper,
+    .servicio-imagen {
+        height: 220px;
+    }
+
+    .servicio-nombre h4 {
+        font-size: 14px;
+    }
+
+    .carousel-btn {
+        font-size: 32px;
+        opacity: 1;
+        pointer-events: auto;
+
+        &.carousel-prev,
+        &.carousel-prev-categorias {
+            left: 5px;
+        }
+
+        &.carousel-next,
+        &.carousel-next-categorias {
+            right: 5px;
+        }
+    }
+}
+
+@media (max-width: 575px) {
+    .section-servicios,
+    .section-categorias {
+        padding: 40px 15px;
+    }
+
+    .servicios-carousel-wrapper {
+        padding: 0 40px;
+    }
+
+    /* Mostrar 1 columna en móvil */
+    .servicios-grid,
+    .categorias-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .servicio-imagen-wrapper,
+    .servicio-imagen {
+        height: 250px;
+    }
+
+    .servicio-nombre {
+        padding: 15px 10px;
+
+        & h4 {
+            font-size: 14px;
+        }
+    }
+
+    .carousel-btn {
+        width: 35px;
+        height: 35px;
+        font-size: 20px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 50%;
+        opacity: 0.95;
+        pointer-events: auto;
+
+        &:hover {
+            background: rgba(0, 150, 63, 0.9);
+            color: white;
+        }
+
+        &.carousel-prev,
+        &.carousel-prev-categorias {
+            left: 5px;
+        }
+
+        &.carousel-next,
+        &.carousel-next-categorias {
+            right: 5px;
+        }
+    }
+
+    /* Ocultar indicadores en móvil ya que solo muestra 1 imagen */
+    .carousel-dots {
+        display: none;
+    }
+}
+
+/* ======================================= */
+/* SECCIÓN DE ASESORÍA CON PARALLAX       */
+/* ======================================= */
+
+.section-asesoria {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.asesoria-parallax-container {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+}
+
+.asesoria-parallax-bg {
+    position: absolute;
+    top: -50%;
+    left: 0;
+    width: 100%;
+    height: 200%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    transform: translateY(0);
+    will-change: transform;
+}
+
+.asesoria-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding: 0 20px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.5);
+
+    & h2 {
+        font-size: 42px;
+        font-weight: bold;
+        color: white;
+        margin-bottom: 20px;
+        text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        max-width: 900px;
+    }
+
+    & p {
+        font-size: 18px;
+        color: white;
+        line-height: 1.8;
+        max-width: 800px;
+        text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.7);
+        margin: 0;
+    }
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+    .asesoria-parallax-container {
+        height: 350px;
+    }
+
+    .asesoria-content h2 {
+        font-size: 32px;
+    }
+
+    .asesoria-content p {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 576px) {
+    .asesoria-parallax-container {
+        height: 300px;
+    }
+
+    .asesoria-content h2 {
+        font-size: 24px;
+        margin-bottom: 15px;
+    }
+
+    .asesoria-content p {
+        font-size: 14px;
+        line-height: 1.6;
+    }
+}
+</style>
+
+<script>
+// ======================================= 
+// CARRUSEL RESPONSIVE DE SERVICIOS
+// =======================================
+$(document).ready(function() {
+    const servicioItems = $('.servicio-item');
+    const totalItems = servicioItems.length;
+    let currentIndex = 0;
+    let itemsPerView = 4; // Por defecto desktop
+    let autoplayInterval;
+
+    // Función para obtener items por vista según el ancho de pantalla
+    function getItemsPerView() {
+        const width = $(window).width();
+        if (width <= 575) return 1;        // Móvil: 1 item
+        if (width <= 991) return 2;        // Tablet: 2 items
+        return 4;                          // Desktop: 4 items
+    }
+
+    // Función para crear indicadores dinámicamente
+    function createIndicators() {
+        const totalPages = Math.ceil(totalItems / itemsPerView);
+        const indicatorsContainer = $('#serviciosIndicators');
+        indicatorsContainer.empty();
+        
+        if (totalPages > 1) {
+            for (let i = 0; i < totalPages; i++) {
+                const dot = $('<span class="dot"></span>').attr('data-slide', i);
+                if (i === 0) dot.addClass('active');
+                indicatorsContainer.append(dot);
+            }
+        }
+    }
+
+    // Función para mostrar items según el índice actual
+    function showItems(startIndex) {
+        // Normalizar el índice
+        if (startIndex >= totalItems) {
+            currentIndex = 0;
+        } else if (startIndex < 0) {
+            currentIndex = Math.max(0, totalItems - itemsPerView);
+        } else {
+            currentIndex = startIndex;
+        }
+
+        // Ocultar todos los items
+        servicioItems.removeClass('active');
+
+        // Mostrar items según el rango actual
+        for (let i = 0; i < itemsPerView && (currentIndex + i) < totalItems; i++) {
+            servicioItems.eq(currentIndex + i).addClass('active');
+        }
+
+        // Actualizar indicadores
+        const currentPage = Math.floor(currentIndex / itemsPerView);
+        $('#serviciosIndicators .dot').removeClass('active');
+        $('#serviciosIndicators .dot').eq(currentPage).addClass('active');
+    }
+
+    // Función para inicializar el carrusel
+    function initCarousel() {
+        itemsPerView = getItemsPerView();
+        createIndicators();
+        currentIndex = 0;
+        showItems(0);
+        startAutoplay();
+    }
+
+    // Función para avanzar
+    function nextSlide() {
+        const newIndex = currentIndex + itemsPerView;
+        if (newIndex >= totalItems) {
+            showItems(0);
+        } else {
+            showItems(newIndex);
+        }
+    }
+
+    // Función para retroceder
+    function prevSlide() {
+        const newIndex = currentIndex - itemsPerView;
+        showItems(newIndex);
+    }
+
+    // Autoplay
+    function startAutoplay() {
+        stopAutoplay();
+        if (totalItems > itemsPerView) {
+            autoplayInterval = setInterval(nextSlide, 3000);
+        }
+    }
+
+    function stopAutoplay() {
+        clearInterval(autoplayInterval);
+    }
+
+    // Event listeners
+    $('.carousel-next').on('click', function() {
+        stopAutoplay();
+        nextSlide();
+        startAutoplay();
+    });
+
+    $('.carousel-prev').on('click', function() {
+        stopAutoplay();
+        prevSlide();
+        startAutoplay();
+    });
+
+    $(document).on('click', '#serviciosIndicators .dot', function() {
+        stopAutoplay();
+        const page = $(this).data('slide');
+        showItems(page * itemsPerView);
+        startAutoplay();
+    });
+
+    $('#serviciosCarousel').on('mouseenter', stopAutoplay);
+    $('#serviciosCarousel').on('mouseleave', startAutoplay);
+
+    // Reinicializar al cambiar tamaño de ventana
+    let resizeTimer;
+    $(window).on('resize', function() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function() {
+            const newItemsPerView = getItemsPerView();
+            if (newItemsPerView !== itemsPerView) {
+                initCarousel();
+            }
+        }, 250);
+    });
+
+    // Inicializar
+    initCarousel();
+});
+
+// ======================================= 
+// CARRUSEL RESPONSIVE DE CATEGORÍAS
+// =======================================
+$(document).ready(function() {
+    const categoriaItems = $('.categoria-item');
+    const totalItems = categoriaItems.length;
+    let currentIndex = 0;
+    let itemsPerView = 4;
+    let autoplayInterval;
+
+    function getItemsPerView() {
+        const width = $(window).width();
+        if (width <= 575) return 1;
+        if (width <= 991) return 2;
+        return 4;
+    }
+
+    function createIndicators() {
+        const totalPages = Math.ceil(totalItems / itemsPerView);
+        const indicatorsContainer = $('#categoriasIndicators');
+        indicatorsContainer.empty();
+        
+        if (totalPages > 1) {
+            for (let i = 0; i < totalPages; i++) {
+                const dot = $('<span class="dot-categorias"></span>').attr('data-slide', i);
+                if (i === 0) dot.addClass('active');
+                indicatorsContainer.append(dot);
+            }
+        }
+    }
+
+    function showItems(startIndex) {
+        if (startIndex >= totalItems) {
+            currentIndex = 0;
+        } else if (startIndex < 0) {
+            currentIndex = Math.max(0, totalItems - itemsPerView);
+        } else {
+            currentIndex = startIndex;
+        }
+
+        categoriaItems.removeClass('active');
+
+        for (let i = 0; i < itemsPerView && (currentIndex + i) < totalItems; i++) {
+            categoriaItems.eq(currentIndex + i).addClass('active');
+        }
+
+        const currentPage = Math.floor(currentIndex / itemsPerView);
+        $('#categoriasIndicators .dot-categorias').removeClass('active');
+        $('#categoriasIndicators .dot-categorias').eq(currentPage).addClass('active');
+    }
+
+    function initCarousel() {
+        itemsPerView = getItemsPerView();
+        createIndicators();
+        currentIndex = 0;
+        showItems(0);
+        startAutoplay();
+    }
+
+    function nextSlide() {
+        const newIndex = currentIndex + itemsPerView;
+        if (newIndex >= totalItems) {
+            showItems(0);
+        } else {
+            showItems(newIndex);
+        }
+    }
+
+    function prevSlide() {
+        const newIndex = currentIndex - itemsPerView;
+        showItems(newIndex);
+    }
+
+    function startAutoplay() {
+        stopAutoplay();
+        if (totalItems > itemsPerView) {
+            autoplayInterval = setInterval(nextSlide, 3000);
+        }
+    }
+
+    function stopAutoplay() {
+        clearInterval(autoplayInterval);
+    }
+
+    $('.carousel-next-categorias').on('click', function() {
+        stopAutoplay();
+        nextSlide();
+        startAutoplay();
+    });
+
+    $('.carousel-prev-categorias').on('click', function() {
+        stopAutoplay();
+        prevSlide();
+        startAutoplay();
+    });
+
+    $(document).on('click', '#categoriasIndicators .dot-categorias', function() {
+        stopAutoplay();
+        const page = $(this).data('slide');
+        showItems(page * itemsPerView);
+        startAutoplay();
+    });
+
+    $('#categoriasCarousel').on('mouseenter', stopAutoplay);
+    $('#categoriasCarousel').on('mouseleave', startAutoplay);
+
+    let resizeTimer;
+    $(window).on('resize', function() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(function() {
+            const newItemsPerView = getItemsPerView();
+            if (newItemsPerView !== itemsPerView) {
+                initCarousel();
+            }
+        }, 250);
+    });
+
+    initCarousel();
+});
+
+</script>
+
+<!-- Incluir JavaScript del carrusel de clientes -->
+<?php $this->load->view('partials/clientes_carousel_js'); ?>
 
 <script>
 document.getElementById("form-contacto").addEventListener("submit", function(e) {
@@ -492,126 +1264,143 @@ slider.addEventListener('scroll', () => {
 </script>
 
 <script>
-document.addEventListener("DOMContentLoaded", function () {
+// ======================================= 
+// CARRUSEL DE BANNER CON JQUERY
+// =======================================
+$(document).ready(function() {
+    let currentSlideBanner = 0;
+    const slidesBanner = $('.banner-slide');
+    const dotsBanner = $('.banner-carousel-dots .dot-banner');
+    const totalSlidesBanner = slidesBanner.length;
+    let autoplayIntervalBanner = null;
+    let isTransitioning = false;
 
-    const wrapper = document.querySelector(".slides-wrapper");
-    const slides = document.querySelectorAll(".slide");
-    const prevBtn = document.querySelector(".prev");
-    const nextBtn = document.querySelector(".next");
-    const dotsContainer = document.querySelector(".dots");
+    // Función para mostrar slide
+    function showSlideBanner(index) {
+        if (isTransitioning) return; // Evitar transiciones múltiples
+        
+        isTransitioning = true;
+        
+        // Asegurar que el índice esté en rango
+        if (index >= totalSlidesBanner) {
+            currentSlideBanner = 0;
+        } else if (index < 0) {
+            currentSlideBanner = totalSlidesBanner - 1;
+        } else {
+            currentSlideBanner = index;
+        }
 
-    let index = 0;
-    let startX = 0;
-    let dragging = false;
-    let autoplay;
+        // Ocultar todos los slides
+        slidesBanner.removeClass('active');
+        dotsBanner.removeClass('active');
 
-    // Crear puntitos
-    slides.forEach((_, i) => {
-        const dot = document.createElement("div");
-        dot.classList.add("dot");
-        if (i === 0) dot.classList.add("active");
-        dot.addEventListener("click", () => goToSlide(i));
-        dotsContainer.appendChild(dot);
+        // Mostrar slide actual
+        slidesBanner.eq(currentSlideBanner).addClass('active');
+        dotsBanner.eq(currentSlideBanner).addClass('active');
+        
+        // Permitir nueva transición después de 800ms (duración de la animación)
+        setTimeout(function() {
+            isTransitioning = false;
+        }, 800);
+    }
+
+    // Función para iniciar autoplay
+    function startAutoplayBanner() {
+        // Limpiar intervalo existente antes de crear uno nuevo
+        if (autoplayIntervalBanner !== null) {
+            clearInterval(autoplayIntervalBanner);
+        }
+        
+        autoplayIntervalBanner = setInterval(function() {
+            showSlideBanner(currentSlideBanner + 1);
+        }, 6000); // Cambia cada 6 segundos (más tiempo para evitar cambios rápidos)
+    }
+
+    // Función para detener autoplay
+    function stopAutoplayBanner() {
+        if (autoplayIntervalBanner !== null) {
+            clearInterval(autoplayIntervalBanner);
+            autoplayIntervalBanner = null;
+        }
+    }
+
+    // Botón siguiente
+    $('.banner-carousel-next').on('click', function() {
+        stopAutoplayBanner();
+        showSlideBanner(currentSlideBanner + 1);
+        startAutoplayBanner();
     });
 
-    const dots = document.querySelectorAll(".dot");
-
-    // --- ACTUALIZAR SLIDE ---
-    function updatePosition() {
-        wrapper.style.transition = "0.4s ease";
-        wrapper.style.transform = `translateX(${-index * 100}%)`;
-        dots.forEach(dot => dot.classList.remove("active"));
-        dots[index].classList.add("active");
-    }
-
-    function nextSlide() {
-        index = (index + 1) % slides.length;
-        updatePosition();
-    }
-
-    function prevSlide() {
-        index = (index - 1 + slides.length) % slides.length;
-        updatePosition();
-    }
-
-    function goToSlide(i) {
-        index = i;
-        updatePosition();
-        resetAutoplay();
-    }
-
-    // --- AUTOPLAY ---
-    function startAutoplay() {
-        autoplay = setInterval(nextSlide, 5000); // 10 segundos
-    }
-
-    function resetAutoplay() {
-        clearInterval(autoplay);
-        startAutoplay();
-    }
-
-    startAutoplay();
-
-// --- BOTONES ---
-if (nextBtn && prevBtn) {
-
-    nextBtn.addEventListener("click", () => {
-        nextSlide();
-        resetAutoplay();
+    // Botón anterior
+    $('.banner-carousel-prev').on('click', function() {
+        stopAutoplayBanner();
+        showSlideBanner(currentSlideBanner - 1);
+        startAutoplayBanner();
     });
 
-    prevBtn.addEventListener("click", () => {
-        prevSlide();
-        resetAutoplay();
+    // Click en indicadores
+    dotsBanner.on('click', function() {
+        stopAutoplayBanner();
+        const slideIndex = $(this).data('slide');
+        showSlideBanner(slideIndex);
+        startAutoplayBanner();
     });
 
-}
+    // Pausar autoplay al pasar el mouse sobre el carrusel
+    $('.banner-carousel-wrapper').on('mouseenter', function() {
+        stopAutoplayBanner();
+    });
 
+    // Reanudar autoplay al quitar el mouse
+    $('.banner-carousel-wrapper').on('mouseleave', function() {
+        startAutoplayBanner();
+    });
 
-    // --- DRAG (PC + TOUCH) ---
-    wrapper.addEventListener("mousedown", startDrag);
-    wrapper.addEventListener("touchstart", startDrag);
-
-    wrapper.addEventListener("mousemove", drag);
-    wrapper.addEventListener("touchmove", drag);
-
-    wrapper.addEventListener("mouseup", endDrag);
-    wrapper.addEventListener("mouseleave", endDrag);
-    wrapper.addEventListener("touchend", endDrag);
-
-    function startDrag(e) {
-        dragging = true;
-        clearInterval(autoplay); // Pausar autoplay
-        startX = e.type.includes("mouse") ? e.clientX : e.touches[0].clientX;
-        wrapper.style.transition = "none";
+    // Iniciar autoplay al cargar la página
+    if (totalSlidesBanner > 1) {
+        startAutoplayBanner();
     }
-
-    function drag(e) {
-        if (!dragging) return;
-
-        let currentX = e.type.includes("mouse") ? e.clientX : e.touches[0].clientX;
-        let diff = currentX - startX;
-
-        wrapper.style.transform =
-            `translateX(${ -index * 100 + (diff / window.innerWidth) * 100 }%)`;
-    }
-
-    function endDrag(e) {
-        if (!dragging) return;
-        dragging = false;
-
-        let endX = e.type.includes("mouse") ? e.clientX : e.changedTouches[0].clientX;
-        let moved = startX - endX;
-
-        wrapper.style.transition = "0.3s ease";
-
-        if (moved > 50) nextSlide();
-        else if (moved < -50) prevSlide();
-        else updatePosition();
-
-        resetAutoplay(); // Reanudar autoplay
-    }
-
 });
 </script>
+
+<script>
+// ======================================= 
+// EFECTO PARALLAX EN SECCIÓN ASESORÍA
+// =======================================
+$(document).ready(function() {
+    const parallaxBg = $('.asesoria-parallax-bg');
+    const parallaxContainer = $('.asesoria-parallax-container');
+
+    if (parallaxBg.length && parallaxContainer.length) {
+        function updateParallax() {
+            const scrollTop = $(window).scrollTop();
+            const containerOffset = parallaxContainer.offset().top;
+            const containerHeight = parallaxContainer.outerHeight();
+            const windowHeight = $(window).height();
+
+            // Calcular si el contenedor está visible en el viewport
+            if (scrollTop + windowHeight > containerOffset && scrollTop < containerOffset + containerHeight) {
+                // Calcular la posición relativa del scroll dentro del contenedor
+                const elementTop = containerOffset - scrollTop;
+                const elementBottom = elementTop + containerHeight;
+                
+                // Calcular el porcentaje de visibilidad (0 cuando está arriba, 1 cuando está abajo)
+                const scrollPercent = (windowHeight - elementTop) / (windowHeight + containerHeight);
+                
+                // Aplicar transformación parallax más pronunciada
+                // El rango va de -25% a 25% de la altura del contenedor
+                const translateY = (scrollPercent - 0.5) * 50;
+                parallaxBg.css('transform', 'translateY(' + translateY + '%)');
+            }
+        }
+
+        // Ejecutar al hacer scroll
+        $(window).on('scroll', updateParallax);
+        
+        // Ejecutar al cargar la página
+        updateParallax();
+    }
+});
+</script>
+
 

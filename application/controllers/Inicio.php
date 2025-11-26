@@ -4,24 +4,28 @@ class Inicio extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model("Menu_model"); // <- NECESARIO
-         $this->load->library('session'); // <- esto es clave
+        $this->load->model("Inicio_model"); // <- NECESARIO
+        $this->load->model("Tipo_categoria_model"); // <- NUEVO
+        $this->load->model("Cliente_model"); // <- NUEVO
+        $this->load->library('session'); // <- esto es clave
     }
-private function menuData() {
-        $dataDB = $this->Menu_model->getCategoriasConProductos();
+
+    private function tiposCategoriasMenu() {
+        $dataDB = $this->Menu_model->getTiposCategoriasConCategorias();
 
         $menu = [];
 
         foreach ($dataDB as $row) {
-            $cat = $row->categoria;
+            $tipo = $row->tipo_nombre;
 
-            if (!isset($menu[$cat])) {
-                $menu[$cat] = [];
+            if (!isset($menu[$tipo])) {
+                $menu[$tipo] = [];
             }
 
-            if ($row->producto != null) {
-                $menu[$cat][] = [
-                    "id" => $row->producto_id,
-                    "nombre" => $row->producto
+            if ($row->categoria_nombre != null) {
+                $menu[$tipo][] = [
+                    "id" => $row->id_categoria,
+                    "nombre" => $row->categoria_nombre
                 ];
             }
         }
@@ -30,7 +34,11 @@ private function menuData() {
     }
 
     public function index() {
-        $data["menu"] = $this->menuData();
+        $data["menuTiposCategorias"] = $this->tiposCategoriasMenu();
+        $data["servicios"] = $this->Inicio_model->getServiciosActivos();
+        $data["categorias"] = $this->Inicio_model->getCategoriasActivas();
+        $data["tipos_categoria"] = $this->Tipo_categoria_model->obtener_tipos_activos();
+        $data["clientes"] = $this->Cliente_model->obtener_clientes();
 
         $this->load->view("templates/header", $data);
         $this->load->view("index");

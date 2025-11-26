@@ -7,32 +7,36 @@ class Productos extends CI_Controller {
         $this->load->model("Menu_model");
         $this->load->model("Producto_model"); // corregido
         $this->load->model("Categoria_model");
+        $this->load->model("Tipo_categoria_model");
          $this->load->library('session'); // <- esto es clave
     }
 
-    private function menuData() {
-        $dataDB = $this->Menu_model->getCategoriasConProductos();
+    private function tiposCategoriasMenu() {
+        $dataDB = $this->Menu_model->getTiposCategoriasConCategorias();
+
         $menu = [];
 
         foreach ($dataDB as $row) {
-            $cat = $row->categoria;
+            $tipo = $row->tipo_nombre;
 
-            if (!isset($menu[$cat])) {
-                $menu[$cat] = [];
+            if (!isset($menu[$tipo])) {
+                $menu[$tipo] = [];
             }
 
-            if ($row->producto != null) {
-                $menu[$cat][] = [
-                    "id" => $row->producto_id,
-                    "nombre" => $row->producto
+            if ($row->categoria_nombre != null) {
+                $menu[$tipo][] = [
+                    "id" => $row->id_categoria,
+                    "nombre" => $row->categoria_nombre
                 ];
             }
         }
+
         return $menu;
     }
 
     public function index() {
-        $data["menu"] = $this->menuData();
+        $data["menuTiposCategorias"] = $this->tiposCategoriasMenu();
+        $data["tipos_categoria"] = $this->Tipo_categoria_model->obtener_tipos_activos();
 
         $this->load->view("templates/header", $data);
         $this->load->view("productos");
@@ -40,7 +44,8 @@ class Productos extends CI_Controller {
     }
 
     public function categoria($slug) {
-        $data["menu"] = $this->menuData();
+        $data["menuTiposCategorias"] = $this->tiposCategoriasMenu();
+        $data["tipos_categoria"] = $this->Tipo_categoria_model->obtener_tipos_activos();
 
         // 1. Convertir slug a nombre
         $categoria_nombre = strtoupper($slug);
@@ -65,7 +70,8 @@ class Productos extends CI_Controller {
 
     public function ver($id)
 {
-    $data["menu"] = $this->menuData();
+    $data["menuTiposCategorias"] = $this->tiposCategoriasMenu();
+    $data["tipos_categoria"] = $this->Tipo_categoria_model->obtener_tipos_activos();
     $data['producto'] = $this->Producto_model->obtenerPorId($id);
     $this->load->view("templates/header", $data);
     $this->load->view('producto/ver', $data);

@@ -7,7 +7,16 @@
 <link rel="icon" type="image/png" sizes="32x32" href="<?= base_url('images/logo/favicon.png') ?>">
 <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url('images/logo/favicon.png') ?>">
 <link rel="apple-touch-icon" sizes="180x180" href="<?= base_url('images/logo/favicon.png') ?>">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+<!-- jQuery DEBE IR PRIMERO -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" crossorigin="anonymous"></script>
+
 <style>
 /* ============================= */
 /*  BASE                        */
@@ -32,234 +41,231 @@ body {
 /* ============================= */
 
 header {
-    position: fixed; /* sticky también funciona si quieres */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     z-index: 9999;
     background: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: space-between; /* deja el contenido en los extremos */
-    padding: 20px 50px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    transition: all 0.3s ease; /* transición para todo */
-}
-
-/* Contenedor interno */
-header .header-inner {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
     transition: all 0.3s ease;
 }
 
-/* Logo normal */
-header .logo img {
-    height: 60px;
-    transition: height 0.3s ease;
+/* Fila superior */
+.header-top {
+    padding: 15px 0;
+    border-bottom: 1px solid #f0f0f0;
+    transition: all 0.3s ease;
 }
+
+/* Logo */
+.logo img {
+    height: 70px;
+    transition: height 0.3s ease;
+    max-width: 100%;
+}
+
+/* Info de contacto */
+.contact-info {
+    font-size: 14px;
+    color: #555;
+}
+
+.contact-info .info-item {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 15px;
+}
+
+.contact-info .info-item .item-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.contact-info .info-item .item-icon i {
+    color: #2a332bff;
+    font-size: 32px;
+}
+
+.contact-info .info-item .item-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+}
+
+.contact-info .info-item .item-header {
+    font-weight: 500;
+    color: #39c44cff;
+    font-size: 14px;
+    text-transform: uppercase;
+    line-height: 1.2;
+}
+
+.contact-info .info-item .item-content {
+    font-size: 16px;
+    color: #555;
+    line-height: 1.3;
+    font-weight: 500;
+}
+
+/* Fila inferior */
+.header-bottom {
+    padding: 12px 0;
+    transition: all 0.3s ease;
+}
+
 
 /* Header achicado al hacer scroll */
-header.shrink {
-    padding: 10px 50px; /* menos padding = fondo más pequeño */
-}
-
-header.shrink .header-inner {
-    transform: scaleY(0.95); /* opcional, un pequeño escalado interno */
+header.shrink .header-top {
+    padding: 8px 0;
 }
 
 header.shrink .logo img {
-    height: 50px; /* logo más pequeño */
+    height: 50px;
 }
 
-/* Para que el contenido debajo del header no quede oculto */
+header.shrink .header-bottom {
+    padding: 8px 0;
+}
+
+header.shrink .contact-info .info-item .item-header {
+    font-size: 12px;
+}
+
+header.shrink .contact-info .info-item .item-content {
+    font-size: 14px;
+}
+
+header.shrink .contact-info .info-item .item-icon i {
+    font-size: 26px;
+}
+
+/* Espaciado del body */
 body {
-    padding-top: 80px; /* ajusta según la altura inicial del header */
+    padding-top: 150px;
 }
 
 /* ============================= */
-/* NAV: menú centrado desktop   */
+/* NAVEGACIÓN                    */
 /* ============================= */
 
-nav {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    gap: 10px; /* más cerca que antes */
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: #333;
-    font-weight: 600;           
-    font-size: 16px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-    letter-spacing: 0.5px;   /* un poco más compacto */
-    padding: 8px 12px;       /* reduce espacio interno */
+.navbar-nav .nav-link {
+    color: #fff !important;
+    font-weight: 550;
+    font-size: 17px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    letter-spacing: 0.5px;
+    padding: 8px 12px !important;
     border-radius: 5px;
     transition: all 0.3s ease;
-    text-transform: uppercase;  
+    text-transform: uppercase;
+    white-space: nowrap;
 }
 
-/* Hover elegante */
-nav ul li a:hover {
-    color: #fff;
-    background-color: #007BFF;
-    box-shadow: 0 4px 10px rgba(0, 123, 255, 0.3); 
+.navbar-nav .nav-link:hover {
+    color: #26532cff !important;
+    background-color: #61CE70;
+    box-shadow: 0 4px 10px rgba(97, 206, 112, 0.3);
     transform: translateY(-2px);
 }
-
-
 
 /* ============================= */
 /* MEGA MENÚ                     */
 /* ============================= */
 
-.menu {
-    list-style: none;
-    display: flex;
-    gap: 30px;
+.mega-dropdown {
+    position: static;
 }
 
-.mega {
-    position: relative;
+.mega-dropdown .dropdown-toggle::after {
+    display: none;
 }
 
 .mega-menu {
     position: absolute;
-    top: calc(100% + 6px);
+    top: 100%;
     left: 0;
-    width: 900px;
-    max-height: 85vh;
+    right: 0;
+    width: 100%;
+    max-height: 70vh;
     overflow-y: auto;
+    overflow-x: hidden;
     background: #ffffff;
-    padding: 15px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
-    border: 1px solid #eee;
-    border-radius: 6px;
-    
-    display: grid;              /* siempre grid */
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-
-    opacity: 0;                 /* invisible */
-    transform: translateY(-10px); /* arriba un poco */
-    pointer-events: none;       /* no clickeable */
-    transition: opacity 0.35s ease, transform 0.35s ease; /* transición suave */
-    z-index: 999;
+    padding: 40px 60px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    border-top: 3px solid #61CE70;
+    display: none;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+    z-index: 998;
 }
 
-/* Al pasar el mouse: difuminado y movimiento hacia abajo */
-.mega:hover .mega-menu {
+.mega-dropdown:hover .mega-menu {
+    display: block;
     opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;       /* ahora clickeable */
+    pointer-events: auto;
 }
 
+.columna {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
 
 .columna h3 {
-    font-size: 16px;
-    margin-bottom: 12px;
+    grid-column: 1 / -1;
+    font-size: 20px;
+    margin-bottom: 20px;
     font-weight: 700;
-    color: #0056D6;
-    border-bottom: 1px solid #f0f0f0;
-    padding-bottom: 5px;
+    color: #61CE70;
+    border-bottom: 2px solid #61CE70;
+    padding-bottom: 12px;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 1px;
 }
 
-.item {
+.mega-menu .item {
     display: block;
-    padding: 6px 0;
+    padding: 12px 18px;
     text-decoration: none;
     color: #555;
-    font-size: 14px;
-    transition: color 0.2s ease, padding-left 0.2s ease, background-color 0.2s ease;
+    font-size: 15px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    border-radius: 8px;
+    border-left: 3px solid transparent;
 }
 
-.item:hover {
-    color: #0056D6;
+.mega-menu .item:hover {
+    color: #61CE70;
     font-weight: 600;
-    background-color: #f9f9f9;
+    background-color: #f5f9f6;
+    border-left-color: #61CE70;
+    padding-left: 25px;
+    transform: translateX(5px);
 }
 
-/* ======================================= */
-/* RESPONSIVE                              */
-/* ======================================= */
+/* ============================= */
+/* BOTÓN HAMBURGUESA (MÓVIL)    */
+/* ============================= */
 
-@media(max-width: 992px){
-    nav ul {
-        gap: 25px;
-    }
-
-    .mega-menu {
-        width: 600px;
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media(max-width: 768px){
-
-    header {
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 15px 20px;
-    }
-
-    /* Logo más pequeño automático */
-    .logo img {
-        height: 60px;
-    }
-
-    /* Menú pasa abajo del logo */
-
-    nav ul {
-        flex-direction: column;
-        width: 100%;
-        gap: 10px;
-    }
-
-    nav ul li a {
-        width: 100%;
-        text-align: center;
-        font-size: 16px;
-    }
-
-    /* Mega menú desactivado en mobile */
-    .mega-menu {
-        display: none !important;
-        visibility: hidden !important;
-        opacity: 0 !important;
-        pointer-events: none !important;
-    }
-}
-
-@media(max-width: 480px){
-    header {
-        padding: 12px 15px;
-    }
-    .logo img {
-        height: 50px;
-    }
-}
-
-/* Botón hamburguesa */
 .hamburger {
-    display: none;
+    display: flex;
     flex-direction: column;
     gap: 5px;
     cursor: pointer;
-    z-index: 100000; /* SIEMPRE ENCIMA DEL MENU */
+    background: transparent;
+    border: none;
+    padding: 8px;
+    z-index: 10001;
     position: relative;
+    margin-left: auto;
 }
 
 .hamburger span {
@@ -267,167 +273,555 @@ nav ul li a:hover {
     height: 3px;
     background: #333;
     border-radius: 4px;
-    transition: .3s;
+    transition: all 0.3s ease;
+    display: block;
 }
 
-/* Animación en forma de X */
 .hamburger.active span:nth-child(1) {
     transform: rotate(45deg) translate(5px, 6px);
 }
+
 .hamburger.active span:nth-child(2) {
     opacity: 0;
 }
+
 .hamburger.active span:nth-child(3) {
     transform: rotate(-45deg) translate(6px, -7px);
 }
 
-/* MENU FULLSCREEN */
+/* ============================= */
+/* MENÚ MÓVIL FULLSCREEN        */
+/* ============================= */
+
 .mobile-menu {
     position: fixed;
     top: 0;
-    left: 0;
+    left: -100%;
     height: 100vh;
-    width: 100vw;
-
+    width: 80%;
+    max-width: 400px;
     background: white;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* CENTRA VERTICAL */
-    align-items: center;     /* CENTRA HORIZONTAL */
-
-    text-align: center;
-    gap: 25px;
-    font-size: 22px;
-
-    opacity: 0;
-    pointer-events: none;
-
-    transition: opacity 0.35s ease;
-    z-index: 9999; /* MÁS BAJO QUE EL HAMBURGUESA */
+    box-shadow: 2px 0 15px rgba(0, 0, 0, 0.2);
+    transition: left 0.4s ease;
+    z-index: 10000;
+    overflow-y: auto;
 }
 
-/* Activo */
 .mobile-menu.show {
+    left: 0;
+}
+
+.mobile-menu-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+    z-index: 9999;
+}
+
+.mobile-menu-overlay.show {
     opacity: 1;
     pointer-events: auto;
 }
 
-.mobile-menu a {
+.mobile-menu-content {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 20px 0;
+}
+
+.mobile-menu-header {
+    padding: 20px 30px;
+    text-align: center;
+    border-bottom: 2px solid #e0e0e0;
+    margin-bottom: 20px;
+}
+
+.mobile-menu-header .mobile-logo img {
+    max-height: 60px;
+    max-width: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+}
+
+.mobile-menu-links {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.mobile-menu-link {
     color: #222;
     text-decoration: none;
     font-weight: 600;
+    font-size: 18px;
+    padding: 18px 30px;
+    border-bottom: 1px solid #e0e0e0;
+    transition: all 0.3s ease;
+    display: block;
 }
 
-/* Responsivo */
-@media(max-width: 768px) {
-    nav {
-        display: none;
-    }
+.mobile-menu-link:hover {
+    background-color: #f5f5f5;
+    color: #61CE70;
+    padding-left: 40px;
+}
 
-    .hamburger {
-        display: flex;
-    }
+/* Acordeón de categorías en móvil */
+.mobile-menu-accordion {
+    border-bottom: 1px solid #e0e0e0;
+}
 
+.mobile-accordion-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #222;
+    font-weight: 600;
+    font-size: 18px;
+    padding: 18px 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: transparent;
+}
+
+.mobile-accordion-header:hover {
+    background-color: #f5f5f5;
+    color: #61CE70;
+}
+
+.mobile-accordion-header.active {
+    background-color: #f5f5f5;
+    color: #61CE70;
+}
+
+.mobile-accordion-icon {
+    transition: transform 0.3s ease;
+    font-size: 14px;
+}
+
+.mobile-accordion-header.active .mobile-accordion-icon {
+    transform: rotate(180deg);
+}
+
+.mobile-accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+    background-color: #f9f9f9;
+}
+
+.mobile-accordion-content.active {
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.mobile-submenu-item {
+    display: block;
+    color: #555;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 12px 30px 12px 50px;
+    border-bottom: 1px solid #e8e8e8;
+    transition: all 0.2s ease;
+}
+
+.mobile-submenu-item:hover {
+    background-color: #fff;
+    color: #61CE70;
+    padding-left: 55px;
+}
+
+.mobile-submenu-item:last-child {
+    border-bottom: none;
+}
+
+.mobile-menu-footer {
+    padding: 20px 30px;
+    border-top: 2px solid #e0e0e0;
+    text-align: center;
+}
+
+.whatsapp-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #25D366;
+    color: white;
+    text-decoration: none;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+}
+
+.whatsapp-button:hover {
+    background: #20BA5A;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(37, 211, 102, 0.4);
+    color: white;
+}
+
+.whatsapp-button i {
+    font-size: 24px;
+}
+
+/* ============================= */
+/* RESPONSIVE                    */
+/* ============================= */
+
+@media (max-width: 1200px) {
+    .navbar-nav .nav-link {
+        font-size: 14px;
+        padding: 8px 10px !important;
+    }
+    
+    /* Mega menú: 2 columnas en tablets grandes */
+    .columna {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 18px 30px;
+    }
+    
     .mega-menu {
-        display: none !important;
+        padding: 30px 40px;
+    }
+    
+    .columna h3 {
+        font-size: 18px;
+    }
+    
+    .mega-menu .item {
+        font-size: 14px;
+        padding: 10px 15px;
     }
 }
 
+@media (max-width: 991px) {
+    body {
+        padding-top: 90px;
+    }
 
+    .logo img {
+        height: 60px;
+    }
+
+    header.shrink .logo img {
+        height: 45px;
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        padding-top: 80px;
+    }
+
+    .header-top {
+        padding: 10px 0;
+    }
+
+    .logo img {
+        height: 50px;
+    }
+
+    header.shrink .header-top {
+        padding: 8px 0;
+    }
+
+    header.shrink .logo img {
+        height: 40px;
+    }
+
+    .mobile-menu-link {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    body {
+        padding-top: 70px;
+    }
+
+    .logo img {
+        height: 45px;
+    }
+
+    header.shrink .logo img {
+        height: 35px;
+    }
+
+    .mobile-menu-link {
+        font-size: 18px;
+        gap: 20px;
+    }
+}
 </style>
 
 </head>
 <body class="page-blur">
 
-<header>
-    <div class="logo">
-        <a href="<?= base_url(); ?>">
-            <img src="<?= base_url('images/logo/mayta.png') ?>" alt="Logo">
-        </a>
+<header id="mainHeader">
+    <!-- FILA SUPERIOR: Logo + Info de Contacto -->
+    <div class="header-top">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <!-- Logo -->
+                <div class="col-6 col-lg-3">
+                    <div class="logo d-flex justify-content-end justify-content-lg-end pe-lg-4">
+                        <a href="<?= base_url(); ?>">
+                            <img src="<?= base_url('images/logo/mayta.png') ?>" alt="Logo" class="img-fluid">
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Info de Contacto (Desktop) -->
+                <div class="col-lg-9 d-none d-lg-flex justify-content-start ps-lg-4">
+                    <div class="contact-info d-flex flex-wrap gap-5 align-items-center">
+                        <div class="info-item">
+                            <div class="item-icon">
+                                <i class="fab fa-whatsapp"></i>
+                            </div>
+                            <div class="item-text">
+                                <div class="item-header">Información y ventas</div>
+                                <div class="item-content">+51 994 357 410</div>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="item-icon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div class="item-text">
+                                <div class="item-header">Escríbenos</div>
+                                <div class="item-content">ventas@karflex.com.pe</div>
+                            </div>
+                        </div>
+                        <div class="info-item">
+                            <div class="item-icon">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div class="item-text">
+                                <div class="item-header">Horario de atención</div>
+                                <div class="item-content">L - V: 8am - 5pm / S: 8am - 1pm</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Botón hamburguesa (Móvil) -->
+                <div class="col-6 d-lg-none text-end">
+                    <button class="navbar-toggler hamburger" type="button" id="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- Menú normal (desktop) -->
-    <nav id="nav">
-        <ul class="menu">
-            <li><a href="<?= base_url('inicio'); ?>">Inicio</a></li>
-
-            <li class="mega">
-                <a href="<?= base_url('productos'); ?>">Productos</a>
-                <div class="mega-menu">
-                    <?php foreach ($menu as $categoria => $productos): ?>
-                        <div class="columna">
-                            <h3><?= $categoria ?></h3>
-                            <?php foreach ($productos as $p): ?>
-                                <a href="<?= base_url('productos/ver/' . $p['id']); ?>" class="item">
-                                    <?= $p['nombre'] ?>
-                                </a>
+    <!-- FILA INFERIOR: Menú de Navegación (Desktop) -->
+    <div class="header-bottom d-none d-lg-block" style="background-color: #61CE70;">
+        <div class="container-fluid">
+            <nav class="navbar navbar-expand-lg p-0">
+                <div class="collapse navbar-collapse justify-content-center">
+                    <ul class="navbar-nav menu">
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= base_url('inicio'); ?>">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= base_url('nosotros'); ?>">Nosotros</a>
+                        </li>
+                        
+                        <?php if (isset($menuTiposCategorias) && !empty($menuTiposCategorias)): ?>
+                            <?php foreach ($menuTiposCategorias as $tipoCategoria => $categorias): ?>
+                                <li class="nav-item dropdown mega-dropdown">
+                                    <a class="nav-link dropdown-toggle" href="<?= base_url('productos'); ?>" role="button">
+                                        <?= $tipoCategoria ?> <i class="fas fa-chevron-down"></i>
+                                    </a>
+                                    <?php if (!empty($categorias)): ?>
+                                        <div class="dropdown-menu mega-menu">
+                                            <div class="columna">
+                                                <h3><?= $tipoCategoria ?></h3>
+                                                <?php foreach ($categorias as $cat): ?>
+                                                    <a href="<?= base_url('categoria/ver/' . $cat['id']); ?>" class="dropdown-item item">
+                                                        <?= $cat['nombre'] ?>
+                                                    </a>
+                                                <?php endforeach; ?>
+                                            </div>
+                                        </div>
+                                    <?php endif; ?>
+                                </li>
                             <?php endforeach; ?>
+                        <?php endif; ?>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= base_url('contacto'); ?>">Proyectos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="<?= base_url('contacto'); ?>">Servicios</a>
+                        </li>
+
+                        <?php 
+                        $ci = get_instance();
+                        if ($ci->session->userdata('logeado') && $ci->session->userdata('usuario_id') == 1): ?>
+                            <li class="nav-item">
+                                <a class="nav-link fw-bold" href="<?= base_url('login/dashboard'); ?>">ADMINISTRAR</a>
+                            </li>
+                        <?php endif; ?>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </div>
+
+    <!-- OVERLAY DEL MENÚ MÓVIL -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+
+    <!-- MENÚ MÓVIL -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-content">
+            <!-- Logo en el menú móvil -->
+            <div class="mobile-menu-header">
+                <div class="mobile-logo">
+                    <img src="<?= base_url('images/logo/mayta.png') ?>" alt="Logo">
+                </div>
+            </div>
+
+            <div class="mobile-menu-links">
+                <a href="<?= base_url('inicio'); ?>" class="mobile-menu-link">Inicio</a>
+                <a href="<?= base_url('nosotros'); ?>" class="mobile-menu-link">Nosotros</a>
+                
+                <!-- Menú acordeón de productos -->
+                <?php if (isset($menuTiposCategorias) && !empty($menuTiposCategorias)): ?>
+                    <?php foreach ($menuTiposCategorias as $tipoCategoria => $categorias): ?>
+                        <div class="mobile-menu-accordion">
+                            <div class="mobile-accordion-header" data-target="mobile-accordion-<?= preg_replace('/[^a-zA-Z0-9]/', '-', $tipoCategoria); ?>">
+                                <span><?= $tipoCategoria ?></span>
+                                <i class="fas fa-chevron-down mobile-accordion-icon"></i>
+                            </div>
+                            <div class="mobile-accordion-content" id="mobile-accordion-<?= preg_replace('/[^a-zA-Z0-9]/', '-', $tipoCategoria); ?>">
+                                <?php if (!empty($categorias)): ?>
+                                    <?php foreach ($categorias as $cat): ?>
+                                        <a href="<?= base_url('categoria/ver/' . $cat['id']); ?>" class="mobile-submenu-item">
+                                            <?= $cat['nombre'] ?>
+                                        </a>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+                            </div>
                         </div>
                     <?php endforeach; ?>
-                </div>
-            </li>
+                <?php else: ?>
+                    <a href="<?= base_url('productos'); ?>" class="mobile-menu-link">Productos</a>
+                <?php endif; ?>
+                
+                <a href="<?= base_url('contacto'); ?>" class="mobile-menu-link">Proyectos</a>
+                <a href="<?= base_url('contacto'); ?>" class="mobile-menu-link">Servicios</a>
 
-            <li><a href="<?= base_url('nosotros'); ?>">Nosotros</a></li>
-            <li><a href="<?= base_url('contacto'); ?>">Contáctenos</a></li>
+                <?php 
+                if ($ci->session->userdata('logeado') && $ci->session->userdata('usuario_id') == 1): ?>
+                    <a href="<?= base_url('login/dashboard'); ?>" class="mobile-menu-link">ADMINISTRAR</a>
+                <?php endif; ?>
+            </div>
 
-            <?php 
-            $ci = get_instance();
-            if ($ci->session->userdata('logeado') && $ci->session->userdata('usuario_id') == 1): ?>
-                <li style="margin-left:auto;">
-                    <a href="<?= base_url('login/dashboard'); ?>" style="font-weight:bold;">ADMINISTRAR</a>
-                </li>
-            <?php endif; ?>
-        </ul>
-    </nav>
-
-    <!-- Botón hamburguesa A LA DERECHA -->
-    <div class="hamburger" id="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-    </div>
-
-    <!-- MENÚ FULLSCREEN -->
-    <div class="mobile-menu" id="mobileMenu">
-        <a href="<?= base_url('inicio'); ?>">Inicio</a>
-        <a href="<?= base_url('productos'); ?>">Productos</a>
-        <a href="<?= base_url('nosotros'); ?>">Nosotros</a>
-        <a href="<?= base_url('contacto'); ?>">Contáctenos</a>
-
-        <?php 
-        if ($ci->session->userdata('logeado') && $ci->session->userdata('usuario_id') == 1): ?>
-            <a href="<?= base_url('login/dashboard'); ?>" style="font-weight:bold;">ADMINISTRAR</a>
-        <?php endif; ?>
+            <div class="mobile-menu-footer">
+                <!-- Espacio reservado para otros elementos si es necesario -->
+            </div>
+        </div>
     </div>
 </header>
 
-
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-    document.body.classList.add("show");
+// ============================= 
+// FADE IN PÁGINA
+// ============================= 
+$(document).ready(function() {
+    $('body').addClass('show');
 });
-</script>
 
-<script>
-    window.addEventListener('scroll', function () {
-        const header = document.querySelector('header');
+// ============================= 
+// HEADER SHRINK AL HACER SCROLL
+// ============================= 
+$(window).on('scroll', function() {
+    const header = $('#mainHeader');
+    
+    if ($(window).scrollTop() > 20) {
+        header.addClass('shrink');
+    } else {
+        header.removeClass('shrink');
+    }
+});
 
-        if (window.scrollY > 20) { // umbral pequeño pero seguro
-            header.classList.add('shrink');
+// ============================= 
+// MENÚ HAMBURGUESA MÓVIL
+// ============================= 
+$(document).ready(function() {
+    const $hamburger = $('#hamburger');
+    const $mobileMenu = $('#mobileMenu');
+    const $overlay = $('#mobileMenuOverlay');
+    
+    // Función para cerrar el menú
+    function closeMenu() {
+        $hamburger.removeClass('active');
+        $mobileMenu.removeClass('show');
+        $overlay.removeClass('show');
+        $('body').css('overflow', '');
+    }
+    
+    // Toggle del menú hamburguesa
+    $hamburger.on('click', function() {
+        $(this).toggleClass('active');
+        $mobileMenu.toggleClass('show');
+        $overlay.toggleClass('show');
+        
+        // Prevenir scroll del body cuando el menú está abierto
+        if ($mobileMenu.hasClass('show')) {
+            $('body').css('overflow', 'hidden');
         } else {
-            header.classList.remove('shrink');
+            $('body').css('overflow', '');
         }
     });
-</script>
-
-<script>
-const hamburger = document.getElementById("hamburger");
-const mobileMenu = document.getElementById("mobileMenu");
-
-hamburger.addEventListener("click", () => {
-    hamburger.classList.toggle("active");
-    mobileMenu.classList.toggle("show");
+    
+    // Cerrar menú al hacer clic en un enlace
+    $('.mobile-menu-link, .mobile-submenu-item').on('click', function() {
+        closeMenu();
+    });
+    
+    // Cerrar menú al hacer clic en el overlay
+    $overlay.on('click', function() {
+        closeMenu();
+    });
+    
+    // Cerrar menú al cambiar tamaño de ventana a desktop
+    $(window).on('resize', function() {
+        if ($(window).width() >= 992) {
+            closeMenu();
+        }
+    });
+    
+    // Manejar acordeón de categorías en móvil
+    $('.mobile-accordion-header').on('click', function() {
+        const targetId = $(this).data('target');
+        const $content = $('#' + targetId);
+        const $icon = $(this).find('.mobile-accordion-icon');
+        
+        // Toggle del acordeón actual
+        $(this).toggleClass('active');
+        $content.toggleClass('active');
+        
+        // Cerrar otros acordeones
+        $('.mobile-accordion-header').not(this).removeClass('active');
+        $('.mobile-accordion-content').not($content).removeClass('active');
+    });
 });
 </script>
 
