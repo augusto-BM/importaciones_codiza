@@ -419,13 +419,13 @@
                             <?php if (isset($tipos_categoria) && !empty($tipos_categoria)): ?>
                                 <?php foreach ($tipos_categoria as $tipo): ?>
                                     <li>
-                                        <a href="<?= base_url('productos') ?>">
+                                        <span style="color: #ffffff; cursor: default;">
                                             <?= htmlspecialchars($tipo->nombre) ?>
-                                        </a>
+                                        </span>
                                     </li>
                                 <?php endforeach; ?>
                             <?php else: ?>
-                                <li><a href="<?= base_url('productos') ?>">Ver todos los productos</a></li>
+                                <li><span style="color: #ffffff;">Consulta nuestro catálogo</span></li>
                             <?php endif; ?>
                         </ul>
                     </div>

@@ -8,9 +8,11 @@ class Menu_model extends CI_Model {
 
     public function getCategoriasConProductos() {
         return $this->db
-            ->select("c.id as categoria_id, c.nombre as categoria, p.id as producto_id, p.nombre as producto")
+            ->select("c.id_categoria as categoria_id, c.nombre as categoria, p.id_producto as producto_id, p.nombre as producto")
             ->from("categorias c")
-            ->join("productos p", "p.categoria_id = c.id", "left")
+            ->join("productos p", "p.id_categoria = c.id_categoria", "left")
+            ->where("c.cji_flagestado", "1")
+            ->where("(p.cji_flagestado = '1' OR p.cji_flagestado IS NULL)")
             ->order_by("c.nombre", "ASC")
             ->get()
             ->result();

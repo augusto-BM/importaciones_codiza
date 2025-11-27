@@ -5,9 +5,10 @@ class Producto_model extends CI_Model {
 
     public function get_productos_por_categoria($categoria_id) {
         return $this->db
-            ->select('id, nombre, precio')
+            ->select('id_producto, nombre, precio')
             ->from('productos')
-            ->where('categoria_id', $categoria_id)
+            ->where('id_categoria', $categoria_id)
+            ->where('cji_flagestado', '1')
             ->get()
             ->result();
     }
@@ -25,16 +26,19 @@ class Producto_model extends CI_Model {
     {
         return $this->db
             ->where('nombre', $nombre)
+            ->where('cji_flagestado', '1')
             ->get('categorias')
             ->row();
     }
 
         public function obtenerPorId($id)
     {
-        $this->db->select('p.*, c.nombre AS categoria_nombre');
+        $this->db->select('p.id_producto, p.nombre, p.precio, p.descripcion, p.etiquetas, p.imagen1, p.imagen2, p.imagen3, p.imagen4, p.imagen5, p.id_categoria, c.nombre AS categoria_nombre, tc.nombre AS tipo_nombre');
         $this->db->from('productos p');
-        $this->db->join('categorias c', 'c.id = p.categoria_id', 'left');
-        $this->db->where('p.id', $id);
+        $this->db->join('categorias c', 'c.id_categoria = p.id_categoria', 'left');
+        $this->db->join('tipo_categoria tc', 'tc.id_tipocategoria = c.id_tipocategoria', 'left');
+        $this->db->where('p.id_producto', $id);
+        $this->db->where('p.cji_flagestado', '1');
 
         $query = $this->db->get();
         return $query->row(); // devuelve SOLO una fila
@@ -47,7 +51,8 @@ class Producto_model extends CI_Model {
         return $this->db
             ->select("p.*, c.nombre AS categoria_nombre")
             ->from("productos p")
-            ->join("categorias c", "c.id = p.categoria_id", "left")
+            ->join("categorias c", "c.id_categoria = p.id_categoria", "left")
+            ->where("p.cji_flagestado", "1")
             ->get()
             ->result();
     }
@@ -58,8 +63,9 @@ class Producto_model extends CI_Model {
     public function getProducto($id) {
         $this->db->select("p.*, c.nombre AS categoria");
         $this->db->from("productos p");
-        $this->db->join("categorias c", "c.id = p.categoria_id");
-        $this->db->where("p.id", $id);
+        $this->db->join("categorias c", "c.id_categoria = p.id_categoria", "left");
+        $this->db->where("p.id_producto", $id);
+        $this->db->where("p.cji_flagestado", "1");
         return $this->db->get()->row();
     }
 
@@ -71,9 +77,10 @@ class Producto_model extends CI_Model {
 
         $data = [
             "nombre"       => $nombre,
-            "categoria_id" => $categoria_id,
+            "id_categoria" => $categoria_id,
             "precio"       => $precio,
-            "descripcion"  => $descripcion
+            "descripcion"  => $descripcion,
+            "cji_flagestado" => "1"
         ];
 
         $this->db->insert("productos", $data);
@@ -88,18 +95,18 @@ class Producto_model extends CI_Model {
 
         $data = [
             "nombre"       => $nombre,
-            "categoria_id" => $categoria_id,
+            "id_categoria" => $categoria_id,
             "precio"       => $precio,
             "descripcion"  => $descripcion
         ];
 
-        $this->db->where("id", $id)->update("productos", $data);
+        $this->db->where("id_producto", $id)->update("productos", $data);
     }
 
     // =======================================
     // ELIMINAR PRODUCTO
     // =======================================
     public function eliminarProducto($id) {
-        $this->db->where("id", $id)->delete("productos");
+        $this->db->where("id_producto", $id)->update("productos", ["cji_flagestado" => "2"]);
     }
 }

@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Importaciones Codiza</title>
-<link rel="icon" type="image/png" sizes="32x32" href="<?= base_url('images/logo/favicon.png') ?>">
-<link rel="icon" type="image/png" sizes="16x16" href="<?= base_url('images/logo/favicon.png') ?>">
-<link rel="apple-touch-icon" sizes="180x180" href="<?= base_url('images/logo/favicon.png') ?>">
+<link rel="icon" type="image/png" sizes="32x32" href="<?= base_url('images/logo/Logo-negro.png') ?>">
+<link rel="icon" type="image/png" sizes="16x16" href="<?= base_url('images/logo/Logo-negro.png') ?>">
+<link rel="apple-touch-icon" sizes="180x180" href="<?= base_url('images/logo/Logo-negro.png') ?>">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
@@ -582,7 +582,7 @@ body {
                 <div class="col-6 col-lg-3">
                     <div class="logo d-flex justify-content-end justify-content-lg-end pe-lg-4">
                         <a href="<?= base_url(); ?>">
-                            <img src="<?= base_url('images/logo/logo-codisa.png') ?>" alt="Logo" class="img-fluid">
+                            <img src="<?= base_url('images/logo/logo.png') ?>" alt="Logo" class="img-fluid">
                         </a>
                     </div>
                 </div>
@@ -638,47 +638,85 @@ body {
             <nav class="navbar navbar-expand-lg p-0">
                 <div class="collapse navbar-collapse justify-content-center">
                     <ul class="navbar-nav menu">
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?= base_url('inicio'); ?>">Inicio</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?= base_url('nosotros'); ?>">Nosotros</a>
-                        </li>
-                        
-                        <?php if (isset($menuTiposCategorias) && !empty($menuTiposCategorias)): ?>
-                            <?php foreach ($menuTiposCategorias as $tipoCategoria => $categorias): ?>
-                                <li class="nav-item dropdown mega-dropdown">
-                                    <a class="nav-link dropdown-toggle" role="button">
-                                        <?= $tipoCategoria ?> <i class="fas fa-chevron-down"></i>
-                                    </a>
-                                    <?php if (!empty($categorias)): ?>
-                                        <div class="dropdown-menu mega-menu">
-                                            <div class="columna">
-                                                <h3><?= $tipoCategoria ?></h3>
-                                                <?php foreach ($categorias as $cat): ?>
-                                                    <a href="<?= base_url('categoria/ver/' . $cat['id']); ?>" class="dropdown-item item">
-                                                        <?= $cat['nombre'] ?>
-                                                    </a>
-                                                <?php endforeach; ?>
-                                            </div>
-                                        </div>
-                                    <?php endif; ?>
-                                </li>
-                            <?php endforeach; ?>
-                        <?php endif; ?>
-
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?= base_url('proyectos'); ?>">Proyectos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="<?= base_url('servicios'); ?>">Servicios</a>
-                        </li>
-
                         <?php 
                         $ci = get_instance();
-                        if ($ci->session->userdata('logeado') && $ci->session->userdata('usuario_id') == 1): ?>
+                        $current_controller = $ci->router->fetch_class();
+                        $current_method = $ci->router->fetch_method();
+                        
+                        // Mostrar menú de administrador solo si está logueado Y está en el dashboard
+                        $es_area_admin = ($current_controller === 'login' && $current_method === 'dashboard') || 
+                                        in_array($current_controller, ['tipo_categoria', 'categoria', 'productos', 'clientes']);
+                        
+                        if ($ci->session->userdata('logeado') && $ci->session->userdata('usuario_id') == 1 && $es_area_admin): 
+                            // Menú para administrador logueado EN ÁREA ADMINISTRATIVA
+                        ?>
                             <li class="nav-item">
-                                <a class="nav-link fw-bold" href="<?= base_url('login/dashboard'); ?>">ADMINISTRAR</a>
+                                <a class="nav-link" href="<?= base_url('login/dashboard'); ?>">
+                                    <i class="fas fa-home"></i> Dashboard
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?= base_url('tipo_categoria/listar'); ?>">
+                                    <i class="fas fa-tags"></i> Tipos
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?= base_url('categoria/listar'); ?>">
+                                    <i class="fas fa-folder"></i> Categorías
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?= base_url('productos/listar'); ?>">
+                                    <i class="fas fa-boxes"></i> Productos
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?= base_url('clientes/listar'); ?>">
+                                    <i class="fas fa-users"></i> Clientes
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?= base_url('login/salir'); ?>">
+                                    <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                                </a>
+                            </li>
+                        <?php else: 
+                            // Menú público normal (incluso si está logueado pero en páginas públicas)
+                        ?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?= base_url('inicio'); ?>">Inicio</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?= base_url('nosotros'); ?>">Nosotros</a>
+                            </li>
+                            
+                            <?php if (isset($menuTiposCategorias) && !empty($menuTiposCategorias)): ?>
+                                <?php foreach ($menuTiposCategorias as $tipoCategoria => $categorias): ?>
+                                    <li class="nav-item dropdown mega-dropdown">
+                                        <a class="nav-link dropdown-toggle" role="button">
+                                            <?= $tipoCategoria ?> <i class="fas fa-chevron-down"></i>
+                                        </a>
+                                        <?php if (!empty($categorias)): ?>
+                                            <div class="dropdown-menu mega-menu">
+                                                <div class="columna">
+                                                    <h3><?= $tipoCategoria ?></h3>
+                                                    <?php foreach ($categorias as $cat): ?>
+                                                        <a href="<?= base_url('categoria/ver/' . $cat['id']); ?>" class="dropdown-item item">
+                                                            <?= $cat['nombre'] ?>
+                                                        </a>
+                                                    <?php endforeach; ?>
+                                                </div>
+                                            </div>
+                                        <?php endif; ?>
+                                    </li>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?= base_url('proyectos'); ?>">Proyectos</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="<?= base_url('servicios'); ?>">Servicios</a>
                             </li>
                         <?php endif; ?>
                     </ul>
@@ -696,43 +734,70 @@ body {
             <!-- Logo en el menú móvil -->
             <div class="mobile-menu-header">
                 <div class="mobile-logo">
-                    <img src="<?= base_url('images/logo/logo-codisa.png') ?>" alt="Logo">
+                    <img src="<?= base_url('images/logo/logo.png') ?>" alt="Logo">
                 </div>
             </div>
 
             <div class="mobile-menu-links">
-                <a href="<?= base_url('inicio'); ?>" class="mobile-menu-link">Inicio</a>
-                <a href="<?= base_url('nosotros'); ?>" class="mobile-menu-link">Nosotros</a>
-                
-                <!-- Menú acordeón de productos -->
-                <?php if (isset($menuTiposCategorias) && !empty($menuTiposCategorias)): ?>
-                    <?php foreach ($menuTiposCategorias as $tipoCategoria => $categorias): ?>
-                        <div class="mobile-menu-accordion">
-                            <div class="mobile-accordion-header" data-target="mobile-accordion-<?= preg_replace('/[^a-zA-Z0-9]/', '-', $tipoCategoria); ?>">
-                                <span><?= $tipoCategoria ?></span>
-                                <i class="fas fa-chevron-down mobile-accordion-icon"></i>
-                            </div>
-                            <div class="mobile-accordion-content" id="mobile-accordion-<?= preg_replace('/[^a-zA-Z0-9]/', '-', $tipoCategoria); ?>">
-                                <?php if (!empty($categorias)): ?>
-                                    <?php foreach ($categorias as $cat): ?>
-                                        <a href="<?= base_url('categoria/ver/' . $cat['id']); ?>" class="mobile-submenu-item">
-                                            <?= $cat['nombre'] ?>
-                                        </a>
-                                    <?php endforeach; ?>
-                                <?php endif; ?>
-                            </div>
-                        </div>
-                    <?php endforeach; ?>
-                <?php else: ?>
-                    <a href="<?= base_url('productos'); ?>" class="mobile-menu-link">Productos</a>
-                <?php endif; ?>
-                
-                <a href="<?= base_url('proyectos'); ?>" class="mobile-menu-link">Proyectos</a>
-                <a href="<?= base_url('servicios'); ?>" class="mobile-menu-link">Servicios</a>
-
                 <?php 
-                if ($ci->session->userdata('logeado') && $ci->session->userdata('usuario_id') == 1): ?>
-                    <a href="<?= base_url('login/dashboard'); ?>" class="mobile-menu-link">ADMINISTRAR</a>
+                $ci = get_instance();
+                $current_controller = $ci->router->fetch_class();
+                $current_method = $ci->router->fetch_method();
+                
+                // Mostrar menú de administrador solo si está logueado Y está en el dashboard
+                $es_area_admin = ($current_controller === 'login' && $current_method === 'dashboard') || 
+                                in_array($current_controller, ['tipo_categoria', 'categoria', 'productos', 'clientes']);
+                
+                if ($ci->session->userdata('logeado') && $ci->session->userdata('usuario_id') == 1 && $es_area_admin): 
+                    // Menú móvil para administrador logueado EN ÁREA ADMINISTRATIVA
+                ?>
+                    <a href="<?= base_url('login/dashboard'); ?>" class="mobile-menu-link">
+                        <i class="fas fa-home"></i> Dashboard
+                    </a>
+                    <a href="<?= base_url('tipo_categoria/listar'); ?>" class="mobile-menu-link">
+                        <i class="fas fa-tags"></i> Tipos
+                    </a>
+                    <a href="<?= base_url('categoria/listar'); ?>" class="mobile-menu-link">
+                        <i class="fas fa-folder"></i> Categorías
+                    </a>
+                    <a href="<?= base_url('productos/listar'); ?>" class="mobile-menu-link">
+                        <i class="fas fa-boxes"></i> Productos
+                    </a>
+                    <a href="<?= base_url('clientes/listar'); ?>" class="mobile-menu-link">
+                        <i class="fas fa-users"></i> Clientes
+                    </a>
+                    <a href="<?= base_url('login/salir'); ?>" class="mobile-menu-link">
+                        <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                    </a>
+                <?php else: 
+                    // Menú móvil público normal (incluso si está logueado pero en páginas públicas)
+                ?>
+                    <a href="<?= base_url('inicio'); ?>" class="mobile-menu-link">Inicio</a>
+                    <a href="<?= base_url('nosotros'); ?>" class="mobile-menu-link">Nosotros</a>
+                    
+                    <!-- Menú acordeón de productos -->
+                    <?php if (isset($menuTiposCategorias) && !empty($menuTiposCategorias)): ?>
+                        <?php foreach ($menuTiposCategorias as $tipoCategoria => $categorias): ?>
+                            <div class="mobile-menu-accordion">
+                                <div class="mobile-accordion-header" data-target="mobile-accordion-<?= preg_replace('/[^a-zA-Z0-9]/', '-', $tipoCategoria); ?>">
+                                    <span><?= $tipoCategoria ?></span>
+                                    <i class="fas fa-chevron-down mobile-accordion-icon"></i>
+                                </div>
+                                <div class="mobile-accordion-content" id="mobile-accordion-<?= preg_replace('/[^a-zA-Z0-9]/', '-', $tipoCategoria); ?>">
+                                    <?php if (!empty($categorias)): ?>
+                                        <?php foreach ($categorias as $cat): ?>
+                                            <a href="<?= base_url('categoria/ver/' . $cat['id']); ?>" class="mobile-submenu-item">
+                                                <?= $cat['nombre'] ?>
+                                            </a>
+                                        <?php endforeach; ?>
+                                    <?php endif; ?>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    <?php endif; ?>
+                    
+                    <a href="<?= base_url('proyectos'); ?>" class="mobile-menu-link">Proyectos</a>
+                    <a href="<?= base_url('servicios'); ?>" class="mobile-menu-link">Servicios</a>
                 <?php endif; ?>
             </div>
 

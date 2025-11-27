@@ -34,14 +34,14 @@ class Productos extends CI_Controller {
         return $menu;
     }
 
-    public function index() {
-        $data["menuTiposCategorias"] = $this->tiposCategoriasMenu();
-        $data["tipos_categoria"] = $this->Tipo_categoria_model->obtener_tipos_activos();
-
-        $this->load->view("templates/header", $data);
-        $this->load->view("productos");
-        $this->load->view("templates/footer");
-    }
+    // MÉTODO COMENTADO - Vista productos.php eliminada (código antiguo no usado)
+    // public function index() {
+    //     $data["menuTiposCategorias"] = $this->tiposCategoriasMenu();
+    //     $data["tipos_categoria"] = $this->Tipo_categoria_model->obtener_tipos_activos();
+    //     $this->load->view("templates/header", $data);
+    //     $this->load->view("productos");
+    //     $this->load->view("templates/footer");
+    // }
 
     public function categoria($slug) {
         $data["menuTiposCategorias"] = $this->tiposCategoriasMenu();
@@ -68,15 +68,20 @@ class Productos extends CI_Controller {
         $this->load->view("templates/footer");
     }
 
-    public function ver($id)
-{
-    $data["menuTiposCategorias"] = $this->tiposCategoriasMenu();
-    $data["tipos_categoria"] = $this->Tipo_categoria_model->obtener_tipos_activos();
-    $data['producto'] = $this->Producto_model->obtenerPorId($id);
-    $this->load->view("templates/header", $data);
-    $this->load->view('producto/ver', $data);
-    $this->load->view("templates/footer");
-}
+    public function detalle($id)
+    {
+        $data["menuTiposCategorias"] = $this->tiposCategoriasMenu();
+        $data["tipos_categoria"] = $this->Tipo_categoria_model->obtener_tipos_activos();
+        $data['producto'] = $this->Producto_model->obtenerPorId($id);
+        
+        if (!$data['producto']) {
+            show_404();
+        }
+        
+        $this->load->view("templates/header", $data);
+        $this->load->view('producto/detalle', $data);
+        $this->load->view("templates/footer");
+    }
 
 
   // ===========================

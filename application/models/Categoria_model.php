@@ -7,15 +7,21 @@ class Categoria_model extends CI_Model {
     }
 
     public function getCategorias() {
+        $this->db->where("cji_flagestado", "1");
         return $this->db->get("categorias")->result();
     }
 
-    public function insertarCategoria($nombre) {
-        $this->db->insert("categorias", ["nombre" => $nombre]);
+    public function insertarCategoria($nombre, $id_tipocategoria = null) {
+        $data = [
+            "nombre" => $nombre,
+            "id_tipocategoria" => $id_tipocategoria,
+            "cji_flagestado" => "1"
+        ];
+        $this->db->insert("categorias", $data);
     }
 
     public function getCategoria($id) {
-        return $this->db->where("id", $id)->get("categorias")->row();
+        return $this->db->where("id_categoria", $id)->get("categorias")->row();
     }
 
     public function getCategoriaConTipo($id) {
@@ -27,12 +33,16 @@ class Categoria_model extends CI_Model {
         return $this->db->get()->row();
     }
 
-    public function actualizarCategoria($id, $nombre) {
-        $this->db->where("id", $id)->update("categorias", ["nombre" => $nombre]);
+    public function actualizarCategoria($id, $nombre, $id_tipocategoria = null) {
+        $data = ["nombre" => $nombre];
+        if ($id_tipocategoria !== null) {
+            $data["id_tipocategoria"] = $id_tipocategoria;
+        }
+        $this->db->where("id_categoria", $id)->update("categorias", $data);
     }
 
     public function eliminarCategoria($id) {
-        $this->db->where("id", $id)->delete("categorias");
+        $this->db->where("id_categoria", $id)->update("categorias", ["cji_flagestado" => "2"]);
     }
 }
 ?>

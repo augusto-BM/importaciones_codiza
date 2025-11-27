@@ -102,11 +102,64 @@
         box-shadow: 0 8px 25px rgba(0,0,0,0.15);
     }
     
-    .product-image {
+    .product-image-container {
+        position: relative;
         width: 100%;
         height: 250px;
-        object-fit: cover;
+        background-color: white;
+        padding: 20px;
+    }
+    
+    .product-image-wrapper {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+    
+    .product-image {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        transition: transform 0.8s ease, opacity 0.8s ease;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    
+    .product-image.image-1 {
+        z-index: 2;
+    }
+    
+    .product-image.image-2 {
+        z-index: 1;
+        opacity: 0;
+    }
+    
+    .product-card:hover .product-image {
+        transform: scale(1.05);
+    }
+    
+    .product-card:hover .product-image.image-1 {
+        opacity: 0;
+    }
+    
+    .product-card:hover .product-image.image-2 {
+        opacity: 1;
+    }
+    
+    .no-image-placeholder {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         background-color: #f5f5f5;
+        transition: transform 0.4s ease;
+    }
+    
+    .product-card:hover .no-image-placeholder {
+        transform: scale(1.1);
     }
     
     .product-body {
@@ -178,7 +231,7 @@
             font-size: 1.1rem;
         }
         
-        .product-image {
+        .product-image-container {
             height: 220px;
         }
         
@@ -210,7 +263,7 @@
             font-size: 1rem;
         }
         
-        .product-image {
+        .product-image-container {
             height: 200px;
         }
         
@@ -262,7 +315,7 @@
             font-size: 0.9rem;
         }
         
-        .product-image {
+        .product-image-container {
             height: 180px;
         }
         
@@ -323,30 +376,37 @@
 <div class="container mb-5">
     <!-- Sección de productos -->
     <div class="mt-4">
-        <h2 class="products-title text-center">
-            <i class="fas fa-box-open me-2"></i>Productos en esta categoría
-        </h2>
-        
         <?php if (!empty($productos)): ?>
             <div class="row g-4">
                 <?php foreach ($productos as $producto): ?>
                     <div class="col-12 col-sm-6 col-md-6 col-lg-4">
-                        <div class="product-card">
-                            <?php if (!empty($producto->imagen1)): ?>
-                                <img src="<?= base_url($producto->imagen1) ?>" 
-                                     alt="<?= htmlspecialchars($producto->nombre) ?>" 
-                                     class="product-image">
-                            <?php else: ?>
-                                <div class="product-image d-flex align-items-center justify-content-center">
-                                    <i class="fas fa-image fa-3x text-muted"></i>
+                        <div class="product-card" id="contenedor-producto-<?= $producto->id_producto ?>" 
+                             onclick="window.location.href='<?= base_url('productos/detalle/' . $producto->id_producto) ?>'">
+                            <div class="product-image-container">
+                                <div class="product-image-wrapper">
+                                    <?php if (!empty($producto->imagen1)): ?>
+                                        <img src="<?= base_url($producto->imagen1) ?>" 
+                                             alt="<?= htmlspecialchars($producto->nombre) ?>" 
+                                             class="product-image image-1">
+                                        <?php if (!empty($producto->imagen2)): ?>
+                                            <img src="<?= base_url($producto->imagen2) ?>" 
+                                                 alt="<?= htmlspecialchars($producto->nombre) ?>" 
+                                                 class="product-image image-2">
+                                        <?php else: ?>
+                                            <img src="<?= base_url($producto->imagen1) ?>" 
+                                                 alt="<?= htmlspecialchars($producto->nombre) ?>" 
+                                                 class="product-image image-2">
+                                        <?php endif; ?>
+                                    <?php else: ?>
+                                        <div class="no-image-placeholder">
+                                            <i class="fas fa-image fa-3x text-muted"></i>
+                                        </div>
+                                    <?php endif; ?>
                                 </div>
-                            <?php endif; ?>
+                            </div>
                             
                             <div class="product-body">
-                                <h5 class="product-title"><?= htmlspecialchars($producto->nombre) ?></h5>
-                                <div class="product-price">
-                                    S/ <?= number_format($producto->precio, 2) ?>
-                                </div>
+                                <h5 class="product-title text-center"><?= htmlspecialchars($producto->nombre) ?></h5>
                             </div>
                         </div>
                     </div>

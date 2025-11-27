@@ -16,7 +16,7 @@ class Login extends CI_Controller {
         $this->load->view('login');
     }
 
-    private function menuData() {
+    /* private function menuData() {
         $dataDB = $this->Menu_model->getCategoriasConProductos();
 
         $menu = [];
@@ -31,13 +31,13 @@ class Login extends CI_Controller {
             if ($row->producto != null) {
                 $menu[$cat][] = [
                     "id" => $row->producto_id,
-                    "nombre" => $row->producto
+                    "nombres" => $row->producto
                 ];
             }
         }
 
         return $menu;
-    }
+    } */
 
     public function validar() {
         $usuario  = $this->input->post('usuario');
@@ -71,7 +71,7 @@ class Login extends CI_Controller {
     }
 
     public function dashboard() {
-        $data["menu"] = $this->menuData();
+        /* $data["menu"] = $this->menuData(); */
         $data["tipos_categoria"] = $this->Tipo_categoria_model->obtener_tipos_activos();
 
         // Si no está logeado, lo mandamos al login

@@ -456,7 +456,7 @@
                 <div class="banner-content">
                     <h1 class="banner-title-animate">Bienvenidos a Importaciones Codiza</h1>
                     <div class="banner-buttons">
-                        <a href="<?= base_url('productos') ?>" class="btn-banner btn-primary-banner banner-btn-1">Ver Productos</a>
+                        <a href="<?= base_url('nosotros') ?>" class="btn-banner btn-primary-banner banner-btn-1">Conócenos</a>
                         <a href="<?= base_url('contacto') ?>" class="btn-banner btn-secondary-banner banner-btn-2">Contáctanos</a>
                     </div>
                 </div>
@@ -468,7 +468,7 @@
                 <div class="banner-content">
                     <h1 class="banner-title-animate">Bienvenidos a Importaciones Codiza</h1>
                     <div class="banner-buttons">
-                        <a href="<?= base_url('productos') ?>" class="btn-banner btn-primary-banner banner-btn-1">Ver Productos</a>
+                        <a href="<?= base_url('nosotros') ?>" class="btn-banner btn-primary-banner banner-btn-1">Conócenos</a>
                         <a href="<?= base_url('contacto') ?>" class="btn-banner btn-secondary-banner banner-btn-2">Contáctanos</a>
                     </div>
                 </div>
@@ -480,7 +480,7 @@
                 <div class="banner-content">
                     <h1 class="banner-title-animate">Bienvenidos a Importaciones Codiza</h1>
                     <div class="banner-buttons">
-                        <a href="<?= base_url('productos') ?>" class="btn-banner btn-primary-banner banner-btn-1">Ver Productos</a>
+                        <a href="<?= base_url('nosotros') ?>" class="btn-banner btn-primary-banner banner-btn-1">Conócenos</a>
                         <a href="<?= base_url('contacto') ?>" class="btn-banner btn-secondary-banner banner-btn-2">Contáctanos</a>
                     </div>
                 </div>
