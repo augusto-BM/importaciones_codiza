@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ferreteria Mayta</title>
+<title>Importaciones Codiza</title>
 <link rel="icon" type="image/png" sizes="32x32" href="<?= base_url('images/logo/favicon.png') ?>">
 <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url('images/logo/favicon.png') ?>">
 <link rel="apple-touch-icon" sizes="180x180" href="<?= base_url('images/logo/favicon.png') ?>">
@@ -579,7 +579,7 @@ body {
                 <div class="col-6 col-lg-3">
                     <div class="logo d-flex justify-content-end justify-content-lg-end pe-lg-4">
                         <a href="<?= base_url(); ?>">
-                            <img src="<?= base_url('images/logo/mayta.png') ?>" alt="Logo" class="img-fluid">
+                            <img src="<?= base_url('images/logo/logo-codisa.png') ?>" alt="Logo" class="img-fluid">
                         </a>
                     </div>
                 </div>
@@ -645,7 +645,7 @@ body {
                         <?php if (isset($menuTiposCategorias) && !empty($menuTiposCategorias)): ?>
                             <?php foreach ($menuTiposCategorias as $tipoCategoria => $categorias): ?>
                                 <li class="nav-item dropdown mega-dropdown">
-                                    <a class="nav-link dropdown-toggle" href="<?= base_url('productos'); ?>" role="button">
+                                    <a class="nav-link dropdown-toggle" role="button">
                                         <?= $tipoCategoria ?> <i class="fas fa-chevron-down"></i>
                                     </a>
                                     <?php if (!empty($categorias)): ?>
@@ -665,10 +665,10 @@ body {
                         <?php endif; ?>
 
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= base_url('contacto'); ?>">Proyectos</a>
+                            <a class="nav-link" href="<?= base_url('proyectos'); ?>">Proyectos</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="<?= base_url('contacto'); ?>">Servicios</a>
+                            <a class="nav-link" href="<?= base_url('servicios'); ?>">Servicios</a>
                         </li>
 
                         <?php 
@@ -693,7 +693,7 @@ body {
             <!-- Logo en el menú móvil -->
             <div class="mobile-menu-header">
                 <div class="mobile-logo">
-                    <img src="<?= base_url('images/logo/mayta.png') ?>" alt="Logo">
+                    <img src="<?= base_url('images/logo/logo-codisa.png') ?>" alt="Logo">
                 </div>
             </div>
 
@@ -724,8 +724,8 @@ body {
                     <a href="<?= base_url('productos'); ?>" class="mobile-menu-link">Productos</a>
                 <?php endif; ?>
                 
-                <a href="<?= base_url('contacto'); ?>" class="mobile-menu-link">Proyectos</a>
-                <a href="<?= base_url('contacto'); ?>" class="mobile-menu-link">Servicios</a>
+                <a href="<?= base_url('proyectos'); ?>" class="mobile-menu-link">Proyectos</a>
+                <a href="<?= base_url('servicios'); ?>" class="mobile-menu-link">Servicios</a>
 
                 <?php 
                 if ($ci->session->userdata('logeado') && $ci->session->userdata('usuario_id') == 1): ?>

@@ -1,180 +1,394 @@
 <style>
-/* ------------------ BANNER ------------------ */
-.banner {
+/* ======================================= */
+/* BANNER NOSOTROS CON OVERLAY Y 100VH    */
+/* ======================================= */
+
+.banner-nosotros {
+    position: relative;
     width: 100%;
-    height: 700px;
+    height: 100vh;
+    min-height: 600px;
     background-image: url('<?= base_url("images/nosotros/nosotros.png") ?>');
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
     display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
-
-    color: white;
-    font-size: 36px;
-    font-weight: bold;
-    padding: 20px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-
-    box-sizing: border-box;
-}
-
-/* Tablet y celular → esconder banner */
-@media (max-width: 992px) {
-    .banner {
-        display: none !important;
-    }
-}
-
-/* ------------------ SECCIÓN NOSOTROS ------------------ */
-
-.section-nosotros {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 60px;
-    padding: 90px 8%;
-    font-family: "Poppins", sans-serif; 
-    background: linear-gradient(135deg, #0a0f47, #1f3eff, #4b87ff);
-    position: relative;
     overflow: hidden;
-    color: #fff;
 }
 
-/* Ondas suaves premium */
-.section-nosotros::before {
-    content: "";
+/* Overlay oscuro sobre la imagen */
+.banner-nosotros::before {
+    content: '';
     position: absolute;
-    top: -40%;
-    left: -20%;
-    width: 120%;
-    height: 200%;
-    background: radial-gradient(circle at top left, rgba(255,255,255,0.08), transparent 60%);
-    transform: rotate(-15deg);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
 }
 
-/* Imagen con borde brillante + sombra elegante */
-.section-nosotros img {
-    width: 37%;
-    border-radius: 26px;
-    box-shadow: 0 25px 60px rgba(0,0,0,0.35);
-    border: 3px solid rgba(255,255,255,0.25);
-    backdrop-filter: blur(4px);
-    animation: fadeUp 1s ease both;
-}
-
-/* Contenedor de texto */
-.section-nosotros .texto {
-    width: 55%;
+/* Contenido del banner */
+.banner-nosotros-content {
     position: relative;
     z-index: 2;
-    animation: fadeRight 1s ease both;
+    text-align: center;
+    color: white;
+    padding: 0 20px;
+    animation: fadeInUp 1s ease-out;
 }
 
-/* Título elegante */
-.section-nosotros .texto h2 {
-    font-size: 48px;
+.banner-nosotros-content h1 {
+    font-size: 56px;
     font-weight: 900;
-    margin-bottom: 30px;
-    line-height: 1.1;
-    letter-spacing: -0.5px;
+    margin-bottom: 20px;
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.8);
+    letter-spacing: 1px;
 }
 
-/* Línea minimalista */
-.section-nosotros .texto h2::after {
-    content: "";
-    display: block;
-    width: 120px;
+.banner-nosotros-content p {
+    font-size: 22px;
+    font-weight: 400;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* ======================================= */
+/* SECCIÓN NOSOTROS - TEXTO IZQUIERDA / IMAGEN DERECHA */
+/* ======================================= */
+
+.section-nosotros {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.section-nosotros::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(0, 150, 63, 0.05) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.section-nosotros .container {
+    position: relative;
+    z-index: 1;
+}
+
+.nosotros-row {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+
+/* Columna de texto a la izquierda */
+.nosotros-text-col {
+    flex: 1;
+    animation: fadeInLeft 1s ease-out;
+}
+
+.nosotros-text-col h2 {
+    font-size: 42px;
+    font-weight: 900;
+    color: #1a4d2e;
+    margin-bottom: 25px;
+    line-height: 1.2;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.nosotros-text-col h2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 80px;
     height: 5px;
-    background: rgba(255,255,255,0.85);
-    margin-top: 20px;
-    border-radius: 20px;
+    background: linear-gradient(90deg, #00963f 0%, #1a4d2e 100%);
+    border-radius: 10px;
 }
 
-/* Párrafos */
-.section-nosotros .texto p {
-    font-size: 20px;
+.nosotros-text-col p {
+    font-size: 18px;
     line-height: 1.9;
-    margin-bottom: 22px;
-    color: rgba(255,255,255,0.92);
+    color: #495057;
+    margin-bottom: 20px;
+    text-align: justify;
 }
 
-/* Animaciones suaves */
-@keyframes fadeRight {
-    from { opacity: 0; transform: translateX(40px); }
-    to { opacity: 1; transform: translateX(0); }
+.nosotros-text-col p:last-of-type {
+    margin-bottom: 0;
 }
 
-@keyframes fadeUp {
-    from { opacity: 0; transform: translateY(40px); }
-    to { opacity: 1; transform: translateY(0); }
+/* Columna de imagen a la derecha */
+.nosotros-image-col {
+    flex: 1;
+    animation: fadeInRight 1s ease-out;
 }
 
+.nosotros-image-wrapper {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    transition: all 0.4s ease;
+}
 
-/* ------------- RESPONSIVE ------------- */
+.nosotros-image-wrapper:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
+}
 
-@media(max-width: 950px) {
-    .section-nosotros {
+.nosotros-image-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.nosotros-image-wrapper:hover img {
+    transform: scale(1.05);
+}
+
+/* Decoración de esquina */
+.nosotros-image-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 100px;
+    height: 100px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    z-index: 1;
+}
+
+/* ======================================= */
+/* ANIMACIONES                             */
+/* ======================================= */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ======================================= */
+/* RESPONSIVE                              */
+/* ======================================= */
+
+@media (max-width: 992px) {
+    .banner-nosotros {
+        height: 70vh;
+        min-height: 500px;
+        background-attachment: scroll;
+    }
+
+    .banner-nosotros-content h1 {
+        font-size: 42px;
+    }
+
+    .banner-nosotros-content p {
+        font-size: 18px;
+    }
+
+    .nosotros-row {
         flex-direction: column;
+        gap: 50px;
+    }
+
+    .nosotros-text-col h2 {
+        font-size: 36px;
         text-align: center;
-        padding: 70px 10%;
-        gap: 40px;
     }
 
-    .section-nosotros img {
-        width: 80%;
+    .nosotros-text-col h2::after {
+        left: 50%;
+        transform: translateX(-50%);
     }
 
-    .section-nosotros .texto {
-        width: 100%;
+    .nosotros-text-col p {
+        text-align: center;
     }
 
-    .section-nosotros .texto h2 {
+    .section-nosotros {
+        padding: 70px 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .banner-nosotros {
+        height: 60vh;
+        min-height: 450px;
+    }
+
+    .banner-nosotros-content h1 {
         font-size: 36px;
     }
 
-    .section-nosotros .texto h2::after {
-        margin: auto;
+    .banner-nosotros-content p {
+        font-size: 16px;
     }
-}
 
-@media(max-width: 520px) {
-    .banner {
+    .nosotros-text-col h2 {
         font-size: 32px;
     }
 
-    .section-nosotros img {
-        width: 90%;
+    .nosotros-text-col p {
+        font-size: 16px;
     }
 
-    .section-nosotros .texto p {
-        font-size: 18px;
+    .section-nosotros {
+        padding: 50px 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .banner-nosotros {
+        height: 50vh;
+        min-height: 400px;
+    }
+
+    .banner-nosotros-content h1 {
+        font-size: 28px;
+    }
+
+    .banner-nosotros-content p {
+        font-size: 15px;
+    }
+
+    .nosotros-text-col h2 {
+        font-size: 28px;
+    }
+
+    .nosotros-text-col p {
+        font-size: 15px;
+    }
+
+    .nosotros-row {
+        gap: 40px;
+    }
+
+    .section-nosotros {
+        padding: 40px 0;
     }
 }
 </style>
 
-
-<div class="banner">
+<!-- Banner Nosotros -->
+<div class="banner-nosotros">
+    <div class="banner-nosotros-content">
+        <h1>Nosotros</h1>
+        <p>Conoce más sobre nuestra empresa y compromiso con la calidad</p>
+    </div>
 </div>
 
+<!-- Sección Nosotros -->
 <section class="section-nosotros">
-    <img src="<?= base_url('images/nosotros/foto1.jpg') ?>" alt="Nosotros">
+    <div class="container">
+        <div class="row nosotros-row">
+            <!-- Columna de texto a la izquierda -->
+            <div class="col-lg-6 nosotros-text-col">
+                <h2>Ventas, Importación y Distribución de Herramientas</h2>
 
-    <div class="texto">
-        <h2>Ventas, Importación y Distribución de Herramientas – FERRETERÍA MAYTA</h2>
+                <p>
+                    Somos una ferretería industrial dedicada a la venta al por mayor y menor, ofreciendo herramientas y equipos de alta resistencia para los sectores metalmecánico, construcción y mantenimiento.
+                </p>
 
-        <p>
-            Somos una ferretería industrial dedicada a la venta al por mayor y menor, ofreciendo herramientas y equipos de alta resistencia para los sectores metalmecánico, construcción y mantenimiento.
-        </p>
+                <p>
+                    Importamos y distribuimos marcas reconocidas, garantizando productos de calidad superior, precios competitivos y un servicio confiable para empresas y profesionales.
+                </p>
 
-        <p>
-            Importamos y distribuimos marcas reconocidas, garantizando productos de calidad superior, precios competitivos y un servicio confiable para empresas y profesionales.
-        </p>
+                <p>
+                    Contamos con homologaciones en diversas compañías líderes, lo que respalda nuestra trayectoria y compromiso con la seguridad, el buen servicio y la atención personalizada.
+                </p>
+            </div>
 
-        <p>
-            Contamos con homologaciones en diversas compañías líderes, lo que respalda nuestra trayectoria y compromiso con la seguridad, el buen servicio y la atención personalizada.
-        </p>
+            <!-- Columna de imagen a la derecha -->
+            <div class="col-lg-6 nosotros-image-col">
+                <div class="nosotros-image-wrapper">
+                    <img src="<?= base_url('images/nosotros/foto1.jpg') ?>" alt="Importaciones Codiza">
+                </div>
+            </div>
+        </div>
     </div>
 </section>
+
+<!-- Incluir CSS del carrusel de clientes -->
+<?php $this->load->view('partials/clientes_carousel_css'); ?>
+
+<!-- Incluir componente de clientes -->
+<?php $this->load->view('partials/clientes_carousel', ['clientes' => $clientes]); ?>
+
+<script>
+// ===============================================
+// ANIMACIONES AL HACER SCROLL - JQUERY
+// ===============================================
+$(document).ready(function() {
+    // Intersection Observer para animaciones al hacer scroll
+    const observerOptions = {
+        threshold: 0.15,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+            if (entry.isIntersecting) {
+                $(entry.target).addClass('animate-visible');
+            }
+        });
+    }, observerOptions);
+
+    // Observar elementos con animación
+    $('.nosotros-text-col, .nosotros-image-col').each(function() {
+        observer.observe(this);
+    });
+
+    // Parallax suave en el banner
+    $(window).on('scroll', function() {
+        const scrolled = $(window).scrollTop();
+        $('.banner-nosotros').css('background-position', 'center ' + (scrolled * 0.5) + 'px');
+    });
+});
+</script>
+
+<!-- Incluir JavaScript del carrusel de clientes -->
+<?php $this->load->view('partials/clientes_carousel_js'); ?>
 

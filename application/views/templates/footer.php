@@ -241,6 +241,40 @@
         }
     }
 
+    /* Tooltip flotante para WhatsApp */
+    .whatsapp-tooltip {
+        position: absolute;
+        left: 80px;
+        top: 50%;
+        transform: translateY(-50%);
+        background: white;
+        color: #333;
+        padding: 12px 20px;
+        border-radius: 25px;
+        font-size: 15px;
+        font-weight: 600;
+        white-space: nowrap;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        opacity: 1;
+        visibility: visible;
+        transition: all 0.3s ease;
+        pointer-events: none;
+        z-index: 9998;
+
+        &::before {
+            content: '';
+            position: absolute;
+            left: -8px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-top: 8px solid transparent;
+            border-bottom: 8px solid transparent;
+            border-right: 8px solid white;
+        }
+    }
+
     /* Botón flotante Volver Arriba */
     .scroll-top {
         position: fixed;
@@ -318,6 +352,10 @@
             font-size: 28px;
             bottom: 20px;
             left: 20px;
+
+            & .whatsapp-tooltip {
+                display: none;
+            }
         }
 
         .scroll-top {
@@ -355,7 +393,7 @@
                 <!-- Columna 1: Logo e información -->
                 <div class="col-12 col-md-6 col-lg-3 mb-4">
                     <div class="footer-logo">
-                        <img src="<?= base_url('images/logo/logo.png') ?>" alt="Importaciones Codiza">
+                        <img src="<?= base_url('images/logo/footer-codiza-logo.png') ?>" alt="Importaciones Codiza">
                         
                     </div>
                     <p class="footer-description">
@@ -444,6 +482,7 @@
 <!-- Botón flotante de WhatsApp -->
 <a href="https://wa.me/51972156330" target="_blank" class="whatsapp-float" title="Chatea con nosotros">
     <i class="fab fa-whatsapp"></i>
+    <span class="whatsapp-tooltip">Chatea con Codiza</span>
 </a>
 
 <!-- Botón flotante Volver Arriba -->

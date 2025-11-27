@@ -12,6 +12,15 @@ class Producto_model extends CI_Model {
             ->result();
     }
 
+    public function getProductosPorCategoria($id_categoria) {
+        $this->db->select('id_producto, nombre, precio, imagen1');
+        $this->db->from('productos');
+        $this->db->where('id_categoria', $id_categoria);
+        $this->db->where('cji_flagestado', '1');
+        $this->db->order_by('nombre', 'ASC');
+        return $this->db->get()->result();
+    }
+
     public function get_categoria_por_nombre($nombre)
     {
         return $this->db
