@@ -473,7 +473,6 @@
             </div>
         </div>
     </div>
-
     <div class="footer-bottom">
         <p>&copy; 2025 <strong>IMPORTACIONES CODIZA</strong> - Todos los derechos reservados.</p>
     </div>
@@ -514,5 +513,6 @@ $(document).ready(function() {
     });
 });
 </script>
+
 
 

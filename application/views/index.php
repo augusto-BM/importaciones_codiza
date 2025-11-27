@@ -8,19 +8,95 @@
     position: relative;
     width: 100%;
     overflow: hidden;
+    perspective: 1500px; /* Perspectiva 3D */
+    height: 90vh; /* Reducir altura */
+    min-height: 85vh;
+    max-height: 650px;
+    /* Fondo gris medio para evitar blanco durante el giro */
+    background: #3a3a3a;
 }
 
 .banner-carousel-wrapper {
     position: relative;
     overflow: hidden;
-    height: 100vh;
-    min-height: 600px;
+    height: 100%;
+    width: 100%;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    /* Evitar giro directo del contenido: el giro lo hace el contenedor "cubo" */
+    opacity: 1;
+    transform: translateZ(0);
+    animation: none;
+}
+
+/* Contenedor tipo cubo para una entrada 3D más creíble */
+.banner-cube {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    /* Animación de giro aplicada al cubo, no al contenido */
+    opacity: 0;
+    transform: rotateY(80deg) translateZ(0);
+    animation: cubeEntrance 1.5s ease-in-out forwards;
+    will-change: transform, opacity;
+}
+
+/* Cara lateral simulada para que no se vea blanco al girar */
+.banner-cube::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 60px; /* grosor visual de la cara lateral */
+    background: linear-gradient(90deg, rgba(90,90,90,0.95), rgba(55,55,55,0.95));
+    transform-origin: right center;
+    transform: rotateY(90deg);
+    pointer-events: none;
+}
+
+@keyframes cubeEntrance {
+    from {
+        opacity: 0;
+        transform: rotateY(65deg) translateZ(0);
+    }
+    to {
+        opacity: 1;
+        transform: rotateY(0deg) translateZ(0);
+    }
+}
+
+/* Animación de entrada 3D con rotación en el centro, sin movimiento lateral */
+@keyframes bannerEntranceCenter {
+    0% {
+        opacity: 0;
+        transform: rotateY(90deg) scale(0.8);
+        transform-origin: center center;
+    }
+    40% {
+        opacity: 0.7;
+        transform: rotateY(45deg) scale(0.9);
+    }
+    70% {
+        opacity: 1;
+        transform: rotateY(-5deg) scale(1.02);
+    }
+    85% {
+        transform: rotateY(2deg) scale(1.01);
+    }
+    100% {
+        opacity: 1;
+        transform: rotateY(0deg) scale(1);
+        transform-origin: center center;
+    }
 }
 
 .banner-carousel-track {
     position: relative;
     width: 100%;
     height: 100%;
+    transform-style: preserve-3d;
 }
 
 .banner-slide {
@@ -29,16 +105,58 @@
     transition: opacity 0.8s ease-in-out;
     position: relative;
     width: 100%;
-    height: 100vh;
-    min-height: 600px;
+    height: 100%;
     background-size: cover;
     background-position: center;
+    transform-style: preserve-3d;
 
     &.active {
         display: flex;
         opacity: 1;
         justify-content: center;
         align-items: center;
+    }
+
+    /* Animación para el slide 2: giro 360° de abajo hacia arriba */
+    &[data-slide="1"].active {
+        animation: rotateBottomToTop 1.2s ease-in-out;
+    }
+
+    /* Animación para el slide 3: giro 360° de arriba hacia abajo */
+    &[data-slide="2"].active {
+        animation: rotateTopToBottom 1.2s ease-in-out;
+    }
+}
+
+/* Keyframes para rotación de abajo hacia arriba (eje X negativo) */
+@keyframes rotateBottomToTop {
+    0% {
+        transform: rotateX(-90deg);
+        opacity: 0;
+    }
+    50% {
+        transform: rotateX(-180deg);
+        opacity: 0.5;
+    }
+    100% {
+        transform: rotateX(0deg);
+        opacity: 1;
+    }
+}
+
+/* Keyframes para rotación de arriba hacia abajo (eje X positivo) */
+@keyframes rotateTopToBottom {
+    0% {
+        transform: rotateX(90deg);
+        opacity: 0;
+    }
+    50% {
+        transform: rotateX(180deg);
+        opacity: 0.5;
+    }
+    100% {
+        transform: rotateX(0deg);
+        opacity: 1;
     }
 }
 
@@ -67,6 +185,14 @@
         margin-bottom: 30px;
         text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
     }
+}
+
+/* Ocultar elementos animados inicialmente */
+.banner-title-animate,
+.banner-btn-1,
+.banner-btn-2 {
+    opacity: 0;
+    visibility: hidden;
 }
 
 .banner-buttons {
@@ -321,16 +447,17 @@
 
 
 <section class="section-banner">
-    <div class="banner-carousel-wrapper">
+    <div class="banner-cube">
+        <div class="banner-carousel-wrapper">
         <div class="banner-carousel-track">
             <!-- Slide 1 -->
             <div class="banner-slide active" data-slide="0" style="background-image: url('<?= base_url("images/banner/banner.jpg") ?>');">
                 <div class="banner-overlay"></div>
                 <div class="banner-content">
-                    <h1>Bienvenidos a Importaciones Codiza</h1>
+                    <h1 class="banner-title-animate">Bienvenidos a Importaciones Codiza</h1>
                     <div class="banner-buttons">
-                        <a href="<?= base_url('productos') ?>" class="btn-banner btn-primary-banner">Ver Productos</a>
-                        <a href="<?= base_url('contacto') ?>" class="btn-banner btn-secondary-banner">Contáctanos</a>
+                        <a href="<?= base_url('productos') ?>" class="btn-banner btn-primary-banner banner-btn-1">Ver Productos</a>
+                        <a href="<?= base_url('contacto') ?>" class="btn-banner btn-secondary-banner banner-btn-2">Contáctanos</a>
                     </div>
                 </div>
             </div>
@@ -339,10 +466,10 @@
             <div class="banner-slide" data-slide="1" style="background-image: url('<?= base_url("images/banner/banner2.jpg") ?>');">
                 <div class="banner-overlay"></div>
                 <div class="banner-content">
-                    <h1>Bienvenidos a Importaciones Codiza</h1>
+                    <h1 class="banner-title-animate">Bienvenidos a Importaciones Codiza</h1>
                     <div class="banner-buttons">
-                        <a href="<?= base_url('productos') ?>" class="btn-banner btn-primary-banner">Ver Productos</a>
-                        <a href="<?= base_url('contacto') ?>" class="btn-banner btn-secondary-banner">Contáctanos</a>
+                        <a href="<?= base_url('productos') ?>" class="btn-banner btn-primary-banner banner-btn-1">Ver Productos</a>
+                        <a href="<?= base_url('contacto') ?>" class="btn-banner btn-secondary-banner banner-btn-2">Contáctanos</a>
                     </div>
                 </div>
             </div>
@@ -351,10 +478,10 @@
             <div class="banner-slide" data-slide="2" style="background-image: url('<?= base_url("images/banner/banner3.jpg") ?>');">
                 <div class="banner-overlay"></div>
                 <div class="banner-content">
-                    <h1>Bienvenidos a Importaciones Codiza</h1>
+                    <h1 class="banner-title-animate">Bienvenidos a Importaciones Codiza</h1>
                     <div class="banner-buttons">
-                        <a href="<?= base_url('productos') ?>" class="btn-banner btn-primary-banner">Ver Productos</a>
-                        <a href="<?= base_url('contacto') ?>" class="btn-banner btn-secondary-banner">Contáctanos</a>
+                        <a href="<?= base_url('productos') ?>" class="btn-banner btn-primary-banner banner-btn-1">Ver Productos</a>
+                        <a href="<?= base_url('contacto') ?>" class="btn-banner btn-secondary-banner banner-btn-2">Contáctanos</a>
                     </div>
                 </div>
             </div>
@@ -373,6 +500,7 @@
             <span class="dot-banner active" data-slide="0"></span>
             <span class="dot-banner" data-slide="1"></span>
             <span class="dot-banner" data-slide="2"></span>
+        </div>
         </div>
     </div>
 </section>
@@ -1360,6 +1488,10 @@ $(document).ready(function() {
     if (totalSlidesBanner > 1) {
         startAutoplayBanner();
     }
+    
+    // Forzar scroll al inicio al cargar la página
+    $(window).scrollTop(0);
+    $('html, body').scrollTop(0);
 });
 </script>
 
@@ -1400,6 +1532,80 @@ $(document).ready(function() {
         // Ejecutar al cargar la página
         updateParallax();
     }
+});
+</script>
+
+<script>
+// ======================================= 
+// ANIMACIONES DEL BANNER
+// =======================================
+$(document).ready(function() {
+    // Función para animar elementos del slide activo
+    function animateBannerContent() {
+        // Resetear y ocultar inmediatamente los elementos antes de animar
+        $('.banner-slide.active .banner-title-animate').css({
+            'opacity': '0',
+            'transform': 'scale(0.5)',
+            'visibility': 'visible',
+            'transition': 'none'
+        });
+        
+        $('.banner-slide.active .banner-btn-1, .banner-slide.active .banner-btn-2').css({
+            'opacity': '0',
+            'transform': 'translateY(50px)',
+            'visibility': 'visible',
+            'transition': 'none'
+        });
+        
+        // Forzar reflow para asegurar que los estilos se apliquen
+        $('.banner-slide.active .banner-title-animate')[0].offsetHeight;
+        
+        // Animar el título: entrada desde el centro con escala
+        setTimeout(function() {
+            $('.banner-slide.active .banner-title-animate').css({
+                'transition': 'all 1s cubic-bezier(0.5, 0, 0, 1)',
+                'opacity': '1',
+                'transform': 'scale(1)'
+            });
+        }, 100);
+        
+        // Animar el primer botón: entrada desde abajo
+        setTimeout(function() {
+            $('.banner-slide.active .banner-btn-1').css({
+                'transition': 'all 0.8s ease-out',
+                'opacity': '1',
+                'transform': 'translateY(0)'
+            });
+        }, 1100);
+        
+        // Animar el segundo botón: entrada desde abajo (después del primero)
+        setTimeout(function() {
+            $('.banner-slide.active .banner-btn-2').css({
+                'transition': 'all 0.8s ease-out',
+                'opacity': '1',
+                'transform': 'translateY(0)'
+            });
+        }, 1900);
+    }
+    
+    // Ejecutar animación al cargar la página
+    setTimeout(function() {
+        animateBannerContent();
+    }, 800);
+    
+    // Re-ejecutar animación cuando cambia el slide
+    $('.banner-carousel-next, .banner-carousel-prev, .dot-banner').on('click', function() {
+        // Ocultar elementos del slide anterior
+        $('.banner-slide .banner-title-animate, .banner-slide .banner-btn-1, .banner-slide .banner-btn-2').css({
+            'opacity': '0',
+            'visibility': 'hidden',
+            'transition': 'none'
+        });
+        
+        setTimeout(function() {
+            animateBannerContent();
+        }, 200);
+    });
 });
 </script>
 

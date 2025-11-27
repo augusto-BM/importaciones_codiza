@@ -1,19 +1,52 @@
 <style>
     .category-header {
-        background: linear-gradient(135deg, #61CE70 0%, #39c44c 100%);
+        position: relative;
         color: white;
-        padding: 40px 0;
+        padding: 80px 0;
         margin-bottom: 40px;
-        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        overflow: hidden;
+        min-height: 300px;
+        display: flex;
+        align-items: center;
+    }
+    
+    .category-parallax-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        z-index: 1;
+    }
+    
+    .category-parallax-bg::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 2;
+    }
+    
+    .category-content {
+        position: relative;
+        z-index: 3;
+        width: 100%;
     }
     
     .category-title {
-        font-size: 2rem;
+        font-size: 2.5rem;
         font-weight: 700;
         margin: 0;
         display: inline-flex;
         align-items: center;
         gap: 15px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
     }
     
     .content-section {
@@ -22,6 +55,13 @@
         border-radius: 10px;
         box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         margin-bottom: 40px;
+    }
+    
+    .category-subtitle {
+        font-size: 1.2rem;
+        margin: 0;
+        opacity: 0.95;
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
     }
     
     .back-button {
@@ -125,12 +165,17 @@
     /* Responsive */
     @media (max-width: 991px) {
         .category-header {
-            padding: 30px 0;
+            padding: 60px 0;
+            min-height: 250px;
         }
         
         .category-title {
-            font-size: 1.6rem;
+            font-size: 2rem;
             gap: 12px;
+        }
+        
+        .category-subtitle {
+            font-size: 1.1rem;
         }
         
         .product-image {
@@ -144,14 +189,19 @@
     
     @media (max-width: 768px) {
         .category-header {
-            padding: 25px 0;
+            padding: 50px 0;
+            min-height: 220px;
         }
         
         .category-title {
-            font-size: 1.4rem;
+            font-size: 1.6rem;
             gap: 10px;
             flex-wrap: wrap;
             justify-content: center;
+        }
+        
+        .category-subtitle {
+            font-size: 1rem;
         }
         
         .back-button {
@@ -193,12 +243,17 @@
     
     @media (max-width: 576px) {
         .category-header {
-            padding: 20px 0;
+            padding: 40px 0;
+            min-height: 200px;
         }
         
         .category-title {
-            font-size: 1.2rem;
+            font-size: 1.3rem;
             gap: 8px;
+        }
+        
+        .category-subtitle {
+            font-size: 0.9rem;
         }
         
         .back-button {
@@ -247,19 +302,22 @@
 </style>
 
 <!-- Header de la categoría -->
-<div class="category-header">
-    <div class="container">
-        <div class="text-center">
-            <h2 class="category-title mb-2">
-                <a href="<?= base_url('inicio'); ?>" class="back-button">
-                    <i class="fas fa-arrow-left"></i>
-                </a>
-                <?= htmlspecialchars($categoria->categoria_nombre) ?>
-            </h2>
-            <p class="lead mb-0"><?= htmlspecialchars($categoria->tipo_nombre) ?></p>
+<section class="category-header">
+    <div class="category-parallax-bg" style="background-image: url('<?= base_url("images/banner/banner.jpg") ?>');"></div>
+    <div class="category-content">
+        <div class="container">
+            <div class="text-center">
+                <h2 class="category-title mb-3">
+                    <a href="<?= base_url('inicio'); ?>" class="back-button">
+                        <i class="fas fa-arrow-left"></i>
+                    </a>
+                    <?= htmlspecialchars($categoria->categoria_nombre) ?>
+                </h2>
+                <p class="category-subtitle mb-0"><?= htmlspecialchars($categoria->tipo_nombre) ?></p>
+            </div>
         </div>
     </div>
-</div>
+</section>
 
 <!-- Contenido principal -->
 <div class="container mb-5">
