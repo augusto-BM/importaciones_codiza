@@ -326,19 +326,13 @@
         <div class="row nosotros-row">
             <!-- Columna de texto a la izquierda -->
             <div class="col-lg-6 nosotros-text-col">
-                <h2>Ventas, Importación y Distribución de Herramientas</h2>
-
+                <h2>16 años de soluciones en todo el Perú</h2>
+                <b>Nuestra historia</b>
                 <p>
-                    Somos una ferretería industrial dedicada a la venta al por mayor y menor, ofreciendo herramientas y equipos de alta resistencia para los sectores metalmecánico, construcción y mantenimiento.
+                    CODIZA S.A. Importadores de Productos para la Minería, Agroindustria, Pesquería e Industrias en general. Contamos con mas de 20 años de experiencia con la mejor asesoría para el manejo de nuestros productos en la línea de Fajas Transportadoras, Cangilones para Elevadores de Molinos, Cortinas de PVC, Empaquetaduras y Anexos dirigido a la industria en general.
                 </p>
-
-                <p>
-                    Importamos y distribuimos marcas reconocidas, garantizando productos de calidad superior, precios competitivos y un servicio confiable para empresas y profesionales.
-                </p>
-
-                <p>
-                    Contamos con homologaciones en diversas compañías líderes, lo que respalda nuestra trayectoria y compromiso con la seguridad, el buen servicio y la atención personalizada.
-                </p>
+                <p style="margin-bottom: 0; font-weight: bold;">Cirilo Matos García</p>
+                <p style="font-style: italic;">Gerente General</p>
             </div>
 
             <!-- Columna de imagen a la derecha -->

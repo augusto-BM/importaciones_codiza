@@ -376,283 +376,122 @@
     </div>
 </div>
 
+<?php
+    $servicios = 
+    [
+        [
+            "icono" => "fas fa-fire",
+            "badge" => "Vulcanizado",
+            "titulo" => "Vulcanizado de Faja para la Industria",
+            "descripcion" => "Ofrecemos servicios especializados de vulcanizado de fajas transportadoras para la industria...",
+            "imagen" => "foto1.jpg"
+        ],
+        [
+            "icono" => "fas fa-tools",
+            "badge" => "Transporte",
+            "titulo" => "Vulcanizado de Faja Transportadora",
+            "descripcion" => "Servicio profesional de vulcanizado en frío y caliente para fajas transportadoras de todo tipo...",
+            "imagen" => "foto1.jpg"
+        ],
+        [
+            "icono" => "fas fa-arrows-alt-v",
+            "badge" => "Elevación",
+            "titulo" => "Montaje de Los Elevadores",
+            "descripcion" => "Instalación y montaje completo de elevadores de cangilones para la industria...",
+            "imagen" => "foto1.jpg"
+        ],
+        [
+            "icono" => "fas fa-layer-group",
+            "badge" => "Perfil",
+            "titulo" => "Servicio de Faja con Perfil y Barreras",
+            "descripcion" => "Suministro e instalación de fajas transportadoras con perfiles transversales y barreras laterales...",
+            "imagen" => "foto1.jpg"
+        ],
+        [
+            "icono" => "fas fa-bezier-curve",
+            "badge" => "Modular",
+            "titulo" => "Servicio de Faja Curva Modular",
+            "descripcion" => "Sistemas de transporte con fajas curvas modulares que permiten cambios de dirección...",
+            "imagen" => "foto1.jpg"
+        ],
+        [
+            "icono" => "fas fa-sort-amount-down",
+            "badge" => "Selección",
+            "titulo" => "Servicio de Faja Seleccionadora",
+            "descripcion" => "Fajas transportadoras especializadas para procesos de selección y clasificación de productos...",
+            "imagen" => "foto1.jpg"
+        ],
+        [
+            "icono" => "fas fa-ruler-combined",
+            "badge" => "Calibración",
+            "titulo" => "Servicio de Faja Calibradora",
+            "descripcion" => "Sistemas de calibración y clasificación por tamaño para productos agrícolas e industriales...",
+            "imagen" => "foto1.jpg"
+        ],
+        [
+            "icono" => "fas fa-wave-square",
+            "badge" => "Tipo Onda",
+            "titulo" => "Servicio de Faja Tipo Onda",
+            "descripcion" => "Fajas transportadoras de perfil ondulado diseñadas para transporte de productos delicados...",
+            "imagen" => "foto1.jpg"
+        ],
+        [
+            "icono" => "fas fa-conveyor-belt",
+            "badge" => "General",
+            "titulo" => "Servicio de Faja",
+            "descripcion" => "Servicio integral de mantenimiento, reparación e instalación de fajas transportadoras...",
+            "imagen" => "foto1.jpg"
+        ],
+        [
+            "icono" => "fas fa-grip-lines",
+            "badge" => "Perfiles",
+            "titulo" => "Servicio de Perfiles",
+            "descripcion" => "Fabricación e instalación de perfiles transversales para fajas transportadoras...",
+            "imagen" => "foto1.jpg"
+        ],
+        [
+            "icono" => "fas fa-angle-up",
+            "badge" => "Inclinación",
+            "titulo" => "Servicio de Faja con Inclinación",
+            "descripcion" => "Sistemas de transporte con fajas inclinadas para elevación de materiales...",
+            "imagen" => "foto1.jpg"
+        ]
+    ];
+?>
+
 <!-- Sección Servicios -->
 <section class="section-servicios">
-    <!-- Servicio 1: Vulcanizado de Faja para la Industria -->
-    <div class="servicio-item">
-        <div class="container">
-            <div class="servicio-container">
-                <div class="servicio-texto">
-                    <div class="servicio-icon-badge">
-                        <i class="fas fa-fire"></i>
-                        <span>Vulcanizado</span>
-                    </div>
-                    <h3>Vulcanizado de Faja para la Industria</h3>
-                    <p>
-                        Ofrecemos servicios especializados de vulcanizado de fajas transportadoras para la industria, 
-                        garantizando uniones resistentes y duraderas que maximizan la vida útil de sus equipos y 
-                        optimizan los procesos productivos de su empresa.
-                    </p>
-                </div>
-                <div class="servicio-imagen-wrapper">
-                    <div class="servicio-imagen-container">
-                        <img src="<?= base_url('images/nosotros/foto1.jpg') ?>" alt="Vulcanizado de Faja para la Industria">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <?php foreach ($servicios as $s): ?>
+        <div class="servicio-item">
+            <div class="container">
+                <div class="servicio-container">
 
-    <!-- Servicio 2: Vulcanizado de Faja Transportadora -->
-    <div class="servicio-item">
-        <div class="container">
-            <div class="servicio-container">
-                <div class="servicio-texto">
-                    <div class="servicio-icon-badge">
-                        <i class="fas fa-tools"></i>
-                        <span>Transporte</span>
-                    </div>
-                    <h3>Vulcanizado de Faja Transportadora</h3>
-                    <p>
-                        Servicio profesional de vulcanizado en frío y caliente para fajas transportadoras de todo tipo. 
-                        Nuestro equipo técnico especializado realiza empalmes precisos y confiables, asegurando 
-                        la continuidad operativa de sus sistemas de transporte de materiales.
-                    </p>
-                </div>
-                <div class="servicio-imagen-wrapper">
-                    <div class="servicio-imagen-container">
-                        <img src="<?= base_url('images/nosotros/foto1.jpg') ?>" alt="Vulcanizado de Faja Transportadora">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                    <!-- Texto -->
+                    <div class="servicio-texto">
+                        <div class="servicio-icon-badge">
+                            <i class="<?= $s['icono'] ?>"></i>
+                            <span><?= $s['badge'] ?></span>
+                        </div>
 
-    <!-- Servicio 3: Montaje de Los Elevadores -->
-    <div class="servicio-item">
-        <div class="container">
-            <div class="servicio-container">
-                <div class="servicio-texto">
-                    <div class="servicio-icon-badge">
-                        <i class="fas fa-arrows-alt-v"></i>
-                        <span>Elevación</span>
-                    </div>
-                    <h3>Montaje de Los Elevadores</h3>
-                    <p>
-                        Instalación y montaje completo de elevadores de cangilones para la industria. Contamos con 
-                        personal técnico calificado para realizar el ensamblaje, alineación y puesta en marcha de 
-                        sistemas de elevación, cumpliendo con los más altos estándares de seguridad y calidad.
-                    </p>
-                </div>
-                <div class="servicio-imagen-wrapper">
-                    <div class="servicio-imagen-container">
-                        <img src="<?= base_url('images/nosotros/foto1.jpg') ?>" alt="Montaje de Los Elevadores">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                        <h3><?= $s['titulo'] ?></h3>
 
-    <!-- Servicio 4: Servicio de Faja con Perfil y Barreras -->
-    <div class="servicio-item">
-        <div class="container">
-            <div class="servicio-container">
-                <div class="servicio-texto">
-                    <div class="servicio-icon-badge">
-                        <i class="fas fa-layer-group"></i>
-                        <span>Perfil</span>
+                        <p><?= $s['descripcion'] ?></p>
                     </div>
-                    <h3>Servicio de Faja con Perfil y Barreras</h3>
-                    <p>
-                        Suministro e instalación de fajas transportadoras con perfiles transversales y barreras laterales. 
-                        Ideales para transporte de materiales en inclinación, evitando el retroceso y derrame de productos. 
-                        Soluciones personalizadas según las necesidades específicas de cada cliente.
-                    </p>
-                </div>
-                <div class="servicio-imagen-wrapper">
-                    <div class="servicio-imagen-container">
-                        <img src="<?= base_url('images/nosotros/foto1.jpg') ?>" alt="Servicio de Faja con Perfil y Barreras">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <!-- Servicio 5: Servicio de Faja Curva Modular -->
-    <div class="servicio-item">
-        <div class="container">
-            <div class="servicio-container">
-                <div class="servicio-texto">
-                    <div class="servicio-icon-badge">
-                        <i class="fas fa-bezier-curve"></i>
-                        <span>Modular</span>
+                    <!-- Imagen -->
+                    <div class="servicio-imagen-wrapper">
+                        <div class="servicio-imagen-container">
+                            <img src="<?= base_url('images/nosotros/' . $s['imagen']) ?>" 
+                                alt="<?= $s['titulo'] ?>">
+                        </div>
                     </div>
-                    <h3>Servicio de Faja Curva Modular</h3>
-                    <p>
-                        Sistemas de transporte con fajas curvas modulares que permiten cambios de dirección sin 
-                        necesidad de transferencias. Optimizan el espacio en planta y mejoran el flujo de producción. 
-                        Disponibles en diferentes radios de curvatura y configuraciones.
-                    </p>
-                </div>
-                <div class="servicio-imagen-wrapper">
-                    <div class="servicio-imagen-container">
-                        <img src="<?= base_url('images/nosotros/foto1.jpg') ?>" alt="Servicio de Faja Curva Modular">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <!-- Servicio 6: Servicio de Faja Seleccionadora -->
-    <div class="servicio-item">
-        <div class="container">
-            <div class="servicio-container">
-                <div class="servicio-texto">
-                    <div class="servicio-icon-badge">
-                        <i class="fas fa-sort-amount-down"></i>
-                        <span>Selección</span>
-                    </div>
-                    <h3>Servicio de Faja Seleccionadora</h3>
-                    <p>
-                        Fajas transportadoras especializadas para procesos de selección y clasificación de productos. 
-                        Diseñadas para facilitar la inspección visual y separación manual o automatizada de materiales, 
-                        con velocidad ajustable y ergonomía optimizada para los operadores.
-                    </p>
-                </div>
-                <div class="servicio-imagen-wrapper">
-                    <div class="servicio-imagen-container">
-                        <img src="<?= base_url('images/nosotros/foto1.jpg') ?>" alt="Servicio de Faja Seleccionadora">
-                    </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    <!-- Servicio 7: Servicio de Faja Calibradora -->
-    <div class="servicio-item">
-        <div class="container">
-            <div class="servicio-container">
-                <div class="servicio-texto">
-                    <div class="servicio-icon-badge">
-                        <i class="fas fa-ruler-combined"></i>
-                        <span>Calibración</span>
-                    </div>
-                    <h3>Servicio de Faja Calibradora</h3>
-                    <p>
-                        Sistemas de calibración y clasificación por tamaño para productos agrícolas e industriales. 
-                        Permiten la separación automática de productos según dimensiones específicas, mejorando 
-                        la eficiencia en los procesos de selección y empaque.
-                    </p>
-                </div>
-                <div class="servicio-imagen-wrapper">
-                    <div class="servicio-imagen-container">
-                        <img src="<?= base_url('images/nosotros/foto1.jpg') ?>" alt="Servicio de Faja Calibradora">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Servicio 8: Servicio de Faja Tipo Onda -->
-    <div class="servicio-item">
-        <div class="container">
-            <div class="servicio-container">
-                <div class="servicio-texto">
-                    <div class="servicio-icon-badge">
-                        <i class="fas fa-wave-square"></i>
-                        <span>Tipo Onda</span>
-                    </div>
-                    <h3>Servicio de Faja Tipo Onda</h3>
-                    <p>
-                        Fajas transportadoras de perfil ondulado diseñadas para transporte de productos delicados 
-                        y materiales que requieren un manejo suave. La forma ondulada proporciona mayor agarre 
-                        y previene el deslizamiento de los productos durante el transporte.
-                    </p>
-                </div>
-                <div class="servicio-imagen-wrapper">
-                    <div class="servicio-imagen-container">
-                        <img src="<?= base_url('images/nosotros/foto1.jpg') ?>" alt="Servicio de Faja Tipo Onda">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Servicio 9: Servicio de Faja -->
-    <div class="servicio-item">
-        <div class="container">
-            <div class="servicio-container">
-                <div class="servicio-texto">
-                    <div class="servicio-icon-badge">
-                        <i class="fas fa-conveyor-belt"></i>
-                        <span>General</span>
-                    </div>
-                    <h3>Servicio de Faja</h3>
-                    <p>
-                        Servicio integral de mantenimiento, reparación e instalación de fajas transportadoras para 
-                        todo tipo de industria. Ofrecemos asesoría técnica, suministro de repuestos originales y 
-                        atención personalizada para garantizar el óptimo funcionamiento de sus sistemas.
-                    </p>
-                </div>
-                <div class="servicio-imagen-wrapper">
-                    <div class="servicio-imagen-container">
-                        <img src="<?= base_url('images/nosotros/foto1.jpg') ?>" alt="Servicio de Faja">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Servicio 10: Servicio de Perfiles -->
-    <div class="servicio-item">
-        <div class="container">
-            <div class="servicio-container">
-                <div class="servicio-texto">
-                    <div class="servicio-icon-badge">
-                        <i class="fas fa-grip-lines"></i>
-                        <span>Perfiles</span>
-                    </div>
-                    <h3>Servicio de Perfiles</h3>
-                    <p>
-                        Fabricación e instalación de perfiles transversales para fajas transportadoras. Aumentan 
-                        la capacidad de carga y mejoran el agarre en transportes inclinados. Disponibles en diversos 
-                        materiales y configuraciones según la aplicación específica.
-                    </p>
-                </div>
-                <div class="servicio-imagen-wrapper">
-                    <div class="servicio-imagen-container">
-                        <img src="<?= base_url('images/nosotros/foto1.jpg') ?>" alt="Servicio de Perfiles">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Servicio 11: Servicio de Faja con Inclinación -->
-    <div class="servicio-item">
-        <div class="container">
-            <div class="servicio-container">
-                <div class="servicio-texto">
-                    <div class="servicio-icon-badge">
-                        <i class="fas fa-angle-up"></i>
-                        <span>Inclinación</span>
-                    </div>
-                    <h3>Servicio de Faja con Inclinación</h3>
-                    <p>
-                        Sistemas de transporte con fajas inclinadas para elevación de materiales entre diferentes 
-                        niveles. Equipadas con perfiles y barreras para prevenir el retroceso de productos. 
-                        Soluciones eficientes que optimizan el espacio y reducen costos operativos.
-                    </p>
-                </div>
-                <div class="servicio-imagen-wrapper">
-                    <div class="servicio-imagen-container">
-                        <img src="<?= base_url('images/nosotros/foto1.jpg') ?>" alt="Servicio de Faja con Inclinación">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <?php endforeach; ?>
 </section>
+
 
 <!-- Incluir CSS del carrusel de clientes -->
 <?php $this->load->view('partials/clientes_carousel_css'); ?>

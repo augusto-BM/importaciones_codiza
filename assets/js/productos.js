@@ -1,7 +1,7 @@
 // Funcionalidad para la gestión de productos con DataTables
 
 const TABLA_SELECTOR = '#tablaGeneral';
-const FILTROS = {estado: '#filtroEstado', nombre: '#filtroNombre', categoria: '#filtroCategorias'};
+const FILTROS = {estado: '#filtroEstado', nombre: '#filtroNombre', categoria: '#filtroCategorias', tipoCategoria: '#filtroTipos'};
 const SELECTORES = {
     modal: '.modal-global',
     modalTitulo: '#staticBackdropLabel',
@@ -108,6 +108,7 @@ function limpiarFiltros() {
     $(FILTROS.estado).val(ESTADOS.ACTIVO);
     $(FILTROS.nombre).val('');
     $(FILTROS.categoria).val('');
+    $(FILTROS.tipoCategoria).val('');
 }
 
 function initDataTable() {
@@ -147,6 +148,7 @@ function initDataTable() {
                 d.estado = $(FILTROS.estado).val();
                 d.nombre = $(FILTROS.nombre).val();
                 d.id_categoria = $(FILTROS.categoria).val();
+                d.id_tipocategoria = $(FILTROS.tipoCategoria).val();
             },
             beforeSend: function () {
                 mostrarCargando(MENSAJES.cargando);
@@ -185,7 +187,7 @@ function initDataTable() {
             { targets: [0], visible: false },
             { targets: [0, 1, 2], searchable: false, orderable: false },
             { targets: [1, 2]},
-            { targets: [2, 4, 5, 6], className: "text-center", orderable: false, searchable: false }
+            { targets: [2, 3, 5, 6, 7], className: "text-center", orderable: false, searchable: false }
         ]
     });
 
@@ -196,7 +198,7 @@ function initDataTable() {
         limpiarFiltros();
         tablaGeneral.ajax.reload(null, true);
     });
-    $(FILTROS.estado + ', ' + FILTROS.categoria).on('change', function() {
+    $(FILTROS.estado + ', ' + FILTROS.categoria + ', ' + FILTROS.tipoCategoria).on('change', function() {
         recargarTabla();
     });
 

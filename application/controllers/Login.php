@@ -56,6 +56,7 @@ class Login extends CI_Controller {
 
     public function productos() {
         if (!$this->session->userdata("logeado")) { redirect("login"); }
+        $data['tiposCategorias'] = $this->Menu_model->getTiposCategorias();
         $data["categorias"] = $this->Categoria_model->getCategorias();
         // Cargar vista de productos
         $this->load->view("templates/header");

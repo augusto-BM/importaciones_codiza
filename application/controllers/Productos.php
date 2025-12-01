@@ -102,6 +102,7 @@ class Productos extends CI_Controller {
         $filter->estado = $this->input->post("estado");
         $filter->nombre = $this->input->post("nombre");
         $filter->id_categoria = $this->input->post("id_categoria");
+        $filter->id_tipocategoria = $this->input->post("id_tipocategoria");
 
         $productos = $this->Producto_model->getProductosTabla($filter);
 
@@ -123,6 +124,7 @@ class Productos extends CI_Controller {
                     $producto->id_producto,
                     $producto->nombre,
                     $producto->categoria_nombre,
+                    $producto->tipo_nombre,
                     $descripcion_corta,
                     $img_html,
                     $btn_estado,

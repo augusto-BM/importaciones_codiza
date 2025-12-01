@@ -58,6 +58,21 @@
                     </select>
                 </div>
                 <div class="filter-group">
+                    <label for="filtroTipos">Tipo</label>
+                    <select name="filtroTipos" id="filtroTipos" class="form-control" style="cursor: pointer;" title="Cambiar Tipo de Categoría">
+                        <?php if (!empty($tiposCategorias)): ?>
+                                <option value="">TODOS</option>
+                                <?php foreach ($tiposCategorias as $tipo): ?>
+                                    <option value="<?= $tipo->id_tipocategoria ?>">
+                                        <?= $tipo->nombre ?>
+                                    </option>
+                                <?php endforeach; ?>
+                        <?php else: ?>
+                                <option value="">No hay datos</option>
+                        <?php endif; ?>
+                    </select>
+                </div>
+                <div class="filter-group">
                     <label for="filtroNombre">Nombre</label>
                     <input type="text" id="filtroNombre" name="filtroNombre" class="form-control" placeholder="Ingrese nombre">
                 </div>
@@ -80,7 +95,8 @@
                         <td class="text-center" style="width:0%; display: none;" data-orderable="false">ID</td>
                         <td class="text-center" style="width:30%" data-orderable="false">NOMBRE</td>
                         <td class="text-center" style="width:15%" data-orderable="false">CATEGORÍA</td>
-                        <td class="text-center" style="width:30%" data-orderable="false">DESCRIPCIÓN</td>
+                        <td class="text-center" style="width:15%" data-orderable="false">TIPO</td>
+                        <td class="text-center" style="width:15%" data-orderable="false">DESCRIPCIÓN</td>
                         <td class="text-center" style="width:10%" data-orderable="false">IMAGEN</td>
                         <td class="text-center" style="width:10%" data-orderable="false">ESTADO</td>
                         <td class="text-center" style="width:5%" data-orderable="false"></td>

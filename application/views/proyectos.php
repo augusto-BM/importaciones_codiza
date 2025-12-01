@@ -389,71 +389,59 @@
     <div class="container">
         <h2>Proyectos Realizados</h2>
         
-        <div class="proyectos-grid">
-            <!-- Proyecto 1: Minería, Agregados y Cerámicos -->
-            <div class="proyecto-card">
-                <div class="proyecto-imagen">
-                    <img src="<?= base_url('images/nosotros/foto1.jpg') ?>" alt="Minería, Agregados y Cerámicos">
-                    <div class="proyecto-overlay"></div>
-                    <div class="proyecto-icon">
-                        <i class="fas fa-gem"></i>
+        <?php
+            $proyectos = [
+                [
+                    "imagen" => "foto1.jpg",
+                    "icono" => "fas fa-industry",
+                    "titulo_small" => "Faja modular Intralox",
+                    "titulo" => "Industria en General",
+                    "descripcion" => "En la Industria En General brindamos soluciones a la Industria Envasadora, Plásticos, Cartoneras, Maderera, Textil, Lavanderías y muchas otras aplicaciones industriales."
+                ],
+                [
+                    "imagen" => "foto1.jpg",
+                    "icono" => "fas fa-gem",
+                    "titulo_small" => "Faja modular Intralox",
+                    "titulo" => "Minería, Agregados y Cerámicos",
+                    "descripcion" => "Nuestras fajas transportadoras se usan principalmente para transportar materiales granulados, como en la industria minera, cerámicos, agregados, agrícola y muchas otras."
+                ],
+                [
+                    "imagen" => "foto1.jpg",
+                    "icono" => "fas fa-fish",
+                    "titulo_small" => "Faja modular Intralox",
+                    "titulo" => "Agroindustria y Pesquería",
+                    "descripcion" => "En Viru S.A. estamos comprometidos con brindar el mejor producto y servicio de garantía y buena calidad..."
+                ],
+                [
+                    "imagen" => "foto1.jpg",
+                    "icono" => "fas fa-cog",
+                    "titulo_small" => "Faja modular Intralox",
+                    "titulo" => "Molinos, Agropecuario y Avícola",
+                    "descripcion" => "En el Terminal Internacional del Sur (TISUR) – Arequipa. Solucionamos el desmontaje y montaje..."
+                ]
+            ];
+            ?>
+
+            <div class="proyectos-grid">
+                <?php foreach ($proyectos as $p): ?>
+                    <div class="proyecto-card">
+                        <div class="proyecto-imagen">
+                            <img src="<?= base_url("images/nosotros/".$p['imagen']) ?>" alt="<?= $p['titulo'] ?>">
+                            <div class="proyecto-overlay"></div>
+                            <div class="proyecto-icon">
+                                <i class="<?= $p['icono'] ?>"></i>
+                            </div>
+                        </div>
+
+                        <div class="proyecto-content">
+                            <h4><?= $p['titulo_small'] ?></h4>
+                            <h3><?= $p['titulo'] ?></h3>
+                            <p><?= $p['descripcion'] ?></p>
+                        </div>
                     </div>
-                </div>
-                <div class="proyecto-content">
-                    <h4>Faja modular Intralox</h4>
-                    <h3>Minería, Agregados y Cerámicos</h3>
-                    <p>Nuestras fajas transportadoras se usan principalmente para transportar materiales granulados, como en la industria minera, cerámicos, agregados, agrícola y muchas otras.</p>
-                </div>
+                <?php endforeach; ?>
             </div>
 
-            <!-- Proyecto 2: Industria en General -->
-            <div class="proyecto-card">
-                <div class="proyecto-imagen">
-                    <img src="<?= base_url('images/nosotros/foto1.jpg') ?>" alt="Industria en General">
-                    <div class="proyecto-overlay"></div>
-                    <div class="proyecto-icon">
-                        <i class="fas fa-industry"></i>
-                    </div>
-                </div>
-                <div class="proyecto-content">
-                    <h4>Faja modular Intralox</h4>
-                    <h3>Industria en General</h3>
-                    <p>En la Industria En General brindamos soluciones a la Industria Envasadora, Plásticos, Cartoneras, Maderera, Textil, Lavanderías y muchas otras aplicaciones industriales.</p>
-                </div>
-            </div>
-
-            <!-- Proyecto 3: Agroindustria y Pesquería -->
-            <div class="proyecto-card">
-                <div class="proyecto-imagen">
-                    <img src="<?= base_url('images/nosotros/foto1.jpg') ?>" alt="Agroindustria y Pesquería">
-                    <div class="proyecto-overlay"></div>
-                    <div class="proyecto-icon">
-                        <i class="fas fa-fish"></i>
-                    </div>
-                </div>
-                <div class="proyecto-content">
-                    <h4>Faja modular Intralox</h4>
-                    <h3>Agroindustria y Pesquería</h3>
-                    <p>En Viru S.A. estamos comprometidos con brindar el mejor producto y servicio de garantía y buena calidad. Suministramos la línea de fajas sanitarias PVC, bandas modulares Flat Top, Revestimiento de Poleas, Cortinas de PVC. Estamos dirigidos a Agroindustria, Pesqueras y Cerveceras.</p>
-                </div>
-            </div>
-
-            <!-- Proyecto 4: Molinos, Agropecuario y Avícola -->
-            <div class="proyecto-card">
-                <div class="proyecto-imagen">
-                    <img src="<?= base_url('images/nosotros/foto1.jpg') ?>" alt="Molinos, Agropecuario y Avícola">
-                    <div class="proyecto-overlay"></div>
-                    <div class="proyecto-icon">
-                        <i class="fas fa-cog"></i>
-                    </div>
-                </div>
-                <div class="proyecto-content">
-                    <h4>Faja modular Intralox</h4>
-                    <h3>Molinos, Agropecuario y Avícola</h3>
-                    <p>En el Terminal Internacional del Sur (TISUR) – Arequipa. Solucionamos el desmontaje y montaje de las Fajas y Cangilones del Elevador Del Molino. Se realizó el mantenimiento de sus piezas y el cambio de la Faja transportadora que sale del silo y es transportado a la tolva de salida.</p>
-                </div>
-            </div>
-        </div>
     </div>
 </section>
 
