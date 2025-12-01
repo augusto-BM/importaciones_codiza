@@ -10,7 +10,7 @@
 <div class="dashboard-wrapper">
     <div class="dashboard-container">
         <div class="page-header">
-            <h1><i class="fas fa-users"></i>Gestión de Clientes</h1>
+            <h1><i class="fas fa-users"></i>Clientes</h1>
             <div class="filters-wrapper">
                 <div class="filter-group">
                     <label for="filtroEstado">Estado</label>

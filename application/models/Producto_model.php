@@ -186,7 +186,12 @@ class Producto_model extends CI_Model {
                 'precio' => $producto->precio,
                 'descripcion' => $producto->descripcion,
                 'etiquetas' => $producto->etiquetas,
-                'imagen1' => $producto->imagen1
+                'imagen1' => isset($producto->imagen1) ? $producto->imagen1 : '',
+                'imagen2' => isset($producto->imagen2) ? $producto->imagen2 : '',
+                'imagen3' => isset($producto->imagen3) ? $producto->imagen3 : '',
+                'imagen4' => isset($producto->imagen4) ? $producto->imagen4 : '',
+                'imagen5' => isset($producto->imagen5) ? $producto->imagen5 : '',
+                'imagendetalle' => isset($producto->imagendetalle) ? $producto->imagendetalle : ''
             ];
         }
         return false;
@@ -219,13 +224,13 @@ class Producto_model extends CI_Model {
     // OBTENER IMAGEN ACTUAL
     // =======================================
     public function obtener_imagen_actual($id) {
-        $this->db->select("imagen1");
+        $this->db->select("imagen1, imagen2, imagen3, imagen4, imagen5, imagendetalle");
         $this->db->from("productos");
         $this->db->where("id_producto", $id);
         $query = $this->db->get();
         
         if ($query->num_rows() > 0) {
-            return $query->row()->imagen1;
+            return $query->row();
         }
         return null;
     }

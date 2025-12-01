@@ -15,7 +15,7 @@ const SELECTORES = {
         etiquetas: '#etiquetas',
         imagen: '#imagen1'
     },
-    preview: {container: '#previewContainer', imagen: '#imagenPreview'},
+    preview: {containerPrefix: '#previewContainer', imagenPrefix: '#imagenPreview'},
     botones: {guardar: '.btn-guardar', add: '.btn-add', buscar: '.btn-buscar', limpiar: '.btn-limpiar', cancelar: '.btn-cancelar', editar: '.btn-editar', cambiarEstado: '.btn-cambiar-estado'}
 };
 
@@ -77,6 +77,8 @@ $(document).ready(function() {
         $('body').removeClass('modal-open').css('padding-right', '');
         $('.modal-backdrop').remove();
     });
+
+    
 });
 
 function mostrarCargando(mensaje = 'Cargando...') {
@@ -109,6 +111,28 @@ function limpiarFiltros() {
 }
 
 function initDataTable() {
+    ['1','2','3','4','5','Detalle'].forEach(num => {
+    $('#imagen' + num).on('change', function(e) {
+        const file = e.target.files[0];
+        const previewImg = $('#imagenPreview' + num);
+        const container = $('#previewContainer' + num);
+
+        if (file) {
+            previewImg.removeClass('d-none');
+            container.show();
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                previewImg.attr('src', e.target.result);
+            }
+            reader.readAsDataURL(file);
+        } else {
+            previewImg.attr('src', '').addClass('d-none');
+            container.hide();
+        }
+    });
+});
+
     tablaGeneral = $(TABLA_SELECTOR).DataTable({
         responsive: true,
         filter: false,
@@ -186,9 +210,7 @@ function initEventListeners() {
         const id = $(this).data('id');
         editarProducto(id);
     });
-    $(SELECTORES.campos.imagen).on('change', function() {
-        previsualizarImagen(this);
-    });
+    
     $(SELECTORES.formulario).on('blur', 'input[type="text"]', function() {
         $(this).val($(this).val().trim());
     });
@@ -204,13 +226,20 @@ function initEventListeners() {
         const estadoActual = $(this).data('estado');
         cambiarEstadoProducto(id, estadoActual);
     });
+
+    ['imagen1','imagen2','imagen3','imagen4','imagen5','imagendetalle'].forEach(function(id) {
+        $('#' + id).on('change', function() {
+            previsualizarImagen(this);
+        });
+    });
 }
 
 function abrirModalNuevoProducto() {
     $(SELECTORES.formulario)[0].reset();
     $(SELECTORES.campos.idOculto).val('');
-    $(SELECTORES.preview.container).hide();
-    $(SELECTORES.preview.imagen).attr('src', '');
+    // Ocultar todos los contenedores de preview y limpiar src
+    $('[id^="previewContainer"]').hide();
+    $('[id^="imagenPreview"]').attr('src', '');
     
     // Limpiar TinyMCE
     if (tinymce.get('descripcion')) {
@@ -234,40 +263,59 @@ function editarProducto(id) {
         },
         success: function(response) {
             Swal.close();
-            if (response.success) {
-                const producto = response.data;
-                $(SELECTORES.campos.idOculto).val(producto.id_oculto);
-                $(SELECTORES.campos.nombre).val(producto.nombre);
-                $(SELECTORES.campos.idCategoria).val(producto.id_categoria);
-                $(SELECTORES.campos.precio).val(producto.precio);
-                $(SELECTORES.campos.etiquetas).val(producto.etiquetas);
-                
-                // Actualizar TinyMCE con el contenido de descripción
-                if (tinymce.get('descripcion')) {
-                    tinymce.get('descripcion').setContent(producto.descripcion || '');
-                } else {
-                    $(SELECTORES.campos.descripcion).val(producto.descripcion);
-                }
-                
-                if (producto.imagen1 && producto.imagen1 !== '') {
-                    $(SELECTORES.preview.imagen).attr('src', CONFIG.imagen.rutaBase + producto.imagen1);
-                    $(SELECTORES.preview.container).show();
-                } else {
-                    $(SELECTORES.preview.container).hide();
-                }
-                $(SELECTORES.modalTitulo).text('Editar Producto');
-                $(SELECTORES.botones.guardar).html('<i class="fas fa-save"></i> Actualizar');
-                $(SELECTORES.formulario).find('.is-invalid').removeClass('is-invalid');
-                $(SELECTORES.modal).modal('show');
-            } else {
-                mostrarAlerta('error', 'Error', response.message);
+
+            if (!response.success) {
+                return mostrarAlerta('error', 'Error', response.message);
             }
+
+            const producto = response.data;
+
+            // Campos
+            $(SELECTORES.campos.idOculto).val(producto.id_oculto);
+            $(SELECTORES.campos.nombre).val(producto.nombre);
+            $(SELECTORES.campos.idCategoria).val(producto.id_categoria);
+            $(SELECTORES.campos.precio).val(producto.precio);
+            $(SELECTORES.campos.etiquetas).val(producto.etiquetas);
+
+            // Descripción
+            if (tinymce.get('descripcion')) {
+                tinymce.get('descripcion').setContent(producto.descripcion || '');
+            } else {
+                $(SELECTORES.campos.descripcion).val(producto.descripcion);
+            }
+
+            // IMÁGENES
+            const campos = ['imagen1','imagen2','imagen3','imagen4','imagen5','imagendetalle'];
+
+            campos.forEach(campo => {
+                const filename = producto[campo] || '';
+
+                const sufijo = campo === 'imagendetalle' ? 'Detalle' : campo.replace('imagen','');
+                const previewImg = $('#imagenPreview' + sufijo);
+                const previewContainer = $('#previewContainer' + sufijo);
+
+                if (filename) {
+                    previewImg.attr('src', CONFIG.imagen.rutaBase + filename);
+                    previewImg.removeClass('d-none');
+                    previewContainer.show();
+                } else {
+                    previewImg.attr('src', '').addClass('d-none');
+                    previewContainer.hide();
+                }
+            });
+
+            $(SELECTORES.modalTitulo).text('Editar Producto');
+            $(SELECTORES.botones.guardar).html('<i class="fas fa-save"></i> Actualizar');
+            $(SELECTORES.formulario).find('.is-invalid').removeClass('is-invalid');
+            $(SELECTORES.modal).modal('show');
         },
+
         error: function() {
             mostrarAlerta('error', 'Error', MENSAJES.error.cargarInfo);
         }
     });
 }
+
 
 function previsualizarImagen(input) {
     if (input.files && input.files[0]) {

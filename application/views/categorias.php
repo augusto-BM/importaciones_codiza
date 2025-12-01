@@ -9,7 +9,7 @@
 <div class="dashboard-wrapper">
     <div class="dashboard-container">
         <div class="page-header">
-            <h1><i class="fas fa-list"></i> Gestión de Categorías</h1>
+            <h1><i class="fas fa-list"></i>Categorías</h1>
             <div class="filters-wrapper">
                 <div class="filter-group">
                     <label for="filtroEstado">Estado</label>

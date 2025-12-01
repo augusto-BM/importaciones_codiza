@@ -6,10 +6,33 @@
     const base_url = '<?php echo base_url(); ?>productos/';
     const base_url_img = '<?php echo base_url(); ?>';
 </script>
+<!-- Estilos responsivos para vistas previas de imágenes -->
+<style>
+    .preview-container { display: none; }
+    .imagen-preview {
+        max-width: 150px;
+        max-height: 150px;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+        border-radius: 6px;
+    }
+    /* Centrar y espaciar la previsualización */
+    .preview-wrapper { display:flex; justify-content:center; align-items:center; padding:6px 0; }
+
+    /* Ajustes en pantallas pequeñas */
+    @media (max-width: 576px) {
+        .imagen-preview { max-width: 120px; max-height: 120px; }
+        .preview-wrapper { padding:4px 0; }
+    }
+    @media (min-width: 992px) {
+        .imagen-preview { max-width: 180px; max-height: 180px; }
+    }
+</style>
 <div class="dashboard-wrapper">
     <div class="dashboard-container">
         <div class="page-header">
-            <h1><i class="fas fa-box"></i> Gestión de Productos</h1>
+            <h1><i class="fas fa-box"></i>Productos</h1>
             <div class="filters-wrapper">
                 <div class="filter-group">
                     <label for="filtroEstado">Estado</label>
@@ -69,6 +92,7 @@
     </div>
 </div>
 
+
 <!-- Modal -->
 <div class="modal modal-global fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-xl modal-xxl">
@@ -107,7 +131,7 @@
                         </div>
                         <div class="col-md-2">
                             <div class="form-group">
-                                <label for="precio">Precio <span class="text-danger">*</span></label>
+                                <label for="precio">Precio</label>
                                 <input type="number" step="0.01" class="form-control mb-2" id="precio" name="precio" placeholder="0.00">
                             </div>
                         </div>
@@ -133,120 +157,63 @@
                     <hr class="my-3">
                     <h5 class="mb-3"><i class="fas fa-images"></i> Imágenes del Producto</h5>
                     
-                    <!-- Imagen Principal -->
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
+                    <!-- Imagen -->
+                    <div class="row d-flex align-items-center">
+                        <div class="col-12 col-md-4 col-lg-3">
+                            <div class="form-group" style="display: flex; flex-direction: column;">
                                 <label for="imagen1">Imagen Principal</label>
                                 <input type="file" class="form-control-file mb-2" id="imagen1" name="imagen1" accept="image/*">
-                                <small class="form-text text-muted">Formatos permitidos: JPG, PNG (Max: 2MB)</small>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group" id="previewContainer1" style="display: none;">
-                                <label>Vista previa</label>
-                                <div class="text-center">
-                                    <img id="imagenPreview1" src="" alt="Vista previa" class="img-thumbnail" style="max-width: 150px; max-height: 150px; object-fit: cover;">
+                                <div class="preview-wrapper" id="previewContainer1">
+                                    <img id="imagenPreview1" class="img-thumbnail imagen-preview d-none">
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    <!-- Imagen 2 -->
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
+                        <div class="col-12 col-md-4 col-lg-3">
+                            <div class="form-group" style="display: flex; flex-direction: column;">
                                 <label for="imagen2">Imagen 2</label>
                                 <input type="file" class="form-control-file mb-2" id="imagen2" name="imagen2" accept="image/*">
-                                <small class="form-text text-muted">Formatos permitidos: JPG, PNG (Max: 2MB)</small>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group" id="previewContainer2" style="display: none;">
-                                <label>Vista previa</label>
-                                <div class="text-center">
-                                    <img id="imagenPreview2" src="" alt="Vista previa" class="img-thumbnail" style="max-width: 150px; max-height: 150px; object-fit: cover;">
+                                <div class="preview-wrapper" id="previewContainer2">
+                                    <img id="imagenPreview2" class="img-thumbnail imagen-preview d-none">
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    <!-- Imagen 3 -->
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
+                        <div class="col-12 col-md-4 col-lg-3">
+                            <div class="form-group" style="display: flex; flex-direction: column;">
                                 <label for="imagen3">Imagen 3</label>
                                 <input type="file" class="form-control-file mb-2" id="imagen3" name="imagen3" accept="image/*">
-                                <small class="form-text text-muted">Formatos permitidos: JPG, PNG (Max: 2MB)</small>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group" id="previewContainer3" style="display: none;">
-                                <label>Vista previa</label>
-                                <div class="text-center">
-                                    <img id="imagenPreview3" src="" alt="Vista previa" class="img-thumbnail" style="max-width: 150px; max-height: 150px; object-fit: cover;">
+                                <div class="preview-wrapper" id="previewContainer3">
+                                    <img id="imagenPreview3" class="img-thumbnail imagen-preview d-none">
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    <!-- Imagen 4 -->
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
+                        <div class="col-12 col-md-4 col-lg-3">
+                            <div class="form-group" style="display: flex; flex-direction: column;">
                                 <label for="imagen4">Imagen 4</label>
                                 <input type="file" class="form-control-file mb-2" id="imagen4" name="imagen4" accept="image/*">
-                                <small class="form-text text-muted">Formatos permitidos: JPG, PNG (Max: 2MB)</small>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group" id="previewContainer4" style="display: none;">
-                                <label>Vista previa</label>
-                                <div class="text-center">
-                                    <img id="imagenPreview4" src="" alt="Vista previa" class="img-thumbnail" style="max-width: 150px; max-height: 150px; object-fit: cover;">
+                                <div class="preview-wrapper" id="previewContainer4">
+                                    <img id="imagenPreview4" class="img-thumbnail imagen-preview d-none">
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    <!-- Imagen 5 -->
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
+                        <div class="col-12 col-md-4 col-lg-3">
+                            <div class="form-group" style="display: flex; flex-direction: column;">
                                 <label for="imagen5">Imagen 5</label>
                                 <input type="file" class="form-control-file mb-2" id="imagen5" name="imagen5" accept="image/*">
-                                <small class="form-text text-muted">Formatos permitidos: JPG, PNG (Max: 2MB)</small>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group" id="previewContainer5" style="display: none;">
-                                <label>Vista previa</label>
-                                <div class="text-center">
-                                    <img id="imagenPreview5" src="" alt="Vista previa" class="img-thumbnail" style="max-width: 150px; max-height: 150px; object-fit: cover;">
+                                <div class="preview-wrapper" id="previewContainer5">
+                                    <img id="imagenPreview5" class="img-thumbnail imagen-preview d-none">
                                 </div>
                             </div>
                         </div>
-                    </div>
-
-                    <!-- Imagen Detalle -->
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
+                        <div class="col-12 col-md-4 col-lg-3">
+                            <div class="form-group" style="display: flex; flex-direction: column;">
                                 <label for="imagendetalle">Imagen de Detalle</label>
                                 <input type="file" class="form-control-file mb-2" id="imagendetalle" name="imagendetalle" accept="image/*">
-                                <small class="form-text text-muted">Imagen para mostrar detalles específicos del producto (Max: 2MB)</small>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group" id="previewContainerDetalle" style="display: none;">
-                                <label>Vista previa</label>
-                                <div class="text-center">
-                                    <img id="imagenPreviewDetalle" src="" alt="Vista previa" class="img-thumbnail" style="max-width: 150px; max-height: 150px; object-fit: cover;">
+                                <div class="preview-wrapper" id="previewContainerDetalle">
+                                    <img id="imagenPreviewDetalle" class="img-thumbnail imagen-preview d-none">
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-guardar btn-success">

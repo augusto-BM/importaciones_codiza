@@ -205,9 +205,14 @@ class Productos extends CI_Controller {
             'etiquetas' => $etiquetas
         );
 
-        $nombre_imagen = $this->procesar_imagen_subida($id_oculto);
-        if ($nombre_imagen !== false) {
-            $datos['imagen1'] = $nombre_imagen;
+        // Procesar subida de múltiples imágenes (imagen1..imagen5 y imagendetalle)
+        $nombres_imagenes = $this->procesar_imagen_subida($id_oculto);
+        if ($nombres_imagenes !== false && is_array($nombres_imagenes)) {
+            foreach ($nombres_imagenes as $campo => $nombre_archivo) {
+                if (!empty($nombre_archivo)) {
+                    $datos[$campo] = $nombre_archivo;
+                }
+            }
         }
 
         if (empty($id_oculto)) {
@@ -258,37 +263,47 @@ class Productos extends CI_Controller {
     // PROCESAR IMAGEN
     // ===========================
     private function procesar_imagen_subida($id_oculto = null) {
-        if (empty($_FILES['imagen1']['name'])) {
-            return false;
+        $campos = ['imagen1','imagen2','imagen3','imagen4','imagen5','imagendetalle'];
+        $config_base['upload_path'] = './images/productos/';
+        $config_base['allowed_types'] = 'gif|jpg|jpeg|png';
+        $config_base['max_size'] = 2048;
+        $config_base['encrypt_name'] = true;
+        if (!is_dir($config_base['upload_path'])) {
+            mkdir($config_base['upload_path'], 0777, true);
         }
-        $config['upload_path'] = './images/productos/';
-        $config['allowed_types'] = 'gif|jpg|jpeg|png';
-        $config['max_size'] = 2048;
-        $config['encrypt_name'] = true;
-        if (!is_dir($config['upload_path'])) {
-            mkdir($config['upload_path'], 0777, true);
-        }
-        $this->upload->initialize($config);
-        if ($this->upload->do_upload('imagen1')) {
-            $upload_data = $this->upload->data();
-            $nombre_imagen = $upload_data['file_name'];
-            if ($id_oculto) {
-                $this->eliminar_imagen_anterior($id_oculto);
+
+        $resultados = [];
+        $algunaSubida = false;
+
+        foreach ($campos as $campo) {
+            if (!empty($_FILES[$campo]['name'])) {
+                $this->upload->initialize($config_base);
+                if ($this->upload->do_upload($campo)) {
+                    $upload_data = $this->upload->data();
+                    $nombre_imagen = $upload_data['file_name'];
+                    // eliminar anterior solo para ese campo
+                    if ($id_oculto) {
+                        $this->eliminar_imagen_anterior($id_oculto, $campo);
+                    }
+                    $resultados[$campo] = $nombre_imagen;
+                    $algunaSubida = true;
+                } else {
+                    log_message('error', 'Error al subir ' . $campo . ': ' . $this->upload->display_errors('', ''));
+                    $resultados[$campo] = '';
+                }
             }
-            return $nombre_imagen;
-        } else {
-            log_message('error', 'Error al subir imagen: ' . $this->upload->display_errors('', ''));
-            return false;
         }
+
+        return $algunaSubida ? $resultados : false;
     }
 
     // ===========================
     // ELIMINAR IMAGEN ANTERIOR
     // ===========================
-    private function eliminar_imagen_anterior($id_oculto) {
-        $imagen_actual = $this->Producto_model->obtener_imagen_actual($id_oculto);
-        if ($imagen_actual && !empty($imagen_actual)) {
-            $ruta_imagen = './images/productos/' . $imagen_actual;
+    private function eliminar_imagen_anterior($id_oculto, $campo = 'imagen1') {
+        $imagenes = $this->Producto_model->obtener_imagen_actual($id_oculto);
+        if ($imagenes && isset($imagenes->{$campo}) && !empty($imagenes->{$campo})) {
+            $ruta_imagen = './images/productos/' . $imagenes->{$campo};
             if (file_exists($ruta_imagen)) {
                 @unlink($ruta_imagen);
             }

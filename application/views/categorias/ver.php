@@ -396,15 +396,16 @@
                             <div class="product-image-container">
                                 <div class="product-image-wrapper">
                                     <?php if (!empty($producto->imagen1)): ?>
-                                        <img src="<?= base_url($producto->imagen1) ?>" 
+                                        
+                                        <img src="<?= base_url("images/productos/$producto->imagen1") ?>" 
                                              alt="<?= htmlspecialchars($producto->nombre) ?>" 
                                              class="product-image image-1">
                                         <?php if (!empty($producto->imagen2)): ?>
-                                            <img src="<?= base_url($producto->imagen2) ?>" 
+                                            <img src="<?= base_url("images/productos/$producto->imagen2") ?>" 
                                                  alt="<?= htmlspecialchars($producto->nombre) ?>" 
                                                  class="product-image image-2">
                                         <?php else: ?>
-                                            <img src="<?= base_url($producto->imagen1) ?>" 
+                                            <img src="<?= base_url("images/productos/$producto->imagen1") ?>" 
                                                  alt="<?= htmlspecialchars($producto->nombre) ?>" 
                                                  class="product-image image-2">
                                         <?php endif; ?>
