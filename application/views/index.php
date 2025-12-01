@@ -463,7 +463,7 @@
         <div class="banner-carousel-wrapper">
         <div class="banner-carousel-track">
             <!-- Slide 1 -->
-            <div class="banner-slide active" data-slide="0" style="background-image: url('<?= base_url("images/banner/banner.jpg") ?>');">
+            <div class="banner-slide active" data-slide="0" style="background-image: url('<?= base_url("images/banner/3-banners.jpg") ?>');">
                 <div class="banner-overlay"></div>
                 <div class="banner-content">
                     <h1 class="banner-title-animate">Bienvenidos a Importaciones Codiza</h1>
@@ -475,7 +475,7 @@
             </div>
 
             <!-- Slide 2 -->
-            <div class="banner-slide" data-slide="1" style="background-image: url('<?= base_url("images/banner/banner2.jpg") ?>');">
+            <div class="banner-slide" data-slide="1" style="background-image: url('<?= base_url("images/banner/3-banners2.jpg") ?>');">
                 <div class="banner-overlay"></div>
                 <div class="banner-content">
                     <h1 class="banner-title-animate">Bienvenidos a Importaciones Codiza</h1>
@@ -487,7 +487,7 @@
             </div>
 
             <!-- Slide 3 -->
-            <div class="banner-slide" data-slide="2" style="background-image: url('<?= base_url("images/banner/banner3.jpg") ?>');">
+            <div class="banner-slide" data-slide="2" style="background-image: url('<?= base_url("images/banner/3-banners3.jpg") ?>');">
                 <div class="banner-overlay"></div>
                 <div class="banner-content">
                     <h1 class="banner-title-animate">Bienvenidos a Importaciones Codiza</h1>
@@ -1442,6 +1442,14 @@ $(document).ready(function() {
         slidesBanner.eq(currentSlideBanner).addClass('active');
         dotsBanner.eq(currentSlideBanner).addClass('active');
         
+        // Ejecutar la animación de contenido del slide actual (si existe)
+        // Se usa un pequeño retardo para permitir que se aplique la clase "active"
+        setTimeout(function() {
+            if (typeof window.animateBannerContent === 'function') {
+                window.animateBannerContent();
+            }
+        }, 250);
+
         // Permitir nueva transición después de 800ms (duración de la animación)
         setTimeout(function() {
             isTransitioning = false;
@@ -1457,7 +1465,7 @@ $(document).ready(function() {
         
         autoplayIntervalBanner = setInterval(function() {
             showSlideBanner(currentSlideBanner + 1);
-        }, 6000); // Cambia cada 6 segundos (más tiempo para evitar cambios rápidos)
+        }, 5000); // Cambia cada 6 segundos (más tiempo para evitar cambios rápidos)
     }
 
     // Función para detener autoplay
@@ -1556,8 +1564,9 @@ $(document).ready(function() {
 // ANIMACIONES DEL BANNER
 // =======================================
 $(document).ready(function() {
-    // Función para animar elementos del slide activo
-    function animateBannerContent() {
+    // Convertir la función en global para que pueda llamarse desde
+    // showSlideBanner (autoplay, dots y botones)
+    window.animateBannerContent = function() {
         // Resetear y ocultar inmediatamente los elementos antes de animar
         $('.banner-slide.active .banner-title-animate').css({
             'opacity': '0',
@@ -1574,7 +1583,8 @@ $(document).ready(function() {
         });
         
         // Forzar reflow para asegurar que los estilos se apliquen
-        $('.banner-slide.active .banner-title-animate')[0].offsetHeight;
+        const titleEl = $('.banner-slide.active .banner-title-animate')[0];
+        if (titleEl) titleEl.offsetHeight;
         
         // Animar el título: entrada desde el centro con escala
         setTimeout(function() {
@@ -1606,7 +1616,7 @@ $(document).ready(function() {
     
     // Ejecutar animación al cargar la página
     setTimeout(function() {
-        animateBannerContent();
+        if (typeof window.animateBannerContent === 'function') window.animateBannerContent();
     }, 800);
     
     // Re-ejecutar animación cuando cambia el slide
@@ -1619,7 +1629,7 @@ $(document).ready(function() {
         });
         
         setTimeout(function() {
-            animateBannerContent();
+            if (typeof window.animateBannerContent === 'function') window.animateBannerContent();
         }, 200);
     });
 });
