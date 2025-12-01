@@ -109,4 +109,124 @@ class Producto_model extends CI_Model {
     public function eliminarProducto($id) {
         $this->db->where("id_producto", $id)->update("productos", ["cji_flagestado" => "2"]);
     }
+
+    // =======================================
+    // ADMIN PANEL - DATATABLE
+    // =======================================
+    public function getProductosTabla($filter) {
+        $this->db->select("p.id_producto, p.nombre, p.precio, p.descripcion, p.imagen1, p.imagen2, p.imagen3, p.imagen4, p.imagen5, p.imagendetalle, p.etiquetas, p.cji_flagestado, c.nombre AS categoria_nombre");
+        $this->db->from("productos p");
+        $this->db->order_by("p.nombre", "ASC");
+        $this->db->join("categorias c", "c.id_categoria = p.id_categoria", "left");
+
+        // Filtros
+        if (isset($filter->estado) && $filter->estado != 2) {
+            $this->db->where("p.cji_flagestado", $filter->estado);
+        }
+        if (!empty($filter->nombre)) {
+            $this->db->like("p.nombre", $filter->nombre);
+        }
+        if (!empty($filter->id_categoria)) {
+            $this->db->where("p.id_categoria", $filter->id_categoria);
+        }
+
+        $recordsTotal = $this->db->count_all_results("", false);
+
+        if (!empty($filter->search)) {
+            $this->db->group_start();
+            $this->db->like("p.nombre", $filter->search);
+            $this->db->or_like("c.nombre", $filter->search);
+            $this->db->or_like("p.descripcion", $filter->search);
+            $this->db->group_end();
+        }
+
+        $recordsFilter = $this->db->count_all_results("", false);
+
+        if (isset($filter->start) && isset($filter->length)) {
+            $this->db->limit($filter->length, $filter->start);
+        }
+
+        $this->db->order_by("p.id_producto", "DESC");
+        $records = $this->db->get()->result();
+
+        return [
+            "recordsTotal" => $recordsTotal,
+            "recordsFilter" => $recordsFilter,
+            "records" => $records
+        ];
+    }
+
+    public function existe_nombreProducto($nombre, $id_oculto = null) {
+        $this->db->select('id_producto');
+        $this->db->from('productos');
+        $this->db->where('nombre', $nombre);
+        if ($id_oculto) {
+            $this->db->where('id_producto !=', $id_oculto);
+        }
+        $query = $this->db->get();
+        return $query->num_rows() > 0;
+    }
+
+    // =======================================
+    // OBTENER PRODUCTO POR ID (ADMIN)
+    // =======================================
+    public function obtener_producto_por_id($id) {
+        $this->db->select("p.*, c.nombre AS categoria_nombre");
+        $this->db->from("productos p");
+        $this->db->join("categorias c", "c.id_categoria = p.id_categoria", "left");
+        $this->db->where("p.id_producto", $id);
+        $query = $this->db->get();
+        
+        if ($query->num_rows() > 0) {
+            $producto = $query->row();
+            return [
+                'id_oculto' => $producto->id_producto,
+                'nombre' => $producto->nombre,
+                'id_categoria' => $producto->id_categoria,
+                'precio' => $producto->precio,
+                'descripcion' => $producto->descripcion,
+                'etiquetas' => $producto->etiquetas,
+                'imagen1' => $producto->imagen1
+            ];
+        }
+        return false;
+    }
+
+    // =======================================
+    // INSERTAR PRODUCTO (ADMIN)
+    // =======================================
+    public function insertar_producto($datos) {
+        return $this->db->insert("productos", $datos);
+    }
+
+    // =======================================
+    // ACTUALIZAR PRODUCTO (ADMIN)
+    // =======================================
+    public function actualizar_producto($id, $datos) {
+        $this->db->where("id_producto", $id);
+        return $this->db->update("productos", $datos);
+    }
+
+    // =======================================
+    // CAMBIAR ESTADO
+    // =======================================
+    public function cambiar_estado_producto($id, $nuevo_estado) {
+        $this->db->where("id_producto", $id);
+        return $this->db->update("productos", ["cji_flagestado" => $nuevo_estado]);
+    }
+
+    // =======================================
+    // OBTENER IMAGEN ACTUAL
+    // =======================================
+    public function obtener_imagen_actual($id) {
+        $this->db->select("imagen1");
+        $this->db->from("productos");
+        $this->db->where("id_producto", $id);
+        $query = $this->db->get();
+        
+        if ($query->num_rows() > 0) {
+            return $query->row()->imagen1;
+        }
+        return null;
+    }
 }

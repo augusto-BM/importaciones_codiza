@@ -440,6 +440,18 @@
     }
 }
 
+.no-image-placeholder {
+    display: flex;              /* Usar flexbox para centrar el contenido */
+    justify-content: center;    /* Centrado horizontal */
+    align-items: center;        /* Centrado vertical */
+    height: 100%;               /* Asegura que ocupe toda la altura del contenedor */
+    width: 100%;                /* Asegura que ocupe toda la anchura del contenedor */
+    background-color: #f7f7f7; /* Opcional: color de fondo si no hay imagen */
+}
+
+.no-image-placeholder i {
+    color: #6c757d;  /* Opcional: color para el icono */
+}
 
 
 
@@ -520,11 +532,12 @@
                                 <div class="servicio-imagen-wrapper">
                                     <div class="servicio-imagen">
                                         <?php if (!empty($categoria->imagen)): ?>
-                                            <img src="<?= base_url($categoria->imagen) ?>" 
-                                                 alt="<?= htmlspecialchars($categoria->nombre) ?>">
+                                            <img src="<?= base_url("images/categorias/$categoria->imagen") ?>" 
+                                                alt="<?= htmlspecialchars($categoria->nombre) ?>">
                                         <?php else: ?>
-                                            <img src="<?= base_url('images/categorias/Ferreteria1.jpg') ?>" 
-                                                 alt="<?= htmlspecialchars($categoria->nombre) ?>">
+                                            <div class="no-image-placeholder">
+                                                <i class="fas fa-image fa-5x text-muted"></i>
+                                            </div>
                                         <?php endif; ?>
                                         <div class="servicio-overlay"></div>
                                     </div>
@@ -570,13 +583,16 @@
                                     <div class="servicio-imagen">
                                         <?php if (!empty($servicio->imagen)): ?>
                                             <img src="<?= base_url($servicio->imagen) ?>" 
-                                                 alt="<?= htmlspecialchars($servicio->nombre) ?>">
+                                                alt="<?= htmlspecialchars($servicio->nombre) ?>">
                                         <?php else: ?>
-                                            <img src="<?= base_url('images/categorias/Ferreteria1.jpg') ?>" 
-                                                 alt="<?= htmlspecialchars($servicio->nombre) ?>">
+                                            <!-- Mostrar un icono centrado si no hay imagen -->
+                                            <div class="no-image-placeholder">
+                                                <i class="fas fa-image fa-5x text-muted"></i>
+                                            </div>
                                         <?php endif; ?>
                                         <div class="servicio-overlay"></div>
                                     </div>
+
                                     <div class="servicio-nombre">
                                         <h4><?= htmlspecialchars($servicio->nombre) ?></h4>
                                     </div>

@@ -12,10 +12,20 @@
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
 
+<!-- DataTables CSS -->
+<link rel="stylesheet" href="https://cdn.datatables.net/1.13.7/css/dataTables.bootstrap5.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.5.0/css/responsive.bootstrap5.min.css">
+
 <!-- jQuery DEBE IR PRIMERO -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js" integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y" crossorigin="anonymous"></script>
+
+<!-- DataTables JS -->
+<script src="https://cdn.datatables.net/1.13.7/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.7/js/dataTables.bootstrap5.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.5.0/js/responsive.bootstrap5.min.js"></script>
 
 <!-- ScrollReveal.js - Para animaciones al hacer scroll -->
 <!-- <script src="https://unpkg.com/scrollreveal"></script> -->
@@ -568,6 +578,13 @@ body {
         gap: 20px;
     }
 }
+
+/* ============================= */
+/* TOOLTIPS Z-INDEX             */
+/* ============================= */
+.tooltip {
+    z-index: 99999 !important;
+}
 </style>
 
 </head>
@@ -643,9 +660,9 @@ body {
                         $current_controller = $ci->router->fetch_class();
                         $current_method = $ci->router->fetch_method();
                         
-                        // Mostrar menú de administrador solo si está logueado Y está en el dashboard
-                        $es_area_admin = ($current_controller === 'login' && $current_method === 'dashboard') || 
-                                        in_array($current_controller, ['tipo_categoria', 'categoria', 'productos', 'clientes']);
+                        // Detectar área administrativa: cualquier método de Login excepto los públicos
+                        $metodos_publicos = ['index', 'validar', 'salir'];
+                        $es_area_admin = ($current_controller === 'login' && !in_array($current_method, $metodos_publicos));
                         
                         if ($ci->session->userdata('logeado') && $ci->session->userdata('usuario_id') == 1 && $es_area_admin): 
                             // Menú para administrador logueado EN ÁREA ADMINISTRATIVA
@@ -656,23 +673,23 @@ body {
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="<?= base_url('tipo_categoria/listar'); ?>">
-                                    <i class="fas fa-tags"></i> Tipos
+                                <a class="nav-link" href="<?= base_url('login/productos'); ?>">
+                                    <i class="fas fa-shopping-bag"></i> Productos
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="<?= base_url('categoria/listar'); ?>">
+                                <a class="nav-link" href="<?= base_url('login/categorias'); ?>">
                                     <i class="fas fa-folder"></i> Categorías
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="<?= base_url('productos/listar'); ?>">
-                                    <i class="fas fa-boxes"></i> Productos
+                                <a class="nav-link" href="<?= base_url('login/clientes'); ?>">
+                                    <i class="fas fa-users"></i> Clientes
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="<?= base_url('clientes/listar'); ?>">
-                                    <i class="fas fa-users"></i> Clientes
+                                <a class="nav-link" href="<?= base_url('login/tiposcategorias'); ?>" title="TIPO DE CATEGORIAS">
+                                    <i class="fas fa-tags"></i> Tipo
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -718,6 +735,20 @@ body {
                             <li class="nav-item">
                                 <a class="nav-link" href="<?= base_url('servicios'); ?>">Servicios</a>
                             </li>
+                            
+                            <?php if ($ci->session->userdata('logeado') && $ci->session->userdata('usuario_id') == 1): ?>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="<?= base_url('login/salir'); ?>" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Cerrar Sesión">
+                                        <i class="fas fa-sign-out-alt"></i>
+                                    </a>
+                                </li>
+                            <?php else: ?>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="<?= base_url('login'); ?>" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Iniciar Sesión">
+                                        <i class="fa-solid fa-user"></i>
+                                    </a>
+                                </li>
+                            <?php endif; ?>
                         <?php endif; ?>
                     </ul>
                 </div>
@@ -744,9 +775,9 @@ body {
                 $current_controller = $ci->router->fetch_class();
                 $current_method = $ci->router->fetch_method();
                 
-                // Mostrar menú de administrador solo si está logueado Y está en el dashboard
-                $es_area_admin = ($current_controller === 'login' && $current_method === 'dashboard') || 
-                                in_array($current_controller, ['tipo_categoria', 'categoria', 'productos', 'clientes']);
+                // Detectar área administrativa: cualquier método de Login excepto los públicos
+                $metodos_publicos = ['index', 'validar', 'salir'];
+                $es_area_admin = ($current_controller === 'login' && !in_array($current_method, $metodos_publicos));
                 
                 if ($ci->session->userdata('logeado') && $ci->session->userdata('usuario_id') == 1 && $es_area_admin): 
                     // Menú móvil para administrador logueado EN ÁREA ADMINISTRATIVA
@@ -754,17 +785,17 @@ body {
                     <a href="<?= base_url('login/dashboard'); ?>" class="mobile-menu-link">
                         <i class="fas fa-home"></i> Dashboard
                     </a>
-                    <a href="<?= base_url('tipo_categoria/listar'); ?>" class="mobile-menu-link">
-                        <i class="fas fa-tags"></i> Tipos
+                    <a href="<?= base_url('login/productos'); ?>" class="mobile-menu-link">
+                        <i class="fas fa-shopping-bag"></i> Productos
                     </a>
-                    <a href="<?= base_url('categoria/listar'); ?>" class="mobile-menu-link">
+                    <a href="<?= base_url('login/categorias'); ?>" class="mobile-menu-link">
                         <i class="fas fa-folder"></i> Categorías
                     </a>
-                    <a href="<?= base_url('productos/listar'); ?>" class="mobile-menu-link">
-                        <i class="fas fa-boxes"></i> Productos
-                    </a>
-                    <a href="<?= base_url('clientes/listar'); ?>" class="mobile-menu-link">
+                    <a href="<?= base_url('login/clientes'); ?>" class="mobile-menu-link">
                         <i class="fas fa-users"></i> Clientes
+                    </a>
+                    <a href="<?= base_url('login/tiposcategorias'); ?>" class="mobile-menu-link" title="TIPO DE CATEGORIAS">
+                        <i class="fas fa-tags"></i> Tipo
                     </a>
                     <a href="<?= base_url('login/salir'); ?>" class="mobile-menu-link">
                         <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
@@ -798,6 +829,16 @@ body {
                     
                     <a href="<?= base_url('proyectos'); ?>" class="mobile-menu-link">Proyectos</a>
                     <a href="<?= base_url('servicios'); ?>" class="mobile-menu-link">Servicios</a>
+                    
+                    <?php if ($ci->session->userdata('logeado') && $ci->session->userdata('usuario_id') == 1): ?>
+                        <a href="<?= base_url('login/salir'); ?>" class="mobile-menu-link" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Cerrar Sesión">
+                            <i class="fas fa-sign-out-alt"></i>
+                        </a>
+                    <?php else: ?>
+                        <a href="<?= base_url('login'); ?>" class="mobile-menu-link" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Iniciar Sesión">
+                            <i class="fa-solid fa-user"></i>
+                        </a>
+                    <?php endif; ?>
                 <?php endif; ?>
             </div>
 
@@ -837,6 +878,17 @@ $(window).on('scroll', function() {
     } else {
         header.removeClass('shrink');
     }
+});
+
+// ============================= 
+// INICIALIZAR TOOLTIPS DE BOOTSTRAP
+// ============================= 
+$(document).ready(function() {
+    // Inicializar todos los tooltips
+    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+        return new bootstrap.Tooltip(tooltipTriggerEl);
+    });
 });
 
 // ============================= 

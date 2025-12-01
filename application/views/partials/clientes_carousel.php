@@ -17,11 +17,12 @@
                                     <div class="servicio-imagen-wrapper">
                                         <div class="servicio-imagen">
                                             <?php if (!empty($cliente->imagen)): ?>
-                                                <img src="<?= base_url($cliente->imagen) ?>" 
+                                                <img src="<?= base_url('images/clientes/' . $cliente->imagen) ?>" 
                                                      alt="<?= htmlspecialchars($cliente->nombre) ?>">
                                             <?php else: ?>
-                                                <img src="<?= base_url('images/categorias/Ferreteria1.jpg') ?>" 
-                                                     alt="<?= htmlspecialchars($cliente->nombre) ?>">
+                                                <div class="no-image-placeholder">
+                                                    <i class="fas fa-image fa-3x text-muted"></i>
+                                                </div>
                                             <?php endif; ?>
                                             <div class="servicio-overlay"></div>
                                         </div>

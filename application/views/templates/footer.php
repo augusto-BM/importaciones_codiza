@@ -393,8 +393,7 @@
                 <!-- Columna 1: Logo e información -->
                 <div class="col-12 col-md-6 col-lg-3 mb-4">
                     <div class="footer-logo">
-                        <img src="<?= base_url('images/logo/footer-codiza-logo.png') ?>" alt="Importaciones Codiza">
-                        
+                        <img src="<?= base_url('images/logo/logo.png') ?>" alt="Importaciones Codiza">
                     </div>
                     <p class="footer-description">
                         Ventas, importación y distribución de herramientas para la industria de metalmecánica

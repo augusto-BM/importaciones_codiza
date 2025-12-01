@@ -1,0 +1,741 @@
+
+/* ============================================
+   CONTENEDORES GLOBALES - Dashboard
+   ============================================ */
+.dashboard-wrapper {
+    background: #f8f9fa;
+    padding: 15px 10px;
+    width: 100%;
+    min-height: auto;
+}
+
+.dashboard-container {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    margin: 0 auto;
+}
+
+/* ============================================
+   ENCABEZADOS DE PÁGINA
+   ============================================ */
+.page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #61CE70;
+    gap: 15px;
+}
+
+.page-title {
+    font-size: 20px;
+    color: #333;
+    font-weight: 700;
+    margin: 0;
+    flex-shrink: 0;
+}
+
+.page-title i {
+    color: #61CE70;
+    margin-right: 8px;
+}
+
+/* Compatibilidad con h1 dentro de page-header */
+.page-header h1 {
+    font-size: 20px;
+    color: #333;
+    font-weight: 700;
+    margin: 0;
+    flex-shrink: 0;
+}
+
+.page-header h1 i {
+    color: #61CE70;
+    margin-right: 8px;
+}
+
+/* ============================================
+   FILTROS Y CONTROLES
+   ============================================ */
+.filters-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    flex: 1;
+}
+
+.filter-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.filter-label {
+    font-size: 13px;
+    font-weight: 500;
+    margin: 0;
+    color: #555;
+    white-space: nowrap;
+}
+
+/* Compatibilidad con label dentro de filter-group */
+.filter-group label {
+    font-size: 13px;
+    font-weight: 500;
+    margin: 0;
+    color: #555;
+    white-space: nowrap;
+}
+
+.filter-input {
+    height: 34px;
+    font-size: 13px;
+    padding: 6px 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    min-width: 120px;
+    transition: all 0.3s ease;
+}
+
+.filter-input:focus {
+    border-color: #61CE70;
+    box-shadow: 0 0 0 0.15rem rgba(97, 206, 112, 0.25);
+    outline: none;
+}
+
+/* Compatibilidad con .form-control dentro de filter-group */
+.filter-group .form-control {
+    height: 34px;
+    font-size: 13px;
+    padding: 6px 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    min-width: 120px;
+}
+
+.filter-group .form-control:focus {
+    border-color: #61CE70;
+    box-shadow: 0 0 0 0.15rem rgba(97, 206, 112, 0.25);
+    outline: none;
+}
+
+/* ============================================
+   BOTONES GLOBALES
+   ============================================ */
+
+/* Botón de búsqueda/filtro */
+.btn-buscar,
+.btn-search {
+    height: 34px;
+    padding: 6px 15px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+    background: #61CE70;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-buscar:hover,
+.btn-search:hover {
+    background: #4CAF50;
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(97, 206, 112, 0.3);
+}
+
+/* Botón limpiar */
+.btn-limpiar,
+.btn-clear {
+    height: 34px;
+    padding: 6px 15px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+    background: #343a40;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-limpiar:hover,
+.btn-clear:hover {
+    background: #23272b;
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(52, 58, 64, 0.3);
+}
+
+/* Botón de agregar nuevo (genérico) */
+.btn-add,
+.btn-primary-action {
+    background: #61CE70;
+    color: white;
+    padding: 6px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 13px;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-left: auto;
+}
+
+.btn-add:hover,
+.btn-primary-action:hover {
+    background: #4CAF50;
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(97, 206, 112, 0.4);
+}
+
+/* Mantener compatibilidad con nombre específico */
+.btn-add {
+    background: #61CE70;
+    color: white;
+    padding: 6px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 13px;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    margin-left: auto;
+}
+
+.btn-add:hover {
+    background: #4CAF50;
+    color: white;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(97, 206, 112, 0.4);
+}
+
+/* ============================================
+   CONTENEDOR DE TABLA GLOBAL
+   ============================================ */
+.table-container,
+.data-table-container {
+    overflow: visible;
+    margin-top: 10px;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .table-container,
+    .data-table-container {
+        overflow-x: auto;
+    }
+}
+
+/* Tabla genérica para CRUD */
+.crud-table,
+.data-table {
+    width: 100%;
+    table-layout: auto;
+}
+
+/* Mantener compatibilidad */
+.clientes-table {
+    width: 100%;
+    table-layout: auto;
+}
+
+/* ============================================
+   PERSONALIZACIÓN DE DATATABLES (GLOBAL)
+   ============================================ */
+.dataTables_wrapper {
+    padding: 10px 0;
+    width: 100%;
+    overflow-x: visible !important;
+}
+
+.dataTables_wrapper .dataTables_scroll {
+    overflow-x: visible !important;
+}
+
+.dataTables_wrapper .dataTables_scrollBody {
+    overflow-x: visible !important;
+}
+
+.dataTables_filter {
+    margin-bottom: 10px;
+}
+
+.dataTables_filter input {
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    padding: 5px 10px;
+    margin-left: 8px;
+    font-size: 13px;
+    transition: all 0.3s ease;
+}
+
+.dataTables_filter input:focus {
+    border-color: #61CE70;
+    outline: none;
+    box-shadow: 0 0 0 0.2rem rgba(97, 206, 112, 0.25);
+}
+
+.dataTables_length select {
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    padding: 4px 25px 4px 8px;
+    margin: 0 8px;
+    font-size: 13px;
+    transition: all 0.3s ease;
+}
+
+.dataTables_length select:focus {
+    border-color: #61CE70;
+    outline: none;
+}
+
+.dataTables_info {
+    padding-top: 10px;
+    color: #666;
+    font-size: 13px;
+}
+
+.dataTables_paginate {
+    padding-top: 10px;
+}
+
+.page-item.active .page-link {
+    background-color: #61CE70;
+    border-color: #61CE70;
+}
+
+.page-link {
+    color: #61CE70;
+    transition: all 0.3s ease;
+}
+
+.page-link:hover {
+    color: #4CAF50;
+    background-color: #f5f9f6;
+}
+
+/* ============================================
+   ESTILOS DE TABLA GLOBAL
+   ============================================ */
+
+/* Tablas genéricas */
+.crud-table,
+.data-table,
+.clientes-table {
+    width: 100%;
+    table-layout: auto;
+}
+
+/* Encabezado de tabla con gradiente verde */
+.crud-table thead,
+.data-table thead,
+.clientes-table thead {
+    background: linear-gradient(135deg, #61CE70 0%, #4CAF50 100%) !important;
+    color: white;
+}
+
+/* Efecto hover en filas */
+.crud-table tbody tr,
+.data-table tbody tr,
+.clientes-table tbody tr {
+    transition: all 0.2s ease;
+}
+
+.crud-table tbody tr:hover,
+.data-table tbody tr:hover,
+.clientes-table tbody tr:hover {
+    background: #f5f9f6 !important;
+    transform: scale(1.01);
+}
+
+/* ============================================
+   CELDAS Y TIPOGRAFÍA DE TABLAS
+   ============================================ */
+
+/* Tamaño de fuente global para tablas CRUD */
+.crud-table thead td,
+.crud-table thead th,
+.crud-table tbody td,
+.crud-table tbody th,
+.data-table thead td,
+.data-table thead th,
+.data-table tbody td,
+.data-table tbody th {
+    font-size: 13px !important;
+}
+
+/* Estilo de encabezados de tabla */
+.crud-table th,
+.data-table th {
+    padding: 10px;
+    text-align: left;
+    font-weight: 600;
+    border: none !important;
+}
+
+/* Estilo de celdas de tabla */
+.crud-table td,
+.data-table td {
+    padding: 8px 10px;
+    vertical-align: middle;
+}
+
+/* Mantener compatibilidad con ID específico */
+#tablaGeneral thead td,
+#tablaGeneral thead th,
+#tablaGeneral tbody td,
+#tablaGeneral tbody th {
+    font-size: 13px !important;
+}
+
+#tablaGeneral th {
+    padding: 10px;
+    text-align: left;
+    font-weight: 600;
+    border: none !important;
+}
+
+#tablaGeneral td {
+    padding: 8px 10px; 
+    vertical-align: middle;
+}
+
+#tablaGeneral_wrapper .dataTables_length,
+#tablaGeneral_wrapper .dataTables_filter,
+#tablaGeneral_wrapper .dataTables_info,
+#tablaGeneral_wrapper .dataTables_paginate {
+    font-size: 15px !important;
+}
+
+/* ============================================
+   BOTONES DE ACCIÓN EN TABLAS (CRUD)
+   ============================================ */
+.btn-group,
+.action-buttons {
+    display: flex;
+    gap: 3px;
+    justify-content: center;
+}
+
+/* Tamaño pequeño para botones de tabla */
+.btn-sm,
+.btn-table-action {
+    padding: 4px 8px;
+    font-size: 12px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Botón Ver/Info */
+.btn-info,
+.btn-view {
+    background: #17a2b8;
+    border-color: #17a2b8;
+    color: white;
+}
+
+.btn-info:hover,
+.btn-view:hover {
+    background: #138496;
+    border-color: #117a8b;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(23, 162, 184, 0.3);
+}
+
+/* Botón Editar */
+.btn-edit,
+.btn-warning {
+    background: #FFC107;
+    border-color: #FFC107;
+    color: white;
+}
+
+.btn-edit:hover,
+.btn-warning:hover {
+    background: #FFB300;
+    border-color: #FFA000;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(255, 193, 7, 0.3);
+}
+
+/* Botón Eliminar */
+.btn-danger,
+.btn-delete {
+    background: #dc3545;
+    border-color: #dc3545;
+    color: white;
+}
+
+.btn-danger:hover,
+.btn-delete:hover {
+    background: #c82333;
+    border-color: #bd2130;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(220, 53, 69, 0.3);
+}
+
+/* Botón Éxito/Activar */
+.btn-success,
+.btn-activate {
+    background: #28a745;
+    border-color: #28a745;
+    color: white;
+}
+
+.btn-success:hover,
+.btn-activate:hover {
+    background: #218838;
+    border-color: #1e7e34;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(40, 167, 69, 0.3);
+}
+
+/* ============================================
+   BADGES Y ESTADOS
+   ============================================ */
+.badge-status {
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.badge-active {
+    background: #d4edda;
+    color: #155724;
+}
+
+.badge-inactive {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.badge-pending {
+    background: #fff3cd;
+    color: #856404;
+}
+
+/* ============================================
+   RESPONSIVO - DATATABLES
+   ============================================ */
+@media (max-width: 768px) {
+    .dataTables_wrapper .dataTables_filter,
+    .dataTables_wrapper .dataTables_length {
+        text-align: center;
+        margin-bottom: 15px;
+    }
+    
+    .dataTables_wrapper .dataTables_info,
+    .dataTables_wrapper .dataTables_paginate {
+        text-align: center;
+    }
+}
+
+/* ============================================
+   UTILIDADES GLOBALES
+   ============================================ */
+.text-center {
+    text-align: center !important;
+}
+
+.text-right {
+    text-align: right !important;
+}
+
+.text-left {
+    text-align: left !important;
+}
+
+.mb-0 {
+    margin-bottom: 0 !important;
+}
+
+.mt-10 {
+    margin-top: 10px !important;
+}
+
+.mt-20 {
+    margin-top: 20px !important;
+}
+
+.p-15 {
+    padding: 15px !important;
+}
+
+.fw-bold {
+    font-weight: 700 !important;
+}
+
+.fw-semibold {
+    font-weight: 600 !important;
+}
+
+/* ============================================
+   RESPONSIVO - MOBILE FIRST
+   ============================================ */
+@media (max-width: 768px) {
+    .dashboard-wrapper {
+        padding: 10px 8px;
+    }
+
+    .dashboard-container {
+        padding: 15px 12px;
+    }
+
+    .page-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 12px;
+    }
+
+    .page-header h1,
+    .page-title {
+        font-size: 18px;
+        text-align: center;
+    }
+
+    .filters-wrapper {
+        flex-direction: column;
+        gap: 12px;
+        width: 100%;
+    }
+
+    .filter-group {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 6px;
+        width: 100%;
+    }
+
+    .filter-group label,
+    .filter-label {
+        font-size: 12px;
+    }
+
+    .filter-group .form-control,
+    .filter-input {
+        width: 100%;
+        min-width: unset;
+    }
+
+    .btn-buscar,
+    .btn-search {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .btn-limpiar,
+    .btn-clear {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .btn-add,
+    .btn-primary-action,
+    .btn-add {
+        width: 80%;
+        justify-content: center;
+    }
+
+    .btn-group,
+    .action-buttons {
+        gap: 2px;
+    }
+
+    .btn-sm,
+    .btn-table-action {
+        padding: 3px 6px;
+        font-size: 11px;
+    }
+}
+
+@media (max-width: 480px) {
+    .page-header h1,
+    .page-title {
+        font-size: 16px;
+    }
+
+    .filter-group .form-control,
+    .filter-input {
+        font-size: 12px;
+        height: 32px;
+    }
+
+    .crud-table th,
+    .data-table th,
+    .crud-table td,
+    .data-table td {
+        font-size: 11px !important;
+        padding: 6px 8px !important;
+    }
+}
+
+
+/* ============================================
+   Z-INDEX HIERARCHY - Modales y Alertas
+   ============================================ */
+/* Header del sitio: 9999 */
+/* Modal debe estar por encima del header: 10000+ */
+
+/* Backdrop del modal */
+.modal-backdrop {
+    z-index: 10040 !important;
+}
+.modal-xxl {
+		max-width: 90%;
+	}
+/* Modal base */
+.modal {
+    z-index: 10050 !important;
+}
+
+.modal .modal-dialog {
+    z-index: 10050 !important;
+}
+
+.modal .modal-content {
+    z-index: 10050 !important;
+}
+
+/* SweetAlert2 - Debe estar por encima de los modales */
+.swal2-container {
+    z-index: 10100 !important;
+}
+
+.swal2-popup {
+    z-index: 10101 !important;
+}

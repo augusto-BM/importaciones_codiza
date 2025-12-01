@@ -18,14 +18,13 @@ class Menu_model extends CI_Model {
             ->result();
     }
 
-    public function getTiposCategorias()
+    public function getTiposCategorias($onlyActive = true)
     {
-        return $this->db
-            ->select("id_tipocategoria, nombre, cji_flagestado")
-            ->from("tipo_categoria")
-            ->where("cji_flagestado", "1")
-            ->get()
-            ->result();
+        $this->db->select("id_tipocategoria, nombre, cji_flagestado")->from("tipo_categoria");
+        if ($onlyActive) {
+            $this->db->where("cji_flagestado", "1");
+        }
+        return $this->db->get()->result();
     }
 
     public function getTiposCategoriasConCategorias() {

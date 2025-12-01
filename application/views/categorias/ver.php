@@ -356,7 +356,17 @@
 
 <!-- Header de la categoría -->
 <section class="category-header">
-    <div class="category-parallax-bg" style="background-image: url('<?= base_url("images/banner/banner.jpg") ?>');"></div>
+    <div class="category-parallax-bg"
+        <?php if (!empty($categoria->imagen)): ?>
+            style="background-image: url('<?= base_url('images/categorias/' . $categoria->imagen); ?>');"
+        <?php endif; ?>
+    >
+        <?php if (empty($categoria->imagen)): ?>
+            <div class="no-image-placeholder">
+                <i class="fas fa-image fa-5x text-muted"></i>
+            </div>
+        <?php endif; ?>
+    </div>
     <div class="category-content">
         <div class="container">
             <div class="text-center">
@@ -371,6 +381,7 @@
         </div>
     </div>
 </section>
+
 
 <!-- Contenido principal -->
 <div class="container mb-5">

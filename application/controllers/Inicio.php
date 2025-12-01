@@ -3,11 +3,11 @@ class Inicio extends CI_Controller {
 
     public function __construct() {
         parent::__construct();
-        $this->load->model("Menu_model"); // <- NECESARIO
-        $this->load->model("Inicio_model"); // <- NECESARIO
-        $this->load->model("Tipo_categoria_model"); // <- NUEVO
-        $this->load->model("Cliente_model"); // <- NUEVO
-        $this->load->library('session'); // <- esto es clave
+        $this->load->model("Menu_model");
+        $this->load->model("Inicio_model"); 
+        $this->load->model("Tipo_categoria_model"); 
+        $this->load->model("Cliente_model"); 
+        $this->load->library('session');
     }
 
     private function tiposCategoriasMenu() {

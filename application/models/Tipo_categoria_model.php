@@ -1,3 +1,4 @@
+
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
@@ -7,6 +8,65 @@ class Tipo_categoria_model extends CI_Model {
         parent::__construct();
         $this->load->database();
     }
+
+    public function getTiposCategoriasTabla($filter) {
+        $where = [];
+        $params = [];
+
+        // Filtro por estado
+        if (isset($filter->estado) && $filter->estado != '2') {
+            $where[] = "cji_flagestado = ?";
+            $params[] = $filter->estado;
+        } else {
+            $where[] = "cji_flagestado IN ('0', '1')";
+        }
+
+        // Filtro por nombre exacto o parcial
+        if (!empty($filter->nombre)) {
+            $where[] = "nombre LIKE ?";
+            $params[] = '%' . $filter->nombre . '%';
+        }
+
+        // Filtro de búsqueda general
+        if (!empty($filter->search)) {
+            $where[] = "nombre LIKE ?";
+            $params[] = '%' . $filter->search . '%';
+        }
+
+        // Construcción de la cláusula WHERE
+        $whereClause = implode(' AND ', $where);
+
+        // Contar registros filtrados
+        $sqlCount = "SELECT COUNT(*) as total FROM tipo_categoria WHERE " . $whereClause;
+        $queryCount = $this->db->query($sqlCount, $params);
+        $recordsFilter = $queryCount->row()->total;
+
+        // Paginación
+        $limit = '';
+        if (isset($filter->start) && isset($filter->length) && $filter->length != -1) {
+            $limit = " LIMIT " . intval($filter->length) . " OFFSET " . intval($filter->start);
+        }
+
+        // Consulta principal
+        $sql = "SELECT id_tipocategoria, nombre, cji_flagestado 
+                FROM tipo_categoria 
+                WHERE " . $whereClause . " 
+                ORDER BY nombre ASC" . $limit;
+        $query = $this->db->query($sql, $params);
+        $records = $query->result();
+
+        // Total de registros sin filtrar
+        $sqlTotal = "SELECT COUNT(*) as total FROM tipo_categoria WHERE cji_flagestado IN ('0', '1')";
+        $queryTotal = $this->db->query($sqlTotal);
+        $recordsTotal = $queryTotal->row()->total;
+
+        return [
+            "recordsTotal" => $recordsTotal,
+            "recordsFilter" => $recordsFilter,
+            "records" => $records
+        ];
+    }
+
 
     /**
      * Obtener todos los tipos de categoría activos
@@ -21,23 +81,7 @@ class Tipo_categoria_model extends CI_Model {
         return $query->result();
     }
 
-    /**
-     * Obtener todos los tipos de categoría (activos e inactivos)
-     * @return array
-     */
-    public function obtener_todos() {
-        $this->db->select('id_tipocategoria, nombre, cji_flagestado');
-        $this->db->from('tipo_categoria');
-        $this->db->order_by('nombre', 'ASC');
-        $query = $this->db->get();
-        return $query->result();
-    }
-
-    /**
-     * Obtener un tipo de categoría por ID
-     * @param int $id
-     * @return object|null
-     */
+    
     public function obtener_por_id($id) {
         $this->db->select('id_tipocategoria, nombre, cji_flagestado');
         $this->db->from('tipo_categoria');
@@ -46,62 +90,30 @@ class Tipo_categoria_model extends CI_Model {
         return $query->row();
     }
 
-    /**
-     * Insertar un nuevo tipo de categoría
-     * @param array $data
-     * @return int ID insertado
-     */
-    public function insertar($data) {
-        $datos = array(
-            'nombre' => $data['nombre'],
-            'cji_flagestado' => isset($data['cji_flagestado']) ? $data['cji_flagestado'] : '1'
-        );
-        $this->db->insert('tipo_categoria', $datos);
-        return $this->db->insert_id();
-    }
-
-    /**
-     * Actualizar un tipo de categoría
-     * @param int $id
-     * @param array $data
-     * @return bool
-     */
-    public function actualizar($id, $data) {
-        $datos = array(
-            'nombre' => $data['nombre'],
-            'cji_flagestado' => isset($data['cji_flagestado']) ? $data['cji_flagestado'] : '1'
-        );
-        $this->db->where('id_tipocategoria', $id);
+    public function cambiar_estado_tipocategoria($id_oculto, $nuevo_estado) {
+        $datos = array('cji_flagestado' => $nuevo_estado);
+        $this->db->where('id_tipocategoria', $id_oculto);
         return $this->db->update('tipo_categoria', $datos);
     }
 
-    /**
-     * Cambiar estado de un tipo de categoría
-     * @param int $id
-     * @param string $estado '1' = ACTIVO, '2' = INACTIVO
-     * @return bool
-     */
-    public function cambiar_estado($id, $estado) {
-        $this->db->where('id_tipocategoria', $id);
-        return $this->db->update('tipo_categoria', array('cji_flagestado' => $estado));
+    public function existe_tipo_categoria($nombre, $id_oculto = null) {
+        $this->db->where('nombre', $nombre);
+        $this->db->where('cji_flagestado !=', '2');
+        if ($id_oculto) {
+            $this->db->where('id_tipocategoria !=', $id_oculto);
+        }
+        $query = $this->db->get('tipo_categoria');
+        return $query->num_rows() > 0;
     }
 
-    /**
-     * Eliminar un tipo de categoría (eliminación lógica)
-     * @param int $id
-     * @return bool
-     */
-    public function eliminar($id) {
-        return $this->cambiar_estado($id, '2');
+    public function insertar_categoria($datos) {
+        return $this->db->insert('tipo_categoria', $datos);
     }
 
-    /**
-     * Contar tipos de categoría activos
-     * @return int
-     */
-    public function contar_activos() {
-        $this->db->from('tipo_categoria');
-        $this->db->where('cji_flagestado', '1');
-        return $this->db->count_all_results();
+    public function actualizar_categoria($id_oculto, $datos) {
+        $this->db->where('id_tipocategoria', $id_oculto);
+        return $this->db->update('tipo_categoria', $datos);
     }
+
+    
 }

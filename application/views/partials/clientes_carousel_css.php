@@ -114,6 +114,21 @@
     pointer-events: none;
 }
 
+/* Placeholder para imágenes no disponibles */
+.section-clientes .no-image-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f5f5f5;
+    transition: transform 0.4s ease;
+}
+
+.section-clientes .servicio-card:hover .no-image-placeholder {
+    transform: scale(1.1);
+}
+
 .section-clientes .servicio-nombre {
     position: absolute;
     bottom: 0;
