@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Inicio_model extends CI_Model {
 
     public function getServiciosActivos() {
-        $this->db->select('id_servicio, nombre, imagen');
+        $this->db->select('id_servicio, nombre, descripcion, icono, badge, imagen');
         $this->db->from('servicios');
         $this->db->where('cji_flagestado', '1');
         $this->db->order_by('id_servicio', 'ASC');

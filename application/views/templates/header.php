@@ -30,562 +30,7 @@
 <!-- ScrollReveal.js - Para animaciones al hacer scroll -->
 <!-- <script src="https://unpkg.com/scrollreveal"></script> -->
 
-<style>
-/* ============================= */
-/*  BASE                        */
-/* ============================= */
-
-body { 
-    margin: 0; 
-    font-family: Arial, sans-serif; 
-}
-
-.page-blur {
-    opacity: 0;
-    transition: opacity .45s ease, filter .45s ease;
-}
-
-.page-blur.show {
-    opacity: 1;
-}
-
-/* ============================= */
-/* HEADER STICKY SHRINK         */
-/* ============================= */
-
-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 9999;
-    background: #fff;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    transition: all 0.3s ease;
-}
-
-/* Fila superior */
-.header-top {
-    padding: 15px 0;
-    border-bottom: 1px solid #f0f0f0;
-    transition: all 0.3s ease;
-}
-
-/* Logo */
-.logo img {
-    height: 70px;
-    transition: height 0.3s ease;
-    max-width: 100%;
-}
-
-/* Info de contacto */
-.contact-info {
-    font-size: 14px;
-    color: #555;
-}
-
-.contact-info .info-item {
-    display: flex;
-    flex-direction: row;
-    align-items: stretch;
-    gap: 15px;
-}
-
-.contact-info .info-item .item-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.contact-info .info-item .item-icon i {
-    color: #2a332bff;
-    font-size: 32px;
-}
-
-.contact-info .info-item .item-text {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 4px;
-}
-
-.contact-info .info-item .item-header {
-    font-weight: 500;
-    color: #39c44cff;
-    font-size: 14px;
-    text-transform: uppercase;
-    line-height: 1.2;
-}
-
-.contact-info .info-item .item-content {
-    font-size: 16px;
-    color: #555;
-    line-height: 1.3;
-    font-weight: 500;
-}
-
-/* Fila inferior */
-.header-bottom {
-    padding: 12px 0;
-    transition: all 0.3s ease;
-}
-
-
-/* Header achicado al hacer scroll */
-header.shrink .header-top {
-    padding: 8px 0;
-}
-
-header.shrink .logo img {
-    height: 50px;
-}
-
-header.shrink .header-bottom {
-    padding: 8px 0;
-}
-
-header.shrink .contact-info .info-item .item-header {
-    font-size: 12px;
-}
-
-header.shrink .contact-info .info-item .item-content {
-    font-size: 14px;
-}
-
-header.shrink .contact-info .info-item .item-icon i {
-    font-size: 26px;
-}
-
-/* Espaciado del body */
-body {
-    padding-top: 150px;
-}
-
-/* ============================= */
-/* NAVEGACIÓN                    */
-/* ============================= */
-
-.navbar-nav .nav-link {
-    color: #fff !important;
-    font-weight: 550;
-    font-size: 17px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    letter-spacing: 0.5px;
-    padding: 8px 12px !important;
-    border-radius: 5px;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-    white-space: nowrap;
-}
-
-.navbar-nav .nav-link:hover {
-    color: #26532cff !important;
-    background-color: #61CE70;
-    box-shadow: 0 4px 10px rgba(97, 206, 112, 0.3);
-    transform: translateY(-2px);
-}
-
-/* ============================= */
-/* MEGA MENÚ                     */
-/* ============================= */
-
-.mega-dropdown {
-    position: static;
-}
-
-.mega-dropdown .dropdown-toggle::after {
-    display: none;
-}
-
-.mega-menu {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    width: 100%;
-    max-height: 70vh;
-    overflow-y: auto;
-    overflow-x: hidden;
-    background: #ffffff;
-    padding: 40px 60px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-    border-top: 3px solid #61CE70;
-    display: none;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.35s ease;
-    z-index: 998;
-}
-
-.mega-dropdown:hover .mega-menu {
-    display: block;
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.columna {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px 40px;
-    max-width: 1400px;
-    margin: 0 auto;
-}
-
-.columna h3 {
-    grid-column: 1 / -1;
-    font-size: 20px;
-    margin-bottom: 20px;
-    font-weight: 700;
-    color: #61CE70;
-    border-bottom: 2px solid #61CE70;
-    padding-bottom: 12px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.mega-menu .item {
-    display: block;
-    padding: 12px 18px;
-    text-decoration: none;
-    color: #555;
-    font-size: 15px;
-    font-weight: 500;
-    transition: all 0.3s ease;
-    border-radius: 8px;
-    border-left: 3px solid transparent;
-}
-
-.mega-menu .item:hover {
-    color: #61CE70;
-    font-weight: 600;
-    background-color: #f5f9f6;
-    border-left-color: #61CE70;
-    padding-left: 25px;
-    transform: translateX(5px);
-}
-
-/* ============================= */
-/* BOTÓN HAMBURGUESA (MÓVIL)    */
-/* ============================= */
-
-.hamburger {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    cursor: pointer;
-    background: transparent;
-    border: none;
-    padding: 8px;
-    z-index: 10001;
-    position: relative;
-    margin-left: auto;
-}
-
-.hamburger span {
-    width: 28px;
-    height: 3px;
-    background: #333;
-    border-radius: 4px;
-    transition: all 0.3s ease;
-    display: block;
-}
-
-.hamburger.active span:nth-child(1) {
-    transform: rotate(45deg) translate(5px, 6px);
-}
-
-.hamburger.active span:nth-child(2) {
-    opacity: 0;
-}
-
-.hamburger.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(6px, -7px);
-}
-
-/* ============================= */
-/* MENÚ MÓVIL FULLSCREEN        */
-/* ============================= */
-
-.mobile-menu {
-    position: fixed;
-    top: 0;
-    left: -100%;
-    height: 100vh;
-    width: 80%;
-    max-width: 400px;
-    background: white;
-    box-shadow: 2px 0 15px rgba(0, 0, 0, 0.2);
-    transition: left 0.4s ease;
-    z-index: 10000;
-    overflow-y: auto;
-}
-
-.mobile-menu.show {
-    left: 0;
-}
-
-.mobile-menu-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background: rgba(0, 0, 0, 0.5);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.4s ease;
-    z-index: 9999;
-}
-
-.mobile-menu-overlay.show {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.mobile-menu-content {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    padding: 20px 0;
-}
-
-.mobile-menu-header {
-    padding: 20px 30px;
-    text-align: center;
-    border-bottom: 2px solid #e0e0e0;
-    margin-bottom: 20px;
-}
-
-.mobile-menu-header .mobile-logo img {
-    max-height: 60px;
-    max-width: 100%;
-    width: auto;
-    height: auto;
-    object-fit: contain;
-}
-
-.mobile-menu-links {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-}
-
-.mobile-menu-link {
-    color: #222;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 18px;
-    padding: 18px 30px;
-    border-bottom: 1px solid #e0e0e0;
-    transition: all 0.3s ease;
-    display: block;
-}
-
-.mobile-menu-link:hover {
-    background-color: #f5f5f5;
-    color: #61CE70;
-    padding-left: 40px;
-}
-
-/* Acordeón de categorías en móvil */
-.mobile-menu-accordion {
-    border-bottom: 1px solid #e0e0e0;
-}
-
-.mobile-accordion-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: #222;
-    font-weight: 600;
-    font-size: 18px;
-    padding: 18px 30px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    background-color: transparent;
-}
-
-.mobile-accordion-header:hover {
-    background-color: #f5f5f5;
-    color: #61CE70;
-}
-
-.mobile-accordion-header.active {
-    background-color: #f5f5f5;
-    color: #61CE70;
-}
-
-.mobile-accordion-icon {
-    transition: transform 0.3s ease;
-    font-size: 14px;
-}
-
-.mobile-accordion-header.active .mobile-accordion-icon {
-    transform: rotate(180deg);
-}
-
-.mobile-accordion-content {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease;
-    background-color: #f9f9f9;
-}
-
-.mobile-accordion-content.active {
-    max-height: 500px;
-    overflow-y: auto;
-}
-
-.mobile-submenu-item {
-    display: block;
-    color: #555;
-    text-decoration: none;
-    font-size: 15px;
-    font-weight: 500;
-    padding: 12px 30px 12px 50px;
-    border-bottom: 1px solid #e8e8e8;
-    transition: all 0.2s ease;
-}
-
-.mobile-submenu-item:hover {
-    background-color: #fff;
-    color: #61CE70;
-    padding-left: 55px;
-}
-
-.mobile-submenu-item:last-child {
-    border-bottom: none;
-}
-
-.mobile-menu-footer {
-    padding: 20px 30px;
-    border-top: 2px solid #e0e0e0;
-    text-align: center;
-}
-
-.whatsapp-button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    background: #25D366;
-    color: white;
-    text-decoration: none;
-    padding: 15px 30px;
-    border-radius: 50px;
-    font-weight: 600;
-    font-size: 16px;
-    transition: all 0.3s ease;
-    box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
-}
-
-.whatsapp-button:hover {
-    background: #20BA5A;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(37, 211, 102, 0.4);
-    color: white;
-}
-
-.whatsapp-button i {
-    font-size: 24px;
-}
-
-/* ============================= */
-/* RESPONSIVE                    */
-/* ============================= */
-
-@media (max-width: 1200px) {
-    .navbar-nav .nav-link {
-        font-size: 14px;
-        padding: 8px 10px !important;
-    }
-    
-    /* Mega menú: 2 columnas en tablets grandes */
-    .columna {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 18px 30px;
-    }
-    
-    .mega-menu {
-        padding: 30px 40px;
-    }
-    
-    .columna h3 {
-        font-size: 18px;
-    }
-    
-    .mega-menu .item {
-        font-size: 14px;
-        padding: 10px 15px;
-    }
-}
-
-@media (max-width: 991px) {
-    body {
-        padding-top: 90px;
-    }
-
-    .logo img {
-        height: 60px;
-    }
-
-    header.shrink .logo img {
-        height: 45px;
-    }
-}
-
-@media (max-width: 768px) {
-    body {
-        padding-top: 80px;
-    }
-
-    .header-top {
-        padding: 10px 0;
-    }
-
-    .logo img {
-        height: 50px;
-    }
-
-    header.shrink .header-top {
-        padding: 8px 0;
-    }
-
-    header.shrink .logo img {
-        height: 40px;
-    }
-
-    .mobile-menu-link {
-        font-size: 20px;
-    }
-}
-
-@media (max-width: 576px) {
-    body {
-        padding-top: 70px;
-    }
-
-    .logo img {
-        height: 45px;
-    }
-
-    header.shrink .logo img {
-        height: 35px;
-    }
-
-    .mobile-menu-link {
-        font-size: 18px;
-        gap: 20px;
-    }
-}
-
-/* ============================= */
-/* TOOLTIPS Z-INDEX             */
-/* ============================= */
-.tooltip {
-    z-index: 99999 !important;
-}
-</style>
+<link rel="stylesheet" href="<?= base_url('assets/css/header.css'); ?>">
 
 </head>
 <body class="page-blur">
@@ -597,7 +42,7 @@ body {
             <div class="row align-items-center">
                 <!-- Logo -->
                 <div class="col-6 col-lg-3">
-                    <div class="logo d-flex justify-content-end justify-content-lg-end pe-lg-4">
+                    <div class="logo d-flex justify-content-end justify-content-lg-end pe-lg-4" title="Inicio">
                         <a href="<?= base_url(); ?>">
                             <img src="<?= base_url('images/logo/logo-actual.png') ?>" alt="Logo" class="img-fluid">
                         </a>
@@ -659,6 +104,11 @@ body {
                         $ci = get_instance();
                         $current_controller = $ci->router->fetch_class();
                         $current_method = $ci->router->fetch_method();
+                        // ID de categoría cuando la URL es /categoria/ver/{id}
+                        $current_category_id = (int) $ci->uri->segment(3);
+                        // Detectar primera segment y si estamos en la raíz (/) tratar como inicio
+                        $uri_segment1 = $ci->uri->segment(1);
+                        $is_home = ($current_controller == 'inicio' || $uri_segment1 == '');
                         
                         // Detectar área administrativa: cualquier método de Login excepto los públicos
                         $metodos_publicos = ['index', 'validar', 'salir'];
@@ -701,24 +151,37 @@ body {
                             // Menú público normal (incluso si está logueado pero en páginas públicas)
                         ?>
                             <li class="nav-item">
-                                <a class="nav-link" href="<?= base_url('inicio'); ?>">Inicio</a>
+                                <a class="nav-link <?= $is_home ? 'active' : '' ?>" href="<?= base_url('inicio'); ?>">Inicio</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="<?= base_url('nosotros'); ?>">Nosotros</a>
+                                <a class="nav-link <?= ($current_controller == 'nosotros') ? 'active' : '' ?>" href="<?= base_url('nosotros'); ?>">Nosotros</a>
                             </li>
                             
                             <?php if (isset($menuTiposCategorias) && !empty($menuTiposCategorias)): ?>
                                 <?php foreach ($menuTiposCategorias as $tipoCategoria => $categorias): ?>
-                                    <li class="nav-item dropdown mega-dropdown">
-                                        <a class="nav-link dropdown-toggle" role="button">
-                                            <?= $tipoCategoria ?> <i class="fas fa-chevron-down"></i>
-                                        </a>
+                                    <?php
+                                        // Determinar si alguno de los items del grupo coincide con la categoría actual
+                                        $isParentActive = false;
+                                        if ($current_controller === 'categoria' && $current_method === 'ver' && $current_category_id > 0) {
+                                            foreach ($categorias as $catCheck) {
+                                                if ((int) $catCheck['id'] === $current_category_id) {
+                                                    $isParentActive = true;
+                                                    break;
+                                                }
+                                            }
+                                        }
+                                    ?>
+                                    <li class="nav-item dropdown mega-dropdown <?= $isParentActive ? 'active' : '' ?>">
+                                        <a class="nav-link dropdown-toggle <?= $isParentActive ? 'active' : '' ?>" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                                <?= $tipoCategoria ?> <i class="fas fa-chevron-down"></i>
+                                            </a>
                                         <?php if (!empty($categorias)): ?>
                                             <div class="dropdown-menu mega-menu">
                                                 <div class="columna">
                                                     <h3><?= $tipoCategoria ?></h3>
                                                     <?php foreach ($categorias as $cat): ?>
-                                                        <a href="<?= base_url('categoria/ver/' . $cat['id']); ?>" class="dropdown-item item">
+                                                        <?php $isItemActive = ($current_controller === 'categoria' && $current_method === 'ver' && $current_category_id > 0 && (int) $cat['id'] === $current_category_id); ?>
+                                                        <a href="<?= base_url('categoria/ver/' . $cat['id']); ?>" class="dropdown-item item <?= $isItemActive ? 'active' : '' ?>" <?= $isItemActive ? 'aria-current="true"' : '' ?> >
                                                             <?= $cat['nombre'] ?>
                                                         </a>
                                                     <?php endforeach; ?>
@@ -730,10 +193,10 @@ body {
                             <?php endif; ?>
 
                             <li class="nav-item">
-                                <a class="nav-link" href="<?= base_url('proyectos'); ?>">Proyectos</a>
+                                <a class="nav-link <?= ($current_controller == 'proyectos') ? 'active' : '' ?>" href="<?= base_url('proyectos'); ?>">Proyectos</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="<?= base_url('servicios'); ?>">Servicios</a>
+                                <a class="nav-link <?= ($current_controller == 'servicios') ? 'active' : '' ?>" href="<?= base_url('servicios'); ?>">Servicios</a>
                             </li>
                             
                             <?php if ($ci->session->userdata('logeado') && $ci->session->userdata('usuario_id') == 1): ?>
@@ -849,109 +312,5 @@ body {
     </div>
 </header>
 
-<script>
-// ============================= 
-// FORZAR SCROLL AL INICIO
-// ============================= 
-// Prevenir restauración automática del scroll
-if ('scrollRestoration' in history) {
-    history.scrollRestoration = 'manual';
-}
-// Forzar scroll a 0 inmediatamente
-window.scrollTo(0, 0);
-
-// ============================= 
-// FADE IN PÁGINA
-// ============================= 
-$(document).ready(function() {
-    $('body').addClass('show');
-});
-
-// ============================= 
-// HEADER SHRINK AL HACER SCROLL
-// ============================= 
-$(window).on('scroll', function() {
-    const header = $('#mainHeader');
-    
-    if ($(window).scrollTop() > 20) {
-        header.addClass('shrink');
-    } else {
-        header.removeClass('shrink');
-    }
-});
-
-// ============================= 
-// INICIALIZAR TOOLTIPS DE BOOTSTRAP
-// ============================= 
-$(document).ready(function() {
-    // Inicializar todos los tooltips
-    var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-    var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-        return new bootstrap.Tooltip(tooltipTriggerEl);
-    });
-});
-
-// ============================= 
-// MENÚ HAMBURGUESA MÓVIL
-// ============================= 
-$(document).ready(function() {
-    const $hamburger = $('#hamburger');
-    const $mobileMenu = $('#mobileMenu');
-    const $overlay = $('#mobileMenuOverlay');
-    
-    // Función para cerrar el menú
-    function closeMenu() {
-        $hamburger.removeClass('active');
-        $mobileMenu.removeClass('show');
-        $overlay.removeClass('show');
-        $('body').css('overflow', '');
-    }
-    
-    // Toggle del menú hamburguesa
-    $hamburger.on('click', function() {
-        $(this).toggleClass('active');
-        $mobileMenu.toggleClass('show');
-        $overlay.toggleClass('show');
-        
-        // Prevenir scroll del body cuando el menú está abierto
-        if ($mobileMenu.hasClass('show')) {
-            $('body').css('overflow', 'hidden');
-        } else {
-            $('body').css('overflow', '');
-        }
-    });
-    
-    // Cerrar menú al hacer clic en un enlace
-    $('.mobile-menu-link, .mobile-submenu-item').on('click', function() {
-        closeMenu();
-    });
-    
-    // Cerrar menú al hacer clic en el overlay
-    $overlay.on('click', function() {
-        closeMenu();
-    });
-    
-    // Cerrar menú al cambiar tamaño de ventana a desktop
-    $(window).on('resize', function() {
-        if ($(window).width() >= 992) {
-            closeMenu();
-        }
-    });
-    
-    // Manejar acordeón de categorías en móvil
-    $('.mobile-accordion-header').on('click', function() {
-        const targetId = $(this).data('target');
-        const $content = $('#' + targetId);
-        const $icon = $(this).find('.mobile-accordion-icon');
-        
-        // Toggle del acordeón actual
-        $(this).toggleClass('active');
-        $content.toggleClass('active');
-        
-        // Cerrar otros acordeones
-        $('.mobile-accordion-header').not(this).removeClass('active');
-        $('.mobile-accordion-content').not($content).removeClass('active');
-    });
-});
-</script>
+<script src="<?= base_url('assets/js/header.js'); ?>"></script>
 

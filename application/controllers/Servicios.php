@@ -6,6 +6,7 @@ class Servicios extends CI_Controller {
         $this->load->model("Menu_model");
         $this->load->model("Tipo_categoria_model");
         $this->load->model("Cliente_model");
+        $this->load->model("Inicio_model"); 
         $this->load->library('session');
     }
 
@@ -36,6 +37,7 @@ class Servicios extends CI_Controller {
         $data["menuTiposCategorias"] = $this->tiposCategoriasMenu();
         $data["clientes"] = $this->Cliente_model->obtener_clientes();
         $data["tipos_categoria"] = $this->Tipo_categoria_model->obtener_tipos_activos();
+        $data["servicios"] = $this->Inicio_model->getServiciosActivos();
         $this->load->view('templates/header', $data);
         $this->load->view('servicios', $data);
         $this->load->view('templates/footer');

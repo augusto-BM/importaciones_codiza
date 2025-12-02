@@ -4,48 +4,84 @@
 <!-- Incluir CSS del carrusel de clientes -->
 <?php $this->load->view('partials/clientes_carousel_css'); ?>
 
-
 <section class="section-banner">
     <div class="banner-cube">
         <div class="banner-carousel-wrapper">
+        <?php
+            $slides = 
+                    [
+                        [
+                            "id" => 0,
+                            "image" => base_url("images/banner/3-banners.jpg"),
+                            "title" => "Bienvenidos a Importaciones Codiza",
+                            "buttons" => [
+                                [
+                                    "text" => "Conócenos",
+                                    "url" => base_url("nosotros"),
+                                    "class" => "btn-banner btn-primary-banner banner-btn-1"
+                                ],
+                                [
+                                    "text" => "Contáctanos",
+                                    "url" => "https://wa.me/51985410410",
+                                    "class" => "btn-banner btn-secondary-banner banner-btn-2",
+                                    "title" => "Por Whatsapp"
+                                ]
+                            ]
+                        ],
+                        [
+                            "id" => 1,
+                            "image" => base_url("images/banner/3-banners2.jpg"),
+                            "title" => "Bienvenidos a Importaciones Codiza",
+                            "buttons" => [
+                                [
+                                    "text" => "Conócenos",
+                                    "url" => base_url("nosotros"),
+                                    "class" => "btn-banner btn-primary-banner banner-btn-1"
+                                ],
+                                [
+                                    "text" => "Contáctanos",
+                                    "url" => "https://wa.me/51985410410",
+                                    "class" => "btn-banner btn-secondary-banner banner-btn-2",
+                                    "title" => "Por Whatsapp"
+                                ]
+                            ]
+                        ],
+                        [
+                            "id" => 2,
+                            "image" => base_url("images/banner/3-banners3.jpg"),
+                            "title" => "Bienvenidos a Importaciones Codiza",
+                            "buttons" => [
+                                [
+                                    "text" => "Conócenos",
+                                    "url" => base_url("nosotros"),
+                                    "class" => "btn-banner btn-primary-banner banner-btn-1"
+                                ],
+                                [
+                                    "text" => "Contáctanos",
+                                    "url" => "https://wa.me/51985410410",
+                                    "class" => "btn-banner btn-secondary-banner banner-btn-2",
+                                    "title" => "Por Whatsapp"
+                                ]
+                            ]
+                        ],
+                    ];
+        ?>
         <div class="banner-carousel-track">
-            <!-- Slide 1 -->
-            <div class="banner-slide active" data-slide="0" style="background-image: url('<?= base_url("images/banner/3-banners.jpg") ?>');">
-                <div class="banner-overlay"></div>
-                <div class="banner-content">
-                    <h1 class="banner-title-animate">Bienvenidos a Importaciones Codiza</h1>
-                    <div class="banner-buttons">
-                        <a href="<?= base_url('nosotros') ?>" class="btn-banner btn-primary-banner banner-btn-1">Conócenos</a>
-                        <a href="<?= base_url('contacto') ?>" class="btn-banner btn-secondary-banner banner-btn-2">Contáctanos</a>
+            <?php foreach ($slides as $index => $s): ?>
+                <div class="banner-slide <?= $index === 0 ? 'active' : '' ?>" data-slide="<?= $s['id'] ?>" style="background-image: url('<?= $s['image'] ?>');">
+                    <div class="banner-overlay"></div>
+                    <div class="banner-content">
+                        <h1 class="banner-title-animate"><?= $s['title'] ?></h1>
+                        <div class="banner-buttons">
+                            <?php foreach ($s['buttons'] as $btn): ?>
+                                <a href="<?= $btn['url'] ?>" class="<?= $btn['class'] ?>" <?= isset($btn['title']) ? 'title="'.$btn['title'].'"' : '' ?>><?= $btn['text'] ?></a>
+                            <?php endforeach; ?>
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Slide 2 -->
-            <div class="banner-slide" data-slide="1" style="background-image: url('<?= base_url("images/banner/3-banners2.jpg") ?>');">
-                <div class="banner-overlay"></div>
-                <div class="banner-content">
-                    <h1 class="banner-title-animate">Bienvenidos a Importaciones Codiza</h1>
-                    <div class="banner-buttons">
-                        <a href="<?= base_url('nosotros') ?>" class="btn-banner btn-primary-banner banner-btn-1">Conócenos</a>
-                        <a href="<?= base_url('contacto') ?>" class="btn-banner btn-secondary-banner banner-btn-2">Contáctanos</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Slide 3 -->
-            <div class="banner-slide" data-slide="2" style="background-image: url('<?= base_url("images/banner/3-banners3.jpg") ?>');">
-                <div class="banner-overlay"></div>
-                <div class="banner-content">
-                    <h1 class="banner-title-animate">Bienvenidos a Importaciones Codiza</h1>
-                    <div class="banner-buttons">
-                        <a href="<?= base_url('nosotros') ?>" class="btn-banner btn-primary-banner banner-btn-1">Conócenos</a>
-                        <a href="<?= base_url('contacto') ?>" class="btn-banner btn-secondary-banner banner-btn-2">Contáctanos</a>
-                    </div>
-                </div>
-            </div>
+            <?php endforeach; ?>
         </div>
-
+        
         <!-- Botones de navegación -->
         <button class="banner-carousel-btn banner-carousel-prev" type="button">
             <i class="fas fa-chevron-left"></i>
@@ -129,7 +165,7 @@
                                 <div class="servicio-imagen-wrapper">
                                     <div class="servicio-imagen">
                                         <?php if (!empty($servicio->imagen)): ?>
-                                            <img src="<?= base_url($servicio->imagen) ?>" 
+                                            <img src="<?= base_url("images/servicios/$servicio->imagen") ?>" 
                                                 alt="<?= htmlspecialchars($servicio->nombre) ?>">
                                         <?php else: ?>
                                             <!-- Mostrar un icono centrado si no hay imagen -->

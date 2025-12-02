@@ -28,11 +28,11 @@ class Contacto extends CI_Controller {
 
         return $menu;
     }
-        public function index() {
+       /*  public function index() {
         $data["menuTiposCategorias"] = $this->tiposCategoriasMenu();
         $this->load->view('templates/header', $data);
         $this->load->view('contacto'); // <- Tu nueva vista contacto.php
         $this->load->view('templates/footer');
-    }
+    } */
 }
 ?>

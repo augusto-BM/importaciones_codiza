@@ -12,9 +12,7 @@ class Inicio extends CI_Controller {
 
     private function tiposCategoriasMenu() {
         $dataDB = $this->Menu_model->getTiposCategoriasConCategorias();
-
         $menu = [];
-
         foreach ($dataDB as $row) {
             $tipo = $row->tipo_nombre;
 
@@ -29,7 +27,6 @@ class Inicio extends CI_Controller {
                 ];
             }
         }
-
         return $menu;
     }
 

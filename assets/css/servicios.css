@@ -1,0 +1,366 @@
+/* ======================================= */
+/* BANNER SERVICIOS CON OVERLAY Y 100VH   */
+/* ======================================= */
+
+.banner-servicios {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 600px;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.banner-servicios::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.banner-servicios-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+    padding: 0 20px;
+    animation: fadeInUp 1s ease-out;
+}
+
+.banner-servicios-content h1 {
+    font-size: 56px;
+    font-weight: 900;
+    margin-bottom: 20px;
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.8);
+    letter-spacing: 1px;
+}
+
+.banner-servicios-content p {
+    font-size: 22px;
+    font-weight: 400;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* ======================================= */
+/* SECCIÓN SERVICIOS - DISEÑO INTERCALADO */
+/* ======================================= */
+
+.section-servicios {
+    padding: 0;
+    background: #fff;
+}
+
+.servicio-item {
+    display: flex;
+    align-items: center;
+    min-height: 500px;
+    position: relative;
+    overflow: hidden;
+}
+
+.servicio-item:nth-child(odd) {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+}
+
+.servicio-item:nth-child(even) {
+    background: linear-gradient(135deg, #ffffff 0%, #f5f5f5 100%);
+}
+
+/* Contenedor principal */
+.servicio-container {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    padding: 80px 0;
+    position: relative;
+    z-index: 1;
+}
+
+/* Texto del servicio */
+.servicio-texto {
+    flex: 1;
+    animation: fadeInLeft 1s ease-out;
+}
+
+.servicio-item:nth-child(even) .servicio-container {
+    flex-direction: row-reverse;
+}
+
+.servicio-item:nth-child(even) .servicio-texto {
+    animation: fadeInRight 1s ease-out;
+}
+
+.servicio-texto h3 {
+    font-size: 36px;
+    font-weight: 900;
+    color: #1a4d2e;
+    margin-bottom: 25px;
+    line-height: 1.2;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.servicio-texto h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 80px;
+    height: 5px;
+    background: linear-gradient(90deg, #00963f 0%, #1a4d2e 100%);
+    border-radius: 10px;
+}
+
+.servicio-item:nth-child(even) .servicio-texto h3::after {
+    left: auto;
+    right: 0;
+}
+
+.servicio-texto p {
+    font-size: 18px;
+    line-height: 1.9;
+    color: #495057;
+    margin-bottom: 20px;
+}
+
+.servicio-icon-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(0, 150, 63, 0.1);
+    padding: 10px 20px;
+    border-radius: 50px;
+    margin-bottom: 20px;
+}
+
+.servicio-icon-badge i {
+    color: #00963f;
+    font-size: 24px;
+}
+
+.servicio-icon-badge span {
+    color: #00963f;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+/* Imagen del servicio */
+.servicio-imagen-wrapper {
+    flex: 1;
+    position: relative;
+}
+
+.servicio-imagen-container {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    transition: all 0.4s ease;
+}
+
+.servicio-imagen-container:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
+}
+
+.servicio-imagen-container img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.servicio-imagen-container:hover img {
+    transform: scale(1.05);
+}
+
+/* Decoración de fondo */
+.servicio-item::before {
+    content: '';
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(0, 150, 63, 0.05) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.servicio-item:nth-child(odd)::before {
+    top: -100px;
+    right: -100px;
+}
+
+.servicio-item:nth-child(even)::before {
+    bottom: -100px;
+    left: -100px;
+}
+
+/* ======================================= */
+/* ANIMACIONES                             */
+/* ======================================= */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ======================================= */
+/* RESPONSIVE                              */
+/* ======================================= */
+
+@media (max-width: 992px) {
+    .banner-servicios {
+        height: 70vh;
+        min-height: 500px;
+        background-attachment: scroll;
+    }
+
+    .banner-servicios-content h1 {
+        font-size: 42px;
+    }
+
+    .banner-servicios-content p {
+        font-size: 18px;
+    }
+
+    .servicio-item {
+        min-height: auto;
+    }
+
+    .servicio-container {
+        flex-direction: column !important;
+        gap: 40px;
+        padding: 60px 0;
+    }
+
+    .servicio-item:nth-child(even) .servicio-container {
+        flex-direction: column !important;
+    }
+
+    .servicio-texto h3 {
+        font-size: 32px;
+        text-align: center;
+    }
+
+    .servicio-texto h3::after {
+        left: 50% !important;
+        right: auto !important;
+        transform: translateX(-50%);
+    }
+
+    .servicio-texto p {
+        text-align: center;
+    }
+
+    .servicio-icon-badge {
+        margin: 0 auto 20px;
+    }
+
+    .servicio-imagen-container img {
+        height: 350px;
+    }
+}
+
+@media (max-width: 768px) {
+    .banner-servicios {
+        height: 60vh;
+        min-height: 450px;
+    }
+
+    .banner-servicios-content h1 {
+        font-size: 36px;
+    }
+
+    .banner-servicios-content p {
+        font-size: 16px;
+    }
+
+    .servicio-container {
+        padding: 50px 0;
+    }
+
+    .servicio-texto h3 {
+        font-size: 28px;
+    }
+
+    .servicio-texto p {
+        font-size: 16px;
+    }
+
+    .servicio-imagen-container img {
+        height: 300px;
+    }
+}
+
+@media (max-width: 576px) {
+    .banner-servicios {
+        height: 50vh;
+        min-height: 400px;
+    }
+
+    .banner-servicios-content h1 {
+        font-size: 28px;
+    }
+
+    .banner-servicios-content p {
+        font-size: 15px;
+    }
+
+    .servicio-container {
+        padding: 40px 0;
+    }
+
+    .servicio-texto h3 {
+        font-size: 24px;
+    }
+
+    .servicio-texto p {
+        font-size: 15px;
+    }
+
+    .servicio-imagen-container img {
+        height: 250px;
+    }
+}

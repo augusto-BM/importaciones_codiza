@@ -1,0 +1,310 @@
+/* ======================================= */
+/* BANNER NOSOTROS CON OVERLAY Y 100VH    */
+/* ======================================= */
+
+.banner-nosotros {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    min-height: 600px;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+/* Overlay oscuro sobre la imagen */
+.banner-nosotros::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+/* Contenido del banner */
+.banner-nosotros-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    color: white;
+    padding: 0 20px;
+    animation: fadeInUp 1s ease-out;
+}
+
+.banner-nosotros-content h1 {
+    font-size: 56px;
+    font-weight: 900;
+    margin-bottom: 20px;
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.8);
+    letter-spacing: 1px;
+}
+
+.banner-nosotros-content p {
+    font-size: 22px;
+    font-weight: 400;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* ======================================= */
+/* SECCIÓN NOSOTROS - TEXTO IZQUIERDA / IMAGEN DERECHA */
+/* ======================================= */
+
+.section-nosotros {
+    padding: 100px 0;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.section-nosotros::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -10%;
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(0, 150, 63, 0.05) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+.section-nosotros .container {
+    position: relative;
+    z-index: 1;
+}
+
+.nosotros-row {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+}
+
+/* Columna de texto a la izquierda */
+.nosotros-text-col {
+    flex: 1;
+    animation: fadeInLeft 1s ease-out;
+}
+
+.nosotros-text-col h2 {
+    font-size: 42px;
+    font-weight: 900;
+    color: #1a4d2e;
+    margin-bottom: 25px;
+    line-height: 1.2;
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.nosotros-text-col h2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 80px;
+    height: 5px;
+    background: linear-gradient(90deg, #00963f 0%, #1a4d2e 100%);
+    border-radius: 10px;
+}
+
+.nosotros-text-col p {
+    font-size: 18px;
+    line-height: 1.9;
+    color: #495057;
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.nosotros-text-col p:last-of-type {
+    margin-bottom: 0;
+}
+
+/* Columna de imagen a la derecha */
+.nosotros-image-col {
+    flex: 1;
+    animation: fadeInRight 1s ease-out;
+}
+
+.nosotros-image-wrapper {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+    transition: all 0.4s ease;
+}
+
+.nosotros-image-wrapper:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
+}
+
+.nosotros-image-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.nosotros-image-wrapper:hover img {
+    transform: scale(1.05);
+}
+
+/* Decoración de esquina */
+.nosotros-image-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 100px;
+    height: 100px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 15px;
+    z-index: 1;
+}
+
+/* ======================================= */
+/* ANIMACIONES                             */
+/* ======================================= */
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeInRight {
+    from {
+        opacity: 0;
+        transform: translateX(40px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ======================================= */
+/* RESPONSIVE                              */
+/* ======================================= */
+
+@media (max-width: 992px) {
+    .banner-nosotros {
+        height: 70vh;
+        min-height: 500px;
+        background-attachment: scroll;
+    }
+
+    .banner-nosotros-content h1 {
+        font-size: 42px;
+    }
+
+    .banner-nosotros-content p {
+        font-size: 18px;
+    }
+
+    .nosotros-row {
+        flex-direction: column;
+        gap: 50px;
+    }
+
+    .nosotros-text-col h2 {
+        font-size: 36px;
+        text-align: center;
+    }
+
+    .nosotros-text-col h2::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .nosotros-text-col p {
+        text-align: center;
+    }
+
+    .section-nosotros {
+        padding: 70px 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .banner-nosotros {
+        height: 60vh;
+        min-height: 450px;
+    }
+
+    .banner-nosotros-content h1 {
+        font-size: 36px;
+    }
+
+    .banner-nosotros-content p {
+        font-size: 16px;
+    }
+
+    .nosotros-text-col h2 {
+        font-size: 32px;
+    }
+
+    .nosotros-text-col p {
+        font-size: 16px;
+    }
+
+    .section-nosotros {
+        padding: 50px 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .banner-nosotros {
+        height: 50vh;
+        min-height: 400px;
+    }
+
+    .banner-nosotros-content h1 {
+        font-size: 28px;
+    }
+
+    .banner-nosotros-content p {
+        font-size: 15px;
+    }
+
+    .nosotros-text-col h2 {
+        font-size: 28px;
+    }
+
+    .nosotros-text-col p {
+        font-size: 15px;
+    }
+
+    .nosotros-row {
+        gap: 40px;
+    }
+
+    .section-nosotros {
+        padding: 40px 0;
+    }
+}
