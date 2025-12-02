@@ -33,6 +33,7 @@ class Nosotros extends CI_Controller {
         public function index() {
         $data["menuTiposCategorias"] = $this->tiposCategoriasMenu();
         $data["clientes"] = $this->Cliente_model->obtener_clientes(); // <- NUEVO
+        $data["tipos_categoria"] = $this->Tipo_categoria_model->obtener_tipos_activos();
         $this->load->view('templates/header', $data);
         $this->load->view('nosotros', $data); // <- Pasar datos a la vista
         $this->load->view('templates/footer');

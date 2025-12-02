@@ -5,161 +5,152 @@
     <title>Iniciar sesión</title>
 
     <style>
-        /* Fondo general */
+        /* Variables de tema: fácil de ajustar y reutilizar */
+        :root{
+            --bg-1: #0f1724; /* fondo oscuro */
+            --bg-2: #112226; /* gradiente verdoso */
+            --card-bg: #ffffff;
+            --primary: #00963f; /* verde principal (coincide con inicio) */
+            --primary-600: #007a33;
+            --primary-700: #005822;
+            --muted: #6b7280;
+            --input-border: #e6e9ef;
+            --error: #dc2626;
+            --shadow: rgba(2,6,23,0.28);
+            --radius: 12px;
+            --max-width: 420px;
+            --card-padding: 36px;
+        }
+
+        /* Reset y fondo */
+        html,body{height:100%;}
         body {
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #2e2e2e, #4a4a4a);
-            font-family: "Poppins", sans-serif;
-            height: 100vh;
+            font-family: "Poppins", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+            background: linear-gradient(135deg, var(--bg-1), var(--bg-2));
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            color: #0b1220;
+            -webkit-font-smoothing:antialiased;
+            -moz-osx-font-smoothing:grayscale;
             position: relative;
         }
 
-        /* Botón volver */
+        /* Botón volver (debajo del formulario) */
         .btn-back {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: #ff7a00;
-            color: #fff;
-            padding: 10px 16px;
-            border: none;
+            display: block;
+            width: 90%;
+            max-width: 260px;
+            margin: 14px auto 0; /* aparece debajo del botón Ingresar */
+            background: var(--card-bg);
+            color: var(--primary);
+            padding: 10px 14px;
             border-radius: 8px;
             font-size: 14px;
             font-weight: 600;
-            cursor: pointer;
             text-decoration: none;
-            transition: 0.3s;
-            box-shadow: 0 4px 0 #c55f00;
+            text-align: center;
+            border: 1px solid rgba(15,20,28,0.06);
+            box-shadow: 0 6px 18px rgba(2,6,23,0.08);
+            transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
         }
 
-        .btn-back:hover {
-            background: #e86f00;
-            box-shadow: 0 4px 0 #a94e00;
-            transform: translateY(-2px);
-        }
-
-        .btn-back:active {
-            transform: translateY(1px);
-            box-shadow: 0 2px 0 #a94e00;
-        }
+        .btn-back:hover{ transform: translateY(-2px); box-shadow: 0 10px 22px rgba(2,6,23,0.10); }
+        .btn-back:active{ transform: translateY(0); }
 
         /* Contenedor del login */
         .login-box {
-            background: #ffffff;
-            width: 380px;
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.30);
-            animation: fadeIn 0.5s ease-in-out;
-            text-align: center; /* CENTRAR TODO */
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(-20px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Título */
-        .login-box h2 {
-            margin: 0 0 25px 0;
-            font-size: 28px;
+            background: var(--card-bg);
+            width: calc(min(var(--max-width), 94vw));
+            max-width: var(--max-width);
+            padding: var(--card-padding);
+            border-radius: calc(var(--radius) + 4px);
+            box-shadow: 0 12px 30px var(--shadow);
+            animation: fadeIn .36s ease-out;
             text-align: center;
-            color: #333;
-            font-weight: 600;
+            border: 1px solid rgba(2,6,23,0.04);
         }
 
-        /* Inputs */
-        .input-group {
-            width: 100%;
-            margin-bottom: 18px;
-            display: flex;
-            justify-content: center;
+        @keyframes fadeIn { from{ opacity:0; transform: translateY(-8px);} to{ opacity:1; transform: translateY(0);} }
+
+        .login-box h2{
+            margin:0 0 18px 0;
+            font-size: 24px;
+            color: #0b1220;
+            font-weight:700;
         }
 
-        .input-group input {
-            width: 90%; /* CENTRADO Y AJUSTADO */
-            padding: 14px;
-            border-radius: 10px;
-            border: 1px solid #bbb;
+        /* Grupos de input */
+        .input-group{ width:100%; margin-bottom:14px; display:flex; justify-content:center; }
+
+        .input-group input{
+            width:90%;
+            padding:12px 14px;
+            border-radius:10px;
+            border:1px solid var(--input-border);
+            background: #fff;
+            font-size:15px;
             outline: none;
-            font-size: 15px;
-            transition: 0.2s;
+            transition: box-shadow .14s ease, border-color .14s ease, transform .08s ease;
         }
 
-        .input-group input:focus {
-            border-color: #ff7a00;
-            box-shadow: 0 0 5px rgba(255,122,0,0.5);
+        .input-group input:focus{
+            border-color: var(--primary);
+            box-shadow: 0 6px 18px rgba(0,150,63,0.12);
+            transform: translateY(-1px);
         }
 
-        /* Botón elegante estilo FERRETERÍA */
-        .btn-login {
-            width: 90%;
-            background: #ff7a00;
-            color: white;
-            padding: 14px;
-            border: none;
-            border-radius: 10px;
-            font-size: 17px;
-            cursor: pointer;
-            margin-top: 10px;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            transition: 0.3s;
-            box-shadow: 0 6px 0 #c55f00;
+        /* Botón primario */
+        .btn-login{
+            width:90%;
+            display:inline-block;
+            background: var(--primary);
+            color:#fff;
+            padding:12px 14px;
+            border-radius:10px;
+            border:none;
+            font-size:16px;
+            font-weight:700;
+            cursor:pointer;
+            transition: background .14s ease, box-shadow .14s ease, transform .08s ease;
         }
 
-        .btn-login:hover {
-            background: #e86f00;
-            box-shadow: 0 6px 0 #a94e00;
-            transform: translateY(-2px);
-        }
-
-        .btn-login:active {
-            transform: translateY(1px);
-            box-shadow: 0 3px 0 #a94e00;
-        }
+        .btn-login:hover{ background: var(--primary-600); transform: translateY(-2px); box-shadow: 0 10px 24px rgba(0,150,63,0.12); }
+        .btn-login:active{ transform: translateY(0); }
 
         /* Mensaje de error */
-        .error {
-            background: #ffe1e1;
-            padding: 10px;
-            color: #c40000;
-            border-left: 4px solid #c40000;
-            border-radius: 5px;
-            margin-bottom: 15px;
-            font-size: 14px;
-            text-align: center;
+        .error{
+            background: #fff5f5;
+            color: var(--error);
+            border-left: 4px solid var(--error);
+            padding:10px 12px;
+            border-radius:6px;
+            margin-bottom:12px;
+            font-size:14px;
+            text-align:center;
+        }
+
+        /* Accesibilidad: reduce motion */
+        @media (prefers-reduced-motion: reduce){
+            .login-box, .btn-login, .btn-back{ animation:none; transition:none; }
         }
 
         /* Móvil */
-        @media (max-width: 420px) {
-            .login-box {
-                width: 90%;
-                padding: 25px;
-            }
-
-            .btn-back {
-                top: 10px;
-                right: 10px;
-                padding: 8px 12px;
-                font-size: 13px;
-            }
+        @media (max-width:420px){
+            .login-box{ padding:20px; width:92%; }
+            .btn-back{ margin-top:10px; padding:8px 10px; font-size:13px; width:92%; max-width:220px; }
+            .login-box h2{ font-size:20px; }
         }
     </style>
 </head>
 
 <body>
-
     <!-- Botón volver -->
-    <a href="<?= base_url(); ?>" class="btn-back">&#8592; Volver</a>
-
     <div class="login-box">
         <h2>Iniciar Sesión</h2>
-
         <!-- ERROR -->
         <?php if($this->session->flashdata("error")): ?>
             <div class="error">
@@ -179,6 +170,8 @@
             </div>
 
             <button type="submit" class="btn-login">Ingresar</button>
+
+            <p><a href="<?= base_url(); ?>" class="btn-back">&#8592; Volver</a></p>
         </form>
     </div>
 

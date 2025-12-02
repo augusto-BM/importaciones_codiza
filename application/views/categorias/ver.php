@@ -394,7 +394,7 @@
                         <div class="product-card" id="contenedor-producto-<?= $producto->id_producto ?>" 
                              onclick="window.location.href='<?= base_url('productos/detalle/' . $producto->id_producto) ?>'">
                             <div class="product-image-container">
-                                <div class="product-image-wrapper">
+                                <div class="product-image-wrapper" style="cursor: pointer;" title="Ver Producto">
                                     <?php if (!empty($producto->imagen1)): ?>
                                         
                                         <img src="<?= base_url("images/productos/$producto->imagen1") ?>" 

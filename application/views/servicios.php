@@ -8,7 +8,7 @@
     width: 100%;
     height: 100vh;
     min-height: 600px;
-    background-image: url('<?= base_url("images/nosotros/nosotros.png") ?>');
+    background-image: url('<?= base_url("images/banner/3-banners.jpg") ?>');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -384,77 +384,77 @@
             "badge" => "Vulcanizado",
             "titulo" => "Vulcanizado de Faja para la Industria",
             "descripcion" => "Ofrecemos servicios especializados de vulcanizado de fajas transportadoras para la industria...",
-            "imagen" => "foto1.jpg"
+            "imagen" => "Servicio-en-fajas-transportadoras.jpg"
         ],
         [
             "icono" => "fas fa-tools",
             "badge" => "Transporte",
             "titulo" => "Vulcanizado de Faja Transportadora",
             "descripcion" => "Servicio profesional de vulcanizado en frío y caliente para fajas transportadoras de todo tipo...",
-            "imagen" => "foto1.jpg"
+            "imagen" => "Servicio-en-fajas-transportadoras2.jpg"
         ],
         [
             "icono" => "fas fa-arrows-alt-v",
             "badge" => "Elevación",
             "titulo" => "Montaje de Los Elevadores",
             "descripcion" => "Instalación y montaje completo de elevadores de cangilones para la industria...",
-            "imagen" => "foto1.jpg"
+            "imagen" => "servicios-en-fajas-transportadoras7.jpg"
         ],
         [
             "icono" => "fas fa-layer-group",
             "badge" => "Perfil",
             "titulo" => "Servicio de Faja con Perfil y Barreras",
             "descripcion" => "Suministro e instalación de fajas transportadoras con perfiles transversales y barreras laterales...",
-            "imagen" => "foto1.jpg"
+            "imagen" => "servicios-en-fajas-transportadoras5-768x432.jpg"
         ],
         [
             "icono" => "fas fa-bezier-curve",
             "badge" => "Modular",
             "titulo" => "Servicio de Faja Curva Modular",
             "descripcion" => "Sistemas de transporte con fajas curvas modulares que permiten cambios de dirección...",
-            "imagen" => "foto1.jpg"
+            "imagen" => "servicios-en-fajas-transportadoras6.jpg"
         ],
         [
             "icono" => "fas fa-sort-amount-down",
             "badge" => "Selección",
             "titulo" => "Servicio de Faja Seleccionadora",
             "descripcion" => "Fajas transportadoras especializadas para procesos de selección y clasificación de productos...",
-            "imagen" => "foto1.jpg"
+            "imagen" => "SERVICIO-DE-FAJA-TIPO-CURVA.jpg"
         ],
         [
             "icono" => "fas fa-ruler-combined",
             "badge" => "Calibración",
             "titulo" => "Servicio de Faja Calibradora",
             "descripcion" => "Sistemas de calibración y clasificación por tamaño para productos agrícolas e industriales...",
-            "imagen" => "foto1.jpg"
+            "imagen" => "SERVICIO-DE-FAJA-CON-AGUJEROS.jpg"
         ],
         [
             "icono" => "fas fa-wave-square",
             "badge" => "Tipo Onda",
             "titulo" => "Servicio de Faja Tipo Onda",
             "descripcion" => "Fajas transportadoras de perfil ondulado diseñadas para transporte de productos delicados...",
-            "imagen" => "foto1.jpg"
+            "imagen" => "servicios-en-fajas-transportadoras4.jpg"
         ],
         [
             "icono" => "fas fa-conveyor-belt",
             "badge" => "General",
             "titulo" => "Servicio de Faja",
             "descripcion" => "Servicio integral de mantenimiento, reparación e instalación de fajas transportadoras...",
-            "imagen" => "foto1.jpg"
+            "imagen" => "servicios-en-fajas-transportadoras3.jpg"
         ],
         [
             "icono" => "fas fa-grip-lines",
             "badge" => "Perfiles",
             "titulo" => "Servicio de Perfiles",
             "descripcion" => "Fabricación e instalación de perfiles transversales para fajas transportadoras...",
-            "imagen" => "foto1.jpg"
+            "imagen" => "servicios-en-fajas-transportadoras2.jpg"
         ],
         [
             "icono" => "fas fa-angle-up",
             "badge" => "Inclinación",
             "titulo" => "Servicio de Faja con Inclinación",
             "descripcion" => "Sistemas de transporte con fajas inclinadas para elevación de materiales...",
-            "imagen" => "foto1.jpg"
+            "imagen" => "servicios-en-fajas-transportadoras-768x576.jpg"
         ]
     ];
 ?>
@@ -481,7 +481,7 @@
                     <!-- Imagen -->
                     <div class="servicio-imagen-wrapper">
                         <div class="servicio-imagen-container">
-                            <img src="<?= base_url('images/nosotros/' . $s['imagen']) ?>" 
+                            <img src="<?= base_url('images/servicios/' . $s['imagen']) ?>" 
                                 alt="<?= $s['titulo'] ?>">
                         </div>
                     </div>

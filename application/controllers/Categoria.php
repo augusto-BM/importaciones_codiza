@@ -8,6 +8,7 @@ class Categoria extends CI_Controller {
         $this->load->model('Categoria_model');
         $this->load->model('Producto_model');
         $this->load->model('Menu_model');
+        $this->load->model("Tipo_categoria_model");
         $this->load->helper(array('form', 'url', 'file', 'html_components'));
         $this->load->library(array('form_validation', 'upload', 'session'));
     }
@@ -284,6 +285,7 @@ class Categoria extends CI_Controller {
         $data["menuTiposCategorias"] = $this->tiposCategoriasMenu();
         $data["categoria"] = $categoria;
         $data["productos"] = $productos;
+        $data["tipos_categoria"] = $this->Tipo_categoria_model->obtener_tipos_activos();
         
         $this->load->view("templates/header", $data);
         $this->load->view("categorias/ver", $data);

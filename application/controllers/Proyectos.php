@@ -35,6 +35,7 @@ class Proyectos extends CI_Controller {
     public function index() {
         $data["menuTiposCategorias"] = $this->tiposCategoriasMenu();
         $data["clientes"] = $this->Cliente_model->obtener_clientes();
+        $data["tipos_categoria"] = $this->Tipo_categoria_model->obtener_tipos_activos();
         $this->load->view('templates/header', $data);
         $this->load->view('proyectos', $data);
         $this->load->view('templates/footer');

@@ -599,7 +599,7 @@ body {
                 <div class="col-6 col-lg-3">
                     <div class="logo d-flex justify-content-end justify-content-lg-end pe-lg-4">
                         <a href="<?= base_url(); ?>">
-                            <img src="<?= base_url('images/logo/logo.png') ?>" alt="Logo" class="img-fluid">
+                            <img src="<?= base_url('images/logo/logo-actual.png') ?>" alt="Logo" class="img-fluid">
                         </a>
                     </div>
                 </div>
@@ -613,7 +613,7 @@ body {
                             </div>
                             <div class="item-text">
                                 <div class="item-header">Información y ventas</div>
-                                <div class="item-content">+51 994 357 410</div>
+                                <div class="item-content">+51 985 410 410</div>
                             </div>
                         </div>
                         <div class="info-item">
@@ -622,7 +622,7 @@ body {
                             </div>
                             <div class="item-text">
                                 <div class="item-header">Escríbenos</div>
-                                <div class="item-content">ventas@karflex.com.pe</div>
+                                <div class="item-content">codiza@importacionescodiza.com</div>
                             </div>
                         </div>
                         <div class="info-item">
@@ -631,7 +631,7 @@ body {
                             </div>
                             <div class="item-text">
                                 <div class="item-header">Horario de atención</div>
-                                <div class="item-content">L - V: 8am - 5pm / S: 8am - 1pm</div>
+                                <div class="item-content">L - V: 8am - 6pm / S: 8am - 1pm</div>
                             </div>
                         </div>
                     </div>
@@ -682,11 +682,11 @@ body {
                                     <i class="fas fa-folder"></i> Categorías
                                 </a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="<?= base_url('login/clientes'); ?>">
+                            <!-- <li class="nav-item">
+                                <a class="nav-link" href="< ?= base_url('login/clientes'); ?>">
                                     <i class="fas fa-users"></i> Clientes
                                 </a>
-                            </li>
+                            </li> -->
                             <li class="nav-item">
                                 <a class="nav-link" href="<?= base_url('login/tiposcategorias'); ?>" title="TIPO DE CATEGORIAS">
                                     <i class="fas fa-tags"></i> Tipo
@@ -791,9 +791,9 @@ body {
                     <a href="<?= base_url('login/categorias'); ?>" class="mobile-menu-link">
                         <i class="fas fa-folder"></i> Categorías
                     </a>
-                    <a href="<?= base_url('login/clientes'); ?>" class="mobile-menu-link">
+                    <!-- <a href="< ?= base_url('login/clientes'); ?>" class="mobile-menu-link">
                         <i class="fas fa-users"></i> Clientes
-                    </a>
+                    </a> -->
                     <a href="<?= base_url('login/tiposcategorias'); ?>" class="mobile-menu-link" title="TIPO DE CATEGORIAS">
                         <i class="fas fa-tags"></i> Tipo
                     </a>

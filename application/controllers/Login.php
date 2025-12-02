@@ -48,8 +48,9 @@ class Login extends CI_Controller {
 
     public function dashboard() {
         if (!$this->session->userdata("logeado")) { redirect("login"); }
+        $data["tipos_categoria"] = $this->Tipo_categoria_model->obtener_tipos_activos();
         // Cargar vista del dashboard
-        $this->load->view("templates/header");
+        $this->load->view("templates/header", $data);
         $this->load->view("dashboard");
         $this->load->view("templates/footer");
     }
@@ -58,8 +59,9 @@ class Login extends CI_Controller {
         if (!$this->session->userdata("logeado")) { redirect("login"); }
         $data['tiposCategorias'] = $this->Menu_model->getTiposCategorias();
         $data["categorias"] = $this->Categoria_model->getCategorias();
-        // Cargar vista de productos
-        $this->load->view("templates/header");
+        $data["tipos_categoria"] = $this->Tipo_categoria_model->obtener_tipos_activos();
+        // Cargar vista del dashboard
+        $this->load->view("templates/header", $data);
         $this->load->view("productos", $data);
         $this->load->view("templates/footer");
     }
@@ -67,24 +69,27 @@ class Login extends CI_Controller {
     public function categorias() {
         if (!$this->session->userdata("logeado")) { redirect("login"); }
         $data['tiposCategorias'] = $this->Menu_model->getTiposCategorias();
-        // Cargar vista de categorias
-        $this->load->view("templates/header");
+        $data["tipos_categoria"] = $this->Tipo_categoria_model->obtener_tipos_activos();
+        // Cargar vista del dashboard
+        $this->load->view("templates/header", $data);
         $this->load->view("categorias", $data);
         $this->load->view("templates/footer");
     }
 
-    public function clientes() {
+    /* public function clientes() {
         if (!$this->session->userdata("logeado")) { redirect("login"); }
-        // Cargar vista de clientes
-        $this->load->view("templates/header");
+        $data["tipos_categoria"] = $this->Tipo_categoria_model->obtener_tipos_activos();
+        // Cargar vista del dashboard
+        $this->load->view("templates/header", $data);
         $this->load->view("clientes");
         $this->load->view("templates/footer");
-    }
+    } */
 
     public function tiposcategorias() {
         if (!$this->session->userdata("logeado")) { redirect("login"); }
-        // Cargar vista de tipos de categorias
-        $this->load->view("templates/header");
+        $data["tipos_categoria"] = $this->Tipo_categoria_model->obtener_tipos_activos();
+        // Cargar vista del dashboard
+        $this->load->view("templates/header", $data);
         $this->load->view("tiposcategorias");
         $this->load->view("templates/footer");
     }

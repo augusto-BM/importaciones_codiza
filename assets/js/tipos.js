@@ -246,7 +246,9 @@ function guardarCategoria() {
         showCancelButton: true,
         confirmButtonColor: COLORES.exito,
         cancelButtonColor: COLORES.cancelacion,
-        confirmButtonText: esEdicion ? 'Actualizar' : 'Guardar'
+        confirmButtonText: esEdicion ? 'Actualizar' : 'Guardar',
+        cancelButtonText: 'Cancelar',
+        reverseButtons: true
     }).then((result) => {
         if (result.isConfirmed) {
             const data = {

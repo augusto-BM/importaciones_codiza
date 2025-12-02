@@ -97,13 +97,16 @@ class Tipo_categoria_model extends CI_Model {
 
     public function existe_tipo_categoria($nombre, $id_oculto = null) {
         $this->db->where('nombre', $nombre);
-        $this->db->where('cji_flagestado !=', '2');
+        $this->db->where('cji_flagestado != 2', null, false); 
+
         if ($id_oculto) {
             $this->db->where('id_tipocategoria !=', $id_oculto);
         }
+
         $query = $this->db->get('tipo_categoria');
         return $query->num_rows() > 0;
     }
+
 
     public function insertar_categoria($datos) {
         return $this->db->insert('tipo_categoria', $datos);

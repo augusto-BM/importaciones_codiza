@@ -31,7 +31,7 @@ class Producto_model extends CI_Model {
             ->row();
     }
 
-        public function obtenerPorId($id)
+    public function obtenerPorId($id)
     {
         $this->db->select('p.id_producto, p.nombre, p.precio, p.descripcion, p.etiquetas, p.imagen1, p.imagen2, p.imagen3, p.imagen4, p.imagen5, p.id_categoria, c.nombre AS categoria_nombre, tc.nombre AS tipo_nombre');
         $this->db->from('productos p');
@@ -42,6 +42,19 @@ class Producto_model extends CI_Model {
 
         $query = $this->db->get();
         return $query->row(); // devuelve SOLO una fila
+    }
+
+    public function productosRelacionados($id_categoria, $excluir_id, $limite = 4) {
+        return $this->db
+            ->select('id_producto, nombre, precio, imagen1')
+            ->from('productos')
+            ->where('id_categoria', $id_categoria)
+            ->where('cji_flagestado', '1')
+            ->where('id_producto !=', $excluir_id)
+            ->order_by('RAND()') 
+            ->limit($limite)  
+            ->get()
+            ->result();
     }
 
  // =======================================
@@ -114,62 +127,65 @@ class Producto_model extends CI_Model {
     // ADMIN PANEL - DATATABLE
     // =======================================
     public function getProductosTabla($filter) {
-        $where = [];
+        $where = "WHERE 1=1";
         $params = [];
+
+        // Joins reutilizables
+        $joins = " 
+            INNER JOIN categorias c ON c.id_categoria = p.id_categoria
+            INNER JOIN tipo_categoria tc ON tc.id_tipocategoria = c.id_tipocategoria
+        ";
 
         // Filtro por estado
         if (isset($filter->estado) && $filter->estado != 2) {
-            $where[] = "p.cji_flagestado = ?";
+            $where .= " AND p.cji_flagestado = ?";
             $params[] = $filter->estado;
         } else {
-            $where[] = "p.cji_flagestado IN (0, 1)";
+            $where .= " AND p.cji_flagestado IN (0, 1)";
         }
 
         // Filtro por nombre
         if (!empty($filter->nombre)) {
-            $where[] = "p.nombre LIKE ?";
+            $where .= " AND p.nombre LIKE ?";
             $params[] = '%' . $filter->nombre . '%';
         }
 
         // Filtro por categoría
         if (!empty($filter->id_categoria)) {
-            $where[] = "p.id_categoria = ?";
+            $where .= " AND p.id_categoria = ?";
             $params[] = $filter->id_categoria;
         }
 
-        if (!empty($filter->id_categoria)) {
-            $where[] = "p.id_categoria = ?";
-            $params[] = $filter->id_categoria;
-        }
-
+        // Filtro por tipo de categoría
         if (!empty($filter->id_tipocategoria)) {
-            $where[] = "tc.id_tipocategoria = ?";
+            $where .= " AND tc.id_tipocategoria = ?";
             $params[] = $filter->id_tipocategoria;
         }
 
-        // Búsqueda general DataTables
+        // Búsqueda general
         if (!empty($filter->search)) {
-            $where[] = "(p.nombre LIKE ? OR c.nombre LIKE ? OR p.descripcion LIKE ?)";
+            $where .= " AND (p.nombre LIKE ? OR c.nombre LIKE ? OR p.descripcion LIKE ?)";
             $params[] = '%' . $filter->search . '%';
             $params[] = '%' . $filter->search . '%';
             $params[] = '%' . $filter->search . '%';
         }
 
-        $whereClause = implode(' AND ', $where);
+        // Conteo de registros filtrados
+        $sqlCount = "SELECT COUNT(*) as total FROM productos p $joins $where";
+        $queryCount = $this->db->query($sqlCount, $params);
+        $totalFiltered = $queryCount->row()->total;
 
-        // Contar registros filtrados
-        $sqlFilter = "SELECT COUNT(*) as total
-                    FROM productos p
-                    LEFT JOIN categorias c ON c.id_categoria = p.id_categoria
-                    LEFT JOIN tipo_categoria tc ON tc.id_tipocategoria = c.id_tipocategoria
-                    WHERE $whereClause";
-        $queryFilter = $this->db->query($sqlFilter, $params);
-        $recordsFilter = $queryFilter->row()->total;
+        // Orden
+        $orderCol = !empty($filter->order) ? $filter->order : 'p.nombre';
+        $orderDir = !empty($filter->dir) ? $filter->dir : 'ASC';
 
         // Paginación
-        $limit = '';
-        if (isset($filter->start) && isset($filter->length) && $filter->length != -1) {
-            $limit = " LIMIT " . intval($filter->length) . " OFFSET " . intval($filter->start);
+        if (isset($filter->length) && $filter->length != -1) {
+            $whereLimit = " LIMIT ?, ?";
+            $params[] = intval($filter->start);
+            $params[] = intval($filter->length);
+        } else {
+            $whereLimit = "";
         }
 
         // Consulta principal
@@ -190,27 +206,20 @@ class Producto_model extends CI_Model {
                     tc.id_tipocategoria AS id_tipo_categoria,
                     tc.nombre AS tipo_nombre
                 FROM productos p
-                LEFT JOIN categorias c ON c.id_categoria = p.id_categoria
-                LEFT JOIN tipo_categoria tc ON tc.id_tipocategoria = c.id_tipocategoria
-                WHERE $whereClause
-                ORDER BY p.nombre ASC" . $limit;
+                $joins
+                $where
+                ORDER BY $orderCol $orderDir
+                $whereLimit";
 
         $query = $this->db->query($sql, $params);
         $records = $query->result();
 
-        // Total de registros sin filtro
-        $sqlTotal = "SELECT COUNT(*) as total FROM productos WHERE cji_flagestado IN (0, 1)";
-        $queryTotal = $this->db->query($sqlTotal);
-        $recordsTotal = $queryTotal->row()->total;
-
         return [
-            "recordsTotal" => $recordsTotal,
-            "recordsFilter" => $recordsFilter,
-            "records" => $records
+            "records" => $records,
+            "recordsTotal" => $totalFiltered,
+            "recordsFilter" => $totalFiltered
         ];
     }
-
-
 
     public function existe_nombreProducto($nombre, $id_oculto = null) {
         $this->db->select('id_producto');

@@ -65,6 +65,7 @@ class Productos extends CI_Controller {
         $data["menuTiposCategorias"] = $this->tiposCategoriasMenu();
         $data["tipos_categoria"] = $this->Tipo_categoria_model->obtener_tipos_activos();
         $data['producto'] = $this->Producto_model->obtenerPorId($id);
+        $data['productos_relacionados'] = $this->Producto_model->productosRelacionados($data['producto']->id_categoria, $id);
         
         if (!$data['producto']) {
             show_404();
@@ -103,6 +104,8 @@ class Productos extends CI_Controller {
         $filter->nombre = $this->input->post("nombre");
         $filter->id_categoria = $this->input->post("id_categoria");
         $filter->id_tipocategoria = $this->input->post("id_tipocategoria");
+
+        #var_dump($filter->id_categoria, $filter->id_tipocategoria); exit; // Depuración
 
         $productos = $this->Producto_model->getProductosTabla($filter);
 

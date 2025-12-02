@@ -393,15 +393,15 @@
                 <!-- Columna 1: Logo e información -->
                 <div class="col-12 col-md-6 col-lg-3 mb-4">
                     <div class="footer-logo">
-                        <img src="<?= base_url('images/logo/logo.png') ?>" alt="Importaciones Codiza">
+                        <img src="<?= base_url('images/logo/logo-footer.png') ?>" alt="Importaciones Codiza">
                     </div>
                     <p class="footer-description">
-                        Ventas, importación y distribución de herramientas para la industria de metalmecánica
+                        CODIZA | Soluciones en Fajas Transportadoras.
                     </p>
                     <div class="footer-contact">
-                        <p><i class="fas fa-phone"></i> +51 972 156 330</p>
-                        <p><i class="fas fa-map-marker-alt"></i> Av. Argentina 469 lima lima, Lima 15082</p>
-                        <p><i class="fas fa-envelope"></i> ventas@importacionescodiza.com.pe</p>
+                        <p><i class="fas fa-phone"></i> +51 985 410 410</p>
+                        <p><i class="fas fa-map-marker-alt"></i>Av. Ramón Cárcamo 565 Int. 131</p>
+                        <p><i class="fas fa-envelope"></i>https://importacionescodiza.com/</p>
                     </div>
                     <div class="social-icons">
                         <a href="#" class="facebook" title="Facebook"><i class="fab fa-facebook-f"></i></a>
@@ -413,7 +413,7 @@
                 <!-- Columna 2: Productos -->
                 <div class="col-12 col-md-6 col-lg-3 mb-4">
                     <div class="footer-section">
-                        <h4><i class="fas fa-tools"></i> Productos</h4>
+                        <h4><i class="fas fa-tools"></i> Tipos de Categorias</h4>
                         <ul>
                             <?php if (isset($tipos_categoria) && !empty($tipos_categoria)): ?>
                                 <?php foreach ($tipos_categoria as $tipo): ?>
@@ -437,7 +437,7 @@
                         <div class="footer-schedule">
                             <p>
                                 <strong>Lunes a Viernes:</strong>
-                                8:00 am - 5:00 pm
+                                8:00 am - 6:00 pm
                             </p>
                             <p>
                                 <strong>Sábados:</strong>
@@ -458,29 +458,29 @@
                         
                         <div class="footer-advisor">
                             <h5><i class="fas fa-user-tie"></i> Asesor Principal</h5>
-                            <p><i class="fas fa-phone"></i> <a href="tel:+51972156330">+51 972 156 330</a></p>
-                            <p><i class="fas fa-envelope"></i> <a href="mailto:ventas@importacionescodiza.com.pe">ventas@importacionescodiza.com.pe</a></p>
+                            <p><i class="fas fa-phone"></i> <a href="tel:+51985410410">+51 985 410 410</a></p>
+                            <p><i class="fas fa-envelope"></i> <a href="mailto:codiza@importacionescodiza.com">codiza@importacionescodiza.com</a></p>
                         </div>
 
-                        <div class="footer-advisor">
+                        <!-- <div class="footer-advisor">
                             <h5><i class="fas fa-user-tie"></i> Asesor Comercial</h5>
                             <p><i class="fas fa-phone"></i> <a href="tel:+51994357410">+51 994 357 410</a></p>
-                            <p><i class="fas fa-envelope"></i> <a href="mailto:ventas1@importacionescodiza.com.pe">ventas1@importacionescodiza.com.pe</a></p>
-                        </div>
+                            <p><i class="fas fa-envelope"></i> <a href="mailto:ventasindustriales@codiza.com.pe">ventasindustriales@codiza.com.pe</a></p>
+                        </div> -->
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <div class="footer-bottom">
-        <p>&copy; 2025 <strong>IMPORTACIONES CODIZA</strong> - Todos los derechos reservados.</p>
+        <p>&copy; <?= date('Y') ?> <strong>IMPORTACIONES CODIZA</strong> - Todos los derechos reservados.</p>
     </div>
 </footer>
 
 <!-- Botón flotante de WhatsApp -->
-<a href="https://wa.me/51972156330" target="_blank" class="whatsapp-float" title="Chatea con nosotros">
+<a href="https://wa.me/51985410410" target="_blank" class="whatsapp-float" title="Chatea con nosotros">
     <i class="fab fa-whatsapp"></i>
-    <span class="whatsapp-tooltip">Chatea con Codiza</span>
+    <span class="whatsapp-tooltip">Chatea con CODIZA</span>
 </a>
 
 <!-- Botón flotante Volver Arriba -->
@@ -489,28 +489,28 @@
 </button>
 
 <script>
-// ===============================================
-// BOTÓN VOLVER ARRIBA CON JQUERY
-// ===============================================
-$(document).ready(function() {
-    const scrollTopBtn = $('#scrollTop');
+    // ===============================================
+    // BOTÓN VOLVER ARRIBA CON JQUERY
+    // ===============================================
+    $(document).ready(function() {
+        const scrollTopBtn = $('#scrollTop');
 
-    // Mostrar/ocultar botón al hacer scroll
-    $(window).on('scroll', function() {
-        if ($(this).scrollTop() > 300) {
-            scrollTopBtn.addClass('show');
-        } else {
-            scrollTopBtn.removeClass('show');
-        }
-    });
+        // Mostrar/ocultar botón al hacer scroll
+        $(window).on('scroll', function() {
+            if ($(this).scrollTop() > 300) {
+                scrollTopBtn.addClass('show');
+            } else {
+                scrollTopBtn.removeClass('show');
+            }
+        });
 
-    // Scroll suave al inicio al hacer click
-    scrollTopBtn.on('click', function() {
-        $('html, body').animate({
-            scrollTop: 0
-        }, 800, 'swing');
+        // Scroll suave al inicio al hacer click
+        scrollTopBtn.on('click', function() {
+            $('html, body').animate({
+                scrollTop: 0
+            }, 800, 'swing');
+        });
     });
-});
 </script>
 
 

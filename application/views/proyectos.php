@@ -8,7 +8,7 @@
     width: 100%;
     height: 100vh;
     min-height: 600px;
-    background-image: url('<?= base_url("images/nosotros/nosotros.png") ?>');
+    background-image: url('<?= base_url("images/categorias/banner-fajas-transportadoras.jpg") ?>');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -392,32 +392,32 @@
         <?php
             $proyectos = [
                 [
-                    "imagen" => "foto1.jpg",
+                    "imagen" => "Industria-en-General.jpg",
                     "icono" => "fas fa-industry",
                     "titulo_small" => "Faja modular Intralox",
                     "titulo" => "Industria en General",
-                    "descripcion" => "En la Industria En General brindamos soluciones a la Industria Envasadora, Plásticos, Cartoneras, Maderera, Textil, Lavanderías y muchas otras aplicaciones industriales."
+                    "descripcion" => "En la Industria En General brindamos soluciones a la Industria Envasadora, Plásticos, Cartoneras, Maderera, Textil, Lavanderías, Industria Gráfica y entre muchas más Industrias que existen en el Perú. Nosotros te brindamos la Solución a tu necesidad."
                 ],
                 [
-                    "imagen" => "foto1.jpg",
+                    "imagen" => "Mineria-Agregados-y-Ceramicos.jpg",
                     "icono" => "fas fa-gem",
                     "titulo_small" => "Faja modular Intralox",
                     "titulo" => "Minería, Agregados y Cerámicos",
-                    "descripcion" => "Nuestras fajas transportadoras se usan principalmente para transportar materiales granulados, como en la industria minera, cerámicos, agregados, agrícola y muchas otras."
+                    "descripcion" => "Nuestras fajas transportadoras se usan principalmente para transportar materiales granulados, como en la industria minera, cerámicos, agregados, agrícola y muchas otras. La mina Las Bambas, Chancadora Andalucita, Ladrillera Zúñiga, Agroindustria Casa Grande Utilizan nuestras fajas transportadoras y sus componentes. Dándole a Nuestros clientes la solución a sus problemas. Consulte las características de las fajas transportadoras con la recomendación de nuestro experto."
                 ],
                 [
-                    "imagen" => "foto1.jpg",
+                    "imagen" => "Agroindustria-y-Pesqueria1.jpg",
                     "icono" => "fas fa-fish",
                     "titulo_small" => "Faja modular Intralox",
                     "titulo" => "Agroindustria y Pesquería",
-                    "descripcion" => "En Viru S.A. estamos comprometidos con brindar el mejor producto y servicio de garantía y buena calidad..."
+                    "descripcion" => "En Viru S.A. Estamos comprometidos con brindar el mejor producto y servicio de garantía y buena calidad. Suministramos la línea de fajas sanitarias PVC, bandas modulares Flat Top, Revestimiento de Poleas, Cortinas de PVC, entre otros. Estamos dirigidos a las Agroindustria, Pesqueras, Cerveceras."
                 ],
                 [
-                    "imagen" => "foto1.jpg",
+                    "imagen" => "Molinos-Agropecuario-y-Avicola.jpg",
                     "icono" => "fas fa-cog",
                     "titulo_small" => "Faja modular Intralox",
                     "titulo" => "Molinos, Agropecuario y Avícola",
-                    "descripcion" => "En el Terminal Internacional del Sur (TISUR) – Arequipa. Solucionamos el desmontaje y montaje..."
+                    "descripcion" => "En el Terminal Internacional del Sur (TISUR) – Arequipa. Solucionamos el desmontaje y montaje de las Fajas y Cangilones del Elevador Del Molino. Asimismo, se realizó el mantenimiento de sus piezas y el cambio de la Faja transportadora que sale del silo y es transportado a la tolva de salida."
                 ]
             ];
             ?>
@@ -426,7 +426,7 @@
                 <?php foreach ($proyectos as $p): ?>
                     <div class="proyecto-card">
                         <div class="proyecto-imagen">
-                            <img src="<?= base_url("images/nosotros/".$p['imagen']) ?>" alt="<?= $p['titulo'] ?>">
+                            <img src="<?= base_url("images/categorias/".$p['imagen']) ?>" alt="<?= $p['titulo'] ?>">
                             <div class="proyecto-overlay"></div>
                             <div class="proyecto-icon">
                                 <i class="<?= $p['icono'] ?>"></i>

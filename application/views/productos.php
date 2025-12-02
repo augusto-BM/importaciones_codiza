@@ -220,7 +220,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 col-md-4 col-lg-3">
+                        <!-- <div class="col-12 col-md-4 col-lg-3">
                             <div class="form-group" style="display: flex; flex-direction: column;">
                                 <label for="imagendetalle">Imagen de Detalle</label>
                                 <input type="file" class="form-control-file mb-2" id="imagendetalle" name="imagendetalle" accept="image/*">
@@ -228,7 +228,7 @@
                                     <img id="imagenPreviewDetalle" class="img-thumbnail imagen-preview d-none">
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <div class="modal-footer">

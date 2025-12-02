@@ -8,7 +8,7 @@
     width: 100%;
     height: 100vh;
     min-height: 600px;
-    background-image: url('<?= base_url("images/nosotros/nosotros.png") ?>');
+    background-image: url('<?= base_url("images/nosotros/banner-ph-about-1.jpg") ?>');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -338,7 +338,7 @@
             <!-- Columna de imagen a la derecha -->
             <div class="col-lg-6 nosotros-image-col">
                 <div class="nosotros-image-wrapper">
-                    <img src="<?= base_url('images/nosotros/foto1.jpg') ?>" alt="Importaciones Codiza">
+                    <img src="<?= base_url('images/nosotros/Codiza-SA-768x432.jpg') ?>" alt="Importaciones Codiza">
                 </div>
             </div>
         </div>
