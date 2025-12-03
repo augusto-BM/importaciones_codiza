@@ -3,10 +3,95 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Importaciones Codiza</title>
+<?php 
+// Configuración SEO dinámica según la página
+$ci = get_instance();
+$current_controller = $ci->router->fetch_class();
+$current_method = $ci->router->fetch_method();
+
+// Título base
+$site_name = "Importaciones Codiza";
+$page_title = $site_name;
+$meta_description = "CODIZA S.A. - Importadores de productos para minería, agroindustria, pesquería e industrias. Especialistas en fajas transportadoras, cangilones, cortinas PVC y empaquetaduras con más de 20 años de experiencia en Perú.";
+$meta_keywords = "fajas transportadoras, importaciones industriales, productos minería, agroindustria, cangilones, cortinas pvc, empaquetaduras, codiza, perú";
+$canonical_url = current_url();
+
+// Personalizar según la página
+if ($current_controller == 'inicio' || $current_controller == '' || $current_method == 'index') {
+    $page_title = "Importaciones Codiza - Fajas Transportadoras y Productos Industriales en Perú";
+    $meta_description = "CODIZA S.A. líder en importación de fajas transportadoras, cangilones, cortinas PVC y productos industriales para minería, agroindustria y pesquería. +20 años de experiencia en Perú.";
+} elseif ($current_controller == 'nosotros') {
+    $page_title = "Nosotros - Importaciones Codiza | +20 Años de Experiencia";
+    $meta_description = "Conoce CODIZA S.A., empresa con más de 20 años importando productos industriales de calidad para minería, agroindustria y pesquería en todo el Perú.";
+    $meta_keywords = "sobre codiza, empresa importadora, experiencia industrial, fajas transportadoras perú";
+} elseif ($current_controller == 'productos') {
+    $page_title = "Productos Industriales - Importaciones Codiza";
+    $meta_description = "Catálogo completo de productos industriales: fajas transportadoras, cangilones para elevadores, cortinas PVC, empaquetaduras y accesorios industriales de alta calidad.";
+    $meta_keywords = "catálogo productos industriales, fajas transportadoras, cangilones, cortinas pvc, empaquetaduras";
+} elseif ($current_controller == 'servicios') {
+    $page_title = "Servicios Industriales - Importaciones Codiza";
+    $meta_description = "Servicios de asesoría técnica, instalación de fajas transportadoras, diseño de proyectos industriales y soluciones personalizadas para su empresa.";
+    $meta_keywords = "servicios industriales, asesoría técnica, instalación fajas, proyectos industriales";
+} elseif ($current_controller == 'proyectos') {
+    $page_title = "Proyectos Realizados - Importaciones Codiza";
+    $meta_description = "Conoce nuestros proyectos exitosos en minería, agroindustria y pesquería. Soluciones industriales implementadas en todo el Perú.";
+    $meta_keywords = "proyectos industriales, casos de éxito, instalaciones fajas, proyectos minería";
+} elseif ($current_controller == 'contacto') {
+    $page_title = "Contacto - Importaciones Codiza | Cotiza Ahora";
+    $meta_description = "Contáctanos para cotizaciones y asesoría en productos industriales. Teléfono: +51 985 410 410 | Email: codiza@importacionescodiza.com";
+    $meta_keywords = "contacto codiza, cotización productos industriales, asesoría técnica";
+} elseif ($current_controller == 'categoria') {
+    if (isset($categoria_nombre)) {
+        $page_title = htmlspecialchars($categoria_nombre) . " - Importaciones Codiza";
+        $meta_description = "Productos de " . htmlspecialchars($categoria_nombre) . " de alta calidad para industria. Importaciones directas con garantía y asesoría técnica especializada.";
+    }
+}
+
+// Si hay un producto específico
+if (isset($producto) && !empty($producto->nombre)) {
+    $page_title = htmlspecialchars($producto->nombre) . " - Importaciones Codiza";
+    $meta_description = !empty($producto->descripcion) ? strip_tags(substr($producto->descripcion, 0, 155)) . "..." : "Producto industrial de alta calidad disponible en CODIZA S.A. Cotiza ahora.";
+    if (!empty($producto->etiquetas)) {
+        $meta_keywords = htmlspecialchars($producto->etiquetas) . ", " . $meta_keywords;
+    }
+}
+?>
+<title><?= $page_title ?></title>
+
+<!-- Meta Tags SEO -->
+<meta name="description" content="<?= $meta_description ?>">
+<meta name="keywords" content="<?= $meta_keywords ?>">
+<meta name="author" content="Importaciones Codiza S.A.">
+<meta name="robots" content="index, follow">
+<meta name="googlebot" content="index, follow">
+<link rel="canonical" href="<?= $canonical_url ?>">
+
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="<?= $canonical_url ?>">
+<meta property="og:title" content="<?= $page_title ?>">
+<meta property="og:description" content="<?= $meta_description ?>">
+<meta property="og:image" content="<?= base_url('images/logo/logo-actual.png') ?>">
+<meta property="og:site_name" content="Importaciones Codiza">
+<meta property="og:locale" content="es_PE">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="<?= $canonical_url ?>">
+<meta name="twitter:title" content="<?= $page_title ?>">
+<meta name="twitter:description" content="<?= $meta_description ?>">
+<meta name="twitter:image" content="<?= base_url('images/logo/logo-actual.png') ?>">
+
+<!-- Favicons -->
 <link rel="icon" type="image/png" sizes="32x32" href="<?= base_url('images/logo/Logo-negro.png') ?>">
 <link rel="icon" type="image/png" sizes="16x16" href="<?= base_url('images/logo/Logo-negro.png') ?>">
 <link rel="apple-touch-icon" sizes="180x180" href="<?= base_url('images/logo/Logo-negro.png') ?>">
+
+<!-- Información de Contacto para Motores de Búsqueda -->
+<meta name="geo.region" content="PE-LIM">
+<meta name="geo.placename" content="Lima, Perú">
+<meta name="geo.position" content="-12.046374;-77.042793">
+<meta name="ICBM" content="-12.046374, -77.042793">
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

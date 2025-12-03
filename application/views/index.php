@@ -102,7 +102,7 @@
 
 <section class="section-categorias">
     <div class="container-fluid">
-        <h4>NUESTRAS CATEGORIAS</h4>
+        <h2>NUESTRAS CATEGORIAS</h2>
         <hr style="margin: 10px 0 20px 0; padding: 0;">
         
         <!-- Carrusel personalizado con jQuery -->
@@ -116,7 +116,8 @@
                                     <div class="servicio-imagen">
                                         <?php if (!empty($categoria->imagen)): ?>
                                             <img src="<?= base_url("images/categorias/$categoria->imagen") ?>" 
-                                                alt="<?= htmlspecialchars($categoria->nombre) ?>">
+                                                alt="<?= htmlspecialchars($categoria->nombre) ?> - Productos industriales CODIZA" 
+                                                title="<?= htmlspecialchars($categoria->nombre) ?>">
                                         <?php else: ?>
                                             <div class="no-image-placeholder">
                                                 <i class="fas fa-image fa-5x text-muted"></i>
@@ -152,7 +153,7 @@
 
 <section class="section-servicios">
     <div class="container-fluid">
-        <h4>NUESTROS SERVICIOS</h4>
+        <h2>NUESTROS SERVICIOS</h2>
         <hr style="margin: 10px 0 20px 0; padding: 0;">
         
         <!-- Carrusel personalizado con jQuery -->
@@ -166,7 +167,8 @@
                                     <div class="servicio-imagen">
                                         <?php if (!empty($servicio->imagen)): ?>
                                             <img src="<?= base_url("images/servicios/$servicio->imagen") ?>" 
-                                                alt="<?= htmlspecialchars($servicio->nombre) ?>">
+                                                alt="<?= htmlspecialchars($servicio->nombre) ?> - Servicios CODIZA" 
+                                                title="<?= htmlspecialchars($servicio->nombre) ?>">
                                         <?php else: ?>
                                             <!-- Mostrar un icono centrado si no hay imagen -->
                                             <div class="no-image-placeholder">
@@ -222,7 +224,6 @@
 
 <!-- Incluir JavaScript del carrusel de clientes -->
 <?php $this->load->view('partials/clientes_carousel_js'); ?>
-
 
 
 

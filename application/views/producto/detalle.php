@@ -1,5 +1,44 @@
 <link rel="stylesheet" href="<?php echo base_url('assets/css/detalle.css'); ?>">
 
+<!-- Schema.org Markup para Producto -->
+<?php if ($producto): ?>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "name": "<?= htmlspecialchars($producto->nombre) ?>",
+  "description": "<?= htmlspecialchars(strip_tags($producto->descripcion ?? 'Producto industrial de alta calidad disponible en CODIZA S.A.')) ?>",
+  "image": [
+    <?php 
+    $imagenes_schema = [];
+    for ($i = 1; $i <= 5; $i++) {
+        $campo = "imagen$i";
+        if (!empty($producto->$campo)) {
+            $imagenes_schema[] = '"' . base_url('images/productos/' . $producto->$campo) . '"';
+        }
+    }
+    echo implode(",\n    ", $imagenes_schema);
+    ?>
+  ],
+  "brand": {
+    "@type": "Brand",
+    "name": "Importaciones Codiza"
+  },
+  "offers": {
+    "@type": "Offer",
+    "url": "<?= current_url() ?>",
+    "priceCurrency": "PEN",
+    "availability": "https://schema.org/InStock",
+    "seller": {
+      "@type": "Organization",
+      "name": "Importaciones Codiza S.A."
+    }
+  },
+  "category": "<?= htmlspecialchars($producto->categoria_nombre ?? 'Productos Industriales') ?>"
+}
+</script>
+<?php endif; ?>
+
 <!-- Detalle del Producto -->
 <div class="container mb-5 mt-4">
     <!-- Breadcrumb -->
@@ -42,7 +81,8 @@
                                 <div class="main-image-wrapper">
                                     <img id="mainImage"
                                          src="<?= base_url('images/productos/' . $imagenes[0]) ?>"
-                                         alt="<?= htmlspecialchars($producto->nombre) ?>"
+                                         alt="<?= htmlspecialchars($producto->nombre) ?> - Producto industrial CODIZA"
+                                         title="<?= htmlspecialchars($producto->nombre) ?>"
                                          class="main-image">
                                 </div>
 
@@ -76,7 +116,8 @@
                                     <div class="thumbnail-wrapper <?= $index === 0 ? 'active' : '' ?>" data-index="<?= $index ?>"
                                          onclick="changeMainImage(<?= $index ?>, this)">
                                         <img src="<?= base_url('images/productos/' . $imagen) ?>"
-                                             alt="Miniatura <?= $index + 1 ?>"
+                                             alt="<?= htmlspecialchars($producto->nombre) ?> - Vista <?= $index + 1 ?>"
+                                             title="<?= htmlspecialchars($producto->nombre) ?> - Miniatura <?= $index + 1 ?>"
                                              class="thumbnail-image">
                                     </div>
                                 <?php endforeach; ?>
@@ -148,7 +189,9 @@
                     <a href="<?= base_url('productos/detalle/' . $rel->id_producto) ?>" class="related-link">
                         <?php if (!empty($rel->imagen1)): ?>
                             <div class="related-img-wrap" style="cursor: pointer;" title="Ver Producto">
-                                <img src="<?= base_url('images/productos/' . $rel->imagen1) ?>" alt="<?= htmlspecialchars($rel->nombre) ?>">
+                                <img src="<?= base_url('images/productos/' . $rel->imagen1) ?>" 
+                                     alt="<?= htmlspecialchars($rel->nombre) ?> - Producto relacionado CODIZA"
+                                     title="<?= htmlspecialchars($rel->nombre) ?>">
                             </div>
                         <?php else: ?>
                             <div class="related-img-wrap placeholder" style="cursor: pointer;" title="Ver Producto">

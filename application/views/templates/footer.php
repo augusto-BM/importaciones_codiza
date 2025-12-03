@@ -6,20 +6,20 @@
                 <!-- Columna 1: Logo e información -->
                 <div class="col-12 col-md-6 col-lg-3 mb-4">
                     <div class="footer-logo">
-                        <img src="<?= base_url('images/logo/logo-footer.png') ?>" alt="Importaciones Codiza">
+                        <img src="<?= base_url('images/logo/logo-footer.png') ?>" alt="Importaciones Codiza - Productos Industriales">
                     </div>
                     <p class="footer-description">
                         CODIZA | Soluciones en Fajas Transportadoras.
                     </p>
                     <div class="footer-contact">
-                        <p><i class="fas fa-phone"></i> +51 985 410 410</p>
-                        <p><i class="fas fa-map-marker-alt"></i>Av. Ramón Cárcamo 565 Int. 131</p>
-                        <p><i class="fa-solid fa-globe"></i>https://importacionescodiza.com/</p>
+                        <p><i class="fas fa-phone"></i> <a href="tel:+51985410410" title="Llamar a CODIZA">+51 985 410 410</a></p>
+                        <p><i class="fas fa-map-marker-alt"></i> Av. Ramón Cárcamo 565 Int. 131, Lima, Perú</p>
+                        <p><i class="fa-solid fa-globe"></i> <a href="<?= base_url() ?>" title="Sitio web Importaciones Codiza">importacionescodiza.com</a></p>
                     </div>
                     <div class="social-icons">
-                        <a href="#" class="facebook" title="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="instagram" title="Instagram"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="youtube" title="YouTube"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="facebook" title="Facebook Importaciones Codiza" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="instagram" title="Instagram Importaciones Codiza" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="youtube" title="YouTube Importaciones Codiza" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
 
@@ -71,8 +71,8 @@
                         
                         <div class="footer-advisor">
                             <h5><i class="fas fa-user-tie"></i> Asesor Principal</h5>
-                            <p><i class="fas fa-phone"></i> <a href="tel:+51985410410">+51 985 410 410</a></p>
-                            <p><i class="fas fa-envelope"></i> <a href="mailto:codiza@importacionescodiza.com">codiza@importacionescodiza.com</a></p>
+                            <p><i class="fas fa-phone"></i> <a href="tel:+51985410410" title="Llamar al asesor">+51 985 410 410</a></p>
+                            <p><i class="fas fa-envelope"></i> <a href="mailto:codiza@importacionescodiza.com" title="Enviar email">codiza@importacionescodiza.com</a></p>
                         </div>
 
                         <!-- <div class="footer-advisor">
@@ -91,17 +91,16 @@
 </footer>
 
 <!-- Botón flotante de WhatsApp -->
-<a href="https://wa.me/51985410410" target="_blank" class="whatsapp-float" title="Chatea con nosotros">
+<a href="https://wa.me/51985410410" target="_blank" class="whatsapp-float" title="Chatea con nosotros por WhatsApp" aria-label="WhatsApp">
     <i class="fab fa-whatsapp"></i>
     <span class="whatsapp-tooltip">Chatea con CODIZA</span>
 </a>
 
 <!-- Botón flotante Volver Arriba -->
-<button class="scroll-top" id="scrollTop" title="Volver arriba">
+<button class="scroll-top" id="scrollTop" title="Volver arriba" aria-label="Volver arriba">
     <i class="fas fa-chevron-up"></i>
 </button>
 
 <script src="<?= base_url('assets/js/footer.js'); ?>"></script>
-
 
 
