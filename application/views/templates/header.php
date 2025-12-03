@@ -112,9 +112,6 @@ if (isset($producto) && !empty($producto->nombre)) {
 <script src="https://cdn.datatables.net/responsive/2.5.0/js/dataTables.responsive.min.js"></script>
 <script src="https://cdn.datatables.net/responsive/2.5.0/js/responsive.bootstrap5.min.js"></script>
 
-<!-- ScrollReveal.js - Para animaciones al hacer scroll -->
-<!-- <script src="https://unpkg.com/scrollreveal"></script> -->
-
 <link rel="stylesheet" href="<?= base_url('assets/css/header.css'); ?>">
 
 </head>
@@ -197,7 +194,7 @@ if (isset($producto) && !empty($producto->nombre)) {
                         $metodos_publicos = ['index', 'validar', 'salir'];
                         $es_area_admin = ($current_controller === 'login' && !in_array($current_method, $metodos_publicos));
                         
-                        if ($ci->session->userdata('logeado') && $ci->session->userdata('usuario_id') == 1 && $es_area_admin): 
+                        if ($ci->session->userdata('logeado') && $es_area_admin): 
                             // Menú para administrador logueado EN ÁREA ADMINISTRATIVA
                         ?>
                             <li class="nav-item">
@@ -376,7 +373,7 @@ if (isset($producto) && !empty($producto->nombre)) {
                     <a href="<?= base_url('proyectos'); ?>" class="mobile-menu-link">Proyectos</a>
                     <a href="<?= base_url('servicios'); ?>" class="mobile-menu-link">Servicios</a>
                     
-                    <?php if ($ci->session->userdata('logeado') && $ci->session->userdata('usuario_id') == 1): ?>
+                    <?php if ($ci->session->userdata('logeado')): ?>
                         <a href="<?= base_url('login/salir'); ?>" class="mobile-menu-link" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Cerrar Sesión">
                             <i class="fas fa-sign-out-alt"></i>
                         </a>

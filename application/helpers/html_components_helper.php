@@ -30,10 +30,10 @@ if (!function_exists('generar_boton_editar')) {
      * @return string HTML del botón
      */
     function generar_boton_editar($id) {
-        return '<button class="btn btn-sm btn-default btn-editar" 
+        return '<button class="btn btn-warning btn-editar" 
                     data-id="' . $id . '" 
                     title="Editar">
-                    <i class="fas fa-edit"></i>
+                    <i class="fas fa-edit" style="color: #272921c0;"></i>
                 </button>';
     }
 }

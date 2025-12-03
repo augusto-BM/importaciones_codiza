@@ -1,0 +1,67 @@
+    .dashboard-wrapper {
+        background: #f8f9fa;
+        padding: 40px 20px;
+        width: 100%;
+    }
+
+    .dashboard-container {
+        background: white;
+        border-radius: 15px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        padding: 50px 60px;
+        text-align: center;
+        max-width: 900px;
+        margin: 0 auto;
+    }
+
+    .welcome-icon {
+        font-size: 70px;
+        color: #61CE70;
+        margin-bottom: 20px;
+    }
+
+    .dashboard-container h1 {
+        font-size: 32px;
+        color: #333;
+        margin-bottom: 12px;
+        font-weight: 700;
+    }
+
+    .dashboard-container .subtitle {
+        font-size: 18px;
+        color: #61CE70;
+        margin-bottom: 25px;
+        font-weight: 600;
+    }
+
+    .dashboard-container .info-text {
+        font-size: 16px;
+        color: #666;
+        line-height: 1.6;
+    }
+
+    @media (max-width: 768px) {
+        .dashboard-wrapper {
+            padding: 30px 15px;
+        }
+
+        .dashboard-container {
+            padding: 35px 25px;
+        }
+
+        .dashboard-container h1 {
+            font-size: 26px;
+        }
+
+        .dashboard-container .subtitle {
+            font-size: 16px;
+        }
+
+        .welcome-icon {
+            font-size: 55px;
+        }
+
+        .dashboard-container .info-text {
+            font-size: 15px;
+        }
+    }

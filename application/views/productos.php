@@ -117,10 +117,9 @@
         <h1 class="modal-title fs-5" id="staticBackdropLabel">Modal title</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form id="formGeneral" enctype="multipart/form-data">
-                <div class="modal-body">
+        <form id="formGeneral" enctype="multipart/form-data">
+            <div class="modal-body">
                     <input type="hidden" id="id_oculto" name="id_oculto">
-                    
                     <!-- Información Básica -->
                     <div class="row">
                         <div class="col-md-4">
@@ -230,20 +229,20 @@
                             </div>
                         </div> -->
                     </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="submit" class="btn btn-guardar btn-success">
-                        <i class="fas fa-save"></i> Guardar
-                    </button>
-                    <button type="button" class="btn btn-secondary btn-cancelar">
-                        <i class="fas fa-times"></i> Cancelar
-                    </button>
-                </div>
-            </form>
+            </div>
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-guardar btn-success">
+                    <i class="fas fa-save"></i> Guardar
+                </button>
+                <button type="button" class="btn btn-secondary btn-cancelar">
+                    <i class="fas fa-times"></i> Cancelar
+                </button>
+            </div>
+        </form>
       </div>
     </div>
-  </div>
 </div>
+
 <!-- Cargar TinyMCE primero desde el CDN -->
 <script src="https://cdn.jsdelivr.net/npm/tinymce@6/tinymce.min.js" referrerpolicy="origin"></script>
 
