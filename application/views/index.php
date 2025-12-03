@@ -74,7 +74,7 @@
                         <h1 class="banner-title-animate"><?= $s['title'] ?></h1>
                         <div class="banner-buttons">
                             <?php foreach ($s['buttons'] as $btn): ?>
-                                <a href="<?= $btn['url'] ?>" class="<?= $btn['class'] ?>" <?= isset($btn['title']) ? 'title="'.$btn['title'].'"' : '' ?>><?= $btn['text'] ?></a>
+                                <a href="<?= $btn['url'] ?>" class="<?= $btn['class'] ?>" <?= isset($btn['title']) ? 'title="'.$btn['title'].'"' : '' ?> target="_blank"><?= $btn['text'] ?></a>
                             <?php endforeach; ?>
                         </div>
                     </div>
@@ -102,7 +102,7 @@
 
 <section class="section-categorias">
     <div class="container-fluid">
-        <h4>NUESTROS PRODUCTOS</h4>
+        <h4>NUESTRAS CATEGORIAS</h4>
         <hr style="margin: 10px 0 20px 0; padding: 0;">
         
         <!-- Carrusel personalizado con jQuery -->

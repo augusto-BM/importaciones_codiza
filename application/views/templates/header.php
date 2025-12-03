@@ -48,7 +48,6 @@
                         </a>
                     </div>
                 </div>
-
                 <!-- Info de Contacto (Desktop) -->
                 <div class="col-lg-9 d-none d-lg-flex justify-content-start ps-lg-4">
                     <div class="contact-info d-flex flex-wrap gap-5 align-items-center">
@@ -63,7 +62,7 @@
                         </div>
                         <div class="info-item">
                             <div class="item-icon">
-                                <i class="fas fa-envelope"></i>
+                                <i class="fa-regular fa-envelope"></i>
                             </div>
                             <div class="item-text">
                                 <div class="item-header">Escríbenos</div>
@@ -72,7 +71,7 @@
                         </div>
                         <div class="info-item">
                             <div class="item-icon">
-                                <i class="fas fa-clock"></i>
+                                <i class="fa-solid fa-clock-rotate-left"></i>
                             </div>
                             <div class="item-text">
                                 <div class="item-header">Horario de atención</div>
@@ -81,7 +80,6 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- Botón hamburguesa (Móvil) -->
                 <div class="col-6 d-lg-none text-end">
                     <button class="navbar-toggler hamburger" type="button" id="hamburger">
@@ -95,7 +93,7 @@
     </div>
 
     <!-- FILA INFERIOR: Menú de Navegación (Desktop) -->
-    <div class="header-bottom d-none d-lg-block" style="background-color: #61CE70;">
+    <div class="header-bottom d-none d-lg-block" style="background: #00A650;">
         <div class="container-fluid">
             <nav class="navbar navbar-expand-lg p-0">
                 <div class="collapse navbar-collapse justify-content-center">

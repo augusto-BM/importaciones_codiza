@@ -14,7 +14,7 @@
         <div class="row nosotros-row">
             <!-- Columna de texto a la izquierda -->
             <div class="col-lg-6 nosotros-text-col">
-                <h2>16 años de soluciones en todo el Perú</h2>
+                <h2><?= date("Y") - 2009; ?> años de soluciones en todo el Perú</h2>
                 <b>Nuestra historia</b>
                 <p>
                     CODIZA S.A. Importadores de Productos para la Minería, Agroindustria, Pesquería e Industrias en general. Contamos con mas de 20 años de experiencia con la mejor asesoría para el manejo de nuestros productos en la línea de Fajas Transportadoras, Cangilones para Elevadores de Molinos, Cortinas de PVC, Empaquetaduras y Anexos dirigido a la industria en general.
@@ -26,7 +26,7 @@
             <!-- Columna de imagen a la derecha -->
             <div class="col-lg-6 nosotros-image-col">
                 <div class="nosotros-image-wrapper">
-                    <img src="<?= base_url('images/nosotros/Codiza-SA-768x432.jpg') ?>" alt="Importaciones Codiza">
+                    <img src="<?= base_url('images/nosotros/nosotros-codiza.jpg') ?>" alt="Importaciones Codiza">
                 </div>
             </div>
         </div>

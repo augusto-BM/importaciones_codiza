@@ -159,7 +159,7 @@
 
 /* Imagen del servicio */
 .servicio-imagen-wrapper {
-    flex: 1;
+    flex: 0 0 auto; /* que el ancho dependa del contenido (la imagen) */
     position: relative;
 }
 
@@ -169,6 +169,8 @@
     overflow: hidden;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
     transition: all 0.4s ease;
+    max-width: 600px; /* limita ancho máximo para no romper el layout */
+    width: auto;
 }
 
 .servicio-imagen-container:hover {
@@ -177,9 +179,11 @@
 }
 
 .servicio-imagen-container img {
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
+    width: 20vw;
+    height: auto; /* que la altura se ajuste a la proporción de la imagen */
+    object-fit: initial;
+    object-position: center;
+    background-color: #f8f9fa;
     display: block;
     transition: transform 0.4s ease;
 }
@@ -298,8 +302,13 @@
         margin: 0 auto 20px;
     }
 
+    .servicio-imagen-container {
+        max-width: 100%;
+        width: 100%;
+    }
     .servicio-imagen-container img {
-        height: 350px;
+        height: auto;
+        max-width: 100%;
     }
 }
 
@@ -330,7 +339,8 @@
     }
 
     .servicio-imagen-container img {
-        height: 300px;
+        height: auto;
+        max-width: 100%;
     }
 }
 
@@ -361,6 +371,7 @@
     }
 
     .servicio-imagen-container img {
-        height: 250px;
+        height: auto;
+        max-width: 100%;
     }
 }

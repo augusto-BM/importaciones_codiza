@@ -56,7 +56,7 @@
         height: 500px;
         /* background: #f8f9fa; */
         border-radius: 15px;
-        padding: 20px;
+        /* padding: 20px; */
         margin-bottom: 20px;
         display: flex;
         align-items: center;
@@ -65,9 +65,10 @@
     }
     
     .main-image {
-        max-width: 100%;
-        max-height: 100%;
-        object-fit: contain;
+        width: 100%;
+        height: 100%;
+        object-fit: cover; /* usar 'cover' para que la imagen ocupe todo el contenedor. Cambiar a 'contain' si prefiere ver la imagen completa sin recorte */
+        display: block; /* evita pequeños gaps por baseline */
         border-radius: 10px;
     }
     
@@ -430,3 +431,108 @@
         .related-img-wrap img { max-height: 120px; }
         .related-name { font-size: 0.95rem; }
     }
+
+/* ===== Zoom en imagen principal y flechas de navegación ===== */
+.main-image-container {
+    position: relative;
+    overflow: hidden;
+}
+
+.main-image-wrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.4s ease;
+}
+
+.main-image-wrapper .main-image {
+    transition: none;
+    will-change: auto;
+}
+
+/* Magnificador: contenedor resultante que muestra parte ampliada */
+.zoom-result {
+    position: absolute;
+    inset: 0; /* cubrir todo el contenedor */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s ease;
+    z-index: 4;
+}
+
+/* Mostrar el zoom al pasar el ratón */
+.main-image-container.zoom-active .zoom-result {
+    opacity: 1;
+}
+
+/* Flechas overlay, ocultas por defecto */
+.image-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255, 255, 255, 0.45);
+    color: rgb(102, 101, 101);
+    border: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.18s ease, transform 0.12s ease;
+    z-index: 5;
+}
+
+.image-arrow:hover { transform: translateY(-50%) scale(1.05); }
+
+.image-arrow.prev { left: 12px; }
+.image-arrow.next { right: 12px; }
+
+/* Mostrar flechas al hover del contenedor */
+.main-image-container:hover .image-arrow { opacity: 1; }
+
+/* Ocultar flechas en pantallas pequeñas si hay poco espacio */
+@media (max-width: 576px) {
+    .image-arrow { width: 36px; height: 36px; }
+}
+
+/* Botón para abrir la imagen en nueva pestaña - posicionado abajo a la izquierda */
+.open-image-btn {
+    position: absolute;
+    left: 12px;
+    bottom: 12px;
+    background: rgba(255, 255, 255, 0.55);
+    color: rgb(102, 101, 101);
+    border: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 6;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+    transition: transform 0.12s ease, opacity 0.12s ease;
+}
+
+.open-image-btn i { font-size: 0.9rem; }
+
+.open-image-btn:hover { transform: scale(1.05); opacity: 1; }
+
+@media (max-width: 576px) {
+    .open-image-btn { width: 38px; height: 38px; left: 8px; bottom: 8px; }
+    .open-image-btn i { font-size: 0.85rem; }
+}
+
+/* Ajuste cuando no hay imagen */
+.main-image-container .no-image-placeholder { padding: 10px; }
