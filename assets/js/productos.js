@@ -192,14 +192,14 @@ function initDataTable() {
     });
 
     $(SELECTORES.botones.buscar).on('click', function() {
-        tablaGeneral.ajax.reload(null, false);
+        tablaGeneral.ajax.reload(null, true);
     });
     $(SELECTORES.botones.limpiar).on('click', function() {
         limpiarFiltros();
         tablaGeneral.ajax.reload(null, true);
     });
     $(FILTROS.estado + ', ' + FILTROS.categoria + ', ' + FILTROS.tipoCategoria).on('change', function() {
-        recargarTabla();
+        tablaGeneral.ajax.reload(null, true);
     });
 
 }

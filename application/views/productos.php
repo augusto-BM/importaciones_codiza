@@ -145,12 +145,12 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-2">
+                        <!-- <div class="col-md-2">
                             <div class="form-group">
                                 <label for="precio">Precio</label>
                                 <input type="number" step="0.01" class="form-control mb-2" id="precio" name="precio" placeholder="0.00">
                             </div>
-                        </div>
+                        </div> -->
                         <div class="col-md-2">
                             <div class="form-group">
                                 <label for="etiquetas">Etiquetas</label>

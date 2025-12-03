@@ -181,7 +181,7 @@ class Productos extends CI_Controller {
         $id_oculto = $this->input->post('id_oculto');
         $nombre = trim($this->input->post('nombre'));
         $id_categoria = $this->input->post('id_categoria');
-        $precio = $this->input->post('precio');
+        $precio = $this->input->post('precio') ?? 0;
         $descripcion = trim($this->input->post('descripcion'));
         $etiquetas = trim($this->input->post('etiquetas'));
 

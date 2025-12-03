@@ -42,8 +42,7 @@
         /* Botón volver (debajo del formulario) */
         .btn-back {
             display: block;
-            width: 90%;
-            max-width: 260px;
+            width: 83%;
             margin: 14px auto 0; /* aparece debajo del botón Ingresar */
             background: var(--card-bg);
             color: var(--primary);
