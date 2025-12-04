@@ -10,7 +10,7 @@
         <p class="info-text">
             Utiliza el menú de navegación superior para gestionar todos los aspectos del sistema.
         </p>
-        <button class="btn btn-success btn-add btn-sm" id="btnGestionarUsuarios"><i class="fas fa-key"></i> Cambiar Contraseña</button>
+        <button class="btn btn-danger btn-add btn-sm" id="btnGestionarUsuarios"><i class="fas fa-key"></i> Cambiar Contraseña</button>
     </div>
 
     <!-- Modal Lista de Usuarios -->

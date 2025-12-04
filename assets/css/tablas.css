@@ -27,7 +27,7 @@
     flex-wrap: wrap;
     margin-bottom: 20px;
     padding-bottom: 15px;
-    border-bottom: 2px solid #61CE70;
+    border-bottom: 2px solid #0046A6 ;
     gap: 15px;
 }
 
@@ -40,7 +40,7 @@
 }
 
 .page-title i {
-    color: #61CE70;
+    color: #0046A6 ;
     margin-right: 8px;
 }
 
@@ -54,7 +54,7 @@
 }
 
 .page-header h1 i {
-    color: #61CE70;
+    color: #0046A6 ;
     margin-right: 8px;
 }
 
@@ -103,7 +103,7 @@
 }
 
 .filter-input:focus {
-    border-color: #61CE70;
+    border-color: #0046A6 ;
     box-shadow: 0 0 0 0.15rem rgba(97, 206, 112, 0.25);
     outline: none;
 }
@@ -119,7 +119,7 @@
 }
 
 .filter-group .form-control:focus {
-    border-color: #61CE70;
+    border-color: #0046A6 ;
     box-shadow: 0 0 0 0.15rem rgba(97, 206, 112, 0.25);
     outline: none;
 }
@@ -137,7 +137,7 @@
     align-items: center;
     gap: 6px;
     white-space: nowrap;
-    background: #61CE70;
+    background: #0046A6 ;
     color: white;
     border: none;
     border-radius: 4px;
@@ -149,7 +149,7 @@
 
 .btn-buscar:hover,
 .btn-search:hover {
-    background: #4CAF50;
+    background: #ff0000;
     color: white;
     transform: translateY(-1px);
     box-shadow: 0 2px 8px rgba(97, 206, 112, 0.3);
@@ -185,7 +185,7 @@
 /* Botón de agregar nuevo (genérico) */
 .btn-add,
 .btn-primary-action {
-    background: #61CE70;
+    background: #0046A6 ;
     color: white;
     padding: 6px 15px;
     border-radius: 5px;
@@ -204,7 +204,7 @@
 
 .btn-add:hover,
 .btn-primary-action:hover {
-    background: #4CAF50;
+    background: #ff0000;
     color: white;
     transform: translateY(-1px);
     box-shadow: 0 2px 8px rgba(97, 206, 112, 0.4);
@@ -212,7 +212,7 @@
 
 /* Mantener compatibilidad con nombre específico */
 .btn-add {
-    background: #61CE70;
+    background: #0046A6 ;
     color: white;
     padding: 6px 15px;
     border-radius: 5px;
@@ -230,7 +230,7 @@
 }
 
 .btn-add:hover {
-    background: #4CAF50;
+    background: #ff0000;
     color: white;
     transform: translateY(-1px);
     box-shadow: 0 2px 8px rgba(97, 206, 112, 0.4);
@@ -297,7 +297,7 @@
 }
 
 .dataTables_filter input:focus {
-    border-color: #61CE70;
+    border-color: #0046A6 ;
     outline: none;
     box-shadow: 0 0 0 0.2rem rgba(97, 206, 112, 0.25);
 }
@@ -312,7 +312,7 @@
 }
 
 .dataTables_length select:focus {
-    border-color: #61CE70;
+    border-color: #0046A6 ;
     outline: none;
 }
 
@@ -327,17 +327,17 @@
 }
 
 .page-item.active .page-link {
-    background-color: #61CE70;
-    border-color: #61CE70;
+    background-color: #0046A6 ;
+    border-color: #0046A6 ;
 }
 
 .page-link {
-    color: #61CE70;
+    color: #0046A6 ;
     transition: all 0.3s ease;
 }
 
 .page-link:hover {
-    color: #4CAF50;
+    color: #ff0000;
     background-color: #f5f9f6;
 }
 
@@ -357,7 +357,7 @@
 .crud-table thead,
 .data-table thead,
 .clientes-table thead {
-    background: linear-gradient(135deg, #61CE70 0%, #4CAF50 100%) !important;
+    background: linear-gradient(135deg, #0046A6  0%, #ff0000 100%) !important;
     color: white;
 }
 
