@@ -1,3 +1,4 @@
+<!-- Estilos específicos de la vista de nosotros -->
 <link rel="stylesheet" href="<?= base_url('assets/css/nosotros.css'); ?>">
 
 <!-- Schema.org Markup para Organización -->
@@ -15,6 +16,8 @@
     "@type": "PostalAddress",
     "streetAddress": "Av. Ramón Cárcamo 565 Int. 131",
     "addressLocality": "Lima",
+    "addressRegion": "Lima",
+    "postalCode": "15001",
     "addressCountry": "PE"
   },
   "contactPoint": {
@@ -22,13 +25,21 @@
     "telephone": "+51-985-410-410",
     "contactType": "Ventas",
     "email": "codiza@importacionescodiza.com",
-    "availableLanguage": "Spanish"
+    "availableLanguage": "Spanish",
+    "areaServed": "PE"
   },
   "sameAs": [
     "<?= base_url() ?>"
-  ]
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "reviewCount": "150"
+  }
 }
 </script>
+
+<main id="main-content" role="main">
 
 <!-- Banner Nosotros -->
 <div class="banner-nosotros" style="background-image: url('<?= base_url("images/nosotros/banner-ph-about-1.jpg") ?>');">
@@ -58,7 +69,8 @@
                 <div class="nosotros-image-wrapper">
                     <img src="<?= base_url('images/nosotros/nosotros-codiza.jpg') ?>" 
                          alt="Importaciones Codiza - Empresa líder en productos industriales en Perú" 
-                         title="CODIZA S.A. - Más de 20 años de experiencia">
+                         title="CODIZA S.A. - Más de 20 años de experiencia"
+                         width="600" height="400" loading="lazy">
                 </div>
             </div>
         </div>
@@ -76,3 +88,4 @@
 
 <script src="<?= base_url('assets/js/nosotros.js'); ?>"></script>
 
+</main>

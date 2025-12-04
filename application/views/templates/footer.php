@@ -1,12 +1,12 @@
 <link rel="stylesheet" href="<?= base_url('assets/css/footer.css'); ?>">
-<footer>
+<footer role="contentinfo">
     <div class="footer-content">
         <div class="container-fluid">
             <div class="row">
                 <!-- Columna 1: Logo e información -->
                 <div class="col-12 col-md-6 col-lg-3 mb-4">
                     <div class="footer-logo">
-                        <img src="<?= base_url('images/logo/logo-footer.png') ?>" alt="Importaciones Codiza - Productos Industriales">
+                        <img src="<?= base_url('images/logo/logo-footer.png') ?>" alt="Importaciones Codiza - Productos Industriales" width="180" height="auto" loading="lazy">
                     </div>
                     <p class="footer-description">
                         CODIZA | Soluciones en Fajas Transportadoras.

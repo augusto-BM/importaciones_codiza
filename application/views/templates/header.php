@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-PE">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -126,7 +126,7 @@ if (isset($producto) && !empty($producto->nombre)) {
                 <div class="col-6 col-lg-3">
                     <div class="logo d-flex justify-content-end justify-content-lg-end pe-lg-4" title="Inicio">
                         <a href="<?= base_url(); ?>">
-                            <img src="<?= base_url('images/logo/logo-actual.png') ?>" alt="Logo" class="img-fluid">
+                            <img src="<?= base_url('images/logo/logo-actual.png') ?>" alt="Importaciones Codiza - Logo" class="img-fluid" width="135" height="auto">
                         </a>
                     </div>
                 </div>
@@ -177,7 +177,7 @@ if (isset($producto) && !empty($producto->nombre)) {
     <!-- FILA INFERIOR: Menú de Navegación (Desktop) -->
     <div class="header-bottom d-none d-lg-block" style="background: #00A650;">
         <div class="container-fluid">
-            <nav class="navbar navbar-expand-lg p-0">
+            <nav class="navbar navbar-expand-lg p-0" role="navigation" aria-label="Navegación principal">
                 <div class="collapse navbar-collapse justify-content-center">
                     <ul class="navbar-nav menu">
                         <?php 
@@ -319,7 +319,7 @@ if (isset($producto) && !empty($producto->nombre)) {
             <!-- Logo en el menú móvil -->
             <div class="mobile-menu-header">
                 <div class="mobile-logo">
-                    <img src="<?= base_url('images/logo/logo.png') ?>" alt="Logo">
+                    <img src="<?= base_url('images/logo/logo.png') ?>" alt="Importaciones Codiza - Logo" width="150" height="auto" loading="lazy">
                 </div>
             </div>
 

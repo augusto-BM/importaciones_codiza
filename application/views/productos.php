@@ -1,34 +1,11 @@
 <!-- Estilos específicos de la vista de productos -->
 <link rel="stylesheet" href="<?php echo base_url('assets/css/tablas.css'); ?>">
-
+<link rel="stylesheet" href="<?php echo base_url('assets/css/productos.css'); ?>">
 <!-- Definir base_url para JavaScript -->
 <script>
     const base_url = '<?php echo base_url(); ?>productos/';
     const base_url_img = '<?php echo base_url(); ?>';
 </script>
-<!-- Estilos responsivos para vistas previas de imágenes -->
-<style>
-    .preview-container { display: none; }
-    .imagen-preview {
-        max-width: 150px;
-        max-height: 150px;
-        width: 100%;
-        height: auto;
-        object-fit: cover;
-        border-radius: 6px;
-    }
-    /* Centrar y espaciar la previsualización */
-    .preview-wrapper { display:flex; justify-content:center; align-items:center; padding:6px 0; }
-
-    /* Ajustes en pantallas pequeñas */
-    @media (max-width: 576px) {
-        .imagen-preview { max-width: 120px; max-height: 120px; }
-        .preview-wrapper { padding:4px 0; }
-    }
-    @media (min-width: 992px) {
-        .imagen-preview { max-width: 180px; max-height: 180px; }
-    }
-</style>
 <div class="dashboard-wrapper">
     <div class="dashboard-container">
         <div class="page-header">

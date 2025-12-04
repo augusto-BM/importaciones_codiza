@@ -4,6 +4,62 @@
 <!-- Incluir CSS del carrusel de clientes -->
 <?php $this->load->view('partials/clientes_carousel_css'); ?>
 
+<!-- Schema.org: Organization -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Importaciones Codiza S.A.",
+  "alternateName": "CODIZA",
+  "url": "<?= base_url() ?>",
+  "logo": "<?= base_url('images/logo/logo-actual.png') ?>",
+  "description": "Importadores de productos para la minería, agroindustria, pesquería e industrias en general. Especialistas en fajas transportadoras con más de 20 años de experiencia en Perú.",
+  "foundingDate": "2009",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Av. Ramón Cárcamo 565 Int. 131",
+    "addressLocality": "Lima",
+    "addressRegion": "Lima",
+    "postalCode": "15001",
+    "addressCountry": "PE"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+51-985-410-410",
+    "contactType": "Ventas",
+    "email": "codiza@importacionescodiza.com",
+    "availableLanguage": "Spanish",
+    "areaServed": "PE"
+  },
+  "sameAs": [
+    "<?= base_url() ?>"
+  ]
+}
+</script>
+
+<!-- Schema.org: ItemList para Categorías -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "Categorías de Productos Industriales CODIZA",
+  "itemListElement": [
+    <?php if (isset($categorias) && !empty($categorias)): ?>
+      <?php foreach ($categorias as $index => $categoria): ?>
+        {
+          "@type": "ListItem",
+          "position": <?= $index + 1 ?>,
+          "name": "<?= htmlspecialchars($categoria->nombre) ?>",
+          "url": "<?= base_url('categoria/ver/' . $categoria->id_categoria) ?>"
+        }<?= $index < count($categorias) - 1 ? ',' : '' ?>
+      <?php endforeach; ?>
+    <?php endif; ?>
+  ]
+}
+</script>
+
+<main id="main-content" role="main">
+
 <section class="section-banner">
     <div class="banner-cube">
         <div class="banner-carousel-wrapper">
@@ -102,7 +158,7 @@
 
 <section class="section-categorias">
     <div class="container-fluid">
-        <h2>NUESTRAS CATEGORIAS</h2>
+        <h2>Nuestras Categorías</h2>
         <hr style="margin: 10px 0 20px 0; padding: 0;">
         
         <!-- Carrusel personalizado con jQuery -->
@@ -117,7 +173,8 @@
                                         <?php if (!empty($categoria->imagen)): ?>
                                             <img src="<?= base_url("images/categorias/$categoria->imagen") ?>" 
                                                 alt="<?= htmlspecialchars($categoria->nombre) ?> - Productos industriales CODIZA" 
-                                                title="<?= htmlspecialchars($categoria->nombre) ?>">
+                                                title="<?= htmlspecialchars($categoria->nombre) ?>"
+                                                width="300" height="300" loading="lazy">
                                         <?php else: ?>
                                             <div class="no-image-placeholder">
                                                 <i class="fas fa-image fa-5x text-muted"></i>
@@ -126,7 +183,7 @@
                                         <div class="servicio-overlay"></div>
                                     </div>
                                     <div class="servicio-nombre">
-                                        <h4><?= htmlspecialchars($categoria->nombre) ?></h4>
+                                        <h3><?= htmlspecialchars($categoria->nombre) ?></h3>
                                     </div>
                                 </div>
                             </div>
@@ -153,7 +210,7 @@
 
 <section class="section-servicios">
     <div class="container-fluid">
-        <h2>NUESTROS SERVICIOS</h2>
+        <h2>Nuestros Servicios</h2>
         <hr style="margin: 10px 0 20px 0; padding: 0;">
         
         <!-- Carrusel personalizado con jQuery -->
@@ -168,7 +225,8 @@
                                         <?php if (!empty($servicio->imagen)): ?>
                                             <img src="<?= base_url("images/servicios/$servicio->imagen") ?>" 
                                                 alt="<?= htmlspecialchars($servicio->nombre) ?> - Servicios CODIZA" 
-                                                title="<?= htmlspecialchars($servicio->nombre) ?>">
+                                                title="<?= htmlspecialchars($servicio->nombre) ?>"
+                                                width="300" height="300" loading="lazy">
                                         <?php else: ?>
                                             <!-- Mostrar un icono centrado si no hay imagen -->
                                             <div class="no-image-placeholder">
@@ -179,7 +237,7 @@
                                     </div>
 
                                     <div class="servicio-nombre">
-                                        <h4><?= htmlspecialchars($servicio->nombre) ?></h4>
+                                        <h3><?= htmlspecialchars($servicio->nombre) ?></h3>
                                     </div>
                                 </div>
                             </div>
@@ -225,5 +283,4 @@
 <!-- Incluir JavaScript del carrusel de clientes -->
 <?php $this->load->view('partials/clientes_carousel_js'); ?>
 
-
-
+</main>
