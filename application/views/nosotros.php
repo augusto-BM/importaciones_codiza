@@ -60,8 +60,8 @@
                 <p>
                     CODIZA S.A. Importadores de Productos para la Minería, Agroindustria, Pesquería e Industrias en general. Contamos con mas de 20 años de experiencia con la mejor asesoría para el manejo de nuestros productos en la línea de Fajas Transportadoras, Cangilones para Elevadores de Molinos, Cortinas de PVC, Empaquetaduras y Anexos dirigido a la industria en general.
                 </p>
-                <p style="margin-bottom: 0; font-weight: bold;">Cirilo Matos García</p>
-                <p style="font-style: italic;">Gerente General</p>
+                <!-- <p style="margin-bottom: 0; font-weight: bold;">Cirilo Matos García</p>
+                <p style="font-style: italic;">Gerente General</p> -->
             </div>
 
             <!-- Columna de imagen a la derecha -->

@@ -12,9 +12,9 @@
                         CODIZA | Soluciones en Fajas Transportadoras.
                     </p>
                     <div class="footer-contact">
-                        <p><i class="fas fa-phone"></i> <a href="tel:+51985410410" title="Llamar a CODIZA">+51 985 410 410</a></p>
+                        <p><i class="fas fa-phone"></i> <a href="tel:+51985410410" title="Llamar a CODIZA">+51 946 385 307</a></p>
                         <p><i class="fas fa-map-marker-alt"></i> Av. Ramón Cárcamo 565 Int. 131, Lima, Perú</p>
-                        <p><i class="fa-solid fa-globe"></i> <a href="<?= base_url() ?>" title="Sitio web Importaciones Codiza">importacionescodiza.com</a></p>
+                        <p><i class="fa-solid fa-globe"></i> <a href="https://importacionescodiza.com/" target="_blank" title="Sitio web Importaciones Codiza">https://importacionescodiza.com/</a></p>
                     </div>
                     <div class="social-icons">
                         <a href="#" class="facebook" title="Facebook Importaciones Codiza" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
@@ -71,10 +71,9 @@
                         
                         <div class="footer-advisor">
                             <h5><i class="fas fa-user-tie"></i> Asesor Principal</h5>
-                            <p><i class="fas fa-phone"></i> <a href="tel:+51985410410" title="Llamar al asesor">+51 985 410 410</a></p>
+                            <p><i class="fas fa-phone"></i> <a href="tel:+51985410410" title="Llamar al asesor">+51 946 385 307</a></p>
                             <p><i class="fas fa-envelope"></i> <a href="mailto:codiza@importacionescodiza.com" title="Enviar email">codiza@importacionescodiza.com</a></p>
                         </div>
-
                         <!-- <div class="footer-advisor">
                             <h5><i class="fas fa-user-tie"></i> Asesor Comercial</h5>
                             <p><i class="fas fa-phone"></i> <a href="tel:+51994357410">+51 994 357 410</a></p>
@@ -93,7 +92,7 @@
 <!-- Botón flotante de WhatsApp -->
 <a href="https://wa.me/51985410410" target="_blank" class="whatsapp-float" title="Chatea con nosotros por WhatsApp" aria-label="WhatsApp">
     <i class="fab fa-whatsapp"></i>
-    <span class="whatsapp-tooltip">Chatea con CODIZA</span>
+    <span class="whatsapp-tooltip">Cotizaciones Whatsapp</span>
 </a>
 
 <!-- Botón flotante Volver Arriba -->

@@ -85,7 +85,7 @@
 .section-proyectos h2 {
     font-size: 42px;
     font-weight: 900;
-    color: #1a4d2e;
+    color: #0046A6;
     text-align: center;
     margin-bottom: 60px;
     position: relative;
@@ -100,7 +100,7 @@
     bottom: 0;
     width: 80px;
     height: 5px;
-    background: linear-gradient(90deg, #00963f 0%, #1a4d2e 100%);
+    background: linear-gradient(90deg, #ff0000 0%, #ff0000 100%);
     border-radius: 10px;
 }
 
@@ -185,7 +185,7 @@
     font-size: 14px;
     font-weight: 600;
     margin-bottom: 8px;
-    color: #61CE70;
+    color: #ffbfbf;
     text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -226,7 +226,7 @@
     right: 20px;
     width: 50px;
     height: 50px;
-    background: rgba(0, 150, 63, 0.9);
+    background: #0046A6;
     border-radius: 50%;
     display: flex;
     align-items: center;

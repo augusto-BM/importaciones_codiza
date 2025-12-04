@@ -59,7 +59,7 @@
 
             <button type="submit" class="btn-login">Ingresar</button>
 
-            <p><a href="<?= base_url(); ?>" class="btn-back">&#8592; Volver</a></p>
+            <p><a href="<?= base_url(); ?>" class="btn-back">Regresar</a></p>
         </form>
     </div>
 </body>

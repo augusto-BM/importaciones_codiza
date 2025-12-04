@@ -8,7 +8,7 @@
     overflow: hidden;
     perspective: 1500px; /* Perspectiva 3D */
     height: 90vh; /* Reducir altura */
-    min-height: 85vh;
+    min-height: 89vh;
     max-height: 650px;
     /* Fondo gris medio para evitar blanco durante el giro */
     background: #3a3a3a;
@@ -211,11 +211,10 @@
         display: inline-block;
 
         &.btn-primary-banner {
-            background: #00963f;
+            background: #FF0000;
             color: white;
-
             &:hover {
-                background: #007a33;
+                background: #0117E5;
                 transform: translateY(-2px);
                 box-shadow: 0 4px 15px rgba(0, 150, 63, 0.4);
             }
@@ -228,7 +227,7 @@
 
             &:hover {
                 background: white;
-                color: #00963f;
+                color: #FF0000;
                 transform: translateY(-2px);
                 box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
             }

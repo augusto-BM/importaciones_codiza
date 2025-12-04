@@ -1,6 +1,6 @@
 <link rel="stylesheet" href="<?= base_url('assets/css/proyectos.css'); ?>">
 <!-- Banner Proyectos -->
-<div class="banner-proyectos" style="background-image: url('<?= base_url("images/categorias/banner-fajas-transportadoras.jpg") ?>');">
+<div class="banner-proyectos" style="background-image: url('<?= base_url("images/proyectos/banner-fajas-transportadoras.jpg") ?>');">
     <div class="banner-proyectos-content">
         <h1>Nuestros Proyectos</h1>
         <p>Conoce los proyectos exitosos que hemos realizado para nuestros clientes</p>
@@ -48,7 +48,7 @@
                 <?php foreach ($proyectos as $p): ?>
                     <div class="proyecto-card">
                         <div class="proyecto-imagen">
-                            <img src="<?= base_url("images/categorias/".$p['imagen']) ?>" alt="<?= $p['titulo'] ?>">
+                            <img src="<?= base_url("images/proyectos/".$p['imagen']) ?>" alt="<?= $p['titulo'] ?>">
                             <div class="proyecto-overlay"></div>
                             <div class="proyecto-icon">
                                 <i class="<?= $p['icono'] ?>"></i>

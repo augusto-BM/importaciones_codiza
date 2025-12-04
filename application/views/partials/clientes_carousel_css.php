@@ -16,7 +16,7 @@
 .section-clientes h3 {
     text-align: center;
     font-weight: bold;
-    color: #00963f;
+    color: #0046A6 !important;
     margin-bottom: 40px;
     font-size: 36px;
 }
@@ -180,7 +180,7 @@
 
 .section-clientes .carousel-btn.carousel-prev-clientes:hover,
 .section-clientes .carousel-btn.carousel-next-clientes:hover {
-    color: #00963f;
+    color: #0117e5;
     transform: translateY(-50%) scale(1.3);
 }
 

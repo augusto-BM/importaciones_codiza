@@ -1,22 +1,21 @@
 /* ======================================= */
 /* SECCIÓN DE SERVICIOS                   */
 /* ======================================= */
-
 .section-servicios {
     padding: 60px 100px;
     background: #f8f9fa;
 
-    & h4 {
+    & h2 {
         text-align: left;
         font-weight: bold;
-        color: #00963f;
+        color: #0046A6;
         margin-bottom: 0;
     }
 
     & hr {
         width: 30px;
         height: 4px;
-        background-color: #00963f;
+        background-color: #FF0000;
         border: none;
         margin-bottom: 40px;
         margin-left: 0;
@@ -31,17 +30,17 @@
     padding: 60px 100px;
     background: #ffffff;
 
-    & h4 {
+    & h2 {
         text-align: left;
         font-weight: bold;
-        color: #00963f;
+        color: #0046A6;
         margin-bottom: 0;
     }
 
     & hr {
         width: 30px;
         height: 4px;
-        background-color: #00963f;
+        background-color: #FF0000;
         border: none;
         margin-bottom: 40px;
         margin-left: 0;
@@ -195,7 +194,7 @@
     line-height: 1;
 
     &:hover {
-        color: #00963f;
+        color: #0117e5;
         transform: translateY(-50%) scale(1.3);
     }
 

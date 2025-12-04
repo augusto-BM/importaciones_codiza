@@ -38,7 +38,7 @@ if ($current_controller == 'inicio' || $current_controller == '' || $current_met
     $meta_keywords = "proyectos industriales, casos de éxito, instalaciones fajas, proyectos minería";
 } elseif ($current_controller == 'contacto') {
     $page_title = "Contacto - Importaciones Codiza | Cotiza Ahora";
-    $meta_description = "Contáctanos para cotizaciones y asesoría en productos industriales. Teléfono: +51 985 410 410 | Email: codiza@importacionescodiza.com";
+    $meta_description = "Contáctanos para cotizaciones y asesoría en productos industriales. Teléfono: +51 946 385 307 | Email: codiza@importacionescodiza.com";
     $meta_keywords = "contacto codiza, cotización productos industriales, asesoría técnica";
 } elseif ($current_controller == 'categoria') {
     if (isset($categoria_nombre)) {
@@ -126,7 +126,7 @@ if (isset($producto) && !empty($producto->nombre)) {
                 <div class="col-6 col-lg-3">
                     <div class="logo d-flex justify-content-end justify-content-lg-end pe-lg-4" title="Inicio">
                         <a href="<?= base_url(); ?>">
-                            <img src="<?= base_url('images/logo/logo-actual.png') ?>" alt="Importaciones Codiza - Logo" class="img-fluid" width="135" height="auto">
+                            <img src="<?= base_url('images/logo/logo-actual.png') ?>" alt="Importaciones Codiza - Logo" class="img-fluid" width="100%" height="auto">
                         </a>
                     </div>
                 </div>
@@ -139,7 +139,7 @@ if (isset($producto) && !empty($producto->nombre)) {
                             </div>
                             <div class="item-text">
                                 <div class="item-header">Información y ventas</div>
-                                <div class="item-content">+51 985 410 410</div>
+                                <div class="item-content">+51 946 385 307</div>
                             </div>
                         </div>
                         <div class="info-item">
@@ -175,7 +175,7 @@ if (isset($producto) && !empty($producto->nombre)) {
     </div>
 
     <!-- FILA INFERIOR: Menú de Navegación (Desktop) -->
-    <div class="header-bottom d-none d-lg-block" style="background: #00A650;">
+    <div class="header-bottom d-none d-lg-block" style="background: #0117E5;">
         <div class="container-fluid">
             <nav class="navbar navbar-expand-lg p-0" role="navigation" aria-label="Navegación principal">
                 <div class="collapse navbar-collapse justify-content-center">
@@ -257,7 +257,7 @@ if (isset($producto) && !empty($producto->nombre)) {
                                         }
                                     ?>
                                     <li class="nav-item dropdown mega-dropdown <?= $isParentActive ? 'active' : '' ?>">
-                                        <a class="nav-link dropdown-toggle <?= $isParentActive ? 'active' : '' ?>" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        <a class="nav-link dropdown-toggle <?= $isParentActive ? 'active' : '' ?>" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" title="Ver categorías de <?= $tipoCategoria ?>">
                                                 <?= $tipoCategoria ?> <i class="fas fa-chevron-down"></i>
                                             </a>
                                         <?php if (!empty($categorias)): ?>
@@ -266,7 +266,7 @@ if (isset($producto) && !empty($producto->nombre)) {
                                                     <h3><?= $tipoCategoria ?></h3>
                                                     <?php foreach ($categorias as $cat): ?>
                                                         <?php $isItemActive = ($current_controller === 'categoria' && $current_method === 'ver' && $current_category_id > 0 && (int) $cat['id'] === $current_category_id); ?>
-                                                        <a href="<?= base_url('categoria/ver/' . $cat['id']); ?>" class="dropdown-item item <?= $isItemActive ? 'active' : '' ?>" <?= $isItemActive ? 'aria-current="true"' : '' ?> >
+                                                        <a href="<?= base_url('categoria/ver/' . $cat['id']); ?>" class="dropdown-item item <?= $isItemActive ? 'active' : '' ?>" <?= $isItemActive ? 'aria-current="true"' : '' ?> title="Ver productos de la categoria <?= $cat['nombre'] ?>">
                                                             <?= $cat['nombre'] ?>
                                                         </a>
                                                     <?php endforeach; ?>
@@ -281,7 +281,7 @@ if (isset($producto) && !empty($producto->nombre)) {
                                 <a class="nav-link <?= ($current_controller == 'proyectos') ? 'active' : '' ?>" href="<?= base_url('proyectos'); ?>">Proyectos</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link <?= ($current_controller == 'servicios') ? 'active' : '' ?>" href="<?= base_url('servicios'); ?>">Servicios</a>
+                                <a class="nav-link <?= ($current_controller == 'servicios') ? 'active' : '' ?>" href="<?= base_url('servicios'); ?>">Vulcanizados</a>
                             </li>
                             
                             <?php if ($ci->session->userdata('logeado')): ?>
@@ -385,7 +385,7 @@ if (isset($producto) && !empty($producto->nombre)) {
                     <?php endif; ?>
                     
                     <a href="<?= base_url('proyectos'); ?>" class="mobile-menu-link">Proyectos</a>
-                    <a href="<?= base_url('servicios'); ?>" class="mobile-menu-link">Servicios</a>
+                    <a href="<?= base_url('servicios'); ?>" class="mobile-menu-link">Vulcanizados</a>
                     
                     <?php if ($ci->session->userdata('logeado')): ?>
                         <!-- Si está logueado, mostrar botón para ir al panel admin -->

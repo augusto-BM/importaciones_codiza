@@ -98,7 +98,7 @@
 .nosotros-text-col h2 {
     font-size: 42px;
     font-weight: 900;
-    color: #1a4d2e;
+    color: #0046A6;
     margin-bottom: 25px;
     line-height: 1.2;
     position: relative;
@@ -112,7 +112,7 @@
     bottom: 0;
     width: 80px;
     height: 5px;
-    background: linear-gradient(90deg, #00963f 0%, #1a4d2e 100%);
+    background: linear-gradient(90deg, #ff0000 0%, #ff0000 100%);
     border-radius: 10px;
 }
 
