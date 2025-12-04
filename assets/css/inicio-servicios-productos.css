@@ -162,11 +162,12 @@
     text-align: center;
     z-index: 2;
 
-    & h4 {
-        font-size: 15px;
-        font-weight: 600;
-        color: white;
+    & h3 {
+        font-size: 14px;
+        font-weight: 300;
+        color: whitesmoke;
         margin: 0;
+        letter-spacing: 1px;
         line-height: 1.4;
         text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     }
@@ -268,8 +269,9 @@
         height: 220px;
     }
 
-    .servicio-nombre h4 {
-        font-size: 14px;
+    .servicio-nombre h3 {
+        font-size: 8px;
+        color: whitesmoke;
     }
 
     .carousel-btn {
@@ -314,8 +316,9 @@
     .servicio-nombre {
         padding: 15px 10px;
 
-        & h4 {
-            font-size: 14px;
+        & h3 {
+            font-size: 8px;
+            color: whitesmoke;
         }
     }
 
