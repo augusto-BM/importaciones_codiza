@@ -198,8 +198,13 @@ if (isset($producto) && !empty($producto->nombre)) {
                             // Menú para administrador logueado EN ÁREA ADMINISTRATIVA
                         ?>
                             <li class="nav-item">
+                                <a class="nav-link" href="<?= base_url('/inicio'); ?>">
+                                    <i class="fas fa-home"></i> Inicio
+                                </a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="<?= base_url('login/dashboard'); ?>">
-                                    <i class="fas fa-home"></i> Dashboard
+                                    <i class="fas fa-user-shield"></i> Bienvenido
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -279,7 +284,13 @@ if (isset($producto) && !empty($producto->nombre)) {
                                 <a class="nav-link <?= ($current_controller == 'servicios') ? 'active' : '' ?>" href="<?= base_url('servicios'); ?>">Servicios</a>
                             </li>
                             
-                            <?php if ($ci->session->userdata('logeado') && $ci->session->userdata('usuario_id') == 1): ?>
+                            <?php if ($ci->session->userdata('logeado')): ?>
+                                <!-- Si está logueado, mostrar botón para ir al panel admin -->
+                                <li class="nav-item">
+                                    <a class="nav-link" href="<?= base_url('login/dashboard'); ?>" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Panel Administrativo">
+                                        <i class="fas fa-user-shield"></i>
+                                    </a>
+                                </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="<?= base_url('login/salir'); ?>" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Cerrar Sesión">
                                         <i class="fas fa-sign-out-alt"></i>
@@ -325,8 +336,11 @@ if (isset($producto) && !empty($producto->nombre)) {
                 if ($ci->session->userdata('logeado') && $ci->session->userdata('usuario_id') == 1 && $es_area_admin): 
                     // Menú móvil para administrador logueado EN ÁREA ADMINISTRATIVA
                 ?>
+                    <a href="<?= base_url('/'); ?>" class="mobile-menu-link">
+                        <i class="fas fa-home"></i> Inicio
+                    </a>
                     <a href="<?= base_url('login/dashboard'); ?>" class="mobile-menu-link">
-                        <i class="fas fa-home"></i> Dashboard
+                        <i class="fas fa-user-shield"></i> Bienvenido
                     </a>
                     <a href="<?= base_url('login/productos'); ?>" class="mobile-menu-link">
                         <i class="fas fa-shopping-bag"></i> Productos
@@ -374,12 +388,16 @@ if (isset($producto) && !empty($producto->nombre)) {
                     <a href="<?= base_url('servicios'); ?>" class="mobile-menu-link">Servicios</a>
                     
                     <?php if ($ci->session->userdata('logeado')): ?>
-                        <a href="<?= base_url('login/salir'); ?>" class="mobile-menu-link" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Cerrar Sesión">
-                            <i class="fas fa-sign-out-alt"></i>
+                        <!-- Si está logueado, mostrar botón para ir al panel admin -->
+                        <a href="<?= base_url('login/dashboard'); ?>" class="mobile-menu-link">
+                            <i class="fas fa-user-shield"></i> Panel Admin
+                        </a>
+                        <a href="<?= base_url('login/salir'); ?>" class="mobile-menu-link">
+                            <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
                         </a>
                     <?php else: ?>
-                        <a href="<?= base_url('login'); ?>" class="mobile-menu-link" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Iniciar Sesión">
-                            <i class="fa-solid fa-user"></i>
+                        <a href="<?= base_url('login'); ?>" class="mobile-menu-link">
+                            <i class="fa-solid fa-user"></i> Iniciar Sesión
                         </a>
                     <?php endif; ?>
                 <?php endif; ?>
