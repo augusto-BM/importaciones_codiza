@@ -100,6 +100,16 @@
     <i class="fas fa-chevron-up"></i>
 </button>
 
+<script src="<?= base_url('assets/vendor/sweetalert2/sweetalert2.all.min.js'); ?>"></script>
+
+<script src="<?= base_url('assets/vendor/popperjs/popper.min.js'); ?>"></script>
+<script src="<?= base_url('assets/vendor/bootstrap/js/bootstrap.min.js'); ?>"></script>
+
+<!-- DataTables JS -->
+<script src="<?= base_url('assets/vendor/datatables/js/jquery.dataTables.min.js'); ?>"></script>
+<script src="<?= base_url('assets/vendor/datatables/js/dataTables.bootstrap5.min.js'); ?>"></script>
+<script src="<?= base_url('assets/vendor/datatables/js/dataTables.responsive.min.js'); ?>"></script>
+<script src="<?= base_url('assets/vendor/datatables/js/responsive.bootstrap5.min.js'); ?>"></script>
 <script src="<?= base_url('assets/js/footer.js'); ?>"></script>
 
 

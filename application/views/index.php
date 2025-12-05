@@ -1,4 +1,5 @@
 <!-- Estilos específicos de la vista de productos -->
+<link rel="preload" as="image" href="<?= base_url('images/banner/3-banners.jpg'); ?>" fetchpriority="high">
 <link rel="stylesheet" href="<?= base_url('assets/css/inicio-banner.css'); ?>">
 <link rel="stylesheet" href="<?= base_url('assets/css/inicio-servicios-productos.css'); ?>">
 <!-- Incluir CSS del carrusel de clientes -->

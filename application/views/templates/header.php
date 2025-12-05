@@ -95,7 +95,6 @@ if (isset($producto) && !empty($producto->nombre)) {
 
 <!-- Librerías locales (vendor) -->
 <link rel="stylesheet" href="<?= base_url('assets/vendor/fontawesome/css/all.min.css'); ?>">
-<script src="<?= base_url('assets/vendor/sweetalert2/sweetalert2.all.min.js'); ?>"></script>
 <link href="<?= base_url('assets/vendor/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet">
 
 <!-- DataTables CSS -->
@@ -104,14 +103,7 @@ if (isset($producto) && !empty($producto->nombre)) {
 
 <!-- jQuery DEBE IR PRIMERO -->
 <script src="<?= base_url('assets/vendor/jquery/jquery.min.js'); ?>"></script>
-<script src="<?= base_url('assets/vendor/popperjs/popper.min.js'); ?>"></script>
-<script src="<?= base_url('assets/vendor/bootstrap/js/bootstrap.min.js'); ?>"></script>
 
-<!-- DataTables JS -->
-<script src="<?= base_url('assets/vendor/datatables/js/jquery.dataTables.min.js'); ?>"></script>
-<script src="<?= base_url('assets/vendor/datatables/js/dataTables.bootstrap5.min.js'); ?>"></script>
-<script src="<?= base_url('assets/vendor/datatables/js/dataTables.responsive.min.js'); ?>"></script>
-<script src="<?= base_url('assets/vendor/datatables/js/responsive.bootstrap5.min.js'); ?>"></script>
 
 <link rel="stylesheet" href="<?= base_url('assets/css/header.css'); ?>">
 
