@@ -191,22 +191,22 @@ if (isset($producto) && !empty($producto->nombre)) {
                             // Menú para administrador logueado EN ÁREA ADMINISTRATIVA
                         ?>
                             <li class="nav-item">
-                                <a class="nav-link" href="<?= base_url('/inicio'); ?>">
+                                <a class="nav-link" href="<?= base_url('/inicio'); ?>" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Inicio">
                                     <i class="fas fa-home"></i> Inicio
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="<?= base_url('login/dashboard'); ?>">
+                                <a class="nav-link" href="<?= base_url('login/dashboard'); ?>" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Dashboard">
                                     <i class="fas fa-user-shield"></i> Bienvenido
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="<?= base_url('login/productos'); ?>">
+                                <a class="nav-link" href="<?= base_url('login/productos'); ?>" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Productos">
                                     <i class="fas fa-shopping-bag"></i> Productos
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="<?= base_url('login/categorias'); ?>">
+                                <a class="nav-link" href="<?= base_url('login/categorias'); ?>" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Categorías">
                                     <i class="fas fa-folder"></i> Categorías
                                 </a>
                             </li>
@@ -216,12 +216,12 @@ if (isset($producto) && !empty($producto->nombre)) {
                                 </a>
                             </li> -->
                             <li class="nav-item">
-                                <a class="nav-link" href="<?= base_url('login/tiposcategorias'); ?>" title="TIPO DE CATEGORIAS">
+                                <a class="nav-link" href="<?= base_url('login/tiposcategorias'); ?>" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Tipo de Categorías">
                                     <i class="fas fa-tags"></i> Tipo
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="<?= base_url('login/salir'); ?>">
+                                <a class="nav-link" href="<?= base_url('login/salir'); ?>" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Cerrar Sesión">
                                     <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
                                 </a>
                             </li>
@@ -229,10 +229,10 @@ if (isset($producto) && !empty($producto->nombre)) {
                             // Menú público normal (incluso si está logueado pero en páginas públicas)
                         ?>
                             <li class="nav-item">
-                                <a class="nav-link <?= $is_home ? 'active' : '' ?>" href="<?= base_url('inicio'); ?>">Inicio</a>
+                                <a class="nav-link <?= $is_home ? 'active' : '' ?>" href="<?= base_url('inicio'); ?>" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Inicio">Inicio</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link <?= ($current_controller == 'nosotros') ? 'active' : '' ?>" href="<?= base_url('nosotros'); ?>">Nosotros</a>
+                                <a class="nav-link <?= ($current_controller == 'nosotros') ? 'active' : '' ?>" href="<?= base_url('nosotros'); ?>" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Nosotros">Nosotros</a>
                             </li>
                             
                             <?php if (isset($menuTiposCategorias) && !empty($menuTiposCategorias)): ?>
@@ -259,7 +259,7 @@ if (isset($producto) && !empty($producto->nombre)) {
                                                     <h3><?= $tipoCategoria ?></h3>
                                                     <?php foreach ($categorias as $cat): ?>
                                                         <?php $isItemActive = ($current_controller === 'categoria' && $current_method === 'ver' && $current_category_id > 0 && (int) $cat['id'] === $current_category_id); ?>
-                                                        <a href="<?= base_url('categoria/ver/' . $cat['id']); ?>" class="dropdown-item item <?= $isItemActive ? 'active' : '' ?>" <?= $isItemActive ? 'aria-current="true"' : '' ?> title="Ver productos de la categoria <?= $cat['nombre'] ?>">
+                                                        <a href="<?= base_url('categoria/ver/' . $cat['id']); ?>" class="dropdown-item item <?= $isItemActive ? 'active' : '' ?>" <?= $isItemActive ? 'aria-current="true"' : '' ?> title="Ver productos de la categoria <?= $cat['nombre'] ?>" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Ver productos de la categoria <?= $cat['nombre'] ?>">
                                                             <?= $cat['nombre'] ?>
                                                         </a>
                                                     <?php endforeach; ?>
@@ -271,10 +271,10 @@ if (isset($producto) && !empty($producto->nombre)) {
                             <?php endif; ?>
 
                             <li class="nav-item">
-                                <a class="nav-link <?= ($current_controller == 'proyectos') ? 'active' : '' ?>" href="<?= base_url('proyectos'); ?>">Proyectos</a>
+                                <a class="nav-link <?= ($current_controller == 'proyectos') ? 'active' : '' ?>" href="<?= base_url('proyectos'); ?>" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Proyectos">Proyectos</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link <?= ($current_controller == 'servicios') ? 'active' : '' ?>" href="<?= base_url('servicios'); ?>">Vulcanizados</a>
+                                <a class="nav-link <?= ($current_controller == 'servicios') ? 'active' : '' ?>" href="<?= base_url('servicios'); ?>" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Vulcanizados">Vulcanizados</a>
                             </li>
                             
                             <?php if ($ci->session->userdata('logeado')): ?>
@@ -312,7 +312,7 @@ if (isset($producto) && !empty($producto->nombre)) {
             <!-- Logo en el menú móvil -->
             <div class="mobile-menu-header">
                 <div class="mobile-logo">
-                    <img src="<?= base_url('images/logo/logo.png') ?>" alt="Importaciones Codiza - Logo" width="150" height="auto" loading="lazy">
+                    <img src="<?= base_url('images/logo/logo-actual.png') ?>" alt="Importaciones Codiza - Logo" width="100%" height="auto" loading="lazy">
                 </div>
             </div>
 

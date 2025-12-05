@@ -82,11 +82,12 @@
                                     <img id="mainImage"
                                          src="<?= base_url('images/productos/' . $imagenes[0]) ?>"
                                          alt="<?= htmlspecialchars($producto->nombre) ?> - Producto industrial CODIZA"
-                                         title="<?= htmlspecialchars($producto->nombre) ?>"
+                                         style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="<?= htmlspecialchars($producto->nombre) ?>"
+                                         
                                          class="main-image">
                                 </div>
 
-                                <!-- Elemento que muestra el área ampliada (magnificador) -->
+                                <!-- Elemento que muestra el área ampliada (magnificador)-->
                                 <div class="zoom-result" id="zoomResult" aria-hidden="true"></div>
 
                                 <!-- Botón para abrir la imagen actual en una pestaña nueva -->
@@ -117,7 +118,7 @@
                                          onclick="changeMainImage(<?= $index ?>, this)">
                                         <img src="<?= base_url('images/productos/' . $imagen) ?>"
                                              alt="<?= htmlspecialchars($producto->nombre) ?> - Vista <?= $index + 1 ?>"
-                                             title="<?= htmlspecialchars($producto->nombre) ?> - Miniatura <?= $index + 1 ?>"
+                                             style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="<?= htmlspecialchars($producto->nombre) ?> - Miniatura <?= $index + 1 ?>"
                                              class="thumbnail-image">
                                     </div>
                                 <?php endforeach; ?>
@@ -188,13 +189,13 @@
                 <div class="related-card">
                     <a href="<?= base_url('productos/detalle/' . $rel->id_producto) ?>" class="related-link">
                         <?php if (!empty($rel->imagen1)): ?>
-                            <div class="related-img-wrap" style="cursor: pointer;" title="Ver Producto">
+                            <div class="related-img-wrap" style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Ver Producto">
                                 <img src="<?= base_url('images/productos/' . $rel->imagen1) ?>" 
                                      alt="<?= htmlspecialchars($rel->nombre) ?> - Producto relacionado CODIZA"
                                      title="<?= htmlspecialchars($rel->nombre) ?>">
                             </div>
                         <?php else: ?>
-                            <div class="related-img-wrap placeholder" style="cursor: pointer;" title="Ver Producto">
+                            <div class="related-img-wrap placeholder" style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Ver Producto">
                                 <i class="fas fa-image"></i>
                             </div>
                         <?php endif; ?>

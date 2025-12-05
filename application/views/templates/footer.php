@@ -90,7 +90,7 @@
 </footer>
 
 <!-- Botón flotante de WhatsApp -->
-<a href="https://wa.me/51985410410" target="_blank" class="whatsapp-float" title="Chatea con nosotros por WhatsApp" aria-label="WhatsApp">
+<a href="https://wa.me/51985410410" target="_blank" class="whatsapp-float"  data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Escribenos" aria-label="WhatsApp">
     <i class="fab fa-whatsapp"></i>
     <span class="whatsapp-tooltip">Cotizaciones Whatsapp</span>
 </a>

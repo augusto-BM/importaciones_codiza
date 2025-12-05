@@ -341,10 +341,10 @@ header {
 }
 
 .mobile-menu-header {
-    padding: 20px 30px;
+    padding: 0px 30px;
     text-align: center;
     border-bottom: 2px solid #e0e0e0;
-    margin-bottom: 20px;
+    /* margin-bottom: 20px; */
 }
 
 .mobile-menu-header .mobile-logo img {
@@ -365,8 +365,8 @@ header {
     color: #222;
     text-decoration: none;
     font-weight: 600;
-    font-size: 18px;
-    padding: 18px 30px;
+    font-size: 14px;
+    padding: 5px 30px;
     border-bottom: 1px solid #e0e0e0;
     transition: all 0.3s ease;
     display: block;
@@ -389,8 +389,8 @@ header {
     align-items: center;
     color: #222;
     font-weight: 600;
-    font-size: 18px;
-    padding: 18px 30px;
+    font-size: 14px;
+    padding: 5px 30px;
     cursor: pointer;
     transition: all 0.3s ease;
     background-color: transparent;
@@ -486,6 +486,15 @@ header {
 /* ============================= */
 
 @media (max-width: 1200px) {
+    .contact-info .info-item .item-header {
+        font-size: 10px;
+        line-height: 1.1;
+    }
+    .contact-info .info-item .item-content {
+        font-size: 10px;
+        line-height: 1.1;
+    }
+
     .navbar-nav .nav-link {
         font-size: 14px;
         padding: 8px 10px !important;
@@ -502,7 +511,7 @@ header {
     }
     
     .columna h3 {
-        font-size: 18px;
+        font-size: 14px;
     }
     
     .mega-menu .item {
@@ -520,9 +529,9 @@ header {
         height: 60px;
     }
 
-    header.shrink .logo img {
+    /* header.shrink .logo img {
         height: 45px;
-    }
+    } */
 }
 
 @media (max-width: 768px) {
@@ -538,13 +547,13 @@ header {
         height: 50px;
     }
 
-    header.shrink .header-top {
+    /* header.shrink .header-top {
         padding: 8px 0;
-    }
+    } */
 
-    header.shrink .logo img {
+   /*  header.shrink .logo img {
         height: 40px;
-    }
+    } */
 
     .mobile-menu-link {
         font-size: 20px;
@@ -560,12 +569,12 @@ header {
         height: 45px;
     }
 
-    header.shrink .logo img {
+   /*  header.shrink .logo img {
         height: 35px;
-    }
+    } */
 
     .mobile-menu-link {
-        font-size: 18px;
+        font-size: 14px;
         gap: 20px;
     }
 }

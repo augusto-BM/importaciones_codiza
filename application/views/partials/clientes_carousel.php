@@ -13,7 +13,7 @@
                     <?php if (!empty($clientes)): ?>
                         <?php foreach ($clientes as $index => $cliente): ?>
                             <div class="cliente-item <?= $index < 7 ? 'active' : '' ?>" data-index="<?= $index ?>">
-                                <div class="servicio-card" title="<?= $cliente->nombre?>">
+                                <div class="servicio-card"  data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="<?= $cliente->nombre?>">
                                     <div class="servicio-imagen-wrapper">
                                         <div class="servicio-imagen">
                                             <?php if (!empty($cliente->imagen)): ?>
