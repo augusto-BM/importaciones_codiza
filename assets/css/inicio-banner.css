@@ -449,3 +449,21 @@
 .no-image-placeholder i {
     color: #6c757d;  /* Opcional: color para el icono */
 }
+
+/* ------------------------------ */
+/* Anulación mínima: quitar giros */
+/* ------------------------------ */
+/* Neutraliza la rotación 3D de entrada y las animaciones de giro al cambiar slide.
+   Mantiene el resto de estilos intactos y no modifica comportamiento JS. */
+.banner-cube {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+/* Evitar animaciones aplicadas por data-slide cuando se activa el slide */
+.banner-slide[data-slide="1"].active,
+.banner-slide[data-slide="2"].active {
+    animation: none !important;
+    transform: none !important;
+}

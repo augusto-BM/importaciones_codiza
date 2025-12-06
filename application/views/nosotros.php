@@ -58,7 +58,20 @@
                 <h2><?= date("Y") - 2009; ?> años de soluciones en todo el Perú</h2>
                 <h3>Nuestra historia</h3>
                 <p>
-                    CODIZA S.A. Importadores de Productos para la Minería, Agroindustria, Pesquería e Industrias en general. Contamos con mas de 20 años de experiencia con la mejor asesoría para el manejo de nuestros productos en la línea de Fajas Transportadoras, Cangilones para Elevadores de Molinos, Cortinas de PVC, Empaquetaduras y Anexos dirigido a la industria en general.
+                    <strong>IMPORTACIONES CODIZA S.A.</strong> / RUC: 20511314870.<br>
+                    A lo largo del tiempo venimos importando de los cinco continentes y
+                    exportando a toda Sudamérica. Representamos a las mejores marcas en:
+                    <strong>bandas transportadoras, cangilones, grapas flexo, fajas sanitarias,
+                    empaquetaduras y cortinas frigoríficas</strong>. La calidad de nuestros
+                    productos y servicios industriales nos consolidan como líderes en el Perú.
+                </p>
+
+                <p>
+                    Estamos preparados para ir a la vanguardia de los cambios constantes que las
+                    industrias requieren. Contamos con una vasta experiencia adquirida a lo largo
+                    de décadas, realizando trabajos de alta ingeniería con los mejores
+                    profesionales y técnicos especializados, cumpliendo con máxima eficiencia
+                    para que las industrias mantengan su producción en funcionamiento continuo.
                 </p>
                 <!-- <p style="margin-bottom: 0; font-weight: bold;">Cirilo Matos García</p>
                 <p style="font-style: italic;">Gerente General</p> -->
