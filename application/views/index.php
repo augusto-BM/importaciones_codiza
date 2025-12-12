@@ -65,73 +65,49 @@
     <div class="banner-cube">
         <div class="banner-carousel-wrapper">
         <?php
-            $slides = 
-                    [
-                        [
-                            "id" => 0,
-                            "image" => base_url("images/banner/3-banners.jpg"),
-                            "title" => "Bienvenidos a Importaciones Codiza",
-                            "buttons" => [
-                                [
-                                    "text" => "Conócenos",
-                                    "url" => base_url("nosotros"),
-                                    "class" => "btn-banner btn-primary-banner banner-btn-1"
-                                ],
-                                [
-                                    "text" => "Contáctanos",
-                                    "url" => "https://wa.me/51985410410",
-                                    "class" => "btn-banner btn-secondary-banner banner-btn-2",
-                                    "title" => "Por Whatsapp"
-                                ]
-                            ]
-                        ],
-                        [
-                            "id" => 1,
-                            "image" => base_url("images/banner/3-banners2.jpg"),
-                            "title" => "Bienvenidos a Importaciones Codiza",
-                            "buttons" => [
-                                [
-                                    "text" => "Conócenos",
-                                    "url" => base_url("nosotros"),
-                                    "class" => "btn-banner btn-primary-banner banner-btn-1"
-                                ],
-                                [
-                                    "text" => "Contáctanos",
-                                    "url" => "https://wa.me/51985410410",
-                                    "class" => "btn-banner btn-secondary-banner banner-btn-2",
-                                    "title" => "Por Whatsapp"
-                                ]
-                            ]
-                        ],
-                        [
-                            "id" => 2,
-                            "image" => base_url("images/banner/3-banners3.jpg"),
-                            "title" => "Bienvenidos a Importaciones Codiza",
-                            "buttons" => [
-                                [
-                                    "text" => "Conócenos",
-                                    "url" => base_url("nosotros"),
-                                    "class" => "btn-banner btn-primary-banner banner-btn-1"
-                                ],
-                                [
-                                    "text" => "Contáctanos",
-                                    "url" => "https://wa.me/51985410410",
-                                    "class" => "btn-banner btn-secondary-banner banner-btn-2",
-                                    "title" => "Por Whatsapp"
-                                ]
-                            ]
-                        ],
-                    ];
+            $banner_buttons = [
+                [
+                    "text" => "Conócenos",
+                    "url" => base_url("nosotros"),
+                    "class" => "btn-banner btn-primary-banner banner-btn-1"
+                ],
+                [
+                    "text" => "Contáctanos",
+                    "url" => "https://wa.me/51985410410",
+                    "class" => "btn-banner btn-secondary-banner banner-btn-2",
+                    "title" => "Por Whatsapp"
+                ]
+            ];
+
+            $slides = [
+                [
+                    "id" => 0,
+                    "image" => base_url("images/banner/3-banners.jpg"),
+                    "title" => "Bienvenidos a Importaciones Codiza",
+                ],
+                [
+                    "id" => 1,
+                    "image" => base_url("images/banner/3-banners2.jpg"),
+                    "title" => "Bienvenidos a Importaciones Codiza",
+                ],
+                [
+                    "id" => 2,
+                    "image" => base_url("images/banner/3-banners3.jpg"),
+                    "title" => "Bienvenidos a Importaciones Codiza",
+                ],
+            ];
         ?>
         <div class="banner-carousel-track">
             <?php foreach ($slides as $index => $s): ?>
-                <div class="banner-slide <?= $index === 0 ? 'active' : '' ?>" data-slide="<?= $s['id'] ?>" style="background-image: url('<?= $s['image'] ?>');">
+                <div class="banner-slide <?= $index === 0 ? 'active' : '' ?>" data-slide="<?= htmlspecialchars($s['id'], ENT_QUOTES) ?>" style="background-image: url('<?= htmlspecialchars($s['image'], ENT_QUOTES) ?>');">
                     <div class="banner-overlay"></div>
+                    <!-- Imagen accesible (oculta visualmente pero visible para SEO/lectores) -->
+                    <img src="<?= htmlspecialchars($s['image'], ENT_QUOTES) ?>" alt="<?= htmlspecialchars($s['title']) ?>" class="visually-hidden" loading="lazy">
                     <div class="banner-content">
-                        <h1 class="banner-title-animate"><?= $s['title'] ?></h1>
+                        <h1 class="banner-title-animate"><?= htmlspecialchars($s['title']) ?></h1>
                         <div class="banner-buttons">
-                            <?php foreach ($s['buttons'] as $btn): ?>
-                                <a href="<?= $btn['url'] ?>" class="<?= $btn['class'] ?>" <?= isset($btn['title']) ? 'title="'.$btn['title'].'"' : '' ?> target="_blank"><?= $btn['text'] ?></a>
+                            <?php foreach ($banner_buttons as $btn): ?>
+                                <a href="<?= htmlspecialchars($btn['url'], ENT_QUOTES) ?>" class="<?= htmlspecialchars($btn['class']) ?>" <?= isset($btn['title']) ? 'title="'.htmlspecialchars($btn['title'], ENT_QUOTES).'"' : '' ?> target="_blank"><?= htmlspecialchars($btn['text']) ?></a>
                             <?php endforeach; ?>
                         </div>
                     </div>
@@ -149,9 +125,9 @@
 
         <!-- Indicadores (puntos) -->
         <div class="banner-carousel-dots">
-            <span class="dot-banner active" data-slide="0"></span>
-            <span class="dot-banner" data-slide="1"></span>
-            <span class="dot-banner" data-slide="2"></span>
+            <?php for ($i = 0; $i < count($slides); $i++): ?>
+                <span class="dot-banner <?= $i === 0 ? 'active' : '' ?>" data-slide="<?= htmlspecialchars($i, ENT_QUOTES) ?>"></span>
+            <?php endfor; ?>
         </div>
         </div>
     </div>
