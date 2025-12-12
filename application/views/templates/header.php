@@ -83,9 +83,11 @@ if (isset($producto) && !empty($producto->nombre)) {
 <meta name="twitter:image" content="<?= base_url('images/logo/logo-actual.png') ?>">
 
 <!-- Favicons -->
-<link rel="icon" type="image/png" sizes="32x32" href="<?= base_url('images/logo/Logo-negro.png') ?>">
-<link rel="icon" type="image/png" sizes="16x16" href="<?= base_url('images/logo/Logo-negro.png') ?>">
-<link rel="apple-touch-icon" sizes="180x180" href="<?= base_url('images/logo/Logo-negro.png') ?>">
+<!-- Favicons: usar .ico para que Google lo detecte mejor en resultados -->
+<link rel="icon" href="<?= base_url('images/logo/favicon.ico') ?>" type="image/x-icon">
+<link rel="shortcut icon" href="<?= base_url('images/logo/favicon.ico') ?>" type="image/x-icon">
+<link rel="apple-touch-icon" sizes="180x180" href="<?= base_url('images/logo/logo-actual.png') ?>">
+<meta name="msapplication-TileImage" content="<?= base_url('images/logo/favicon.ico') ?>">
 
 <!-- Información de Contacto para Motores de Búsqueda -->
 <meta name="geo.region" content="PE-LIM">
@@ -94,7 +96,11 @@ if (isset($producto) && !empty($producto->nombre)) {
 <meta name="ICBM" content="-12.046374, -77.042793">
 
 <!-- Librerías locales (vendor) -->
-<link rel="stylesheet" href="<?= base_url('assets/vendor/fontawesome/css/all.min.css'); ?>">
+<!-- Preload de fuentes FontAwesome para evitar parpadeos/FOIT en la primera carga -->
+<link rel="preload" href="<?= base_url('assets/vendor/fontawesome/webfonts/fa-solid-900.woff2'); ?>" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="<?= base_url('assets/vendor/fontawesome/webfonts/fa-regular-400.woff2'); ?>" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="<?= base_url('assets/vendor/fontawesome/webfonts/fa-brands-400.woff2'); ?>" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="<?= base_url('assets/vendor/fontawesome/css/all.min.css'); ?>" crossorigin="anonymous">
 <link href="<?= base_url('assets/vendor/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet">
 
 <!-- DataTables CSS -->

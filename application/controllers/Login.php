@@ -198,14 +198,14 @@ class Login extends CI_Controller {
         $this->load->view("templates/footer");
     }
 
-    /* public function clientes() {
+    public function clientes() {
         if (!$this->session->userdata("logeado")) { redirect("login"); }
         $data["tipos_categoria"] = $this->Tipo_categoria_model->obtener_tipos_activos();
         // Cargar vista del dashboard
         $this->load->view("templates/header", $data);
         $this->load->view("clientes");
         $this->load->view("templates/footer");
-    } */
+    }
 
     public function tiposcategorias() {
         $this->_check_session();
