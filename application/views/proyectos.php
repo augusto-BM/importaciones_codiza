@@ -1,6 +1,6 @@
-<link rel="stylesheet" href="<?= base_url('assets/css/proyectos.css'); ?>">
+<link rel="stylesheet" href="<?= css_url('assets/css/proyectos.css'); ?>">
 <!-- Banner Proyectos -->
-<div class="banner-proyectos" style="background-image: url('<?= base_url("images/proyectos/banner-fajas-transportadoras.jpg") ?>');">
+<div class="banner-proyectos" style="background-image: url('<?= img_url("images/proyectos/banner-fajas-transportadoras.jpg") ?>');">
     <div class="banner-proyectos-content">
         <h1>Nuestros Proyectos</h1>
         <p>Conoce los proyectos exitosos que hemos realizado para nuestros clientes</p>
@@ -73,7 +73,7 @@
 <!-- Incluir componente de clientes -->
 <?php $this->load->view('partials/clientes_carousel', ['clientes' => $clientes]); ?>
 
-<script src="<?= base_url('assets/js/proyectos.js'); ?>"></script>
+<script src="<?= js_url('assets/js/proyectos.js'); ?>"></script>
 
 <!-- Incluir JavaScript del carrusel de clientes -->
 <?php $this->load->view('partials/clientes_carousel_js'); ?>

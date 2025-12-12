@@ -125,4 +125,4 @@
 </div>
 
 <!-- Scripts específicos de la vista de categorías -->
-<script src="<?php echo base_url('assets/js/categorias.js'); ?>"></script>
+<script src="<?php echo js_url('assets/js/categorias.js'); ?>"></script>

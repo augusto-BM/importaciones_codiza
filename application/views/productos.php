@@ -1,6 +1,6 @@
 <!-- Estilos específicos de la vista de productos -->
-<link rel="stylesheet" href="<?php echo base_url('assets/css/tablas.css'); ?>">
-<link rel="stylesheet" href="<?php echo base_url('assets/css/productos.css'); ?>">
+<link rel="stylesheet" href="<?php echo css_url('assets/css/tablas.css'); ?>">
+<link rel="stylesheet" href="<?php echo css_url('assets/css/productos.css'); ?>">
 <!-- Definir base_url para JavaScript -->
 <script>
     const base_url = '<?php echo base_url(); ?>productos/';
@@ -261,4 +261,4 @@
 </script>
 
 <!-- Scripts específicos de la vista de productos -->
-<script src="<?php echo base_url('assets/js/productos.js'); ?>"></script>
+<script src="<?php echo js_url('assets/js/productos.js'); ?>"></script>

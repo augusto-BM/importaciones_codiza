@@ -1,7 +1,7 @@
 <!-- Estilos específicos de la vista de productos -->
-<link rel="preload" as="image" href="<?= base_url('images/banner/3-banners.jpg'); ?>" fetchpriority="high">
-<link rel="stylesheet" href="<?= base_url('assets/css/inicio-banner.css'); ?>">
-<link rel="stylesheet" href="<?= base_url('assets/css/inicio-servicios-productos.css'); ?>">
+<link rel="preload" as="image" href="<?= img_url('images/banner/3-banners.jpg'); ?>" fetchpriority="high">
+<link rel="stylesheet" href="<?= css_url('assets/css/inicio-banner.css'); ?>">
+<link rel="stylesheet" href="<?= css_url('assets/css/inicio-servicios-productos.css'); ?>">
 <!-- Incluir CSS del carrusel de clientes -->
 <?php $this->load->view('partials/clientes_carousel_css'); ?>
 
@@ -13,7 +13,7 @@
   "name": "Importaciones Codiza S.A.",
   "alternateName": "CODIZA",
   "url": "<?= base_url() ?>",
-  "logo": "<?= base_url('images/logo/logo-actual.png') ?>",
+  "logo": "<?= img_url('images/logo/logo-actual.png') ?>",
   "description": "Importadores de productos para la minería, agroindustria, pesquería e industrias en general. Especialistas en fajas transportadoras con más de 20 años de experiencia en Perú.",
   "foundingDate": "2009",
   "address": {
@@ -82,17 +82,17 @@
             $slides = [
                 [
                     "id" => 0,
-                    "image" => base_url("images/banner/3-banners.jpg"),
+                    "image" => img_url("images/banner/3-banners.jpg"),
                     "title" => "Bienvenidos a Importaciones Codiza",
                 ],
                 [
                     "id" => 1,
-                    "image" => base_url("images/banner/3-banners2.jpg"),
+                    "image" => img_url("images/banner/3-banners2.jpg"),
                     "title" => "Bienvenidos a Importaciones Codiza",
                 ],
                 [
                     "id" => 2,
-                    "image" => base_url("images/banner/3-banners3.jpg"),
+                    "image" => img_url("images/banner/3-banners3.jpg"),
                     "title" => "Bienvenidos a Importaciones Codiza",
                 ],
             ];
@@ -148,7 +148,7 @@
                                 <div class="servicio-imagen-wrapper">
                                     <div class="servicio-imagen">
                                         <?php if (!empty($categoria->imagen)): ?>
-                                            <img src="<?= base_url("images/categorias/$categoria->imagen") ?>" 
+                                            <img src="<?= img_url("images/categorias/$categoria->imagen") ?>" 
                                                 alt="<?= htmlspecialchars($categoria->nombre) ?> - Productos industriales CODIZA" 
                                                 title="<?= htmlspecialchars($categoria->nombre) ?>"
                                                 width="300" height="300" loading="lazy">
@@ -200,7 +200,7 @@
                                 <div class="servicio-imagen-wrapper">
                                     <div class="servicio-imagen">
                                         <?php if (!empty($servicio->imagen)): ?>
-                                            <img src="<?= base_url("images/servicios/$servicio->imagen") ?>" 
+                                            <img src="<?= img_url("images/servicios/$servicio->imagen") ?>" 
                                                 alt="<?= htmlspecialchars($servicio->nombre) ?> - Servicios CODIZA" 
                                                 title="<?= htmlspecialchars($servicio->nombre) ?>"
                                                 width="300" height="300" loading="lazy">
@@ -241,7 +241,7 @@
 
 <section class="section-asesoria">
     <div class="asesoria-parallax-container">
-        <div class="asesoria-parallax-bg" style="background-image: url('<?= base_url("images/banner/3-banners4.jpg") ?>');"></div>
+        <div class="asesoria-parallax-bg" style="background-image: url('<?= img_url("images/banner/3-banners4.jpg") ?>');"></div>
         <div class="asesoria-content">
             <h2>Asesoría Técnica, Ventas y Proyectos</h2>
             <p>En CODIZA S.A., ofrecemos soluciones confiables para la industria. Con nuestra experiencia, atendemos sus necesidades con soluciones industriales prácticas, diseñamos e instalamos fajas y accesorios industriales que mejoran el rendimiento y eficiencia de sus operaciones.</p>
@@ -254,8 +254,8 @@
 <!-- Incluir componente de clientes -->
 <?php $this->load->view('partials/clientes_carousel', ['clientes' => $clientes]); ?>
 
-<script src="<?= base_url('assets/js/inicio-banner.js'); ?>"></script>
-<script src="<?= base_url('assets/js/inicio-servicios-productos.js'); ?>"></script>
+<script src="<?= js_url('assets/js/inicio-banner.js'); ?>"></script>
+<script src="<?= js_url('assets/js/inicio-servicios-productos.js'); ?>"></script>
 
 <!-- Incluir JavaScript del carrusel de clientes -->
 <?php $this->load->view('partials/clientes_carousel_js'); ?>

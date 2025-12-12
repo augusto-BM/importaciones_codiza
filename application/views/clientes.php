@@ -109,4 +109,4 @@
 </div>
 
 <!-- Scripts específicos de la vista de clientes -->
-<script src="<?php echo base_url('assets/js/clientes.js'); ?>"></script>
+<script src="<?php echo js_url('assets/js/clientes.js'); ?>"></script>

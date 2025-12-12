@@ -1,6 +1,6 @@
-<link rel="stylesheet" href="<?= base_url('assets/css/servicios.css'); ?>">
+<link rel="stylesheet" href="<?= css_url('assets/css/servicios.css'); ?>">
 <!-- Banner Servicios -->
-<div class="banner-servicios" style="background-image: url('<?= base_url("images/banner/3-banners.jpg") ?>');">
+<div class="banner-servicios" style="background-image: url('<?= img_url("images/banner/3-banners.jpg") ?>');">
     <div class="banner-servicios-content">
         <h1>Nuestros Servicios</h1>
         <p>Soluciones integrales para la industria con la más alta calidad y profesionalismo</p>
@@ -44,7 +44,7 @@
 <!-- Incluir componente de clientes -->
 <?php $this->load->view('partials/clientes_carousel', ['clientes' => $clientes]); ?>
 
-<script src="<?= base_url('assets/js/servicios.js'); ?>"></script>
+<script src="<?= js_url('assets/js/servicios.js'); ?>"></script>
 
 <!-- Incluir JavaScript del carrusel de clientes -->
 <?php $this->load->view('partials/clientes_carousel_js'); ?>

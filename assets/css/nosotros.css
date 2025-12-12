@@ -17,7 +17,7 @@
 }
 
 /* Overlay oscuro sobre la imagen */
-.banner-nosotros::before {
+/* .banner-nosotros::before {
     content: '';
     position: absolute;
     top: 0;
@@ -26,14 +26,14 @@
     height: 100%;
     background: rgba(0, 0, 0, 0.5);
     z-index: 1;
-}
+} */
 
 /* Contenido del banner */
 .banner-nosotros-content {
     position: relative;
     z-index: 2;
     text-align: center;
-    color: white;
+    color: #FF0000;
     padding: 0 20px;
     animation: fadeInUp 1s ease-out;
 }

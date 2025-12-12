@@ -113,5 +113,5 @@
         const usuario_rol = '<?= $this->session->userdata('rol') ?>';
         const usuario_id = '<?= $this->session->userdata('usuario_id') ?>';
     </script>
-    <script src="<?= base_url('assets/js/usuarios.js'); ?>"></script>
+    <script src="<?= js_url('assets/js/usuarios.js'); ?>"></script>
 </div>

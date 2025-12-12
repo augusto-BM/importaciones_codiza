@@ -71,7 +71,7 @@ if (isset($producto) && !empty($producto->nombre)) {
 <meta property="og:url" content="<?= $canonical_url ?>">
 <meta property="og:title" content="<?= $page_title ?>">
 <meta property="og:description" content="<?= $meta_description ?>">
-<meta property="og:image" content="<?= base_url('images/logo/logo-actual.png') ?>">
+<meta property="og:image" content="<?= img_url('images/logo/logo-actual.png') ?>">
 <meta property="og:site_name" content="Importaciones Codiza">
 <meta property="og:locale" content="es_PE">
 
@@ -80,14 +80,14 @@ if (isset($producto) && !empty($producto->nombre)) {
 <meta name="twitter:url" content="<?= $canonical_url ?>">
 <meta name="twitter:title" content="<?= $page_title ?>">
 <meta name="twitter:description" content="<?= $meta_description ?>">
-<meta name="twitter:image" content="<?= base_url('images/logo/logo-actual.png') ?>">
+<meta name="twitter:image" content="<?= img_url('images/logo/logo-actual.png') ?>">
 
 <!-- Favicons -->
 <!-- Favicon en raíz para mejor indexación de Google -->
 <link rel="icon" href="<?= base_url('favicon.ico') ?>" type="image/x-icon">
 <link rel="shortcut icon" href="<?= base_url('favicon.ico') ?>" type="image/x-icon">
 <!-- Favicons adicionales en diferentes tamaños -->
-<link rel="apple-touch-icon" sizes="180x180" href="<?= base_url('images/logo/logo-actual.png') ?>">
+<link rel="apple-touch-icon" sizes="180x180" href="<?= img_url('images/logo/logo-actual.png') ?>">
 <meta name="msapplication-TileImage" content="<?= base_url('favicon.ico') ?>">
 
 <!-- Información de Contacto para Motores de Búsqueda -->
@@ -112,7 +112,7 @@ if (isset($producto) && !empty($producto->nombre)) {
 <script src="<?= base_url('assets/vendor/jquery/jquery.min.js'); ?>"></script>
 
 
-<link rel="stylesheet" href="<?= base_url('assets/css/header.css'); ?>">
+<link rel="stylesheet" href="<?= css_url('assets/css/header.css'); ?>">
 
 </head>
 <body class="page-blur">
@@ -126,7 +126,7 @@ if (isset($producto) && !empty($producto->nombre)) {
                 <div class="col-6 col-lg-3">
                     <div class="logo d-flex justify-content-end justify-content-lg-end pe-lg-4" title="Inicio">
                         <a href="<?= base_url(); ?>">
-                            <img src="<?= base_url('images/logo/logo-actual.png') ?>" alt="Importaciones Codiza - Logo" class="img-fluid" width="100%" height="auto">
+                            <img src="<?= img_url('images/logo/logo-actual.png') ?>" alt="Importaciones Codiza - Logo" class="img-fluid" width="100%" height="auto">
                         </a>
                     </div>
                 </div>
@@ -239,7 +239,7 @@ if (isset($producto) && !empty($producto->nombre)) {
                                 <a class="nav-link <?= $is_home ? 'active' : '' ?>" href="<?= base_url('inicio'); ?>" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Inicio">Inicio</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link <?= ($current_controller == 'nosotros') ? 'active' : '' ?>" href="<?= base_url('nosotros'); ?>" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Nosotros">Nosotros</a>
+                                <a class="nav-link <?= ($current_controller == 'nosotros') ? 'active' : '' ?>" href="<?= base_url('nosotros'); ?>" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Home">HOME</a>
                             </li>
                             
                             <?php if (isset($menuTiposCategorias) && !empty($menuTiposCategorias)): ?>
@@ -278,7 +278,7 @@ if (isset($producto) && !empty($producto->nombre)) {
                             <?php endif; ?>
 
                             <li class="nav-item">
-                                <a class="nav-link <?= ($current_controller == 'proyectos') ? 'active' : '' ?>" href="<?= base_url('proyectos'); ?>" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Proyectos">Proyectos</a>
+                                <a class="nav-link <?= ($current_controller == 'proyectos') ? 'active' : '' ?>" href="<?= base_url('proyectos'); ?>" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Catalogo">CATALOGO</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link <?= ($current_controller == 'servicios') ? 'active' : '' ?>" href="<?= base_url('servicios'); ?>" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Vulcanizados">Vulcanizados</a>
@@ -319,7 +319,7 @@ if (isset($producto) && !empty($producto->nombre)) {
             <!-- Logo en el menú móvil -->
             <div class="mobile-menu-header">
                 <div class="mobile-logo">
-                    <img src="<?= base_url('images/logo/logo-actual.png') ?>" alt="Importaciones Codiza - Logo" width="100%" height="auto" loading="lazy">
+                    <img src="<?= img_url('images/logo/logo-actual.png') ?>" alt="Importaciones Codiza - Logo" width="100%" height="auto" loading="lazy">
                 </div>
             </div>
 
@@ -361,7 +361,7 @@ if (isset($producto) && !empty($producto->nombre)) {
                     // Menú móvil público normal (incluso si está logueado pero en páginas públicas)
                 ?>
                     <a href="<?= base_url('inicio'); ?>" class="mobile-menu-link">Inicio</a>
-                    <a href="<?= base_url('nosotros'); ?>" class="mobile-menu-link">Nosotros</a>
+                    <a href="<?= base_url('nosotros'); ?>" class="mobile-menu-link">HOME</a>
                     
                     <!-- Menú acordeón de productos -->
                     <?php if (isset($menuTiposCategorias) && !empty($menuTiposCategorias)): ?>
@@ -384,7 +384,7 @@ if (isset($producto) && !empty($producto->nombre)) {
                         <?php endforeach; ?>
                     <?php endif; ?>
                     
-                    <a href="<?= base_url('proyectos'); ?>" class="mobile-menu-link">Proyectos</a>
+                    <a href="<?= base_url('proyectos'); ?>" class="mobile-menu-link">Catalogo</a>
                     <a href="<?= base_url('servicios'); ?>" class="mobile-menu-link">Vulcanizados</a>
                     
                     <?php if ($ci->session->userdata('logeado')): ?>
@@ -410,5 +410,5 @@ if (isset($producto) && !empty($producto->nombre)) {
     </div>
 </header>
 
-<script src="<?= base_url('assets/js/header.js'); ?>"></script>
+<script src="<?= js_url('assets/js/header.js'); ?>"></script>
 

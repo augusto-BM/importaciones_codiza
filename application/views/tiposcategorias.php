@@ -1,5 +1,5 @@
 <!-- Estilos específicos de la vista de categorías -->
-<link rel="stylesheet" href="<?php echo base_url('assets/css/tablas.css'); ?>">
+<link rel="stylesheet" href="<?php echo css_url('assets/css/tablas.css'); ?>">
 
 <!-- Definir base_url para JavaScript -->
 <script>
@@ -83,4 +83,4 @@
 </div>
 
 <!-- Scripts específicos de la vista de categorías -->
-<script src="<?php echo base_url('assets/js/tipos.js'); ?>"></script>
+<script src="<?php echo js_url('assets/js/tipos.js'); ?>"></script>
