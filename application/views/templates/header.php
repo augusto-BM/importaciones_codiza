@@ -83,11 +83,12 @@ if (isset($producto) && !empty($producto->nombre)) {
 <meta name="twitter:image" content="<?= base_url('images/logo/logo-actual.png') ?>">
 
 <!-- Favicons -->
-<!-- Favicons: usar .ico para que Google lo detecte mejor en resultados -->
-<link rel="icon" href="<?= base_url('images/logo/favicon.ico') ?>" type="image/x-icon">
-<link rel="shortcut icon" href="<?= base_url('images/logo/favicon.ico') ?>" type="image/x-icon">
+<!-- Favicon en raíz para mejor indexación de Google -->
+<link rel="icon" href="<?= base_url('favicon.ico') ?>" type="image/x-icon">
+<link rel="shortcut icon" href="<?= base_url('favicon.ico') ?>" type="image/x-icon">
+<!-- Favicons adicionales en diferentes tamaños -->
 <link rel="apple-touch-icon" sizes="180x180" href="<?= base_url('images/logo/logo-actual.png') ?>">
-<meta name="msapplication-TileImage" content="<?= base_url('images/logo/favicon.ico') ?>">
+<meta name="msapplication-TileImage" content="<?= base_url('favicon.ico') ?>">
 
 <!-- Información de Contacto para Motores de Búsqueda -->
 <meta name="geo.region" content="PE-LIM">
