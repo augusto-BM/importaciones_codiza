@@ -286,7 +286,7 @@
 
     .section-clientes .carousel-btn.carousel-prev-clientes:hover,
     .section-clientes .carousel-btn.carousel-next-clientes:hover {
-        background: rgba(0, 150, 63, 0.9);
+        background: #0046A6;
         color: white;
     }
 

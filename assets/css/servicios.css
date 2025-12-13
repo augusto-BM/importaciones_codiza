@@ -179,13 +179,15 @@
 }
 
 .servicio-imagen-container img {
-    width: 20vw;
+    width: 100%;
     height: auto; /* que la altura se ajuste a la proporción de la imagen */
-    object-fit: initial;
+    object-fit: cover;
     object-position: center;
     background-color: #f8f9fa;
     display: block;
     transition: transform 0.4s ease;
+    max-width: 100%;
+    max-height: 500px; /* evita alturas excesivas en pantallas grandes */
 }
 
 .servicio-imagen-container:hover img {
@@ -309,6 +311,8 @@
     .servicio-imagen-container img {
         height: auto;
         max-width: 100%;
+        max-height: 420px; /* ajusta límite en pantallas medianas */
+        object-fit: cover;
     }
 }
 

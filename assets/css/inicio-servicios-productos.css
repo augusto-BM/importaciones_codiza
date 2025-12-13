@@ -331,7 +331,7 @@
         pointer-events: auto;
 
         &:hover {
-            background: rgba(0, 150, 63, 0.9);
+            background: #0046A6;
             color: white;
         }
 
@@ -393,7 +393,7 @@
     height: 100%;
     padding: 0 20px;
     text-align: center;
-    background: rgba(0, 0, 0, 0.5);
+    /* background: rgba(0, 0, 0, 0.5); */
 
     & h2 {
         font-size: 42px;

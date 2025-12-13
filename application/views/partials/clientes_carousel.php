@@ -20,7 +20,7 @@
                                                 <img src="<?= base_url('images/clientes/' . $cliente->imagen) ?>" 
                                                      alt="<?= htmlspecialchars($cliente->nombre) ?>">
                                             <?php else: ?>
-                                                <div class="no-image-placeholder">
+                                                <div class="no-image-placeholder" style="background: rgba(0, 0, 0, 0.5);">
                                                     <i class="fas fa-image fa-3x text-muted"></i>
                                                 </div>
                                             <?php endif; ?>

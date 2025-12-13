@@ -9,7 +9,8 @@
                         <img src="<?= img_url('images/logo/logo-footer.png') ?>" alt="Importaciones Codiza - Productos Industriales" width="180" height="auto" loading="lazy">
                     </div>
                     <p class="footer-description">
-                        CODIZA | Soluciones en Fajas Transportadoras.
+                        <img src="<?= img_url('images/footer/delivery.png') ?>" alt="Importaciones Codiza - Productos Industriales" width="50" height="auto" loading="lazy">
+                        Envíos a todo el Peru
                     </p>
                     <div class="footer-contact">
                         <p><i class="fas fa-phone"></i> <a href="tel:+51985410410" title="Llamar a CODIZA">+51 946 385 307</a></p>

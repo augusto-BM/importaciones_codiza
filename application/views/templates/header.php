@@ -360,7 +360,7 @@ if (isset($producto) && !empty($producto->nombre)) {
                 <?php else: 
                     // Menú móvil público normal (incluso si está logueado pero en páginas públicas)
                 ?>
-                    <a href="<?= base_url('inicio'); ?>" class="mobile-menu-link">Inicio</a>
+                    <a href="<?= base_url('inicio'); ?>" class="mobile-menu-link">INICIO</a>
                     <a href="<?= base_url('nosotros'); ?>" class="mobile-menu-link">HOME</a>
                     
                     <!-- Menú acordeón de productos -->
@@ -384,20 +384,20 @@ if (isset($producto) && !empty($producto->nombre)) {
                         <?php endforeach; ?>
                     <?php endif; ?>
                     
-                    <a href="<?= base_url('proyectos'); ?>" class="mobile-menu-link">Catalogo</a>
-                    <a href="<?= base_url('servicios'); ?>" class="mobile-menu-link">Vulcanizados</a>
+                    <a href="<?= base_url('proyectos'); ?>" class="mobile-menu-link">CATALOGO</a>
+                    <a href="<?= base_url('servicios'); ?>" class="mobile-menu-link">VULCANIZADOS</a>
                     
                     <?php if ($ci->session->userdata('logeado')): ?>
                         <!-- Si está logueado, mostrar botón para ir al panel admin -->
                         <a href="<?= base_url('login/dashboard'); ?>" class="mobile-menu-link">
-                            <i class="fas fa-user-shield"></i> Panel Admin
+                            <i class="fas fa-user-shield"></i> PANEL ADMIN
                         </a>
                         <a href="<?= base_url('login/salir'); ?>" class="mobile-menu-link">
-                            <i class="fas fa-sign-out-alt"></i> Cerrar Sesión
+                            <i class="fas fa-sign-out-alt"></i> CERRAR SESIÓN
                         </a>
                     <?php else: ?>
                         <a href="<?= base_url('login'); ?>" class="mobile-menu-link">
-                            <i class="fa-solid fa-user"></i> Iniciar Sesión
+                            <i class="fa-solid fa-user"></i> INICIAR SESIÓN
                         </a>
                     <?php endif; ?>
                 <?php endif; ?>

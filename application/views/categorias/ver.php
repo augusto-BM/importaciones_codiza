@@ -1,15 +1,14 @@
-<link rel="stylesheet" href="<?php echo base_url('assets/css/ver.css'); ?>">
-
+<link rel="stylesheet" href="<?= css_url('assets/css/ver.css'); ?>">
 
 <!-- Header de la categoría -->
 <section class="category-header">
     <div class="category-parallax-bg"
         <?php if (!empty($categoria->imagen)): ?>
-            style="background-image: url('<?= base_url('images/categorias/' . $categoria->imagen); ?>');"
+            style="background-image: url('<?= img_url("images/categorias/{$categoria->imagen}"); ?>');"
         <?php endif; ?>
     >
         <?php if (empty($categoria->imagen)): ?>
-            <div class="no-image-placeholder">
+            <div class="no-image-placeholder" style="background: rgba(0, 0, 0, 0.5);">
                 <i class="fas fa-image fa-5x text-muted"></i>
             </div>
         <?php endif; ?>
@@ -44,20 +43,20 @@
                                 <div class="product-image-wrapper" style="cursor: pointer;" data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="Ver Producto">
                                     <?php if (!empty($producto->imagen1)): ?>
                                         
-                                        <img src="<?= base_url("images/productos/$producto->imagen1") ?>" 
+                                        <img src="<?= img_url("images/productos/$producto->imagen1") ?>" 
                                              alt="<?= htmlspecialchars($producto->nombre) ?>" 
                                              class="product-image image-1">
                                         <?php if (!empty($producto->imagen2)): ?>
-                                            <img src="<?= base_url("images/productos/$producto->imagen2") ?>" 
+                                            <img src="<?= img_url("images/productos/$producto->imagen2") ?>" 
                                                  alt="<?= htmlspecialchars($producto->nombre) ?>" 
                                                  class="product-image image-2">
                                         <?php else: ?>
-                                            <img src="<?= base_url("images/productos/$producto->imagen1") ?>" 
+                                            <img src="<?= img_url("images/productos/$producto->imagen1") ?>" 
                                                  alt="<?= htmlspecialchars($producto->nombre) ?>" 
                                                  class="product-image image-2">
                                         <?php endif; ?>
                                     <?php else: ?>
-                                        <div class="no-image-placeholder">
+                                        <div class="no-image-placeholder" style="background: rgba(0, 0, 0, 0.5);">
                                             <i class="fas fa-image fa-3x text-muted"></i>
                                         </div>
                                     <?php endif; ?>

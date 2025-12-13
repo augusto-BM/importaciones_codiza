@@ -160,7 +160,7 @@
         // Inicializar el carrusel
         initCarousel();
         
-        console.log('Carrusel de clientes inicializado correctamente');
+        //console.log('Carrusel de clientes inicializado correctamente');
     });
     
 })(jQuery);

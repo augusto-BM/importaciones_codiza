@@ -153,7 +153,7 @@
                                                 title="<?= htmlspecialchars($categoria->nombre) ?>"
                                                 width="300" height="300" loading="lazy">
                                         <?php else: ?>
-                                            <div class="no-image-placeholder">
+                                            <div class="no-image-placeholder" style="background: rgba(0, 0, 0, 0.5);">
                                                 <i class="fas fa-image fa-5x text-muted"></i>
                                             </div>
                                         <?php endif; ?>
@@ -206,7 +206,7 @@
                                                 width="300" height="300" loading="lazy">
                                         <?php else: ?>
                                             <!-- Mostrar un icono centrado si no hay imagen -->
-                                            <div class="no-image-placeholder">
+                                            <div class="no-image-placeholder" style="background: rgba(0, 0, 0, 0.5);">
                                                 <i class="fas fa-image fa-5x text-muted"></i>
                                             </div>
                                         <?php endif; ?>
@@ -243,8 +243,8 @@
     <div class="asesoria-parallax-container">
         <div class="asesoria-parallax-bg" style="background-image: url('<?= img_url("images/banner/3-banners4.jpg") ?>');"></div>
         <div class="asesoria-content">
-            <h2>Asesoría Técnica, Ventas y Proyectos</h2>
-            <p>En CODIZA S.A., ofrecemos soluciones confiables para la industria. Con nuestra experiencia, atendemos sus necesidades con soluciones industriales prácticas, diseñamos e instalamos fajas y accesorios industriales que mejoran el rendimiento y eficiencia de sus operaciones.</p>
+            <!-- <h2>Asesoría Técnica, Ventas y Proyectos</h2>
+            <p>En CODIZA S.A., ofrecemos soluciones confiables para la industria. Con nuestra experiencia, atendemos sus necesidades con soluciones industriales prácticas, diseñamos e instalamos fajas y accesorios industriales que mejoran el rendimiento y eficiencia de sus operaciones.</p> -->
         </div>
     </div>
 </section>
