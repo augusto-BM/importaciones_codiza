@@ -68,8 +68,9 @@
             $banner_buttons = [
                 [
                     "text" => "Conócenos",
-                    "url" => base_url("nosotros"),
-                    "class" => "btn-banner btn-primary-banner banner-btn-1"
+                    "url" => "https://importaciones-codiza.blogspot.com/",
+                    "class" => "btn-banner btn-primary-banner banner-btn-1",
+                    "title" => "Visitar Nuestro Blog"
                 ],
                 [
                     "text" => "Contáctanos",

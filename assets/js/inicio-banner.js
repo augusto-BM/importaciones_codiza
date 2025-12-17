@@ -55,7 +55,7 @@
             
             autoplayIntervalBanner = setInterval(function() {
                 showSlideBanner(currentSlideBanner + 1);
-            }, 5000); // Cambia cada 6 segundos (más tiempo para evitar cambios rápidos)
+            }, 8000); // Cambia cada 8 segundos (más tiempo para evitar cambios rápidos)
         }
 
         // Función para detener autoplay
