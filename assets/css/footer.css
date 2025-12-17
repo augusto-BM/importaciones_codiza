@@ -9,7 +9,7 @@
         margin-top: 60px;
 
         & .footer-content {
-            padding: 0 50px 40px 50px;
+            padding: 0 10px 0px 10px;
         }
 
         & .footer-logo {
@@ -204,10 +204,10 @@
 
         & .footer-bottom {
             background: rgba(0, 0, 0, 0.3);
-            padding: 20px 50px;
+            padding: 20px 10px;
             text-align: center;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
-            margin-top: 40px;
+            margin-top: 20px;
 
             & p {
                 margin: 0;
@@ -331,7 +331,7 @@
     @media (max-width: 768px) {
         footer {
             & .footer-content {
-                padding: 0 20px 30px 20px;
+                padding: 0 10px 30px 10px;
             }
 
             & .footer-logo img {
@@ -344,7 +344,7 @@
             }
 
             & .footer-bottom {
-                padding: 15px 20px;
+                padding: 15px 10px;
 
                 & p {
                     font-size: 12px;
@@ -389,4 +389,50 @@
                 font-size: 13px;
             }
         }
+    }
+
+    /* Reglas para que la imagen de marcas no se deforme */
+    .footer-marcas {
+        max-width: 100%;
+        height: auto;
+        display: inline-block;
+        object-fit: contain;
+        max-height: 120px;
+    }
+
+    @media (max-width: 768px) {
+        .footer-marcas {
+            max-height: 90px;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .footer-marcas {
+            max-height: 70px;
+        }
+    }
+
+    /* Evitar overflow y asegurar altura igual entre columnas */
+    .footer-sections-row {
+        gap: 0.75rem;
+    }
+
+    .footer-sections-row > [class*="col-"] {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .footer-sections-row .footer-section {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        height: 100%;
+        box-sizing: border-box;
+    }
+
+    /* Protección extra contra contenido que crezca */
+    .footer-sections-row .footer-section .footer-schedule,
+    .footer-sections-row .footer-section .footer-advisor {
+        overflow-wrap:break-word;
+        word-break:break-word;
     }

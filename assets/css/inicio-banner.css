@@ -1,7 +1,14 @@
 /* ======================================= */
 /* BANNER CARRUSEL CON BOOTSTRAP Y JQUERY */
 /* ======================================= */
-
+/* Google Fonts import removed — using local `impact.ttf` in @font-face above */
+@font-face {
+    font-family: 'ImpactLocal';
+    src: url('../fonts/impact.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
 .section-banner {
     position: relative;
     width: 100%;
@@ -174,15 +181,27 @@
     position: relative;
     z-index: 2;
     text-align: center;
-    color: #FF0022;
     padding: 0 20px;
 
     & h1 {
-        font-size: 48px;
+        font-size: 40px;
         font-weight: bold;
         margin-bottom: 30px;
         text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        font-family: 'ImpactLocal', Impact, sans-serif;
+        font-weight: 400;
+        font-style: normal;
     }
+}
+
+.banner-title-animate {
+    color: #C7EA46 !important; 
+    text-shadow:
+        -10px 0 6px rgba(0, 70, 166, 0.95),
+        -6px 0 8px rgba(0, 70, 166, 0.85),
+        -2px 0 10px rgba(0, 70, 166, 0.6),
+        2px 2px 6px rgba(0, 0, 0, 0.45) !important; 
+    
 }
 
 /* Ocultar elementos animados inicialmente */
@@ -214,20 +233,21 @@
             background: #FF0000;
             color: white;
             &:hover {
-                background: #0117E5;
+                background: #ff00008e;
+                color: #C7EA46;
                 transform: translateY(-2px);
-                box-shadow: 0 4px 15px rgba(0, 150, 63, 0.4);
+                box-shadow: 0 4px 15px rgba(153, 223, 182, 0.4);
             }
         }
 
         &.btn-secondary-banner {
-            background: transparent;
+            background: #0117E5;
             color: white;
-            border: 2px solid white;
+            /* border: 2px solid white; */
 
             &:hover {
-                background: white;
-                color: #FF0000;
+                background: #0118e588;
+                color:  #C7EA46;
                 transform: translateY(-2px);
                 box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
             }

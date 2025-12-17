@@ -1,7 +1,13 @@
 /* ======================================= */
 /* BANNER NOSOTROS CON OVERLAY Y 100VH    */
 /* ======================================= */
-
+@font-face {
+    font-family: 'ImpactLocal';
+    src: url('../fonts/impact.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
 .banner-nosotros {
     position: relative;
     width: 100%;
@@ -33,8 +39,13 @@
     position: relative;
     z-index: 2;
     text-align: center;
-    color: #FF0000;
     padding: 0 20px;
+    color: #C7EA46 !important; 
+    text-shadow:
+        -10px 0 6px rgba(0, 70, 166, 0.95),
+        -6px 0 8px rgba(0, 70, 166, 0.85),
+        -2px 0 10px rgba(0, 70, 166, 0.6),
+        2px 2px 6px rgba(0, 0, 0, 0.45) !important;
     animation: fadeInUp 1s ease-out;
 }
 
@@ -42,14 +53,14 @@
     font-size: 56px;
     font-weight: 900;
     margin-bottom: 20px;
-    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.8);
+    
     letter-spacing: 1px;
 }
 
 .banner-nosotros-content p {
     font-size: 22px;
     font-weight: 400;
-    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.7);
+    
     max-width: 800px;
     margin: 0 auto;
     line-height: 1.6;

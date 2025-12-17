@@ -83,17 +83,17 @@
                 [
                     "id" => 0,
                     "image" => img_url("images/banner/3-banners.jpg"),
-                    "title" => "Bienvenidos a Importaciones Codiza",
+                    "title" => "BANDAS TRANSPORTADORAS SANITARIAS",
                 ],
                 [
                     "id" => 1,
                     "image" => img_url("images/banner/3-banners2.jpg"),
-                    "title" => "Bienvenidos a Importaciones Codiza",
+                    "title" => "BANDAS TRANSPORTADORAS SANITARIAS",
                 ],
                 [
                     "id" => 2,
                     "image" => img_url("images/banner/3-banners3.jpg"),
-                    "title" => "Bienvenidos a Importaciones Codiza",
+                    "title" => "BANDAS TRANSPORTADORAS SANITARIAS",
                 ],
             ];
         ?>

@@ -1,8 +1,8 @@
 <link rel="stylesheet" href="<?= css_url('assets/css/footer.css'); ?>">
 <footer role="contentinfo">
     <div class="footer-content">
-        <div class="container-fluid">
-            <div class="row">
+        <div class="container">
+            <div class="row align-items-stretch">
                 <!-- Columna 1: Logo e información -->
                 <div class="col-12 col-md-6 col-lg-3 mb-4">
                     <div class="footer-logo">
@@ -23,65 +23,73 @@
                         <a href="#" class="youtube" title="YouTube Importaciones Codiza" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                     </div>
                 </div>
+                
 
-                <!-- Columna 2: Productos -->
-                <div class="col-12 col-md-6 col-lg-3 mb-4">
-                    <div class="footer-section">
-                        <h4><i class="fas fa-tools"></i> Tipos de Categorias</h4>
-                        <ul>
-                            <?php if (isset($tipos_categoria) && !empty($tipos_categoria)): ?>
-                                <?php foreach ($tipos_categoria as $tipo): ?>
-                                    <li>
-                                        <span style="color: #ffffff; cursor: default;">
-                                            <?= htmlspecialchars($tipo->nombre) ?>
-                                        </span>
-                                    </li>
-                                <?php endforeach; ?>
-                            <?php else: ?>
-                                <li><span style="color: #ffffff;">Consulta nuestro catálogo</span></li>
-                            <?php endif; ?>
-                        </ul>
+                <!-- Columnas 2-4 agrupadas: se anidan para que la columna 1 ocupe toda la altura -->
+                <div class="col-12 col-md-6 col-lg-9">
+                    <div class="row footer-sections-row">
+                        <!-- Columna 2: Productos -->
+                        <div class="col-12 col-md-12 col-lg-3 mb-4">
+                            <div class="footer-section">
+                                <h4><i class="fas fa-tools"></i> Tipos de Categorias</h4>
+                                <ul>
+                                    <?php if (isset($tipos_categoria) && !empty($tipos_categoria)): ?>
+                                        <?php foreach ($tipos_categoria as $tipo): ?>
+                                            <li>
+                                                <span style="color: #ffffff; cursor: default;">
+                                                    <?= htmlspecialchars($tipo->nombre) ?>
+                                                </span>
+                                            </li>
+                                        <?php endforeach; ?>
+                                    <?php else: ?>
+                                        <li><span style="color: #ffffff;">Consulta nuestro catálogo</span></li>
+                                    <?php endif; ?>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Columna 3: Horarios -->
+                        <div class="col-12 col-md-12 col-lg-4 mb-4">
+                            <div class="footer-section">
+                                <h4><i class="fas fa-clock"></i> Horarios de Atención</h4>
+                                <div class="footer-schedule">
+                                    <p>
+                                        <strong>Lunes a Viernes:</strong>
+                                        8:00 am - 6:00 pm
+                                    </p>
+                                    <p>
+                                        <strong>Sábados:</strong>
+                                        8:00 am - 1:00 pm
+                                    </p>
+                                    <p>
+                                        <strong>Domingos:</strong>
+                                        Cerrado
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Columna 4: Contacto Ventas -->
+                        <div class="col-12 col-md-12 col-lg-4 mb-4">
+                            <div class="footer-section">
+                                <h4><i class="fas fa-headset"></i> Asesores de Ventas</h4>
+                                <div class="footer-advisor">
+                                    <h5><i class="fas fa-user-tie"></i> Asesor Principal</h5>
+                                    <p><i class="fas fa-phone"></i> <a href="tel:+51985410410" title="Llamar al asesor">+51 946 385 307</a></p>
+                                    <p><i class="fas fa-envelope"></i> <a href="mailto:codiza@importacionescodiza.com" title="Enviar email">codiza@importacionescodiza.com</a></p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
 
-                <!-- Columna 3: Horarios -->
-                <div class="col-12 col-md-6 col-lg-3 mb-4">
-                    <div class="footer-section">
-                        <h4><i class="fas fa-clock"></i> Horarios de Atención</h4>
-                        <div class="footer-schedule">
-                            <p>
-                                <strong>Lunes a Viernes:</strong>
-                                8:00 am - 6:00 pm
-                            </p>
-                            <p>
-                                <strong>Sábados:</strong>
-                                8:00 am - 1:00 pm
-                            </p>
-                            <p>
-                                <strong>Domingos:</strong>
-                                Cerrado
-                            </p>
+                    <!-- Fila de marcas: imagen debajo sólo de las columnas 2-4 -->
+                    <div class="row mt-3">
+                        <div class="col-12 text-center">
+                            <img src="<?= img_url('images/footer/footer_marcas.png') ?>" alt="Marcas - Importaciones Codiza" class="img-fluid footer-marcas" loading="lazy">
                         </div>
                     </div>
                 </div>
 
-                <!-- Columna 4: Contacto Ventas -->
-                <div class="col-12 col-md-6 col-lg-3 mb-4">
-                    <div class="footer-section">
-                        <h4><i class="fas fa-headset"></i> Asesores de Ventas</h4>
-                        
-                        <div class="footer-advisor">
-                            <h5><i class="fas fa-user-tie"></i> Asesor Principal</h5>
-                            <p><i class="fas fa-phone"></i> <a href="tel:+51985410410" title="Llamar al asesor">+51 946 385 307</a></p>
-                            <p><i class="fas fa-envelope"></i> <a href="mailto:codiza@importacionescodiza.com" title="Enviar email">codiza@importacionescodiza.com</a></p>
-                        </div>
-                        <!-- <div class="footer-advisor">
-                            <h5><i class="fas fa-user-tie"></i> Asesor Comercial</h5>
-                            <p><i class="fas fa-phone"></i> <a href="tel:+51994357410">+51 994 357 410</a></p>
-                            <p><i class="fas fa-envelope"></i> <a href="mailto:ventasindustriales@codiza.com.pe">ventasindustriales@codiza.com.pe</a></p>
-                        </div> -->
-                    </div>
-                </div>
             </div>
         </div>
     </div>
