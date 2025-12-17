@@ -15,14 +15,14 @@
     </div>
     <div class="category-content">
         <div class="container">
-            <div class="text-center">
-                <h2 class="category-title mb-3">
-                    <a href="<?= base_url('inicio'); ?>" class="back-button">
-                        <i class="fas fa-arrow-left"></i>
-                    </a>
-                    <?= htmlspecialchars($categoria->categoria_nombre) ?>
-                </h2>
-                <p class="category-subtitle mb-0"><?= htmlspecialchars($categoria->tipo_nombre) ?></p>
+            <div class="text-center title-wrapper">
+                <a href="<?= base_url('inicio'); ?>" class="back-button">
+                    <i class="fas fa-arrow-left"></i>
+                </a>
+                <div class="title-text">
+                    <h2 class="category-title mb-3"><?= htmlspecialchars($categoria->categoria_nombre) ?></h2>
+                    <p class="category-subtitle mb-0"><?= htmlspecialchars($categoria->tipo_nombre) ?></p>
+                </div>
             </div>
         </div>
     </div>
