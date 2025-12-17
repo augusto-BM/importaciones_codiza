@@ -123,7 +123,6 @@ header {
 /* Enlaces del menú: permitir salto de línea para que no desborden la barra */
 .navbar-nav .nav-link {
     color: #fff !important;
-    font-weight: 550;
     font-size: 13.5px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     letter-spacing: 0.5px;
@@ -132,6 +131,7 @@ header {
     transition: all 0.3s ease;
     text-transform: uppercase;
     white-space: normal; /* permitir wrap */
+    font-weight: bolder;
 }
 
 .navbar-nav .nav-link:hover {
@@ -433,8 +433,8 @@ header {
     display: block;
     color: #0117E5;
     text-decoration: none;
-    font-size: 15px;
-    font-weight: 500;
+    font-size: 12px;
+    font-weight: 900;
     padding: 12px 30px 12px 50px;
     border-bottom: 1px solid #e8e8e8;
     transition: all 0.2s ease;
@@ -558,7 +558,7 @@ header {
     } */
 
     .mobile-menu-link {
-        font-size: 14px;
+        font-size: 16px;
         
     }
 }

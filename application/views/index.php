@@ -28,7 +28,7 @@
     "@type": "ContactPoint",
     "telephone": "+51-985-410-410",
     "contactType": "Ventas",
-    "email": "codiza@importacionescodiza.com",
+    "email": "elsa.calero@codiza.com.pe",
     "availableLanguage": "Spanish",
     "areaServed": "PE"
   },

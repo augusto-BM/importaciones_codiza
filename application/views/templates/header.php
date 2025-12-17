@@ -38,7 +38,7 @@ if ($current_controller == 'inicio' || $current_controller == '' || $current_met
     $meta_keywords = "proyectos industriales, casos de éxito, instalaciones fajas, proyectos minería";
 } elseif ($current_controller == 'contacto') {
     $page_title = "Contacto - Importaciones Codiza | Cotiza Ahora";
-    $meta_description = "Contáctanos para cotizaciones y asesoría en productos industriales. Teléfono: +51 946 385 307 | Email: codiza@importacionescodiza.com";
+    $meta_description = "Contáctanos para cotizaciones y asesoría en productos industriales. Teléfono: +51 946 385 307 | Email: elsa.calero@codiza.com.pe";
     $meta_keywords = "contacto codiza, cotización productos industriales, asesoría técnica";
 } elseif ($current_controller == 'categoria') {
     if (isset($categoria_nombre)) {
@@ -148,7 +148,7 @@ if (isset($producto) && !empty($producto->nombre)) {
                             </div>
                             <div class="item-text">
                                 <div class="item-header">Escríbenos</div>
-                                <div class="item-content">codiza@importacionescodiza.com</div>
+                                <div class="item-content">elsa.calero@codiza.com.pe</div>
                             </div>
                         </div>
                         <div class="info-item">

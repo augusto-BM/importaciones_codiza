@@ -76,7 +76,7 @@
                                 <div class="footer-advisor">
                                     <h5><i class="fas fa-user-tie"></i> Asesor Principal</h5>
                                     <p><i class="fas fa-phone"></i> <a href="tel:+51985410410" title="Llamar al asesor">+51 946 385 307</a></p>
-                                    <p><i class="fas fa-envelope"></i> <a href="mailto:codiza@importacionescodiza.com" title="Enviar email">codiza@importacionescodiza.com</a></p>
+                                    <p><i class="fas fa-envelope"></i> <a href="mailto:elsa.calero@codiza.com.pe" title="Enviar email">elsa.calero@codiza.com.pe</a></p>
                                 </div>
                             </div>
                         </div>
