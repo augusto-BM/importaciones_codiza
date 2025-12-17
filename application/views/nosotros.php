@@ -44,7 +44,7 @@
 <!-- Banner Nosotros -->
 <div class="banner-nosotros" style="background-image: url('<?= img_url("images/nosotros/banner-ph-about-1.jpg") ?>');">
     <div class="banner-nosotros-content">
-        <h1>Sobre Nosotros - Importaciones Codiza</h1>
+        <h1>Sobre Nosotros</h1>
         <p>Conoce más sobre nuestra empresa y compromiso con la calidad</p>
     </div>
 </div>
