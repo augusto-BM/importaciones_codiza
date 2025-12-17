@@ -55,9 +55,8 @@
         <div class="row nosotros-row">
             <!-- Columna de texto a la izquierda -->
             <div class="col-lg-6 nosotros-text-col">
-                <h2>Nuestra historia</h2>
+                <h2>Alta Ingenieria</h2>
                 <p>
-                    <strong>IMPORTACIONES CODIZA S.A.</strong> / RUC: 20511314870.<br>
                     A lo largo del tiempo venimos importando de los cinco continentes y
                     exportando a toda Sudamérica. Representamos a las mejores marcas en:
                     <strong>bandas transportadoras, cangilones, grapas flexco, fajas sanitarias,
