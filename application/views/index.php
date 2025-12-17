@@ -70,7 +70,7 @@
                     "text" => "Conócenos",
                     "url" => "https://importaciones-codiza.blogspot.com/",
                     "class" => "btn-banner btn-primary-banner banner-btn-1",
-                    "title" => "Visitar Nuestro Blog"
+                    "title" => "Visita nuestro Blog"
                 ],
                 [
                     "text" => "Contáctanos",
