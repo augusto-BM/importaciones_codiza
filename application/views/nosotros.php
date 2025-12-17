@@ -55,7 +55,7 @@
         <div class="row nosotros-row">
             <!-- Columna de texto a la izquierda -->
             <div class="col-lg-6 nosotros-text-col">
-                <h2>Alta Ingenieria</h2>
+                <h2>ALTA INGENIERÍA</h2>
                 <p>
                     A lo largo del tiempo venimos importando de los cinco continentes y
                     exportando a toda Sudamérica. Representamos a las mejores marcas en:
