@@ -278,7 +278,7 @@ if (isset($producto) && !empty($producto->nombre)) {
                             <?php endif; ?>
 
                             <li class="nav-item">
-                                <a class="nav-link <?= ($current_controller == 'proyectos') ? 'active' : '' ?>" href="<?= base_url('proyectos'); ?>" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Catalogo">INDUSTRIAS</a>
+                                <a class="nav-link <?= ($current_controller == 'proyectos') ? 'active' : '' ?>" href="<?= base_url('proyectos'); ?>" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Industrias">INDUSTRIAS</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link <?= ($current_controller == 'servicios') ? 'active' : '' ?>" href="<?= base_url('servicios'); ?>" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Vulcanizados">Vulcanizados</a>
