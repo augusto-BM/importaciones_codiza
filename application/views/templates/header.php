@@ -278,7 +278,7 @@ if (isset($producto) && !empty($producto->nombre)) {
                             <?php endif; ?>
 
                             <li class="nav-item">
-                                <a class="nav-link <?= ($current_controller == 'proyectos') ? 'active' : '' ?>" href="<?= base_url('proyectos'); ?>" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Catalogo">CATALOGO</a>
+                                <a class="nav-link <?= ($current_controller == 'proyectos') ? 'active' : '' ?>" href="<?= base_url('proyectos'); ?>" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Catalogo">INDUSTRIAS</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link <?= ($current_controller == 'servicios') ? 'active' : '' ?>" href="<?= base_url('servicios'); ?>" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Vulcanizados">Vulcanizados</a>
@@ -384,7 +384,7 @@ if (isset($producto) && !empty($producto->nombre)) {
                         <?php endforeach; ?>
                     <?php endif; ?>
                     
-                    <a href="<?= base_url('proyectos'); ?>" class="mobile-menu-link">CATALOGO</a>
+                    <a href="<?= base_url('proyectos'); ?>" class="mobile-menu-link">INDUSTRIAS</a>
                     <a href="<?= base_url('servicios'); ?>" class="mobile-menu-link">VULCANIZADOS</a>
                     
                     <?php if ($ci->session->userdata('logeado')): ?>

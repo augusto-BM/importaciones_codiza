@@ -67,7 +67,7 @@
         <?php
             $banner_buttons = [
                 [
-                    "text" => "Conócenos",
+                    "text" => "Catálogo",
                     "url" => "https://importaciones-codiza.blogspot.com/",
                     "class" => "btn-banner btn-primary-banner banner-btn-1",
                     "title" => "Visita nuestro Blog"
@@ -83,17 +83,52 @@
             $slides = [
                 [
                     "id" => 0,
-                    "image" => img_url("images/banner/3-banners.jpg"),
+                    "image" => img_url("images/banner/BANNER IMPORTACIONES CODIZA-(1).jpg"),
                     "title" => "BANDAS TRANSPORTADORAS SANITARIAS",
                 ],
                 [
                     "id" => 1,
-                    "image" => img_url("images/banner/3-banners2.jpg"),
+                    "image" => img_url("images/banner/BANNER IMPORTACIONES CODIZA-(2).jpg"),
                     "title" => "BANDAS TRANSPORTADORAS SANITARIAS",
                 ],
                 [
                     "id" => 2,
-                    "image" => img_url("images/banner/3-banners3.jpg"),
+                    "image" => img_url("images/banner/BANNER IMPORTACIONES CODIZA-(3).jpg"),
+                    "title" => "BANDAS TRANSPORTADORAS SANITARIAS",
+                ],
+                [
+                    "id" => 3,
+                    "image" => img_url("images/banner/BANNER IMPORTACIONES CODIZA-(4).jpg"),
+                    "title" => "BANDAS TRANSPORTADORAS SANITARIAS",
+                ],
+                [
+                    "id" => 4,
+                    "image" => img_url("images/banner/BANNER IMPORTACIONES CODIZA-(5).jpg"),
+                    "title" => "BANDAS TRANSPORTADORAS SANITARIAS",
+                ],
+                [
+                    "id" => 5,
+                    "image" => img_url("images/banner/BANNER IMPORTACIONES CODIZA-(6).jpg"),
+                    "title" => "BANDAS TRANSPORTADORAS SANITARIAS",
+                ],
+                [
+                    "id" => 6,
+                    "image" => img_url("images/banner/BANNER IMPORTACIONES CODIZA-(7).jpg"),
+                    "title" => "BANDAS TRANSPORTADORAS SANITARIAS",
+                ],
+                [
+                    "id" => 7,
+                    "image" => img_url("images/banner/BANNER IMPORTACIONES CODIZA-(8).jpg"),
+                    "title" => "BANDAS TRANSPORTADORAS SANITARIAS",
+                ],
+                [
+                    "id" => 8,
+                    "image" => img_url("images/banner/BANNER IMPORTACIONES CODIZA-(9).jpg"),
+                    "title" => "BANDAS TRANSPORTADORAS SANITARIAS",
+                ],
+                [
+                    "id" => 9,
+                    "image" => img_url("images/banner/BANNER IMPORTACIONES CODIZA-(10).jpg"),
                     "title" => "BANDAS TRANSPORTADORAS SANITARIAS",
                 ],
             ];

@@ -88,20 +88,50 @@
             startAutoplayBanner();
         });
 
-        // Pausar autoplay al pasar el mouse sobre el carrusel
-        $('.banner-carousel-wrapper').on('mouseenter', function() {
+        // Pausar autoplay al pasar el mouse/puntero o al tocar el carrusel
+        $('.banner-carousel-wrapper').on('pointerenter touchstart', function() {
             stopAutoplayBanner();
         });
 
-        // Reanudar autoplay al quitar el mouse
-        $('.banner-carousel-wrapper').on('mouseleave', function() {
+        // Reanudar autoplay al quitar el mouse/puntero o al terminar el toque
+        $('.banner-carousel-wrapper').on('pointerleave touchend', function() {
+            // pequeño retraso para evitar reinicios inmediatos tras interacciones táctiles
+            setTimeout(function() {
+                startAutoplayBanner();
+            }, 250);
+        });
+
+        // Reiniciar/autoreactivar autoplay cuando la pestaña vuelve a estar visible
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                stopAutoplayBanner();
+            } else {
+                startAutoplayBanner();
+            }
+        });
+
+        // Reiniciar autoplay al recuperar foco de la ventana
+        window.addEventListener('focus', function() {
             startAutoplayBanner();
+        });
+
+        // Detener autoplay al perder foco (opcional)
+        window.addEventListener('blur', function() {
+            stopAutoplayBanner();
         });
 
         // Iniciar autoplay al cargar la página
         if (totalSlidesBanner > 1) {
             startAutoplayBanner();
         }
+
+        // Reintento seguro: si por alguna razón el intervalo no se inició,
+        // arrancarlo pasados unos milisegundos (útil en navegadores que throttlean)
+        setTimeout(function() {
+            if (totalSlidesBanner > 1 && autoplayIntervalBanner === null && !document.hidden) {
+                startAutoplayBanner();
+            }
+        }, 1000);
         
         // Forzar scroll al inicio al cargar la página
         $(window).scrollTop(0);
