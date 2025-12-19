@@ -82,13 +82,45 @@ if (isset($producto) && !empty($producto->nombre)) {
 <meta name="twitter:description" content="<?= $meta_description ?>">
 <meta name="twitter:image" content="<?= img_url('images/logo/logo-actual.png') ?>">
 
-<!-- Favicons -->
-<!-- Favicon en raíz para mejor indexación de Google -->
-<link rel="icon" href="<?= base_url('favicon.ico') ?>" type="image/x-icon">
+<!-- ============================================
+     FAVICONS OPTIMIZADOS PARA GOOGLE Y SEO
+     Configuración híbrida: raíz + carpeta + manifest
+     ============================================ -->
+     
+<!-- Favicon.ico en RAÍZ (máxima compatibilidad, Google lo busca primero) -->
+<link rel="icon" href="<?= base_url('favicon.ico') ?>" type="image/x-icon" sizes="32x32">
 <link rel="shortcut icon" href="<?= base_url('favicon.ico') ?>" type="image/x-icon">
-<!-- Favicons adicionales en diferentes tamaños -->
-<link rel="apple-touch-icon" sizes="180x180" href="<?= img_url('images/logo/logo-actual.png') ?>">
-<meta name="msapplication-TileImage" content="<?= base_url('favicon.ico') ?>">
+
+<!-- SVG para navegadores modernos (mejor calidad escalable) -->
+<link rel="icon" href="<?= base_url('images/favicons/favicon.svg') ?>" type="image/svg+xml">
+
+<!-- PNGs en múltiples tamaños (Google Search usa 192x192) -->
+<link rel="icon" type="image/png" sizes="16x16" href="<?= base_url('images/favicons/favicon-16x16.png') ?>">
+<link rel="icon" type="image/png" sizes="32x32" href="<?= base_url('images/favicons/favicon-32x32.png') ?>">
+<link rel="icon" type="image/png" sizes="48x48" href="<?= base_url('images/favicons/favicon-48x48.png') ?>">
+<link rel="icon" type="image/png" sizes="192x192" href="<?= base_url('images/favicons/favicon-192x192.png') ?>">
+<link rel="icon" type="image/png" sizes="512x512" href="<?= base_url('images/favicons/favicon-512x512.png') ?>">
+
+<!-- Safari pinned tab (SVG monocromático) -->
+<link rel="mask-icon" href="<?= base_url('images/favicons/favicon.svg') ?>" color="#0066cc">
+
+<!-- Apple Touch Icons (iOS/Safari) - IMPORTANTE: sin transparencia, fondo sólido -->
+<link rel="apple-touch-icon" href="<?= base_url('images/favicons/favicon.ico') ?>">
+<link rel="apple-touch-icon" sizes="180x180" href="<?= base_url('images/favicons/apple-touch-icon-180x180.png') ?>">
+<link rel="apple-touch-icon" sizes="152x152" href="<?= base_url('images/favicons/apple-touch-icon-152x152.png') ?>">
+<link rel="apple-touch-icon" sizes="144x144" href="<?= base_url('images/favicons/apple-touch-icon-144x144.png') ?>">
+<link rel="apple-touch-icon" sizes="120x120" href="<?= base_url('images/favicons/apple-touch-icon-120x120.png') ?>">
+
+<!-- Microsoft Tiles (Windows 8/10/11) -->
+<meta name="msapplication-TileColor" content="#0066cc">
+<meta name="msapplication-TileImage" content="<?= base_url('images/favicons/apple-touch-icon-144x144.png') ?>">
+<meta name="msapplication-config" content="<?= base_url('browserconfig.xml') ?>">
+
+<!-- Web App Manifest (CRÍTICO para Google Search y PWA) -->
+<link rel="manifest" href="<?= base_url('site.webmanifest') ?>">
+
+<!-- Color de tema (barra de navegador en móviles) -->
+<meta name="theme-color" content="#0066cc">
 
 <!-- Información de Contacto para Motores de Búsqueda -->
 <meta name="geo.region" content="PE-LIM">

@@ -34,6 +34,8 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 /tests/results/
 
 .htaccess
+browserconfig.xml
+site.webmanifest
 
 /images/clientes/
 /images/productos/
