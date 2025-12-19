@@ -105,7 +105,7 @@
 </a>
 
 <!-- Botón flotante Volver Arriba -->
-<button class="scroll-top" id="scrollTop" title="Volver arriba" aria-label="Volver arriba">
+<button class="scroll-top" id="scrollTop" title="Volver arriba" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Volver arriba">
     <i class="fas fa-chevron-up"></i>
 </button>
 

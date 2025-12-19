@@ -76,7 +76,7 @@
                     "text" => "Contáctanos",
                     "url" => "https://wa.me/51985410410",
                     "class" => "btn-banner btn-secondary-banner banner-btn-2",
-                    "title" => "Por Whatsapp"
+                    "title" => "Escríbenos por Whatsapp"
                 ]
             ];
 
@@ -143,7 +143,7 @@
                         <h1 class="banner-title-animate"><?= htmlspecialchars($s['title']) ?></h1>
                         <div class="banner-buttons">
                             <?php foreach ($banner_buttons as $btn): ?>
-                                <a href="<?= htmlspecialchars($btn['url'], ENT_QUOTES) ?>" class="<?= htmlspecialchars($btn['class']) ?>" <?= isset($btn['title']) ? 'title="'.htmlspecialchars($btn['title'], ENT_QUOTES).'"' : '' ?> target="_blank"><?= htmlspecialchars($btn['text']) ?></a>
+                                <a href="<?= htmlspecialchars($btn['url'], ENT_QUOTES) ?>" class="<?= htmlspecialchars($btn['class']) ?>" data-bs-toggle="tooltip" data-bs-placement="bottom" <?= isset($btn['title']) ? 'data-bs-title="'.htmlspecialchars($btn['title'], ENT_QUOTES).'"' : '' ?> target="_blank"><?= htmlspecialchars($btn['text']) ?></a>
                             <?php endforeach; ?>
                         </div>
                     </div>
@@ -152,10 +152,10 @@
         </div>
         
         <!-- Botones de navegación -->
-        <button class="banner-carousel-btn banner-carousel-prev" type="button">
+        <button class="banner-carousel-btn banner-carousel-prev" type="button" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Anterior">
             <i class="fas fa-chevron-left"></i>
         </button>
-        <button class="banner-carousel-btn banner-carousel-next" type="button">
+        <button class="banner-carousel-btn banner-carousel-next" type="button" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Siguiente">
             <i class="fas fa-chevron-right"></i>
         </button>
 
@@ -207,10 +207,10 @@
 
             <!-- Controles anterior/siguiente -->
             <?php if (count($categorias) > 4): ?>
-                <button class="carousel-btn carousel-prev-categorias" type="button">
+                <button class="carousel-btn carousel-prev-categorias" type="button" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Anterior">
                     <i class="fas fa-chevron-left"></i>
                 </button>
-                <button class="carousel-btn carousel-next-categorias" type="button">
+                <button class="carousel-btn carousel-next-categorias" type="button" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Siguiente">
                     <i class="fas fa-chevron-right"></i>
                 </button>
             <?php endif; ?>
@@ -261,10 +261,10 @@
 
             <!-- Controles anterior/siguiente -->
             <?php if (count($servicios) > 4): ?>
-                <button class="carousel-btn carousel-prev" type="button">
+                <button class="carousel-btn carousel-prev" type="button" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Anterior">
                     <i class="fas fa-chevron-left"></i>
                 </button>
-                <button class="carousel-btn carousel-next" type="button">
+                <button class="carousel-btn carousel-next" type="button" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Siguiente">
                     <i class="fas fa-chevron-right"></i>
                 </button>
             <?php endif; ?>

@@ -16,7 +16,7 @@
     <div class="category-content">
         <div class="container">
             <div class="text-center title-wrapper">
-                <a href="<?= base_url('inicio'); ?>" class="back-button">
+                <a href="<?= base_url('inicio'); ?>" class="back-button" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Regresar">
                     <i class="fas fa-arrow-left"></i>
                 </a>
                 <div class="title-text">

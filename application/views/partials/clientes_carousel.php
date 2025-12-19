@@ -41,10 +41,10 @@
 
             <!-- Controles anterior/siguiente -->
             <?php if (!empty($clientes) && count($clientes) > 7): ?>
-                <button class="carousel-btn carousel-prev-clientes" type="button">
+                <button class="carousel-btn carousel-prev-clientes" type="button" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Anterior">
                     <i class="fas fa-chevron-left"></i>
                 </button>
-                <button class="carousel-btn carousel-next-clientes" type="button">
+                <button class="carousel-btn carousel-next-clientes" type="button" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Siguiente">
                     <i class="fas fa-chevron-right"></i>
                 </button>
             <?php endif; ?>

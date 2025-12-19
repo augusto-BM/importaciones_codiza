@@ -91,16 +91,16 @@
                                 <div class="zoom-result" id="zoomResult" aria-hidden="true"></div>
 
                                 <!-- Botón para abrir la imagen actual en una pestaña nueva -->
-                                <button type="button" id="openImageBtn" class="open-image-btn"
-                                        title="Abrir imagen en pestaña nueva" aria-label="Abrir imagen en pestaña nueva"
+                                <button type="button" id="openImageBtn" class="open-image-btn" data-bs-toggle="tooltip" 
+                                        data-bs-placement="bottom" data-bs-title="Abrir imagen"
                                         onclick="openImageInNewTab()"
                                         style="display:inline-flex;align-items:center;justify-content:center;margin-top:10px;">
                                     <i class="fa-solid fa-maximize"></i>
                                 </button>
 
                                 <!-- Flechas para navegar (aparecen al hover) -->
-                                <button type="button" class="image-arrow prev" onclick="prevImage()" aria-label="Anterior"><i class="fas fa-chevron-left"></i></button>
-                                <button type="button" class="image-arrow next" onclick="nextImage()" aria-label="Siguiente"><i class="fas fa-chevron-right"></i></button>
+                                <button type="button" class="image-arrow prev" onclick="prevImage()" aria-label="Anterior" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Anterior"><i class="fas fa-chevron-left"></i></button>
+                                <button type="button" class="image-arrow next" onclick="nextImage()" aria-label="Siguiente" data-bs-toggle="tooltip" data-bs-placement="bottom" data-bs-title="Siguiente"><i class="fas fa-chevron-right"></i></button>
 
                             <?php else: ?>
                                 <div class="no-image-placeholder" style="background: rgba(0, 0, 0, 0.5);">
