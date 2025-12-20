@@ -11,3 +11,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |	https://codeigniter.com/userguide3/general/hooks.html
 |
 */
+
+/*
+| -------------------------------------------------------------------------
+| Security Firewall Hook
+| -------------------------------------------------------------------------
+| Este hook se ejecuta ANTES de cargar CodeIgniter (pre_system)
+| Protege contra DDoS, scraping y ataques automatizados
+*/
+$hook['pre_system'] = array(
+	'class'    => 'SecurityFirewall',
+	'function' => 'run',
+	'filename' => 'SecurityFirewall.php',
+	'filepath' => 'hooks'
+);
