@@ -1,0 +1,52 @@
+/* Estilos Breadcrumbs Premium */
+.breadcrumb-container {
+    background-color: #f8f9fa; /* Fondo gris muy suave para diferenciar del header blanco */
+    border-bottom: 1px solid #e9ecef; /* Línea sutil de separación */
+    padding: 10px 0 0 0;
+    margin-bottom: 0; /* Sin margen abajo para que pegue con el banner, o ajusta si prefieres espacio */
+    position: relative; /* Asegura que ocupe su espacio y empuje contenido */
+    z-index: 5; /* Nivel intermedio */
+    width: 100%;
+}
+
+.breadcrumb {
+    margin-bottom: 0;
+    background: transparent;
+    padding: 0;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    content: "›";
+    font-family: serif; /* Flecha más elegante */
+    font-weight: bold;
+    padding: 0 10px;
+    color: #adb5bd;
+}
+
+.breadcrumb-item a {
+    color: #6c757d; /* Gris medio para enlaces */
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.breadcrumb-item a:hover {
+    color: #0066cc; /* Azul corporativo al pasar mouse */
+    text-decoration: none;
+}
+
+.breadcrumb-item.active {
+    color: #0066cc; /* Azul para la página actual */
+    font-weight: 600;
+}
+
+/* Ajuste Responsive */
+@media (max-width: 768px) {
+    .breadcrumb-container {
+        padding: 10px 0;
+        overflow-x: auto; /* Permitir scroll si es muy largo en móvil */
+        white-space: nowrap;
+    }
+}

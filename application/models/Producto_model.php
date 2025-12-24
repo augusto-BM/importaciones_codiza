@@ -299,4 +299,15 @@ class Producto_model extends CI_Model {
         }
         return null;
     }
+
+    /**
+     * Obtener todos los productos activos para SEO/Sitemap
+     */
+    public function get_all_active() {
+        $this->db->select('id_producto, nombre, descripcion');
+        $this->db->where('cji_flagestado', '1');
+        $this->db->order_by('nombre', 'ASC');
+        $query = $this->db->get('productos');
+        return $query->result();
+    }
 }

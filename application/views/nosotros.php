@@ -1,6 +1,9 @@
 <!-- Estilos específicos de la vista de nosotros -->
 <link rel="stylesheet" href="<?= css_url('assets/css/nosotros.css'); ?>">
 
+<!-- Breadcrumbs -->
+<?php $this->load->view('partials/breadcrumbs'); ?>
+
 <!-- Schema.org Markup para Organización -->
 <script type="application/ld+json">
 {

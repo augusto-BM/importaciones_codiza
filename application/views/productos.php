@@ -6,6 +6,10 @@
     const base_url = '<?php echo base_url(); ?>productos/';
     const base_url_img = '<?php echo base_url(); ?>';
 </script>
+
+<!-- Breadcrumbs -->
+<?php $this->load->view('partials/breadcrumbs'); ?>
+
 <div class="dashboard-wrapper">
     <div class="dashboard-container">
         <div class="page-header">

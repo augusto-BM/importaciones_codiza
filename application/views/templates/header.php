@@ -42,8 +42,9 @@ if ($current_controller == 'inicio' || $current_controller == '' || $current_met
     $meta_keywords = "contacto codiza, cotización productos industriales, asesoría técnica";
 } elseif ($current_controller == 'categoria') {
     if (isset($categoria_nombre)) {
-        $page_title = htmlspecialchars($categoria_nombre) . " - Importaciones Codiza";
-        $meta_description = "Productos de " . htmlspecialchars($categoria_nombre) . " de alta calidad para industria. Importaciones directas con garantía y asesoría técnica especializada.";
+        $page_title = htmlspecialchars($categoria_nombre) . " - Venta e Instalación en Perú | Importaciones Codiza";
+        $meta_description = "Venta de " . strtolower(htmlspecialchars($categoria_nombre)) . " de alta calidad para industria. ✓ Importación directa ✓ Asesoría técnica ✓ Instalación profesional. Cotiza en Lima, Perú.";
+        $meta_keywords = strtolower(htmlspecialchars($categoria_nombre)) . " perú, " . strtolower(htmlspecialchars($categoria_nombre)) . " lima, venta " . strtolower(htmlspecialchars($categoria_nombre)) . ", importación " . strtolower(htmlspecialchars($categoria_nombre));
     }
 }
 

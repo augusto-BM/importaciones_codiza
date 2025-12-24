@@ -35,6 +35,9 @@
 <div class="banner">
 </div>
 
+<!-- Breadcrumbs -->
+<?php $this->load->view('partials/breadcrumbs'); ?>
+
 <section style="padding:60px 20px; background:white; text-align:center;">
     
     <h2 style="font-size:48px; font-weight:900; margin-bottom:15px;">

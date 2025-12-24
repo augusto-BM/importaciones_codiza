@@ -143,6 +143,17 @@ class Categoria_model extends CI_Model {
         $query = $this->db->get('categorias');
         return $query->num_rows() > 0;
     }
+
+    /**
+     * Obtener todas las categorías activas para SEO/Sitemap
+     */
+    public function get_all_active() {
+        $this->db->select('id_categoria, nombre');
+        $this->db->where('cji_flagestado', '1');
+        $this->db->order_by('nombre', 'ASC');
+        $query = $this->db->get('categorias');
+        return $query->result();
+    }
 }
 
 ?>

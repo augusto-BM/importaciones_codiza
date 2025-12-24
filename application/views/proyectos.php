@@ -1,4 +1,8 @@
 <link rel="stylesheet" href="<?= css_url('assets/css/proyectos.css'); ?>">
+
+<!-- Breadcrumbs -->
+<?php $this->load->view('partials/breadcrumbs'); ?>
+
 <!-- Banner Proyectos -->
 <div class="banner-proyectos" style="background-image: url('<?= img_url("images/proyectos/banner-fajas-transportadoras.jpg") ?>');">
     <div class="banner-proyectos-content">
