@@ -18,8 +18,11 @@ class Sitemap extends CI_Controller {
      * Acceso: https://tudominio.com/sitemap o https://tudominio.com/sitemap/index
      */
     public function index() {
-        // Configurar header XML
+        // Configurar header XML y evitar caché
         header("Content-Type: application/xml; charset=utf-8");
+        header("Cache-Control: no-cache, no-store, must-revalidate");
+        header("Pragma: no-cache");
+        header("Expires: 0");
         
         // Obtener datos
         $categorias = $this->Categoria_model->get_all_active();
