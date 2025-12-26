@@ -16,7 +16,18 @@ Allow: /assets/js/
 Allow: /images/
 
 # Sitemap
-Sitemap: <?= base_url('sitemap') ?>
+Sitemap: <?php
+			header('Content-Type: text/plain');
+			if (function_exists('base_url')) {
+				echo base_url('sitemap');
+			} else {
+				$protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
+				$host = $_SERVER['HTTP_HOST'];
+				$script = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/\\');
+				$base = ($script === '/' || $script === '\\') ? '' : $script;
+				echo $protocol . '://' . $host . $base . '/sitemap.xml';
+			}
+		 ?>
 
 # Rastreadores específicos
 User-agent: Googlebot
