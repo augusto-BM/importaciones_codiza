@@ -21,7 +21,8 @@ Allow: /
 Disallow: /login/
 Disallow: /application/
 Disallow: /system/
-Disallow: /assets/vendor/
+# Permitir que los motores accedan a librerías/recursos de terceros necesarios
+Allow: /assets/vendor/
 
 # Permitir recursos importantes para SEO
 Allow: /assets/css/
