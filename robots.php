@@ -1,5 +1,8 @@
 <?php
-header('Content-Type: text/plain');
+header('Content-Type: text/plain; charset=utf-8');
+header('Cache-Control: no-cache, no-store, must-revalidate');
+header('Pragma: no-cache');
+header('Expires: 0');
 
 // Detectar base URL sin CodeIgniter
 $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
