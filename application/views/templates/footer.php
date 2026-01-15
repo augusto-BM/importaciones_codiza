@@ -15,7 +15,7 @@
                     <div class="footer-contact">
                         <p><i class="fas fa-phone"></i> <a href="tel:+51985410410" title="Llamar a CODIZA">+51 946 385 307</a></p>
                         <p><i class="fas fa-map-marker-alt"></i> Av. Ramón Cárcamo 565 Int. 131, Lima, Perú</p>
-                        <p><i class="fa-solid fa-globe"></i> <a href="https://importacionescodiza.com/" target="_blank" title="Sitio web Importaciones Codiza">https://importacionescodiza.com/</a></p>
+                        <p><i class="fa-solid fa-globe"></i> <a href="<?= base_url(); ?>" target="_blank" title="Sitio web Importaciones Codiza"><?= base_url(); ?></a></p>
                     </div>
                     <div class="social-icons">
                         <a href="#" class="facebook" title="Facebook Importaciones Codiza" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
