@@ -134,7 +134,12 @@ if (isset($producto) && !empty($producto->nombre)) {
 <link rel="preload" href="<?= base_url('assets/vendor/fontawesome/webfonts/fa-solid-900.woff2'); ?>" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="<?= base_url('assets/vendor/fontawesome/webfonts/fa-regular-400.woff2'); ?>" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="<?= base_url('assets/vendor/fontawesome/webfonts/fa-brands-400.woff2'); ?>" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="<?= base_url('assets/vendor/fontawesome/css/all.min.css'); ?>" crossorigin="anonymous">
+<?php 
+    $fa_link = (rtrim(base_url(), '/') == "https://importacionescodiza.com") 
+                ? 'https://use.fontawesome.com/releases/v5.15.4/css/all.css' 
+                : base_url('assets/vendor/fontawesome/css/all.min.css');
+?>
+<link rel="stylesheet" href="<?= $fa_link ?>" crossorigin="anonymous">
 <link href="<?= base_url('assets/vendor/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet">
 
 <!-- DataTables CSS -->
