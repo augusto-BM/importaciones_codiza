@@ -134,12 +134,18 @@ if (isset($producto) && !empty($producto->nombre)) {
 <link rel="preload" href="<?= base_url('assets/vendor/fontawesome/webfonts/fa-solid-900.woff2'); ?>" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="<?= base_url('assets/vendor/fontawesome/webfonts/fa-regular-400.woff2'); ?>" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="<?= base_url('assets/vendor/fontawesome/webfonts/fa-brands-400.woff2'); ?>" as="font" type="font/woff2" crossorigin>
-<?php 
-    $fa_link = (rtrim(base_url(), '/') == "https://importacionescodiza.com") 
-                ? 'https://use.fontawesome.com/releases/v5.15.4/css/all.css' 
-                : base_url('assets/vendor/fontawesome/css/all.min.css');
+<?php
+    $base = rtrim(base_url(), '/');
+    $host = parse_url($base, PHP_URL_HOST);
+    if ($host === 'importacionescodiza.com' || $host === 'www.importacionescodiza.com') {
+        $fa_link = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css';
+        $fa_attrs = 'crossorigin="anonymous"';
+    } else {
+        $fa_link = base_url('assets/vendor/fontawesome/css/all.min.css');
+        $fa_attrs = '';
+    }
 ?>
-<link rel="stylesheet" href="<?= $fa_link ?>" crossorigin="anonymous">
+<link rel="stylesheet" href="<?= $fa_link ?>" <?= !empty($fa_attrs) ? $fa_attrs : '' ?>>
 <link href="<?= base_url('assets/vendor/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet">
 
 <!-- DataTables CSS -->
