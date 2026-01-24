@@ -13,7 +13,7 @@
                         Envíos a todo el Peru
                     </p>
                     <div class="footer-contact">
-                        <p><i class="fas fa-phone"></i> <a href="tel:+51985410410" title="Llamar a CODIZA">+51 946 385 307</a></p>
+                        <p><i class="fas fa-phone"></i> <a href="tel:+51985410410" title="Llamar a CODIZA"><!-- +51 946 385 307 --></a></p>
                         <p><i class="fas fa-map-marker-alt"></i> Av. Ramón Cárcamo 565 Int. 131, Lima, Perú</p>
                         <p><i class="fa-solid fa-globe"></i> <a href="<?= base_url(); ?>" target="_blank" title="Sitio web Importaciones Codiza"><?= base_url(); ?></a></p>
                     </div>
@@ -75,8 +75,8 @@
                                 <h4><i class="fas fa-headset"></i> Asesores de Ventas</h4>
                                 <div class="footer-advisor">
                                     <h5><i class="fas fa-user-tie"></i> Asesor Principal</h5>
-                                    <p><i class="fas fa-phone"></i> <a href="tel:+51985410410" title="Llamar al asesor">+51 946 385 307</a></p>
-                                    <p><i class="fas fa-envelope"></i> <a href="mailto:elsa.calero@codiza.com.pe" title="Enviar email">elsa.calero@codiza.com.pe</a></p>
+                                    <p><i class="fas fa-phone"></i> <a href="tel:+51985410410" title="Llamar al asesor"><!-- +51 946 385 307 --></a></p>
+                                    <p><i class="fas fa-envelope"></i> <a href="mailto:elsa.calero@codiza.com.pe" title="Enviar email"><!-- elsa.calero@codiza.com.pe --></a></p>
                                 </div>
                             </div>
                         </div>

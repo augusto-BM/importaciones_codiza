@@ -183,7 +183,7 @@ if (isset($producto) && !empty($producto->nombre)) {
                             </div>
                             <div class="item-text">
                                 <div class="item-header">Información y ventas</div>
-                                <div class="item-content">+51 946 385 307</div>
+                                <div class="item-content"><!-- +51 946 385 307 --></div>
                             </div>
                         </div>
                         <div class="info-item">
@@ -192,7 +192,7 @@ if (isset($producto) && !empty($producto->nombre)) {
                             </div>
                             <div class="item-text">
                                 <div class="item-header">Escríbenos</div>
-                                <div class="item-content">elsa.calero@codiza.com.pe</div>
+                                <div class="item-content"><!-- elsa.calero@codiza.com.pe --></div>
                             </div>
                         </div>
                         <div class="info-item">
